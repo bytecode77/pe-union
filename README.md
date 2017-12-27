@@ -107,7 +107,7 @@ which can be still decrypted by debugging.
 
 ## Downloads
 
-[![](https://bytecode77.com/images/shared/fileicons/zip.png) PEunion 3.0.0 Binaries.zip](https://bytecode77.com/downloads/hacking/tools/PEunion%203.0.0%20Binaries.zip)
+[![](https://bytecode77.com/images/shared/fileicons/zip.png) PEunion 3.0.1 Binaries.zip](https://bytecode77.com/downloads/hacking/tools/PEunion%203.0.1%20Binaries.zip)
 
 ## Project Page
 
