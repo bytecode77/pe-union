@@ -99,6 +99,13 @@
 						</Style>
 					</MenuItem.Resources>
 				</MenuItem>
+				<MenuItem Header="Recent Files" ItemsSource="{Binding RecentFileMenuItems}">
+					<MenuItem.Resources>
+						<Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+							<EventSetter Event="Click" Handler="mnuFileRecentFile_Click" />
+						</Style>
+					</MenuItem.Resources>
+				</MenuItem>
 				<Separator />
 				<MenuItem Header="E_xit" InputGestureText="Alt+F4" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconExit.png" Click="mnuFileExit_Click" />
 			</MenuItem>

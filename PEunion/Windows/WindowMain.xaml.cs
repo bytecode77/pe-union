@@ -70,7 +70,7 @@ namespace PEunion
 			get
 			{
 				string path = Path.Combine(App.ApplicationDirectoryPath, "RecentProjects.txt");
-				if (File.Exists(path)) return File.ReadAllLines(path).Where(line => line != "").ToArray();
+				if (File.Exists(path)) return File.ReadAllLines(path).Where(line => line != "").Take(10).ToArray();
 				else return new string[0];
 			}
 			set
@@ -89,14 +89,40 @@ namespace PEunion
 					File.WriteAllLines(path, value.Union(RecentProjects).Take(10).ToArray());
 				}
 
-				RaisePropertyChanged(() => RecentProjects);
 				RaisePropertyChanged(() => RecentProjectMenuItems);
+			}
+		}
+		public string[] RecentFiles
+		{
+			get
+			{
+				string path = Path.Combine(App.ApplicationDirectoryPath, "RecentFiles.txt");
+				if (File.Exists(path)) return File.ReadAllLines(path).Where(line => line != "").Take(10).ToArray();
+				else return new string[0];
+			}
+			set
+			{
+				string path = Path.Combine(App.ApplicationDirectoryPath, "RecentFiles.txt");
+				if (value == null)
+				{
+					File.Delete(path);
+				}
+				else if (value.Length == 1 && value.First().StartsWith("-"))
+				{
+					File.WriteAllLines(path, RecentFiles.Except(value.First().Substring(1).CreateSingletonArray()).ToArray());
+				}
+				else
+				{
+					File.WriteAllLines(path, value.Union(RecentFiles).Take(10).ToArray());
+				}
+
+				RaisePropertyChanged(() => RecentFileMenuItems);
 			}
 		}
 		public Control[] RecentProjectMenuItems => RecentProjects
 			.Select((file, i) => new MenuItem
 			{
-				Header = (i == 10 ? "1_0" : "_" + i) + " " + file,
+				Header = (i == 9 ? "1_0" : "_" + (i + 1)) + " " + file,
 				DataContext = file
 			} as Control)
 			.Concat(new Separator())
@@ -106,6 +132,21 @@ namespace PEunion
 				Icon = new Image { Source = Utility.GetImageResource("IconClearRecents") },
 				DataContext = ":Clear",
 				IsEnabled = RecentProjects.Length > 0
+			})
+			.ToArray();
+		public Control[] RecentFileMenuItems => RecentFiles
+			.Select((file, i) => new MenuItem
+			{
+				Header = (i == 9 ? "1_0" : "_" + (i + 1)) + " " + file,
+				DataContext = file
+			} as Control)
+			.Concat(new Separator())
+			.Concat(new MenuItem
+			{
+				Header = "_Clear Recent File List",
+				Icon = new Image { Source = Utility.GetImageResource("IconClearRecents") },
+				DataContext = ":Clear",
+				IsEnabled = RecentFiles.Length > 0
 			})
 			.ToArray();
 
@@ -259,6 +300,25 @@ namespace PEunion
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent projects?", true, true))
 				{
 					RecentProjects = ("-" + path).CreateSingletonArray();
+				}
+			}
+		}
+		private void mnuFileRecentFile_Click(object sender, RoutedEventArgs e)
+		{
+			string path = (sender as FrameworkElement).DataContext as string;
+			if (path == ":Clear")
+			{
+				if (MessageBoxes.Confirmation("Do you want to clear recent files?", true)) RecentFiles = null;
+			}
+			else if (File.Exists(path))
+			{
+				AddFiles(path.CreateSingletonArray());
+			}
+			else if (path != null)
+			{
+				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent files?", true, true))
+				{
+					RecentFiles = ("-" + path).CreateSingletonArray();
 				}
 			}
 		}
@@ -496,6 +556,7 @@ namespace PEunion
 		{
 			Project.Items.AddRange(files.Select(file => new ProjectFile(Project, file)));
 			Project.IsDirty = true;
+			RecentFiles = files;
 		}
 		private void AddUrl()
 		{
