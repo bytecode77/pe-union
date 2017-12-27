@@ -474,7 +474,7 @@ namespace PEunion
 			}
 			else
 			{
-				string[] unintendedFileExtensions = new[] { "peu", "ico" };
+				string[] unintendedFileExtensions = new[] { "peu", "ico", "lnk" };
 
 				foreach (ProjectFile file in FileItems)
 				{

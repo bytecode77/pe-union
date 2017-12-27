@@ -93,29 +93,21 @@ namespace PEunion
 				RaisePropertyChanged(() => RecentProjectMenuItems);
 			}
 		}
-		public MenuItem[] RecentProjectMenuItems
-		{
-			get
+		public Control[] RecentProjectMenuItems => RecentProjects
+			.Select((file, i) => new MenuItem
 			{
-				return new MenuItem
-				{
-					Header = "_Clear Recent Project List",
-					Icon = new Image { Source = Utility.GetImageResource("IconClearRecents") },
-					DataContext = ":Clear",
-					IsEnabled = RecentProjects.Length > 0
-				}
-				.Concat
-				(
-					RecentProjects
-						.Select(file => new MenuItem
-						{
-							Header = file,
-							DataContext = file
-						})
-				)
-				.ToArray();
-			}
-		}
+				Header = (i == 10 ? "1_0" : "_" + i) + " " + file,
+				DataContext = file
+			} as Control)
+			.Concat(new Separator())
+			.Concat(new MenuItem
+			{
+				Header = "_Clear Recent Project List",
+				Icon = new Image { Source = Utility.GetImageResource("IconClearRecents") },
+				DataContext = ":Clear",
+				IsEnabled = RecentProjects.Length > 0
+			})
+			.ToArray();
 
 		private ContextMenu mnuTreeItems => this.FindResource<ContextMenu>("mnuTreeItems");
 		private ContextMenu mnuTreeFile => this.FindResource<ContextMenu>("mnuTreeFile");
@@ -231,12 +223,21 @@ namespace PEunion
 		}
 		private void DeleteSelectedProjectItem_Executed(object sender, ExecutedRoutedEventArgs e)
 		{
-			int index = Project.Items.IndexOf(SelectedProjectItem);
-			Project.Items.Remove(SelectedProjectItem);
-			Project.IsDirty = true;
+			string name;
+			if (SelectedProjectItem is ProjectFile file) name = file.Name.IsNullOrWhiteSpace() ? file.SourceFileName : "'" + file.Name + "'";
+			else if (SelectedProjectItem is ProjectMessageBox) name = "this Message Box";
+			else if (SelectedProjectItem is ProjectUrl url) name = url.Url.IsNullOrWhiteSpace() ? "this URL" : "'" + url.Url + "'";
+			else throw new InvalidOperationException();
 
-			if (Project.Items.Count == 0) SelectedProjectItem = null;
-			else Project.Items[Math.Min(index, Project.Items.Count - 1)].TreeViewItemIsSelected = true;
+			if (MessageBoxes.Confirmation("Do you want to delete " + name + "?", true))
+			{
+				int index = Project.Items.IndexOf(SelectedProjectItem);
+				Project.Items.Remove(SelectedProjectItem);
+				Project.IsDirty = true;
+
+				if (Project.Items.Count == 0) SelectedProjectItem = null;
+				else Project.Items[Math.Min(index, Project.Items.Count - 1)].TreeViewItemIsSelected = true;
+			}
 		}
 		private void mnuFileOpenProjectFolder_Click(object sender, RoutedEventArgs e)
 		{
@@ -247,7 +248,7 @@ namespace PEunion
 			string path = (sender as FrameworkElement).DataContext as string;
 			if (path == ":Clear")
 			{
-				RecentProjects = null;
+				if (MessageBoxes.Confirmation("Do you want to clear recent projects?", true)) RecentProjects = null;
 			}
 			else if (File.Exists(path))
 			{
@@ -255,7 +256,7 @@ namespace PEunion
 			}
 			else if (path != null)
 			{
-				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from 'Recent Projects'?", true, true))
+				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent projects?", true, true))
 				{
 					RecentProjects = ("-" + path).CreateSingletonArray();
 				}
