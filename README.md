@@ -49,8 +49,8 @@ The next two pages include settings for obfuscation and startup parameters.
 Default obfuscation settings are at maximum, however they can be changed, if
 required.
 
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/003.png&height=200)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/004.png&height=200)](https://bytecode77.com/images/sites/hacking/tools/peunion/004.png)
+[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/003.png&height=300)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
+[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/004.png&height=300)](https://bytecode77.com/images/sites/hacking/tools/peunion/004.png)
 
 ### Compiling
 
@@ -82,7 +82,7 @@ variables will look like str1, str2, str3...
 
 ### And String Encryption!
 
-But wait! What is this orange text `"DecryptString(...)"?`
+But wait! What is this orange text `"DecryptString(...)"`?
 
 String literals are encrypted using a simple 8-bit XOR. This increases reverse
 engineering effort even further. Take a look at this very simple line of code:
