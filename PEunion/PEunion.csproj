@@ -258,5 +258,8 @@
   <ItemGroup>
     <Resource Include="Resources\IconBytecode77.png" />
   </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Resources\ImageSplashScreen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
