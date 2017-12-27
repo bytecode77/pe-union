@@ -49,8 +49,8 @@ The next two pages include settings for obfuscation and startup parameters.
 Default obfuscation settings are at maximum, however they can be changed, if
 required.
 
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/003.png&height=300)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/004.png&height=300)](https://bytecode77.com/images/sites/hacking/tools/peunion/004.png)
+[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/003.png&height=250)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
+[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/004.png&height=250)](https://bytecode77.com/images/sites/hacking/tools/peunion/004.png)
 
 ### Compiling
 
