@@ -115,8 +115,9 @@
 			</MenuItem>
 			<MenuItem Header="_Tools">
 				<MenuItem Header="_Open AppData Directory" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuToolsOpenAppDataDirectory_Click" />
-				<Separator />
 				<MenuItem Header="_Register .peu File Extension" Click="mnuToolsRegisterFileExtension_Click" />
+				<Separator />
+				<MenuItem Header="Right to _Left Override" Click="mnuToolsRtlo_Click" />
 			</MenuItem>
 			<MenuItem Header="_Help">
 				<MenuItem Header="PEunion on _GitHub" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconGitHub.png" Click="mnuHelpGitHub_Click" />
@@ -151,7 +152,7 @@
 				<RowDefinition Height="6" />
 				<RowDefinition Height="150" MinHeight="100" />
 			</Grid.RowDefinitions>
-			<TabControl>
+			<TabControl Name="tabMain">
 				<TabItem Header="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}">
 					<Grid>
 						<Grid.ColumnDefinitions>

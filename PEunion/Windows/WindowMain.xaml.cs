@@ -347,6 +347,10 @@ namespace PEunion
 				);
 			}
 		}
+		private void mnuToolsRtlo_Click(object sender, RoutedEventArgs e)
+		{
+			AddTab(new TabRtlo());
+		}
 		private void mnuHelpGitHub_Click(object sender, RoutedEventArgs e)
 		{
 			Process.Start("https://github.com/bytecode-77/pe-union");
@@ -576,6 +580,15 @@ namespace PEunion
 		{
 			ProjectMessageBox messageBox = SelectedProjectItem as ProjectMessageBox;
 			System.Windows.Forms.MessageBox.Show(messageBox.Text ?? "", messageBox.Title ?? "", messageBox.Buttons, messageBox.Icon);
+		}
+		private void AddTab(object content)
+		{
+			tabMain.Items.Add(new TabItem
+			{
+				Header = "Right to Left Override",
+				Content = content,
+				IsSelected = true
+			});
 		}
 	}
 }
