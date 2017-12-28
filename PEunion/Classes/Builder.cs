@@ -131,25 +131,17 @@ namespace PEunion
 					codeFilesPart.AppendLine("\t\t\t__C1_AntiEmulator__ = " + (file.AntiEmulator ? "true" : "false") + ", // AntiEmulator");
 					codeFilesPart.AppendLine("\t\t\t__C1_Content__ = new byte[] // Content");
 					codeFilesPart.AppendLine("\t\t\t{");
+
 					byte[] data = File.ReadAllBytes(file.FullName);
 					if (file.Compress) data = Compress(data);
 					if (file.Encrypt) data = Encrypt(data);
 
-					using (MemoryStream content = new MemoryStream(data))
+					foreach (IEnumerable<byte> chunk in data.Chunk(1024))
 					{
-						int length;
-						byte[] buffer = new byte[128];
-						do
-						{
-							length = content.Read(buffer, 0, buffer.Length);
-							if (length > 0)
-							{
-								codeFilesPart.AppendLine("\t\t\t\t" + buffer.Take(length).Select(b => "0x" + b.ToString("x2") + ", ").CreateString().Trim());
-							}
-							progress += buffer.Length;
-							WindowMain.Singleton.OverlayProgress = progress * 100 / totalSize;
-						}
-						while (length > 0);
+						byte[] line = chunk.ToArray();
+						codeFilesPart.AppendLine("\t\t\t\t" + line.Select(b => "0x" + b.ToString("x2") + ", ").CreateString().Trim());
+						progress += line.Length;
+						WindowMain.Singleton.OverlayProgress = progress * 100 / totalSize;
 					}
 
 					codeFilesPart.AppendLine("\t\t\t}");
