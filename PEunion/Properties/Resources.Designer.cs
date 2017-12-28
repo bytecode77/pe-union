@@ -429,6 +429,16 @@ namespace PEunion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconPeuFile {
+            get {
+                object obj = ResourceManager.GetObject("IconPeuFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconSave {
             get {
                 object obj = ResourceManager.GetObject("IconSave", resourceCulture);

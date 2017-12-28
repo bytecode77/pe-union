@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -37,6 +38,7 @@ namespace PEunion
 			set
 			{
 				Set(() => SaveLocation, ref _SaveLocation, value);
+				RaisePropertyChanged(() => ProjectName);
 			}
 		}
 		public bool IsDirty
@@ -165,7 +167,10 @@ namespace PEunion
 			get => _Items;
 			set
 			{
+				if (_Items != null) _Items.CollectionChanged -= _Items_CollectionChanged;
 				Set(() => Items, ref _Items, value);
+				if (_Items != null) _Items.CollectionChanged += _Items_CollectionChanged;
+				RaisePropertyChanged(() => ProjectName);
 				IsDirty = true;
 			}
 		}
@@ -589,6 +594,11 @@ namespace PEunion
 
 			ValidationErrorsChanged?.Invoke(this, EventArgs.Empty);
 			return errors.ToArray();
+		}
+
+		private void _Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			RaisePropertyChanged(() => ProjectName);
 		}
 	}
 }

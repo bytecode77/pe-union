@@ -261,5 +261,11 @@
   <ItemGroup>
     <SplashScreen Include="Resources\ImageSplashScreen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Tabs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconPeuFile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
