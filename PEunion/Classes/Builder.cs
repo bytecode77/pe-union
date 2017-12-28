@@ -16,8 +16,8 @@ namespace PEunion
 {
 	public static class Builder
 	{
-		public static async Task<CompilerResults> BuildAsync(string path, Project project) => await Task.Factory.StartNew(() => Build(path, project));
-		public static async Task<string> BuildCodeAsync(Project project) => await Task.Factory.StartNew(() => BuildCode(project));
+		public static Task<CompilerResults> BuildAsync(string path, Project project) => Task.Factory.StartNew(() => Build(path, project));
+		public static Task<string> BuildCodeAsync(Project project) => Task.Factory.StartNew(() => BuildCode(project));
 
 		public static CompilerResults Build(string path, Project project)
 		{
@@ -87,7 +87,12 @@ namespace PEunion
 					});
 
 					CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
-					if (results.Errors.Count == 0 && project.IconPath != null) new FileInfo(path).ChangeExecutableIcon(new Icon(project.IconPath));
+
+					if (results.Errors.Count == 0 && project.IconPath != null)
+					{
+						WindowMain.Singleton.OverlayTitle = "Changing icon...";
+						new FileInfo(path).ChangeExecutableIcon(new Icon(project.IconPath));
+					}
 					return results;
 				}
 			}
@@ -98,7 +103,7 @@ namespace PEunion
 		}
 		public static string BuildCode(Project project)
 		{
-			WindowMain.Singleton.OverlayTitle = "Building code...";
+			WindowMain.Singleton.OverlayTitle = "Packing files...";
 			WindowMain.Singleton.OverlayIsIndeterminate = false;
 			WindowMain.Singleton.OverlayProgress = 0;
 
@@ -182,8 +187,23 @@ namespace PEunion
 				codeFilesPart.AppendLine("\t\t}" + (item == project.Items.Last() ? null : ","));
 			}
 
+			WindowMain.Singleton.OverlayTitle = "String literal encryption...";
+			WindowMain.Singleton.OverlayIsIndeterminate = true;
+
+			string code = Properties.Resources.FileStub;
+
+			new Regex(@"\/\*\*\/(""[^""]+"")")
+				.Matches(code)
+				.Cast<Match>()
+				.Where(match => match.Success)
+				.ForEach(match =>
+				{
+					string str = match.Groups[0].Value;
+					string stringContent = str.SubstringFrom("\"").SubstringUntil("\"", true);
+					code = code.Replace(str, CreateStringLiteral(stringContent, project.StringLiteralEncryption));
+				});
+
 			WindowMain.Singleton.OverlayTitle = "Preprocessor directives...";
-			WindowMain.Singleton.OverlayProgress = 0;
 
 			string codePreprocessorPart = new[]
 			{
@@ -213,29 +233,12 @@ namespace PEunion
 				assemblyInfoPart = "";
 			}
 
-			string code = Properties.Resources.FileStub;
-
 			code = code
 				.Replace("/*{ASSEMBLYINFO}*/", assemblyInfoPart)
 				.Replace("/*{PREPROCESSOR}*/", codePreprocessorPart)
 				.Replace("/*{ITEMS}*/", codeFilesPart.ToString());
 
-			WindowMain.Singleton.OverlayTitle = "String literal encryption...";
-			WindowMain.Singleton.OverlayProgress = 25;
-
-			new Regex(@"\/\*\*\/(""[^""]+"")")
-				.Matches(code)
-				.Cast<Match>()
-				.Where(match => match.Success)
-				.ForEach(match =>
-				{
-					string str = match.Groups[0].Value;
-					string stringContent = str.SubstringFrom("\"").SubstringUntil("\"", true);
-					code = code.Replace(str, CreateStringLiteral(stringContent, project.StringLiteralEncryption));
-				});
-
 			WindowMain.Singleton.OverlayTitle = "Obfuscation...";
-			WindowMain.Singleton.OverlayProgress = 50;
 
 			new Regex("__[a-zA-Z0-9_]+__")
 				.Matches(code)
@@ -244,7 +247,6 @@ namespace PEunion
 				.Select(match => match.Value)
 				.ForEach(variable => code = code.Replace(variable, GenerateVariableName(variable, project.Obfuscation)));
 
-			WindowMain.Singleton.OverlayProgress = 100;
 			return code.TrimStart();
 		}
 
