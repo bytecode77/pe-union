@@ -92,14 +92,14 @@
 				<MenuItem Header="Save _As..." InputGestureText="Ctrl+Shift+S" Command="{x:Static local:WindowMain.SaveAsCommand}" />
 				<Separator />
 				<MenuItem Header="Open _Project Folder" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconOpenProjectFolder.png" IsEnabled="{Binding Project.SaveLocation, Converter={StaticResource ObjectIsNullToBooleanConverter}}" Click="mnuFileOpenProjectFolder_Click" />
-				<MenuItem Header="_Recent Projects" ItemsSource="{Binding RecentProjectMenuItems}">
+				<MenuItem Header="Recent _Projects" ItemsSource="{Binding RecentProjectMenuItems}">
 					<MenuItem.Resources>
 						<Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
 							<EventSetter Event="Click" Handler="mnuFileRecentProject_Click" />
 						</Style>
 					</MenuItem.Resources>
 				</MenuItem>
-				<MenuItem Header="Recent Files" ItemsSource="{Binding RecentFileMenuItems}">
+				<MenuItem Header="Recent _Files" ItemsSource="{Binding RecentFileMenuItems}">
 					<MenuItem.Resources>
 						<Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
 							<EventSetter Event="Click" Handler="mnuFileRecentFile_Click" />
