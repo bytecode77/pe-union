@@ -261,15 +261,7 @@
 											</GroupBox>
 											<GroupBox Grid.Column="2" Header="Icon">
 												<StackPanel>
-													<Grid>
-														<Grid.ColumnDefinitions>
-															<ColumnDefinition Width="*" />
-															<ColumnDefinition Width="10" />
-															<ColumnDefinition Width="Auto" />
-														</Grid.ColumnDefinitions>
-														<local:FileBrowser x:Name="ctrlBrowseIcon" HorizontalAlignment="Left" AllowedExtensions="ico" FilesSelect="ctrlBrowseIcon_FilesSelect" />
-														<Button Grid.Column="2" Content="Reset Icon" Style="{StaticResource UIButton}" IsEnabled="{Binding Project.IconPath, Converter={StaticResource StringIsNullOrEmptyToBooleanConverter}}" VerticalAlignment="Bottom" Click="btnResetIcon_Click" />
-													</Grid>
+													<local:FileBrowser x:Name="ctrlBrowseIcon" AllowedExtensions="ico" AllowReset="True" FilesSelect="ctrlBrowseIcon_FilesSelect" Reset="ctrlBrowseIcon_Reset" />
 												</StackPanel>
 											</GroupBox>
 											<GroupBox Grid.Row="1" Header="Assembly Information">

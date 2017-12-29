@@ -17,7 +17,10 @@
 					<Run Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" /><Run Text=", or" />
 				</TextBlock>
 				<TextBlock Text="{Binding Text, ElementName=fileBrowser}" Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
-				<Button Content="Browse..." Style="{StaticResource UIButton}" HorizontalAlignment="Right" Click="btnBrowse_Click" />
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+					<Button Content="Browse..." Style="{StaticResource UIButton}" Click="btnBrowse_Click" />
+					<Button Content="Reset" Style="{StaticResource UIButton}" Visibility="{Binding AllowReset, ElementName=fileBrowser, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="{Binding IsResetButtonEnabled, ElementName=fileBrowser}" Margin="10,0,0,0" Click="btnReset_Click" />
+				</StackPanel>
 			</StackPanel>
 		</DockPanel>
 	</Border>

@@ -466,7 +466,7 @@ namespace PEunion
 		{
 			Project.IconPath = e.First();
 		}
-		private void btnResetIcon_Click(object sender, RoutedEventArgs e)
+		private void ctrlBrowseIcon_Reset(object sender, EventArgs e)
 		{
 			Project.IconPath = null;
 		}

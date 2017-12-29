@@ -49,6 +49,11 @@ namespace PEunion
 				Set(() => IsDirty, ref _IsDirty, value);
 				WindowMain.Singleton.Title = ProjectName + (value ? " *" : null) + " - PEunion";
 				WindowMain.Singleton.txtProjectTabIsDirty.SetVisibility(value);
+
+				if (IconPath == null) WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = null;
+				else WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? new FileInfo(IconPath).GetFileIcon(true).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
+				WindowMain.Singleton.ctrlBrowseIcon.IsResetButtonEnabled = IconPath != null;
+
 				ValidateBuild();
 			}
 		}
@@ -76,8 +81,6 @@ namespace PEunion
 			set
 			{
 				Set(() => IconPath, ref _IconPath, value);
-				if (value == null) WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = null;
-				else WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? new FileInfo(value).GetFileIcon(true).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
 				IsDirty = true;
 			}
 		}

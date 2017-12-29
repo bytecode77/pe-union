@@ -11,8 +11,10 @@ namespace PEunion
 	{
 		public static readonly DependencyProperty AllowMultipleProperty = DependencyProperty.Register(nameof(AllowMultiple), typeof(bool), typeof(FileBrowser), new PropertyMetadata(AllowMultipleProperty_Changed));
 		public static readonly DependencyProperty AllowedExtensionsProperty = DependencyProperty.Register(nameof(AllowedExtensions), typeof(string), typeof(FileBrowser));
+		public static readonly DependencyProperty AllowResetProperty = DependencyProperty.Register(nameof(AllowReset), typeof(bool), typeof(FileBrowser));
 		public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(FileBrowser));
 		public static readonly DependencyProperty IconImageSourceProperty = DependencyProperty.Register(nameof(IconImageSource), typeof(ImageSource), typeof(FileBrowser), new PropertyMetadata(Utility.GetImageResource("ImageDragDrop"), IconImageSourceProperty_Changed));
+		public static readonly DependencyProperty IsResetButtonEnabledProperty = DependencyProperty.Register(nameof(IsResetButtonEnabled), typeof(bool), typeof(FileBrowser));
 		public bool AllowMultiple
 		{
 			get => GetValue<bool>(AllowMultipleProperty);
@@ -22,6 +24,11 @@ namespace PEunion
 		{
 			get => GetValue<string>(AllowedExtensionsProperty);
 			set => SetValue(AllowedExtensionsProperty, value);
+		}
+		public bool AllowReset
+		{
+			get => GetValue<bool>(AllowResetProperty);
+			set => SetValue(AllowResetProperty, value);
 		}
 		public string Text
 		{
@@ -33,9 +40,15 @@ namespace PEunion
 			get => GetValue<ImageSource>(IconImageSourceProperty);
 			set => SetValue(IconImageSourceProperty, value);
 		}
+		public bool IsResetButtonEnabled
+		{
+			get => GetValue<bool>(IsResetButtonEnabledProperty);
+			set => SetValue(IsResetButtonEnabledProperty, value);
+		}
 		private string[] AllowedExtensionsArray => AllowedExtensions.ToNullIfEmpty()?.Split(';');
 		public string DragDropText => AllowMultiple ? "Drag one or multiple files here" : "Drag a file here";
 		public event EventHandler<string[]> FilesSelect;
+		public event EventHandler Reset;
 
 		public FileBrowser()
 		{
@@ -54,6 +67,10 @@ namespace PEunion
 		private void btnBrowse_Click(object sender, RoutedEventArgs e)
 		{
 			OnFilesSelect(AllowMultiple ? Dialogs.OpenMultiple(null, AllowedExtensionsArray) : Dialogs.Open(AllowedExtensionsArray).CreateSingletonArray());
+		}
+		private void btnReset_Click(object sender, RoutedEventArgs e)
+		{
+			OnReset();
 		}
 
 		private bool CheckFiles(string[] files)
@@ -79,6 +96,10 @@ namespace PEunion
 		protected void OnFilesSelect(string[] files)
 		{
 			if (CheckFiles(files)) FilesSelect?.Invoke(this, files);
+		}
+		protected void OnReset()
+		{
+			Reset?.Invoke(this, EventArgs.Empty);
 		}
 	}
 }

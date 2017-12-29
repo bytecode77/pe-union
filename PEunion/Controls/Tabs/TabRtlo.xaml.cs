@@ -8,6 +8,7 @@ namespace PEunion
 {
 	public partial class TabRtlo : ObservableUserControl
 	{
+		private const char RtloCharacter = '\u202e';
 		private string _SourceFile;
 		private string _DestinationFileName;
 		private string _DestinationOldExtension;
@@ -58,7 +59,8 @@ namespace PEunion
 			set
 			{
 				Set(() => DestinationIcon, ref _DestinationIcon, value);
-				ctrlDestinationIcon.IconImageSource = File.Exists(DestinationIcon) ? new FileInfo(DestinationIcon).GetFileIcon(true).ToBitmapSource() : null;
+				ctrlDestinationIcon.IconImageSource = File.Exists(value) ? new FileInfo(value).GetFileIcon(true).ToBitmapSource() : null;
+				ctrlDestinationIcon.IsResetButtonEnabled = value != null;
 				UpdatePreview();
 			}
 		}
@@ -71,7 +73,7 @@ namespace PEunion
 
 		private void ctrlBrowseSourceFile_FilesSelect(object sender, string[] e)
 		{
-			if (e.First().Contains("\u202e"))
+			if (e.First().Contains(RtloCharacter))
 			{
 				MessageBoxes.Warning("This file already contains a RTLO character (U+202e).");
 			}
@@ -84,7 +86,7 @@ namespace PEunion
 		{
 			DestinationIcon = e.First();
 		}
-		private void btnResetDestinationIcon_Click(object sender, RoutedEventArgs e)
+		private void ctrlDestinationIcon_Reset(object sender, EventArgs e)
 		{
 			DestinationIcon = null;
 		}
@@ -102,6 +104,14 @@ namespace PEunion
 			{
 				MessageBoxes.Warning("The old extension must match the source file extension '" + PathEx.GetExtension(SourceFile) + "'.");
 			}
+			else if (DestinationFileName.Contains(RtloCharacter))
+			{
+				MessageBoxes.Warning("There is a RTLO character (U+202e) in the destination file name. It must be removed first.");
+			}
+			else if (DestinationNewExtension.Contains(RtloCharacter))
+			{
+				MessageBoxes.Warning("There is a RTLO character (U+202e) in the destination file extension. It must be removed first.");
+			}
 			else
 			{
 				string path = Dialogs.OpenFolder();
@@ -109,7 +119,7 @@ namespace PEunion
 				{
 					try
 					{
-						string fileName = Path.Combine(path, DestinationFileName + "\u202e" + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
+						string fileName = Path.Combine(path, DestinationFileName + RtloCharacter + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
 
 						if (!File.Exists(fileName) || MessageBoxes.Confirmation("A files named '' already exists in the selected directory.\r\nOverwrite?", true))
 						{
@@ -134,13 +144,17 @@ namespace PEunion
 				}
 			}
 		}
+		private void lnkCopyCharacterToClipboard_Click(object sender, RoutedEventArgs e)
+		{
+			Clipboard.SetDataObject(new string(RtloCharacter, 1));
+		}
 
 		private void UpdatePreview()
 		{
 			if (File.Exists(DestinationIcon)) ctrlPreview.ImageSource = new FileInfo(DestinationIcon).GetFileIcon(false).ToBitmapSource();
 			else ctrlPreview.ImageSource = File.Exists(SourceFile) ? new FileInfo(SourceFile).GetFileIcon(false).ToBitmapSource() : null;
 
-			ctrlPreview.Text = DestinationFileName + DestinationOldExtension?.Reverse() + "." + DestinationNewExtension;
+			ctrlPreview.Text = DestinationFileName.IsNullOrEmpty() || DestinationNewExtension.IsNullOrEmpty() ? null : DestinationFileName + DestinationOldExtension?.Reverse() + "." + DestinationNewExtension;
 		}
 	}
 }

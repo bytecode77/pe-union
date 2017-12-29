@@ -40,12 +40,12 @@
 						<Run Text="{x:Static local:App.Version}" />
 					</TextBlock>
 					<TextBlock Grid.Row="1">
-						<Hyperlink Click="lnkWebsite_Click"><TextBlock Text="bytecode77.com" /></Hyperlink>
+						<Hyperlink Click="lnkWebsite_Click">bytecode77.com</Hyperlink>
 					</TextBlock>
 					<TextBlock Grid.Row="2">
-						<Hyperlink Click="lnkGitHubUser_Click"><TextBlock Text="bytecode-77" /></Hyperlink>
+						<Hyperlink Click="lnkGitHubUser_Click">bytecode-77</Hyperlink>
 						<Run Text="/" />
-						<Hyperlink Click="lnkGitHub_Click"><TextBlock Text="pe-union" /></Hyperlink>
+						<Hyperlink Click="lnkGitHub_Click">pe-union</Hyperlink>
 					</TextBlock>
 					<Image Grid.Row="1" Source="/PEunion;component/Resources/IconBYtecode77.png" />
 					<Image Grid.Row="2" Source="/PEunion;component/Resources/IconGitHub.png" />
