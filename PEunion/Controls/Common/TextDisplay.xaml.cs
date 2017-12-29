@@ -1,10 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using BytecodeApi;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PEunion
 {
-	public partial class TextDisplay : UserControl
+	public partial class TextDisplay : ObservableUserControl
 	{
 		public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(TextDisplay));
 		public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(nameof(ImageSource), typeof(ImageSource), typeof(TextDisplay));

@@ -9,15 +9,10 @@ namespace PEunion
 {
 	public partial class FileBrowser : ObservableUserControl
 	{
-		public static readonly DependencyProperty BigProperty = DependencyProperty.Register(nameof(Big), typeof(bool), typeof(FileBrowser));
 		public static readonly DependencyProperty AllowMultipleProperty = DependencyProperty.Register(nameof(AllowMultiple), typeof(bool), typeof(FileBrowser), new PropertyMetadata(AllowMultipleProperty_Changed));
 		public static readonly DependencyProperty AllowedExtensionsProperty = DependencyProperty.Register(nameof(AllowedExtensions), typeof(string), typeof(FileBrowser));
+		public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(FileBrowser));
 		public static readonly DependencyProperty IconImageSourceProperty = DependencyProperty.Register(nameof(IconImageSource), typeof(ImageSource), typeof(FileBrowser), new PropertyMetadata(Utility.GetImageResource("ImageDragDrop"), IconImageSourceProperty_Changed));
-		public bool Big
-		{
-			get => (bool)GetValue(BigProperty);
-			set => SetValue(BigProperty, value);
-		}
 		public bool AllowMultiple
 		{
 			get => (bool)GetValue(AllowMultipleProperty);
@@ -27,6 +22,11 @@ namespace PEunion
 		{
 			get => (string)GetValue(AllowedExtensionsProperty);
 			set => SetValue(AllowedExtensionsProperty, value);
+		}
+		public string Text
+		{
+			get => (string)GetValue(TextProperty);
+			set => SetValue(TextProperty, value);
 		}
 		public ImageSource IconImageSource
 		{

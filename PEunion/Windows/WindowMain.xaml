@@ -349,7 +349,7 @@
 											</Grid.ColumnDefinitions>
 											<GroupBox Header="Add Files">
 												<StackPanel>
-													<local:FileBrowser Big="True" AllowMultiple="True" FilesSelect="ctrlAddFiles_FilesSelect" />
+													<local:FileBrowser AllowMultiple="True" FilesSelect="ctrlAddFiles_FilesSelect" />
 												</StackPanel>
 											</GroupBox>
 											<GroupBox Grid.Column="2" Header="Add URL">

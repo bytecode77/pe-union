@@ -1,4 +1,4 @@
-﻿<api:ObservableUserControl 
+﻿<api:ObservableUserControl
 	x:Class="PEunion.FileBrowser"
 	x:Name="fileBrowser"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,25 +9,16 @@
 	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
 	mc:Ignorable="d"
 	Background="Transparent" AllowDrop="True" PreviewDragOver="UserControl_PreviewDragOver" Drop="UserControl_Drop">
-	<Grid Background="White">
-		<Border Padding="10" BorderThickness="2" BorderBrush="#d0d0d0" Visibility="{Binding Big, ElementName=fileBrowser, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter={api:Boolean True}}">
-			<DockPanel>
-				<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" Margin="0,0,10,0" />
-				<StackPanel>
-					<TextBlock Margin="0,0,0,10">
-						<Run Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" /><Run Text=", or" />
-					</TextBlock>
-					<Button Content="Browse..." Style="{StaticResource UIButton}" HorizontalAlignment="Center" Click="btnBrowse_Click" />
-				</StackPanel>
-			</DockPanel>
-		</Border>
-		<Border Padding="20" BorderThickness="2" BorderBrush="#d0d0d0" Visibility="{Binding Big, ElementName=fileBrowser, Converter={StaticResource BooleanToVisibilityConverter}}">
-			<StackPanel Visibility="{Binding Big, ElementName=fileBrowser, Converter={StaticResource BooleanToVisibilityConverter}}" api:MarginSetter.Margin="10">
-				<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" HorizontalAlignment="Center" />
-				<TextBlock Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" HorizontalAlignment="Center" />
-				<TextBlock Text="- or -" HorizontalAlignment="Center" />
+	<Border Padding="10" BorderThickness="2" BorderBrush="#d0d0d0" Background="White">
+		<DockPanel>
+			<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" Margin="0,0,10,0" />
+			<StackPanel>
+				<TextBlock Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}, ConverterParameter={api:Boolean True}}">
+					<Run Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" /><Run Text=", or" />
+				</TextBlock>
+				<TextBlock Text="{Binding Text, ElementName=fileBrowser}" Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
 				<Button Content="Browse..." Style="{StaticResource UIButton}" HorizontalAlignment="Center" Click="btnBrowse_Click" />
 			</StackPanel>
-		</Border>
-	</Grid>
+		</DockPanel>
+	</Border>
 </api:ObservableUserControl>

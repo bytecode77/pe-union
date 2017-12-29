@@ -1,5 +1,6 @@
 ﻿<api:ObservableUserControl
 	x:Class="PEunion.TabRtlo"
+	x:Name="tabRtlo"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,8 +11,34 @@
 	<Grid Margin="10">
 		<StackPanel>
 			<GroupBox Header="Source File">
-				<local:FileBrowser HorizontalAlignment="Left" FilesSelect="ctrlBrowseSourceFile_FilesSelect" />
+				<local:FileBrowser x:Name="ctrlBrowseSourceFile" HorizontalAlignment="Left" FilesSelect="ctrlBrowseSourceFile_FilesSelect" />
 			</GroupBox>
+			<GroupBox Header="Destination File Name">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="5" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="5" />
+						<ColumnDefinition Width="150" />
+						<ColumnDefinition Width="5" />
+						<ColumnDefinition Width="150" />
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="File Name" />
+					<TextBlock Text="Old Extension" Grid.Column="2" />
+					<TextBlock Text="New Extension" Grid.Column="4" />
+					<TextBox Grid.Row="2" Text="{Binding DestinationFileName, ElementName=tabRtlo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+					<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding DestinationOldExtension, ElementName=tabRtlo}" Style="{StaticResource UITextBox}" IsReadOnly="True" />
+					<TextBox Grid.Row="2" Grid.Column="4" Text="{Binding DestinationNewExtension, ElementName=tabRtlo, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+				</Grid>
+			</GroupBox>
+			<GroupBox Header="Preview">
+				<local:TextDisplay x:Name="ctrlPreview" />
+			</GroupBox>
+			<Button Content="Save" Margin="0,10,0,0" HorizontalAlignment="Left" Style="{StaticResource UIButton}" Click="btnSave_Click" />
 		</StackPanel>
 	</Grid>
 </api:ObservableUserControl>
