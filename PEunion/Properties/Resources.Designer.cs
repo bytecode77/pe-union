@@ -459,6 +459,36 @@ namespace PEunion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemClose {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemCloseMouseDown {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemCloseMouseDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemCloseMouseOver {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemCloseMouseOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconUacOverlay {
             get {
                 object obj = ResourceManager.GetObject("IconUacOverlay", resourceCulture);

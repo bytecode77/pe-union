@@ -152,8 +152,11 @@
 				<RowDefinition Height="6" />
 				<RowDefinition Height="150" MinHeight="100" />
 			</Grid.RowDefinitions>
-			<TabControl Name="tabMain">
-				<TabItem Header="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}">
+			<TabControl Name="tabMain" SelectionChanged="tabMain_SelectionChanged">
+				<TabItem>
+					<TabItem.Header>
+						<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+					</TabItem.Header>
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="250" MinWidth="150" />

@@ -223,6 +223,15 @@
   <data name="IconStartup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconStartup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconTabItemClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconTabItemClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconTabItemCloseMouseDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconTabItemCloseMouseDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconTabItemCloseMouseOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconTabItemCloseMouseOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconUacOverlay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconUacOverlay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

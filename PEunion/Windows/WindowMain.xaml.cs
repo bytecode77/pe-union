@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace PEunion
 {
@@ -359,6 +360,18 @@ namespace PEunion
 		{
 			new WindowAbout(this).ShowDialog();
 		}
+		private void tabMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			//TODO: Workaround for App.xaml style lacking "Foreground" support for TextBlock
+			foreach (TabItem tab in tabMain.Items)
+			{
+				tab.FindLogicalChildren<TextBlock>().First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
+			}
+		}
+		private void tabMain_Close_Click(object sender, RoutedEventArgs e)
+		{
+			tabMain.Items.Remove((sender as FrameworkElement).FindLogicalParent<TabItem>());
+		}
 		private void treMain_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 		{
 			IEnumerable<Grid> grids = grdTabs.Children.OfType<Grid>();
@@ -583,12 +596,16 @@ namespace PEunion
 		}
 		private void AddTab(string header, object content)
 		{
-			//StackPanel headerControl = new StackPanel();
-			//headerControl.Children.Add(new TextDisplay { Text = header });
+			StackPanel headerControl = new StackPanel { Orientation = Orientation.Horizontal };
+			Button closeButton = new Button { Style = Application.Current.FindResource<Style>("CloseButton") };
+			closeButton.Click += tabMain_Close_Click;
+
+			headerControl.Children.Add(new TextDisplay { Text = header });
+			headerControl.Children.Add(closeButton);
 
 			tabMain.Items.Add(new TabItem
 			{
-				Header = new TextBlock { Text = header },
+				Header = headerControl,
 				Content = content,
 				IsSelected = true
 			});

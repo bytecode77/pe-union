@@ -268,9 +268,17 @@
   <ItemGroup>
     <SplashScreen Include="Resources\ImageSplashScreen.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemClose.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\IconPeuFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemCloseMouseDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemCloseMouseOver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -67,6 +67,24 @@
 			<Style x:Key="UIProgressBar" TargetType="{x:Type ProgressBar}">
 				<Setter Property="Height" Value="20" />
 			</Style>
+			<Style x:Key="CloseButton" TargetType="{x:Type Button}">
+				<Setter Property="Margin" Value="5,0,0,0" />
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Image Name="Image" Source="/PEunion;component/Resources/IconTabItemClose.png" />
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter TargetName="Image" Property="Source" Value="/PEunion;component/Resources/IconTabItemCloseMouseOver.png" />
+								</Trigger>
+								<Trigger Property="IsPressed" Value="True">
+									<Setter TargetName="Image" Property="Source" Value="/PEunion;component/Resources/IconTabItemCloseMouseDown.png" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
 
 			<Style x:Key="HorizontalSeparator" TargetType="{x:Type Grid}">
 				<Setter Property="Height" Value="6" />
@@ -156,13 +174,15 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type TabItem}">
-							<TextBlock Name="TextBlock" Background="#364e6f" Foreground="White">
+							<TextBlock Name="TextBlock" Background="#364e6f">
 								<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="8,3" />
 							</TextBlock>
 							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter Property="Background" Value="#5b7199" TargetName="TextBlock" />
+								</Trigger>
 								<Trigger Property="IsSelected" Value="True">
 									<Setter Property="Background" Value="#fff29d" TargetName="TextBlock" />
-									<Setter Property="Foreground" Value="Black" TargetName="TextBlock" />
 								</Trigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>
