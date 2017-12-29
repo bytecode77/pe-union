@@ -15,9 +15,8 @@ namespace PEunion
 			}
 			else
 			{
-				string relative = new Uri(directory + (directory.EndsWith(@"\") ? null : @"\"))
-					.MakeRelativeUri(new Uri(path))
-					.OriginalString
+				string relative = Uri
+					.UnescapeDataString(new Uri(directory.EnsureEndsWith(@"\")).MakeRelativeUri(new Uri(path)).OriginalString)
 					.Replace("/", @"\");
 
 				return relative.StartsWith("..") ? path : relative;
