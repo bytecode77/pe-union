@@ -59,6 +59,7 @@ namespace PEunion
 			set
 			{
 				Set(() => DestinationIcon, ref _DestinationIcon, value);
+				ctrlDestinationIcon.Text = Path.GetFileName(value);
 				ctrlDestinationIcon.IconImageSource = File.Exists(value) ? new FileInfo(value).GetFileIcon(true).ToBitmapSource() : null;
 				ctrlDestinationIcon.IsResetButtonEnabled = value != null;
 				UpdatePreview();
