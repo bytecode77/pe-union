@@ -11,17 +11,17 @@ namespace PEunion
 		public static readonly DependencyProperty InfoIconProperty = DependencyProperty.Register(nameof(InfoIcon), typeof(string), typeof(TextDisplay));
 		public string Text
 		{
-			get => (string)GetValue(TextProperty);
+			get => GetValue<string>(TextProperty);
 			set => SetValue(TextProperty, value);
 		}
 		public ImageSource ImageSource
 		{
-			get => (ImageSource)GetValue(ImageSourceProperty);
+			get => GetValue<ImageSource>(ImageSourceProperty);
 			set => SetValue(ImageSourceProperty, value);
 		}
 		public string InfoIcon
 		{
-			get => (string)GetValue(InfoIconProperty);
+			get => GetValue<string>(InfoIconProperty);
 			set => SetValue(InfoIconProperty, value);
 		}
 

@@ -349,7 +349,7 @@ namespace PEunion
 		}
 		private void mnuToolsRtlo_Click(object sender, RoutedEventArgs e)
 		{
-			AddTab(new TabRtlo());
+			AddTab("Right to Left Override", new TabRtlo());
 		}
 		private void mnuHelpGitHub_Click(object sender, RoutedEventArgs e)
 		{
@@ -581,11 +581,14 @@ namespace PEunion
 			ProjectMessageBox messageBox = SelectedProjectItem as ProjectMessageBox;
 			System.Windows.Forms.MessageBox.Show(messageBox.Text ?? "", messageBox.Title ?? "", messageBox.Buttons, messageBox.Icon);
 		}
-		private void AddTab(object content)
+		private void AddTab(string header, object content)
 		{
+			//StackPanel headerControl = new StackPanel();
+			//headerControl.Children.Add(new TextDisplay { Text = header });
+
 			tabMain.Items.Add(new TabItem
 			{
-				Header = "Right to Left Override",
+				Header = new TextBlock { Text = header },
 				Content = content,
 				IsSelected = true
 			});

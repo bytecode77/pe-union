@@ -3,7 +3,6 @@ using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -91,7 +90,7 @@ namespace PEunion
 					if (results.Errors.Count == 0 && project.IconPath != null)
 					{
 						WindowMain.Singleton.OverlayTitle = "Applying icon '" + Path.GetFileName(project.IconPath) + "'";
-						new FileInfo(path).ChangeExecutableIcon(new Icon(project.IconPath));
+						new FileInfo(path).ChangeExecutableIcon(project.IconPath);
 					}
 					return results;
 				}

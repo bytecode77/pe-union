@@ -1,4 +1,5 @@
 ﻿using BytecodeApi;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -106,22 +107,29 @@ namespace PEunion
 				string path = Dialogs.OpenFolder();
 				if (path != null)
 				{
-					string fileName = Path.Combine(path, DestinationFileName + "\u202e" + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
-
-					if (!File.Exists(fileName) || MessageBoxes.Confirmation("A files named '' already exists in the selected directory.\r\nOverwrite?", true))
+					try
 					{
-						if (DestinationIcon == null)
+						string fileName = Path.Combine(path, DestinationFileName + "\u202e" + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
+
+						if (!File.Exists(fileName) || MessageBoxes.Confirmation("A files named '' already exists in the selected directory.\r\nOverwrite?", true))
 						{
-							File.Copy(SourceFile, fileName, true);
+							if (DestinationIcon == null)
+							{
+								File.Copy(SourceFile, fileName, true);
+							}
+							else
+							{
+								string tempPath = Path.Combine(path, _DestinationFileName + "~.tmp");
+								File.Copy(SourceFile, tempPath, true);
+								new FileInfo(tempPath).ChangeExecutableIcon(DestinationIcon);
+								File.Copy(tempPath, fileName, true);
+								File.Delete(tempPath);
+							}
 						}
-						else
-						{
-							string tempPath = Path.Combine(path, _DestinationFileName + "~.tmp");
-							File.Copy(SourceFile, tempPath, true);
-							new FileInfo(tempPath).ChangeExecutableIcon(new System.Drawing.Icon(DestinationIcon));
-							File.Copy(tempPath, fileName, true);
-							File.Delete(tempPath);
-						}
+					}
+					catch (Exception ex)
+					{
+						MessageBoxes.Error(ex.GetType() + ": " + ex.Message);
 					}
 				}
 			}

@@ -15,22 +15,22 @@ namespace PEunion
 		public static readonly DependencyProperty IconImageSourceProperty = DependencyProperty.Register(nameof(IconImageSource), typeof(ImageSource), typeof(FileBrowser), new PropertyMetadata(Utility.GetImageResource("ImageDragDrop"), IconImageSourceProperty_Changed));
 		public bool AllowMultiple
 		{
-			get => (bool)GetValue(AllowMultipleProperty);
+			get => GetValue<bool>(AllowMultipleProperty);
 			set => SetValue(AllowMultipleProperty, value);
 		}
 		public string AllowedExtensions
 		{
-			get => (string)GetValue(AllowedExtensionsProperty);
+			get => GetValue<string>(AllowedExtensionsProperty);
 			set => SetValue(AllowedExtensionsProperty, value);
 		}
 		public string Text
 		{
-			get => (string)GetValue(TextProperty);
+			get => GetValue<string>(TextProperty);
 			set => SetValue(TextProperty, value);
 		}
 		public ImageSource IconImageSource
 		{
-			get => (ImageSource)GetValue(IconImageSourceProperty);
+			get => GetValue<ImageSource>(IconImageSourceProperty);
 			set => SetValue(IconImageSourceProperty, value);
 		}
 		private string[] AllowedExtensionsArray => AllowedExtensions.ToNullIfEmpty()?.Split(';');
