@@ -63,6 +63,24 @@ And any errors that creep in will either prevent building or display a warning:
 
 [![](https://bytecode77.com/images/sites/hacking/tools/peunion/007.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/007.png)
 
+## Additional Tools
+
+There are additional tools and utilities. Currently, there is only one, however
+more will follow, such as an exe to docx "converter", etc.
+
+### Right to Left Override
+
+A lesser-known ~~bug~~ feature: Right to left override. By using the `U+202e`
+unicode character, file name strings can be reversed, yielding additional
+obscurity.
+
+Example: `Spa[U+202E]gpj.scr` will be displayed as `Sparcs.jpg` in File
+Explorer. Since "scr" (for screensaver) easily goes unseen, it may be superior
+over "exe". With the matching icon applied, the file may look just like an image
+or document file:
+
+[![](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)
+
 ## Behind the scenes - Obfuscation!
 
 Starting here, an array with all the files is declared. This is the definition
