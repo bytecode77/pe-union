@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -37,6 +38,7 @@ namespace PEunion
 			set
 			{
 				Set(() => SaveLocation, ref _SaveLocation, value);
+				RaisePropertyChanged(() => ProjectName);
 			}
 		}
 		public bool IsDirty
@@ -46,6 +48,12 @@ namespace PEunion
 			{
 				Set(() => IsDirty, ref _IsDirty, value);
 				WindowMain.Singleton.Title = ProjectName + (value ? " *" : null) + " - PEunion";
+				WindowMain.Singleton.txtProjectTabIsDirty.SetVisibility(value);
+
+				if (IconPath == null) WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = null;
+				else WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? new FileInfo(IconPath).GetFileIcon(true).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
+				WindowMain.Singleton.ctrlBrowseIcon.IsResetButtonEnabled = IconPath != null;
+
 				ValidateBuild();
 			}
 		}
@@ -73,8 +81,6 @@ namespace PEunion
 			set
 			{
 				Set(() => IconPath, ref _IconPath, value);
-				if (value == null) WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = null;
-				else WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? System.Drawing.Icon.ExtractAssociatedIcon(value).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
 				IsDirty = true;
 			}
 		}
@@ -165,7 +171,10 @@ namespace PEunion
 			get => _Items;
 			set
 			{
+				if (_Items != null) _Items.CollectionChanged -= _Items_CollectionChanged;
 				Set(() => Items, ref _Items, value);
+				if (_Items != null) _Items.CollectionChanged += _Items_CollectionChanged;
+				RaisePropertyChanged(() => ProjectName);
 				IsDirty = true;
 			}
 		}
@@ -589,6 +598,11 @@ namespace PEunion
 
 			ValidationErrorsChanged?.Invoke(this, EventArgs.Empty);
 			return errors.ToArray();
+		}
+
+		private void _Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			RaisePropertyChanged(() => ProjectName);
 		}
 	}
 }

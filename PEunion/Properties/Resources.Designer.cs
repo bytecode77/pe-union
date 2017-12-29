@@ -429,6 +429,26 @@ namespace PEunion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconPeuFile {
+            get {
+                object obj = ResourceManager.GetObject("IconPeuFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconRtlo {
+            get {
+                object obj = ResourceManager.GetObject("IconRtlo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconSave {
             get {
                 object obj = ResourceManager.GetObject("IconSave", resourceCulture);
@@ -442,6 +462,36 @@ namespace PEunion.Properties {
         internal static System.Drawing.Bitmap IconStartup {
             get {
                 object obj = ResourceManager.GetObject("IconStartup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemClose {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemCloseMouseDown {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemCloseMouseDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconTabItemCloseMouseOver {
+            get {
+                object obj = ResourceManager.GetObject("IconTabItemCloseMouseOver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -69,13 +69,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Resource Include="Resources\FileStub.cs" />
-    <Page Include="Controls\FileBrowser.xaml">
+    <Page Include="Controls\Common\FileBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\TextDisplay.xaml">
+    <Page Include="Controls\Common\TextDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Tabs\TabRtlo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\WindowAbout.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,11 +102,14 @@
     <Compile Include="Classes\Builder.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Classes\ValidationError.cs" />
-    <Compile Include="Controls\FileBrowser.xaml.cs">
+    <Compile Include="Controls\Common\FileBrowser.xaml.cs">
       <DependentUpon>FileBrowser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextDisplay.xaml.cs">
+    <Compile Include="Controls\Common\TextDisplay.xaml.cs">
       <DependentUpon>TextDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tabs\TabRtlo.xaml.cs">
+      <DependentUpon>TabRtlo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\ValidationErrorType.cs" />
     <Compile Include="Enums\BuildPlatform.cs" />
@@ -260,6 +267,21 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Resources\ImageSplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconPeuFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemCloseMouseDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconTabItemCloseMouseOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconRtlo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

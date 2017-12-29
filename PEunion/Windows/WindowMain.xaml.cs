@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace PEunion
 {
@@ -347,6 +348,10 @@ namespace PEunion
 				);
 			}
 		}
+		private void mnuToolsRtlo_Click(object sender, RoutedEventArgs e)
+		{
+			AddTab("Right to Left Override", new TabRtlo(), "Rtlo");
+		}
 		private void mnuHelpGitHub_Click(object sender, RoutedEventArgs e)
 		{
 			Process.Start("https://github.com/bytecode-77/pe-union");
@@ -354,6 +359,26 @@ namespace PEunion
 		private void mnuHelpAbout_Click(object sender, RoutedEventArgs e)
 		{
 			new WindowAbout(this).ShowDialog();
+		}
+		private void tabMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			//TODO: Workaround for App.xaml style lacking "Foreground" support for TextBlock
+			foreach (TabItem tab in tabMain.Items)
+			{
+				tab.FindLogicalChildren<TextBlock>().First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
+			}
+		}
+		private void tabMain_Close_Click(object sender, RoutedEventArgs e)
+		{
+			tabMain.Items.Remove((sender as FrameworkElement).FindLogicalParent<TabItem>());
+		}
+		private void tabMain_TabItem_MouseUp(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Middle)
+			{
+				if ((sender as TabItem) == tabMain.Items[0]) NewCommand.Execute(null, this);
+				else tabMain.Items.Remove(sender);
+			}
 		}
 		private void treMain_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
 		{
@@ -441,7 +466,7 @@ namespace PEunion
 		{
 			Project.IconPath = e.First();
 		}
-		private void btnResetIcon_Click(object sender, RoutedEventArgs e)
+		private void ctrlBrowseIcon_Reset(object sender, EventArgs e)
 		{
 			Project.IconPath = null;
 		}
@@ -576,6 +601,23 @@ namespace PEunion
 		{
 			ProjectMessageBox messageBox = SelectedProjectItem as ProjectMessageBox;
 			System.Windows.Forms.MessageBox.Show(messageBox.Text ?? "", messageBox.Title ?? "", messageBox.Buttons, messageBox.Icon);
+		}
+		private void AddTab(string header, object content, string icon)
+		{
+			StackPanel headerControl = new StackPanel { Orientation = Orientation.Horizontal };
+			Button closeButton = new Button { Style = Application.Current.FindResource<Style>("CloseButton") };
+			closeButton.Click += tabMain_Close_Click;
+
+			headerControl.Children.Add(new Image { Source = Utility.GetImageResource("Icon" + icon), Margin = new Thickness(0, 0, 5, 0) });
+			headerControl.Children.Add(new TextDisplay { Text = header });
+			headerControl.Children.Add(closeButton);
+
+			tabMain.Items.Add(new TabItem
+			{
+				Header = headerControl,
+				Content = content,
+				IsSelected = true
+			});
 		}
 	}
 }
