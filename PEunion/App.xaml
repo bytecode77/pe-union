@@ -68,7 +68,7 @@
 				<Setter Property="Height" Value="20" />
 			</Style>
 			<Style x:Key="CloseButton" TargetType="{x:Type Button}">
-				<Setter Property="Margin" Value="5,0,0,0" />
+				<Setter Property="Margin" Value="5,2,0,0" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type Button}">
