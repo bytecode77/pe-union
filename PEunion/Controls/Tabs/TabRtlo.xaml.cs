@@ -11,6 +11,7 @@ namespace PEunion
 		private string _DestinationFileName;
 		private string _DestinationOldExtension;
 		private string _DestinationNewExtension;
+		private string _DestinationIcon;
 		public string SourceFile
 		{
 			get => _SourceFile;
@@ -50,6 +51,16 @@ namespace PEunion
 				UpdatePreview();
 			}
 		}
+		public string DestinationIcon
+		{
+			get => _DestinationIcon;
+			set
+			{
+				Set(() => DestinationIcon, ref _DestinationIcon, value);
+				ctrlDestinationIcon.IconImageSource = File.Exists(DestinationIcon) ? new FileInfo(DestinationIcon).GetFileIcon(true).ToBitmapSource() : null;
+				UpdatePreview();
+			}
+		}
 
 		public TabRtlo()
 		{
@@ -67,6 +78,14 @@ namespace PEunion
 			{
 				SourceFile = e.First();
 			}
+		}
+		private void ctrlDestinationIcon_FilesSelect(object sender, string[] e)
+		{
+			DestinationIcon = e.First();
+		}
+		private void btnResetDestinationIcon_Click(object sender, RoutedEventArgs e)
+		{
+			DestinationIcon = null;
 		}
 		private void btnSave_Click(object sender, RoutedEventArgs e)
 		{
@@ -91,7 +110,18 @@ namespace PEunion
 
 					if (!File.Exists(fileName) || MessageBoxes.Confirmation("A files named '' already exists in the selected directory.\r\nOverwrite?", true))
 					{
-						File.Copy(SourceFile, fileName, true);
+						if (DestinationIcon == null)
+						{
+							File.Copy(SourceFile, fileName, true);
+						}
+						else
+						{
+							string tempPath = Path.Combine(path, _DestinationFileName + "~.tmp");
+							File.Copy(SourceFile, tempPath, true);
+							new FileInfo(tempPath).ChangeExecutableIcon(new System.Drawing.Icon(DestinationIcon));
+							File.Copy(tempPath, fileName, true);
+							File.Delete(tempPath);
+						}
 					}
 				}
 			}
@@ -99,7 +129,9 @@ namespace PEunion
 
 		private void UpdatePreview()
 		{
-			ctrlPreview.ImageSource = File.Exists(SourceFile) ? new FileInfo(SourceFile).GetFileIcon(false).ToBitmapSource() : null;
+			if (File.Exists(DestinationIcon)) ctrlPreview.ImageSource = new FileInfo(DestinationIcon).GetFileIcon(false).ToBitmapSource();
+			else ctrlPreview.ImageSource = File.Exists(SourceFile) ? new FileInfo(SourceFile).GetFileIcon(false).ToBitmapSource() : null;
+
 			ctrlPreview.Text = DestinationFileName + DestinationOldExtension?.Reverse() + "." + DestinationNewExtension;
 		}
 	}

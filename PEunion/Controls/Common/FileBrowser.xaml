@@ -11,13 +11,13 @@
 	Background="Transparent" AllowDrop="True" PreviewDragOver="UserControl_PreviewDragOver" Drop="UserControl_Drop">
 	<Border Padding="10" BorderThickness="2" BorderBrush="#d0d0d0" Background="White">
 		<DockPanel>
-			<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" Margin="0,0,10,0" />
+			<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" Margin="0,0,10,0" VerticalAlignment="Top" />
 			<StackPanel>
 				<TextBlock Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}, ConverterParameter={api:Boolean True}}">
 					<Run Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" /><Run Text=", or" />
 				</TextBlock>
 				<TextBlock Text="{Binding Text, ElementName=fileBrowser}" Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
-				<Button Content="Browse..." Style="{StaticResource UIButton}" HorizontalAlignment="Center" Click="btnBrowse_Click" />
+				<Button Content="Browse..." Style="{StaticResource UIButton}" HorizontalAlignment="Right" Click="btnBrowse_Click" />
 			</StackPanel>
 		</DockPanel>
 	</Border>
