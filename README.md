@@ -74,10 +74,10 @@ A lesser-known ~~bug~~ feature: Right to left override. By using the `U+202e`
 unicode character, file name strings can be reversed, yielding additional
 obscurity.
 
-Example: `Spa[U+202E]gpj.scr` will be displayed as `Sparcs.jpg` in File
-Explorer. Since "scr" (for screensaver) easily goes unseen, it may be superior
-over "exe". With the matching icon applied, the file may look just like an image
-or document file:
+Example: `Colorful A[U+202E]gpj.scr` will be displayed as `Colorful Arcs.jpg` in
+File Explorer. Since "scr" (for screensaver) easily goes unseen, it may be
+superior over "exe". With the matching icon applied, the file may look just like
+an image or document file:
 
 [![](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)
 
