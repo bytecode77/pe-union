@@ -280,5 +280,8 @@
   <ItemGroup>
     <Resource Include="Resources\IconTabItemCloseMouseOver.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IconRtlo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

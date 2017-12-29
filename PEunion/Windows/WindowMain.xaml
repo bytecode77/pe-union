@@ -117,7 +117,7 @@
 				<MenuItem Header="_Open AppData Directory" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuToolsOpenAppDataDirectory_Click" />
 				<MenuItem Header="_Register .peu File Extension" Click="mnuToolsRegisterFileExtension_Click" />
 				<Separator />
-				<MenuItem Header="Right to _Left Override" Click="mnuToolsRtlo_Click" />
+				<MenuItem Header="Right to _Left Override" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconRtlo.png" Click="mnuToolsRtlo_Click" />
 			</MenuItem>
 			<MenuItem Header="_Help">
 				<MenuItem Header="PEunion on _GitHub" api:MenuItemService.ImageSource="/PEunion;component/Resources/IconGitHub.png" Click="mnuHelpGitHub_Click" />
@@ -153,9 +153,18 @@
 				<RowDefinition Height="150" MinHeight="100" />
 			</Grid.RowDefinitions>
 			<TabControl Name="tabMain" SelectionChanged="tabMain_SelectionChanged">
+				<TabControl.Resources>
+					<Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+						<EventSetter Event="MouseUp" Handler="tabMain_TabItem_MouseUp" />
+					</Style>
+				</TabControl.Resources>
 				<TabItem>
 					<TabItem.Header>
-						<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+						<StackPanel Orientation="Horizontal">
+							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+							<TextBlock Name="txtProjectTabIsDirty" Text=" *" />
+							<Button Style="{StaticResource CloseButton}" Command="{x:Static local:WindowMain.NewCommand}" />
+						</StackPanel>
 					</TabItem.Header>
 					<Grid>
 						<Grid.ColumnDefinitions>

@@ -48,6 +48,7 @@ namespace PEunion
 			{
 				Set(() => IsDirty, ref _IsDirty, value);
 				WindowMain.Singleton.Title = ProjectName + (value ? " *" : null) + " - PEunion";
+				WindowMain.Singleton.txtProjectTabIsDirty.SetVisibility(value);
 				ValidateBuild();
 			}
 		}
