@@ -36,7 +36,7 @@
 					<Setter.Value>
 						<DataTemplate>
 							<StackPanel>
-								<TextBlock Text="{Binding}" MaxWidth="200" TextWrapping='Wrap' />
+								<TextBlock Text="{Binding}" MaxWidth="200" TextWrapping="Wrap" />
 							</StackPanel>
 						</DataTemplate>
 					</Setter.Value>

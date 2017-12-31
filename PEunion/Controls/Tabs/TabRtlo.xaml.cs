@@ -14,6 +14,7 @@ namespace PEunion
 		private string _DestinationOldExtension;
 		private string _DestinationNewExtension;
 		private string _DestinationIcon;
+
 		public string SourceFile
 		{
 			get => _SourceFile;
@@ -40,8 +41,13 @@ namespace PEunion
 			get => _DestinationOldExtension;
 			set
 			{
-				Set(() => DestinationOldExtension, ref _DestinationOldExtension, value);
-				UpdatePreview();
+				if (value != _DestinationOldExtension)
+				{
+					Set(() => DestinationOldExtension, ref _DestinationOldExtension, value);
+					RaisePropertyChanged(() => DestinationOldExtensionAlternatives);
+					Set(() => DestinationOldExtension, ref _DestinationOldExtension, value);
+					UpdatePreview();
+				}
 			}
 		}
 		public string DestinationNewExtension
@@ -66,6 +72,28 @@ namespace PEunion
 			}
 		}
 
+		public string[] DestinationOldExtensionAlternatives
+		{
+			get
+			{
+				if (DestinationOldExtension == null)
+				{
+					return null;
+				}
+				else
+				{
+					string[][] alternatives = new[]
+					{
+						new[] { "exe", "scr" },
+						new[] { "jpg", "jpeg" },
+						new[] { "mid", "midi" }
+					};
+
+					return alternatives.FirstOrDefault(alt => alt.Contains(DestinationOldExtension.ToLower())) ?? DestinationOldExtension.CreateSingletonArray();
+				}
+			}
+		}
+
 		public TabRtlo()
 		{
 			InitializeComponent();
@@ -77,6 +105,10 @@ namespace PEunion
 			if (e.First().Contains(RtloCharacter))
 			{
 				MessageBoxes.Warning("This file already contains a RTLO character (U+202e).");
+			}
+			else if (Path.GetExtension(e.First()) == "")
+			{
+				MessageBoxes.Warning("The source file must have an extension.");
 			}
 			else
 			{
@@ -100,10 +132,6 @@ namespace PEunion
 			else if (!File.Exists(SourceFile))
 			{
 				MessageBoxes.Warning("'" + SourceFile + "' not found.");
-			}
-			else if (!DestinationOldExtension.CompareCaseInsensitive(PathEx.GetExtension(SourceFile)))
-			{
-				MessageBoxes.Warning("The old extension must match the source file extension '" + PathEx.GetExtension(SourceFile) + "'.");
 			}
 			else if (DestinationFileName.Contains(RtloCharacter))
 			{
