@@ -43,7 +43,7 @@
 						<Hyperlink Click="lnkWebsite_Click">bytecode77.com</Hyperlink>
 					</TextBlock>
 					<TextBlock Grid.Row="2">
-						<Hyperlink Click="lnkGitHubUser_Click">bytecode-77</Hyperlink>
+						<Hyperlink Click="lnkGitHubUser_Click">bytecode77</Hyperlink>
 						<Run Text="/" />
 						<Hyperlink Click="lnkGitHub_Click">pe-union</Hyperlink>
 					</TextBlock>

@@ -5,45 +5,40 @@ namespace PEunion
 {
 	public class ProjectMessageBox : ProjectItem
 	{
-		private string _Title;
-		private string _Text;
-		private MessageBoxButtons _Buttons;
-		private MessageBoxIcon _Icon;
-
 		public string Title
 		{
-			get => _Title;
+			get => Get(() => Title);
 			set
 			{
-				Set(() => Title, ref _Title, value);
+				Set(() => Title, value);
 				Project.IsDirty = true;
 				RaisePropertyChanged(() => TreeViewItemText);
 			}
 		}
 		public string Text
 		{
-			get => _Text;
+			get => Get(() => Text);
 			set
 			{
-				Set(() => Text, ref _Text, value);
+				Set(() => Text, value);
 				Project.IsDirty = true;
 			}
 		}
 		public MessageBoxButtons Buttons
 		{
-			get => _Buttons;
+			get => Get(() => Buttons);
 			set
 			{
-				Set(() => Buttons, ref _Buttons, value);
+				Set(() => Buttons, value);
 				Project.IsDirty = true;
 			}
 		}
 		public MessageBoxIcon Icon
 		{
-			get => _Icon;
+			get => Get(() => Icon);
 			set
 			{
-				Set(() => Icon, ref _Icon, value);
+				Set(() => Icon, value);
 				Project.IsDirty = true;
 				RaisePropertyChanged(() => IsIconNone);
 				RaisePropertyChanged(() => IsIconInformation);

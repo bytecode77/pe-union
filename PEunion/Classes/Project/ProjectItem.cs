@@ -4,20 +4,15 @@ namespace PEunion
 {
 	public class ProjectItem : ObservableObject
 	{
-		private Project _Project;
-		private bool _TreeViewItemIsSelected;
 		public Project Project
 		{
-			get => _Project;
-			set
-			{
-				Set(() => Project, ref _Project, value);
-			}
+			get => Get(() => Project);
+			set => Set(() => Project, value);
 		}
 		public bool TreeViewItemIsSelected
 		{
-			get => _TreeViewItemIsSelected;
-			set => Set(() => TreeViewItemIsSelected, ref _TreeViewItemIsSelected, value);
+			get => Get(() => TreeViewItemIsSelected);
+			set => Set(() => TreeViewItemIsSelected, value);
 		}
 
 		public ProjectItem(Project project)

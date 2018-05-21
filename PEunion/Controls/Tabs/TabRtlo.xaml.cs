@@ -9,64 +9,59 @@ namespace PEunion
 	public partial class TabRtlo : ObservableUserControl
 	{
 		private const char RtloCharacter = '\u202e';
-		private string _SourceFile;
-		private string _DestinationFileName;
-		private string _DestinationOldExtension;
-		private string _DestinationNewExtension;
-		private string _DestinationIcon;
 
 		public string SourceFile
 		{
-			get => _SourceFile;
+			get => Get(() => SourceFile);
 			set
 			{
-				_SourceFile = value;
+				Set(() => SourceFile, value);
 				ctrlBrowseSourceFile.Text = Path.GetFileName(value);
-				ctrlBrowseSourceFile.IconImageSource = new FileInfo(value).GetFileIcon(true).ToBitmapSource();
+				ctrlBrowseSourceFile.IconImageSource = FileEx.GetIcon(value, true).ToBitmapSource();
 				DestinationFileName = Path.GetFileNameWithoutExtension(value);
-				DestinationOldExtension = DestinationNewExtension = PathEx.GetExtension(value);
+				DestinationOldExtension = DestinationNewExtension = Path.GetExtension(value).TrimStart('.');
 			}
 		}
 		public string DestinationFileName
 		{
-			get => _DestinationFileName;
+			get => Get(() => DestinationFileName);
 			set
 			{
-				Set(() => DestinationFileName, ref _DestinationFileName, value);
+				Set(() => DestinationFileName, value);
 				UpdatePreview();
 			}
 		}
 		public string DestinationOldExtension
 		{
-			get => _DestinationOldExtension;
+			get => Get(() => DestinationOldExtension);
 			set
 			{
-				if (value != _DestinationOldExtension)
+				if (value != DestinationOldExtension)
 				{
-					Set(() => DestinationOldExtension, ref _DestinationOldExtension, value);
+					Set(() => DestinationOldExtension, value);
 					RaisePropertyChanged(() => DestinationOldExtensionAlternatives);
-					Set(() => DestinationOldExtension, ref _DestinationOldExtension, value);
+					Set(() => DestinationOldExtension, value);
 					UpdatePreview();
 				}
 			}
 		}
 		public string DestinationNewExtension
 		{
-			get => _DestinationNewExtension;
+			get => Get(() => DestinationNewExtension);
 			set
 			{
-				Set(() => DestinationNewExtension, ref _DestinationNewExtension, value);
+				Set(() => DestinationNewExtension, value);
 				UpdatePreview();
 			}
 		}
 		public string DestinationIcon
 		{
-			get => _DestinationIcon;
+			get => Get(() => DestinationIcon);
 			set
 			{
-				Set(() => DestinationIcon, ref _DestinationIcon, value);
+				Set(() => DestinationIcon, value);
 				ctrlDestinationIcon.Text = Path.GetFileName(value);
-				ctrlDestinationIcon.IconImageSource = File.Exists(value) ? new FileInfo(value).GetFileIcon(true).ToBitmapSource() : null;
+				ctrlDestinationIcon.IconImageSource = File.Exists(value) ? FileEx.GetIcon(value, true).ToBitmapSource() : null;
 				ctrlDestinationIcon.IsResetButtonEnabled = value != null;
 				UpdatePreview();
 			}
@@ -158,7 +153,7 @@ namespace PEunion
 							}
 							else
 							{
-								string tempPath = Path.Combine(path, _DestinationFileName + "~.tmp");
+								string tempPath = Path.Combine(path, DestinationFileName + "~.tmp");
 								File.Copy(SourceFile, tempPath, true);
 								new FileInfo(tempPath).ChangeExecutableIcon(DestinationIcon);
 								File.Copy(tempPath, fileName, true);
@@ -180,8 +175,8 @@ namespace PEunion
 
 		private void UpdatePreview()
 		{
-			if (File.Exists(DestinationIcon)) ctrlPreview.ImageSource = new FileInfo(DestinationIcon).GetFileIcon(false).ToBitmapSource();
-			else ctrlPreview.ImageSource = File.Exists(SourceFile) ? new FileInfo(SourceFile).GetFileIcon(false).ToBitmapSource() : null;
+			if (File.Exists(DestinationIcon)) ctrlPreview.ImageSource = FileEx.GetIcon(DestinationIcon, false).ToBitmapSource();
+			else ctrlPreview.ImageSource = File.Exists(SourceFile) ? FileEx.GetIcon(SourceFile, false).ToBitmapSource() : null;
 
 			ctrlPreview.Text = DestinationFileName.IsNullOrEmpty() || DestinationNewExtension.IsNullOrEmpty() ? null : DestinationFileName + DestinationOldExtension?.Reverse() + "." + DestinationNewExtension;
 		}

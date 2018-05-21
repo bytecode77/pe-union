@@ -79,7 +79,7 @@ namespace PEunion
 				files?.Length > 0 &&
 				files.All(File.Exists) &&
 				(AllowMultiple || files.Length == 1) &&
-				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => PathEx.GetExtension(file).CompareCaseInsensitive(ext))));
+				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => Path.GetExtension(file).TrimStart('.').CompareCaseInsensitive(ext))));
 		}
 		private static void AllowMultipleProperty_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
