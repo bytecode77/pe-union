@@ -37,7 +37,7 @@
 							<TextBlock Text="Old Extension" Grid.Column="2" />
 							<TextBlock Text="New Extension" Grid.Column="4" />
 							<TextBox Grid.Row="2" Text="{Binding DestinationFileName, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
-							<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding DestinationOldExtension}" Style="{StaticResource UITextBox}" IsReadOnly="True" />
+							<ComboBox Grid.Row="2" Grid.Column="2" SelectedValue="{Binding DestinationOldExtension}" ItemsSource="{Binding DestinationOldExtensionAlternatives, Mode=OneWay}" Style="{StaticResource UIComboBox}" />
 							<TextBox Grid.Row="2" Grid.Column="4" Text="{Binding DestinationNewExtension, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" />
 						</Grid>
 					</GroupBox>

@@ -25,46 +25,40 @@ namespace PEunion
 		public static readonly RoutedUICommand DeleteSelectedProjectItemCommand = new RoutedUICommand("DeleteSelectedProjectItem", "DeleteSelectedProjectItemCommand", typeof(WindowMain));
 		public static WindowMain Singleton { get; private set; }
 
-		private string _OverlayTitle;
-		private bool _OverlayIsIndeterminate;
-		private double _OverlayProgress;
-		private Project _Project;
-		private ProjectItem _SelectedProjectItem;
-		private ValidationError[] _ValidationErrors;
 		public string OverlayTitle
 		{
-			get => _OverlayTitle;
-			set => Set(() => OverlayTitle, ref _OverlayTitle, value);
+			get => Get(() => OverlayTitle);
+			set => Set(() => OverlayTitle, value);
 		}
 		public bool OverlayIsIndeterminate
 		{
-			get => _OverlayIsIndeterminate;
-			set => Set(() => OverlayIsIndeterminate, ref _OverlayIsIndeterminate, value);
+			get => Get(() => OverlayIsIndeterminate);
+			set => Set(() => OverlayIsIndeterminate, value);
 		}
 		public double OverlayProgress
 		{
-			get => _OverlayProgress;
-			set => Set(() => OverlayProgress, ref _OverlayProgress, value);
+			get => Get(() => OverlayProgress);
+			set => Set(() => OverlayProgress, value);
 		}
 		public Project Project
 		{
-			get => _Project;
+			get => Get(() => Project);
 			set
 			{
-				if (_Project != null) _Project.ValidationErrorsChanged -= Project_ValidationErrorsChanged;
-				Set(() => Project, ref _Project, value);
-				_Project.ValidationErrorsChanged += Project_ValidationErrorsChanged;
+				if (Project != null) Project.ValidationErrorsChanged -= Project_ValidationErrorsChanged;
+				Set(() => Project, value);
+				value.ValidationErrorsChanged += Project_ValidationErrorsChanged;
 			}
 		}
 		public ProjectItem SelectedProjectItem
 		{
-			get => _SelectedProjectItem;
-			set => Set(() => SelectedProjectItem, ref _SelectedProjectItem, value);
+			get => Get(() => SelectedProjectItem);
+			set => Set(() => SelectedProjectItem, value);
 		}
 		public ValidationError[] ValidationErrors
 		{
-			get => _ValidationErrors;
-			set => Set(() => ValidationErrors, ref _ValidationErrors, value);
+			get => Get(() => ValidationErrors);
+			set => Set(() => ValidationErrors, value);
 		}
 		public string[] RecentProjects
 		{
@@ -338,7 +332,7 @@ namespace PEunion
 				string iconPath = Path.Combine(App.ApplicationDirectoryPath, "ShellIcon.ico");
 				File.WriteAllBytes(iconPath, Properties.Resources.FileShellIcon);
 
-				PathEx.ExecuteTempFile
+				TempDirectory.ExecuteFile
 				(
 					"PEunion_RegisterFileExtension.reg",
 					Properties.Resources.FileRegisterExtension
@@ -354,7 +348,7 @@ namespace PEunion
 		}
 		private void mnuHelpGitHub_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://github.com/bytecode-77/pe-union");
+			Process.Start("https://github.com/bytecode77/pe-union");
 		}
 		private void mnuHelpAbout_Click(object sender, RoutedEventArgs e)
 		{
@@ -370,7 +364,7 @@ namespace PEunion
 		}
 		private void tabMain_Close_Click(object sender, RoutedEventArgs e)
 		{
-			tabMain.Items.Remove((sender as FrameworkElement).FindLogicalParent<TabItem>());
+			tabMain.Items.Remove((sender as FrameworkElement).FindParent<TabItem>(UITreeType.Logical));
 		}
 		private void tabMain_TabItem_MouseUp(object sender, MouseButtonEventArgs e)
 		{
@@ -422,7 +416,7 @@ namespace PEunion
 			}
 			else
 			{
-				TreeViewItem treeViewItem = (e.Source as FrameworkElement).FindLogicalParent<TreeViewItem>();
+				TreeViewItem treeViewItem = (e.Source as FrameworkElement).FindParent<TreeViewItem>(UITreeType.Logical);
 				if (treeViewItem != null)
 				{
 					treeViewItem.IsSelected = true;
@@ -456,7 +450,7 @@ namespace PEunion
 		}
 		private void mnuTreeFileProperties_Click(object sender, RoutedEventArgs e)
 		{
-			new FileInfo((SelectedProjectItem as ProjectFile).FullName).ShowFileProperties();
+			FileEx.ShowPropertiesDialog((SelectedProjectItem as ProjectFile).FullName);
 		}
 		private void mnuTreeMessageBoxPreview_Click(object sender, RoutedEventArgs e)
 		{
@@ -561,7 +555,7 @@ namespace PEunion
 			UpdateValidationErrorList();
 			if (Project.ValidationErrorCount > 0)
 			{
-				IO.Beep(false);
+				Desktop.Beep(false);
 				return false;
 			}
 			else

@@ -12,41 +12,21 @@ namespace PEunion
 {
 	public class Project : ObservableObject
 	{
-		private string _SaveLocation;
-		private bool _IsDirty;
-		private BuildPlatform _Platform;
-		private BuildManifest _Manifest;
-		private string _IconPath;
-		private string _AssemblyTitle;
-		private string _AssemblyProduct;
-		private string _AssemblyCopyright;
-		private string _AssemblyVersion;
-		private BuildObfuscationType _Obfuscation;
-		private bool _StringEncryption;
-		private bool _StringLiteralEncryption;
-		private bool _DeleteZoneID;
-		private bool _Melt;
-		private ObservableCollection<ProjectItem> _Items;
-		private ValidationError[] _ValidationErrors;
-		private int _ValidationErrorCount;
-		private int _ValidationWarningCount;
-		private int _ValidationMessageCount;
-
 		public string SaveLocation
 		{
-			get => _SaveLocation;
+			get => Get(() => SaveLocation);
 			set
 			{
-				Set(() => SaveLocation, ref _SaveLocation, value);
+				Set(() => SaveLocation, value);
 				RaisePropertyChanged(() => ProjectName);
 			}
 		}
 		public bool IsDirty
 		{
-			get => _IsDirty;
+			get => Get(() => IsDirty);
 			set
 			{
-				Set(() => IsDirty, ref _IsDirty, value);
+				Set(() => IsDirty, value);
 				WindowMain.Singleton.Title = ProjectName + (value ? " *" : null) + " - PEunion";
 				WindowMain.Singleton.txtProjectTabIsDirty.SetVisibility(value);
 
@@ -58,7 +38,7 @@ namespace PEunion
 				else
 				{
 					WindowMain.Singleton.ctrlBrowseIcon.Text = Path.GetFileName(IconPath);
-					WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? new FileInfo(IconPath).GetFileIcon(true).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
+					WindowMain.Singleton.ctrlBrowseIcon.IconImageSource = File.Exists(IconPath) ? FileEx.GetIcon(IconPath, true).ToBitmapSource() : Utility.GetImageResource("ImageMissingIcon");
 				}
 				WindowMain.Singleton.ctrlBrowseIcon.IsResetButtonEnabled = IconPath != null;
 
@@ -67,144 +47,144 @@ namespace PEunion
 		}
 		public BuildPlatform Platform
 		{
-			get => _Platform;
+			get => Get(() => Platform);
 			set
 			{
-				Set(() => Platform, ref _Platform, value);
+				Set(() => Platform, value);
 				IsDirty = true;
 			}
 		}
 		public BuildManifest Manifest
 		{
-			get => _Manifest;
+			get => Get(() => Manifest);
 			set
 			{
-				Set(() => Manifest, ref _Manifest, value);
+				Set(() => Manifest, value);
 				IsDirty = true;
 			}
 		}
 		public string IconPath
 		{
-			get => _IconPath;
+			get => Get(() => IconPath);
 			set
 			{
-				Set(() => IconPath, ref _IconPath, value);
+				Set(() => IconPath, value);
 				IsDirty = true;
 			}
 		}
 		public string AssemblyTitle
 		{
-			get => _AssemblyTitle;
+			get => Get(() => AssemblyTitle);
 			set
 			{
-				Set(() => AssemblyTitle, ref _AssemblyTitle, value);
+				Set(() => AssemblyTitle, value);
 				IsDirty = true;
 			}
 		}
 		public string AssemblyProduct
 		{
-			get => _AssemblyProduct;
+			get => Get(() => AssemblyProduct);
 			set
 			{
-				Set(() => AssemblyProduct, ref _AssemblyProduct, value);
+				Set(() => AssemblyProduct, value);
 				IsDirty = true;
 			}
 		}
 		public string AssemblyCopyright
 		{
-			get => _AssemblyCopyright;
+			get => Get(() => AssemblyCopyright);
 			set
 			{
-				Set(() => AssemblyCopyright, ref _AssemblyCopyright, value);
+				Set(() => AssemblyCopyright, value);
 				IsDirty = true;
 			}
 		}
 		public string AssemblyVersion
 		{
-			get => _AssemblyVersion;
+			get => Get(() => AssemblyVersion);
 			set
 			{
-				Set(() => AssemblyVersion, ref _AssemblyVersion, value);
+				Set(() => AssemblyVersion, value);
 				IsDirty = true;
 			}
 		}
 		public BuildObfuscationType Obfuscation
 		{
-			get => _Obfuscation;
+			get => Get(() => Obfuscation);
 			set
 			{
-				Set(() => Obfuscation, ref _Obfuscation, value);
+				Set(() => Obfuscation, value);
 				RaisePropertyChanged(() => ObfuscationExample);
 				IsDirty = true;
 			}
 		}
 		public bool StringEncryption
 		{
-			get => _StringEncryption;
+			get => Get(() => StringEncryption);
 			set
 			{
-				Set(() => StringEncryption, ref _StringEncryption, value);
+				Set(() => StringEncryption, value);
 				IsDirty = true;
 			}
 		}
 		public bool StringLiteralEncryption
 		{
-			get => _StringLiteralEncryption;
+			get => Get(() => StringLiteralEncryption);
 			set
 			{
-				Set(() => StringLiteralEncryption, ref _StringLiteralEncryption, value);
+				Set(() => StringLiteralEncryption, value);
 				IsDirty = true;
 			}
 		}
 		public bool DeleteZoneID
 		{
-			get => _DeleteZoneID;
+			get => Get(() => DeleteZoneID);
 			set
 			{
-				Set(() => DeleteZoneID, ref _DeleteZoneID, value);
+				Set(() => DeleteZoneID, value);
 				IsDirty = true;
 			}
 		}
 		public bool Melt
 		{
-			get => _Melt;
+			get => Get(() => Melt);
 			set
 			{
-				Set(() => Melt, ref _Melt, value);
+				Set(() => Melt, value);
 				IsDirty = true;
 			}
 		}
 		public ObservableCollection<ProjectItem> Items
 		{
-			get => _Items;
+			get => Get(() => Items);
 			set
 			{
-				if (_Items != null) _Items.CollectionChanged -= _Items_CollectionChanged;
-				Set(() => Items, ref _Items, value);
-				if (_Items != null) _Items.CollectionChanged += _Items_CollectionChanged;
+				if (Get(() => Items) != null) Get(() => Items).CollectionChanged -= Items_CollectionChanged;
+				Set(() => Items, value);
+				if (value != null) value.CollectionChanged += Items_CollectionChanged;
 				RaisePropertyChanged(() => ProjectName);
 				IsDirty = true;
 			}
 		}
 		public ValidationError[] ValidationErrors
 		{
-			get => _ValidationErrors;
-			set => Set(() => ValidationErrors, ref _ValidationErrors, value);
+			get => Get(() => ValidationErrors);
+			set => Set(() => ValidationErrors, value);
 		}
 		public int ValidationErrorCount
 		{
-			get => _ValidationErrorCount;
-			set => Set(() => ValidationErrorCount, ref _ValidationErrorCount, value);
+			get => Get(() => ValidationErrorCount);
+			set => Set(() => ValidationErrorCount, value);
 		}
 		public int ValidationWarningCount
 		{
-			get => _ValidationWarningCount;
-			set => Set(() => ValidationWarningCount, ref _ValidationWarningCount, value);
+			get => Get(() => ValidationWarningCount);
+			set => Set(() => ValidationWarningCount, value);
 		}
 		public int ValidationMessageCount
 		{
-			get => _ValidationMessageCount;
-			set => Set(() => ValidationMessageCount, ref _ValidationMessageCount, value);
+			get => Get(() => ValidationMessageCount);
+			set => Set(() => ValidationMessageCount, value);
 		}
 
 		public string ObfuscationExample => Lookups.ObfuscationExamples[Obfuscation];
@@ -518,8 +498,8 @@ namespace PEunion
 					}
 					else
 					{
-						string originalExtension = PathEx.GetExtension(file.FullName);
-						string newExtension = PathEx.GetExtension(file.Name);
+						string originalExtension = Path.GetExtension(file.FullName).TrimStart('.');
+						string newExtension = Path.GetExtension(file.Name).TrimStart('.');
 						if (newExtension == "")
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has no extension (suggested: " + originalExtension + ")"));
@@ -529,7 +509,7 @@ namespace PEunion
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has a different extension than the original file (" + originalExtension + ")"));
 						}
 
-						if (PathEx.GetExtension(file.Name, true).EqualsAny(unintendedFileExtensions))
+						if (Path.GetExtension(file.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "File extension '" + Path.GetExtension(file.Name) + "' - Possibly unintended file"));
 						}
@@ -569,11 +549,11 @@ namespace PEunion
 					}
 					else
 					{
-						if (PathEx.GetExtension(url.Name) == "")
+						if (Path.GetExtension(url.Name).TrimStart('.') == "")
 						{
 							errors.Add(ValidationError.CreateWarning(source, "'" + url.Name.Trim() + "' has no extension"));
 						}
-						if (PathEx.GetExtension(url.Name, true).EqualsAny(unintendedFileExtensions))
+						if (Path.GetExtension(url.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(source, "File extension '" + Path.GetExtension(url.Name) + "' - Possibly unintended file"));
 						}
@@ -608,7 +588,7 @@ namespace PEunion
 			return errors.ToArray();
 		}
 
-		private void _Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			RaisePropertyChanged(() => ProjectName);
 		}

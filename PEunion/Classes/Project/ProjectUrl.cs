@@ -5,63 +5,49 @@ namespace PEunion
 {
 	public class ProjectUrl : ProjectItem
 	{
-		private string _Url;
-		private string _Name;
-		private bool _Hidden;
-		private int _DropLocation;
-		private bool _Execute;
-		private bool _ExecuteWait;
-		private bool _ExecuteDelete;
-		private bool _Runas;
-		private string _CommandLine;
-		private bool _AntiSandboxie;
-		private bool _AntiWireshark;
-		private bool _AntiProcessMonitor;
-		private bool _AntiEmulator;
-
 		public string Url
 		{
-			get => _Url;
+			get => Get(() => Url);
 			set
 			{
-				Set(() => Url, ref _Url, value);
+				Set(() => Url, value);
 				Project.IsDirty = true;
 				RaisePropertyChanged(() => TreeViewItemText);
 			}
 		}
 		public string Name
 		{
-			get => _Name;
+			get => Get(() => Name);
 			set
 			{
-				Set(() => Name, ref _Name, value);
+				Set(() => Name, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool Hidden
 		{
-			get => _Hidden;
+			get => Get(() => Hidden);
 			set
 			{
-				Set(() => Hidden, ref _Hidden, value);
+				Set(() => Hidden, value);
 				Project.IsDirty = true;
 			}
 		}
 		public int DropLocation
 		{
-			get => _DropLocation;
+			get => Get(() => DropLocation);
 			set
 			{
-				Set(() => DropLocation, ref _DropLocation, value);
+				Set(() => DropLocation, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool Execute
 		{
-			get => _Execute;
+			get => Get(() => Execute);
 			set
 			{
-				Set(() => Execute, ref _Execute, value);
+				Set(() => Execute, value);
 				RaisePropertyChanged(() => CanExecuteWait);
 				ExecuteWait &= value;
 				Runas &= value;
@@ -70,10 +56,10 @@ namespace PEunion
 		}
 		public bool ExecuteWait
 		{
-			get => _ExecuteWait;
+			get => Get(() => ExecuteWait);
 			set
 			{
-				Set(() => ExecuteWait, ref _ExecuteWait, value);
+				Set(() => ExecuteWait, value);
 				RaisePropertyChanged(() => CanExecuteDelete);
 				ExecuteDelete &= value;
 				Project.IsDirty = true;
@@ -81,64 +67,64 @@ namespace PEunion
 		}
 		public bool ExecuteDelete
 		{
-			get => _ExecuteDelete;
+			get => Get(() => ExecuteDelete);
 			set
 			{
-				Set(() => ExecuteDelete, ref _ExecuteDelete, value);
+				Set(() => ExecuteDelete, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool Runas
 		{
-			get => _Runas;
+			get => Get(() => Runas);
 			set
 			{
-				Set(() => Runas, ref _Runas, value);
+				Set(() => Runas, value);
 				Project.IsDirty = true;
 			}
 		}
 		public string CommandLine
 		{
-			get => _CommandLine;
+			get => Get(() => CommandLine);
 			set
 			{
-				Set(() => CommandLine, ref _CommandLine, value);
+				Set(() => CommandLine, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool AntiSandboxie
 		{
-			get => _AntiSandboxie;
+			get => Get(() => AntiSandboxie);
 			set
 			{
-				Set(() => AntiSandboxie, ref _AntiSandboxie, value);
+				Set(() => AntiSandboxie, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool AntiWireshark
 		{
-			get => _AntiWireshark;
+			get => Get(() => AntiWireshark);
 			set
 			{
-				Set(() => AntiWireshark, ref _AntiWireshark, value);
+				Set(() => AntiWireshark, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool AntiProcessMonitor
 		{
-			get => _AntiProcessMonitor;
+			get => Get(() => AntiProcessMonitor);
 			set
 			{
-				Set(() => AntiProcessMonitor, ref _AntiProcessMonitor, value);
+				Set(() => AntiProcessMonitor, value);
 				Project.IsDirty = true;
 			}
 		}
 		public bool AntiEmulator
 		{
-			get => _AntiEmulator;
+			get => Get(() => AntiEmulator);
 			set
 			{
-				Set(() => AntiEmulator, ref _AntiEmulator, value);
+				Set(() => AntiEmulator, value);
 				Project.IsDirty = true;
 			}
 		}

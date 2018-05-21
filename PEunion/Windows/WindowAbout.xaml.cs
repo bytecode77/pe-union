@@ -21,11 +21,11 @@ namespace PEunion
 		}
 		private void lnkGitHubUser_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://github.com/bytecode-77");
+			Process.Start("https://github.com/bytecode77");
 		}
 		private void lnkGitHub_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://github.com/bytecode-77/pe-union");
+			Process.Start("https://github.com/bytecode77/pe-union");
 		}
 	}
 }
