@@ -12,5 +12,7 @@ TestResults/
 *.opendb
 *.VC.db
 [Tt]humbs.db
+*~*.xlsx
+*~*.docx
 
 $Build/
