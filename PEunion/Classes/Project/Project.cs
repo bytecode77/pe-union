@@ -536,7 +536,7 @@ namespace PEunion
 					}
 					else if (!Validate.Uri(url.Url))
 					{
-						errors.Add(ValidationError.CreateError(source, "'' is not a valid URL"));
+						errors.Add(ValidationError.CreateError(source, "'" + url.Url + "' is not a valid URL"));
 					}
 
 					if (url.Name.IsNullOrWhiteSpace())
