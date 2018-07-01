@@ -145,7 +145,7 @@ namespace PEunion
 					{
 						string fileName = Path.Combine(path, DestinationFileName + RtloCharacter + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
 
-						if (!File.Exists(fileName) || MessageBoxes.Confirmation("A files named '' already exists in the selected directory.\r\nOverwrite?", true))
+						if (!File.Exists(fileName) || MessageBoxes.Confirmation("A file named '" + ctrlPreview.Text + "' already exists in the selected directory.\r\nOverwrite?", true))
 						{
 							if (DestinationIcon == null)
 							{

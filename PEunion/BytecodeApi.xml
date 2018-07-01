@@ -4,9 +4,155 @@
         <name>BytecodeApi</name>
     </assembly>
     <members>
+        <member name="T:BytecodeApi.ActionDelayer">
+            <summary>
+            Provoides a wrapper for <see cref="T:System.Action" /> and <see cref="T:System.Windows.RoutedEvent" /> actions to be postponed.
+            <para />Example: A search text box, where the search is performed after 0.5 seconds without typing activity.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ActionDelayer.Delay">
+            <summary>
+            Gets or sets the amount of time that needs to pass between a consecutive call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" />, before the speficied <see cref="T:System.Action" /> or <see cref="T:System.Windows.RoutedEvent" /> is invoked.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.#ctor(System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.ActionDelayer" /> class with the specified delay.
+            </summary>
+            <param name="delay">The amount of time that needs to pass between a consecutive call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" />, before the speficied <see cref="T:System.Action" /> or <see cref="T:System.Windows.RoutedEvent" /> is invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.Dispose">
+            <summary>
+            Releases all resources used by the current instance of the <see cref="T:BytecodeApi.ActionDelayer" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.Execute(System.Action)">
+            <summary>
+            Invokes <paramref name="action" />, if the last call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.ActionDelayer.Delay" />.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.Execute(System.Action,System.Boolean)">
+            <summary>
+            Invokes <paramref name="action" />, if the last call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.ActionDelayer.Delay" />.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+            <param name="now"><see langword="true" /> to always invoke <paramref name="action" /> regardless of <see cref="P:BytecodeApi.ActionDelayer.Delay" />.</param>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.Execute(System.Windows.Input.RoutedCommand,System.Object,System.Windows.IInputElement)">
+            <summary>
+            Executes <paramref name="command" />, if the last call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.ActionDelayer.Delay" />.
+            </summary>
+            <param name="command">The <see cref="T:System.Windows.Input.RoutedCommand" /> to be executed.</param>
+            <param name="parameter">The user defined parameter to be passed to <paramref name="command" />.</param>
+            <param name="target">The element at which to begin looking for command handlers.</param>
+        </member>
+        <member name="M:BytecodeApi.ActionDelayer.Execute(System.Windows.Input.RoutedCommand,System.Object,System.Windows.IInputElement,System.Boolean)">
+            <summary>
+            Executes <paramref name="command" />, if the last call to <see cref="M:BytecodeApi.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.ActionDelayer.Delay" />.
+            </summary>
+            <param name="command">The <see cref="T:System.Windows.Input.RoutedCommand" /> to be executed.</param>
+            <param name="parameter">The user defined parameter to be passed to <paramref name="command" />.</param>
+            <param name="target">The element at which to begin looking for command handlers.</param>
+            <param name="now"><see langword="true" /> to always execute <paramref name="command" /> regardless of <see cref="P:BytecodeApi.ActionDelayer.Delay" />.</param>
+        </member>
+        <member name="T:BytecodeApi.ApplicationBase">
+            <summary>
+            Provides <see langword="static" /> methods that extend the <see cref="T:System.Windows.Application" /> and the <see cref="T:System.Windows.Forms.Application" /> class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.StartupPath">
+            <summary>
+            Gets the path for the executable file that started the application, not including the executable name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.ExecutablePath">
+            <summary>
+            Gets the path for the executable file that started the application, including the executable name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentUser">
+            <summary>
+            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, including the domain or workstation name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentUserShort">
+            <summary>
+            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, not including the domain or workstation name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.DomainName">
+            <summary>
+            Gets the domain in which the local computer is registered.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Workgroup">
+            <summary>
+            Gets the workgroup in which the local computer is registered.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.OperatingSystemName">
+            <summary>
+            Gets the name of the operating system.
+            <para />Examples: "Windows 7 Professional", "Windows 10 Pro"
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.InstalledAntiVirusSoftware">
+            <summary>
+            Gets an array containing a list of installed antivirus software.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.FrameworkVersion">
+            <summary>
+            Gets the latest version of the .NET Framework and returns the version number as a fallback, if the version could not be looked up. Works only for .NET 4.0+.
+            <para />Examples: 4.6, 4.7, 4.7.1
+            <para />Example of a fallback version number: 461310
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.IsElevated">
+            <summary>
+            Gets a <see cref="T:System.Boolean" /> value indicating whether the current <see cref="T:System.Diagnostics.Process" /> is elevated or not.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.ElevationType">
+            <summary>
+            Gets the <see cref="P:BytecodeApi.ApplicationBase.ElevationType" /> for the current <see cref="T:System.Diagnostics.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.DebugMode">
+            <summary>
+            Gets a <see cref="T:System.Boolean" /> value indicating whether <see cref="P:System.Diagnostics.Debugger.IsAttached" /> was equal to <see langword="true" /> on application startup, or if this executable is located in a directory named like "\bin\Debug", "\bin\x86\Debug", or "\bin\x64\Debug".
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessId">
+            <summary>
+            Gets the ProcessID of the current <see cref="T:System.Diagnostics.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessSessionId">
+            <summary>
+            Gets the SessionID of the current <see cref="T:System.Diagnostics.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessIntegrityLevel">
+            <summary>
+            Gets the mandatory integrity level for the current <see cref="T:System.Diagnostics.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessMemory">
+            <summary>
+            Gets the amount of private memory, in bytes, allocated for the current <see cref="T:System.Diagnostics.Process" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean})">
+            <summary>
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />.
+            </summary>
+            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
+        </member>
         <member name="T:BytecodeApi.ConvertEx">
             <summary>
-            Converts a base data type to another base data type.
+            Provides <see langword="static" /> methods that extend the <see cref="T:System.Convert" /> class.
             </summary>
         </member>
         <member name="M:BytecodeApi.ConvertEx.FromUnixTimeStamp(System.Int32)">
@@ -89,7 +235,7 @@
             Invokes an <see cref="T:System.Action" /> and handles any <see cref="T:System.Exception" />. Returns <see langword="true" /> on successful execution and <see langword="false" />, if an <see cref="T:System.Exception" /> was thrown.
             </summary>
             <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
-            <param name="throws">A <see cref="T:System.Boolean" /> value indicating whether to throw the <see cref="T:System.Exception" /> anyway, effectively bypassing the function logic and just executing <paramref name="action" /> without exception handling.</param>
+            <param name="throws"><see langword="true" /> to throw the <see cref="T:System.Exception" /> anyway, effectively bypassing the function logic and just executing <paramref name="action" /> without exception handling.</param>
             <returns>
             <see langword="true" />, on successful execution and
             <see langword="false" />, if an <see cref="T:System.Exception" /> was thrown and <paramref name="throws" /> equals to <see langword="false" />.
@@ -192,32 +338,46 @@
             A new <see cref="T:System.Guid" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.Penetration.ExecuteDotNetAssembly(System.Byte[])">
+        <member name="T:BytecodeApi.Executable">
+            <summary>
+            Proides <see langword="static" /> methods for interoperability with executable files (EXE, DLL).
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.Executable.ExecuteDotNetAssembly(System.Byte[])">
             <summary>
             Executes a .NET executable from a <see cref="T:System.Byte" />[] by invoking the main entry point. The Main method must either have no parameters or one <see cref="T:System.String" />[] parameter. If it has a parameter, <see langword="new" /> <see cref="T:System.String" />[0] is passed.
             </summary>
             <param name="executable">A <see cref="T:System.Byte" />[] that represents a .NET executable.</param>
         </member>
-        <member name="M:BytecodeApi.Penetration.ExecuteDotNetAssembly(System.Byte[],System.String[])">
+        <member name="M:BytecodeApi.Executable.ExecuteDotNetAssembly(System.Byte[],System.String[])">
             <summary>
             Executes a .NET executable from a <see cref="T:System.Byte" />[] by invoking the main entry point. The Main method must either have no parameters or one <see cref="T:System.String" />[] parameter. If it has a parameter, <paramref name="args" /> is passed, otherwise <paramref name="args" /> is ignored.
             </summary>
             <param name="executable">A <see cref="T:System.Byte" />[] that represents a .NET executable.</param>
             <param name="args">A <see cref="T:System.String" />[] representing the arguments that is passed to the main entry point, if the Main method has a <see cref="T:System.String" />[] parameter.</param>
         </member>
-        <member name="M:BytecodeApi.Penetration.ExitProcess(BytecodeApi.ExitProcessMethod)">
+        <member name="M:BytecodeApi.Executable.ExitProcess(BytecodeApi.ExitProcessMethod)">
             <summary>
             Exits the current <see cref="T:System.Diagnostics.Process" /> using the specified <see cref="T:BytecodeApi.ExitProcessMethod" />.
             </summary>
             <param name="method">The <see cref="T:BytecodeApi.ExitProcessMethod" /> to be applied when exiting the current <see cref="T:System.Diagnostics.Process" />.</param>
         </member>
-        <member name="M:BytecodeApi.Penetration.BlueScreen">
+        <member name="M:BytecodeApi.Executable.BlueScreen">
             <summary>
             If the current <see cref="T:System.Diagnostics.Process" /> is running with elevated privileges, a blue screen is triggered. The result is <see langword="true" /> on success, however, only in theory, because the operating system will have terminated prior to function return. If elevated privileges are not granted or if an error occurred, <see langword="false" /> is returned.
-            
             </summary>
             <returns>
             <see langword="true" />, on success, however, only in theory, because the operating system will have terminated prior to function return;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Executable.DetectProcessAnalyzer(BytecodeApi.ProcessAnalyzer)">
+            <summary>
+            Detects process analyzers, such as sandboxes, virtual environments, or running programs.
+            </summary>
+            <param name="processAnalyzer">The <see cref="T:BytecodeApi.ProcessAnalyzer" /> to test.</param>
+            <returns>
+            <see langword="true" />, if the specified process analyzer has been detected;
             otherwise, <see langword="false" />.
             </returns>
         </member>
@@ -225,6 +385,69 @@
             <summary>
             Provides support for creating <see cref="T:System.Threading.Thread" /> and other multithreading related objects.
             </summary>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartThread(System.Action)">
+            <summary>
+            Creates a new <see cref="T:System.Threading.Thread" /> with the STA apartment state and starts it. All <see cref="T:System.Threading.ThreadAbortException" /> exceptions are caught.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked from the new <see cref="T:System.Threading.Thread" />.</param>
+            <returns>
+            The <see cref="T:System.Threading.Thread" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartThread(System.Action,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:System.Threading.Thread" /> with the STA apartment state and starts it. All <see cref="T:System.Threading.ThreadAbortException" /> exceptions are caught.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked from the new <see cref="T:System.Threading.Thread" />.</param>
+            <param name="ignoreExceptions"><see langword="true" /> to ignore all exceptions; <see langword="false" /> to just ignore <see cref="T:System.Threading.ThreadAbortException" /> exceptions.</param>
+            <returns>
+            The <see cref="T:System.Threading.Thread" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartThread(System.Action,System.Boolean,System.Action{System.Exception})">
+            <summary>
+            Creates a new <see cref="T:System.Threading.Thread" /> with the STA apartment state and starts it. All <see cref="T:System.Threading.ThreadAbortException" /> exceptions are caught.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked from the new <see cref="T:System.Threading.Thread" />.</param>
+            <param name="ignoreExceptions"><see langword="true" /> to ignore all exceptions; <see langword="false" /> to just ignore <see cref="T:System.Threading.ThreadAbortException" /> exceptions.</param>
+            <param name="exceptionHandler">An <see cref="T:System.Action`1" /> that is called by the exception handler. If <see langword="null" />, the <see cref="T:System.Exception" /> is thrown. The stack trace prior to thread creation will be appended.</param>
+            <returns>
+            The <see cref="T:System.Threading.Thread" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartDispatcherTimer(System.Action,System.TimeSpan)">
+            <summary>
+            Creates and starts a new <see cref="T:System.Windows.Threading.DispatcherTimer" /> with the specified <see cref="T:System.Action" /> and interval.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked by the new <see cref="T:System.Windows.Threading.DispatcherTimer" />.</param>
+            <param name="interval">The interval in which <paramref name="action" /> is invoked.</param>
+            <returns>
+            The <see cref="T:System.Windows.Threading.DispatcherTimer" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartDispatcherTimer(System.Action,System.TimeSpan,System.Boolean)">
+            <summary>
+            Creates and starts a new <see cref="T:System.Windows.Threading.DispatcherTimer" /> with the specified <see cref="T:System.Action" /> and interval.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked by the new <see cref="T:System.Windows.Threading.DispatcherTimer" />.</param>
+            <param name="interval">The interval in which <paramref name="action" /> is invoked.</param>
+            <param name="executeNow"><see langword="true" /> to execute <paramref name="action" /> immediately; <see langword="false" /> to execute it on the first interval.</param>
+            <returns>
+            The <see cref="T:System.Windows.Threading.DispatcherTimer" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ThreadFactory.StartDispatcherTimer(System.Action,System.TimeSpan,System.Boolean,System.Boolean)">
+            <summary>
+            Creates and starts a new <see cref="T:System.Windows.Threading.DispatcherTimer" /> with the specified <see cref="T:System.Action" /> and interval.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked by the new <see cref="T:System.Windows.Threading.DispatcherTimer" />.</param>
+            <param name="interval">The interval in which <paramref name="action" /> is invoked.</param>
+            <param name="executeNow"><see langword="true" /> to execute <paramref name="action" /> immediately; <see langword="false" /> to execute it on the first interval.</param>
+            <param name="ignoreExceptions"><see langword="true" /> to ignore all exceptions.</param>
+            <returns>
+            The <see cref="T:System.Windows.Threading.DispatcherTimer" /> this method creates.
+            </returns>
         </member>
         <member name="T:BytecodeApi.Validate">
             <summary>
@@ -344,6 +567,36 @@
             <param name="y">An <see cref="T:System.Object" /> to compare to <paramref name="x" />.</param>
             <returns>
             This method always returns 0.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.CustomComparer`2">
+            <summary>
+            Represents a custom comparison operation that uses an <see cref="T:System.Collections.Generic.EqualityComparer`1" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.CustomComparer`2.#ctor(System.Func{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.CustomComparer`2" /> class with the specified comparing function.
+            </summary>
+            <param name="compareFunc">The <see cref="T:System.Func`2" /> to be used by the <see cref="M:BytecodeApi.CustomComparer`2.Equals(`0,`0)" /> method.</param>
+        </member>
+        <member name="M:BytecodeApi.CustomComparer`2.Equals(`0,`0)">
+            <summary>
+            Determines whether the specified objects are equal.
+            </summary>
+            <param name="x">The first object to compare.</param>
+            <param name="y">The second object to compare.</param>
+            <returns>
+            <see langword="true" />, if the specified objects are equal; otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CustomComparer`2.GetHashCode(`0)">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <param name="obj">The object for which a hash code is to be returned.</param>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
             </returns>
         </member>
         <member name="T:BytecodeApi.IEnumerableCountComparer`1">
@@ -514,6 +767,29 @@
             <summary>
             Specifies, that the value is displayed as kilobytes. The result is rounded with two decimal places. A thousands separator is displayed as a dot.
             <para />Example: 12345 is converted to "13 KB"
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.TypeNaming">
+            <summary>
+            Specifies the naming convention of a <see langword="type" />.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.TypeNaming.CSharp">
+            <summary>
+            The namespace is omitted and the C# type name is used for built-in types.
+            <para />Examples: int, DateTime
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.TypeNaming.TypeName">
+            <summary>
+            The namespace is omitted and the .NET Framework type name is used.
+            <para />Examples: Int32, DateTime
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.TypeNaming.FullName">
+            <summary>
+            The full type name including namespace is used.
+            <para />Examples: System.Int32, System.DateTime
             </summary>
         </member>
         <member name="T:BytecodeApi.AngleType">
@@ -687,7 +963,7 @@
         </member>
         <member name="T:BytecodeApi.ProcessAnalyzer">
             <summary>
-            Specifies a sandbox, an emulator or a process analyzer.
+            Specifies a process analyzer, such as a sandbox, a virtual environment, or a running program.
             </summary>
         </member>
         <member name="F:BytecodeApi.ProcessAnalyzer.Sandboxie">
@@ -869,7 +1145,7 @@
             Converts this <see cref="T:System.Boolean" />? value to <see cref="F:System.Windows.Visibility.Visible" />, <see cref="F:System.Windows.Visibility.Hidden" /> or <see cref="F:System.Windows.Visibility.Collapsed" /> depending on its value and the <paramref name="preserveSpace" /> parameter.
             </summary>
             <param name="value">The <see cref="T:System.Boolean" /> value to be converted.</param>
-            <param name="preserveSpace">A <see cref="T:System.Boolean" /> value indicating whether to use <see cref="F:System.Windows.Visibility.Hidden" /> or <see cref="F:System.Windows.Visibility.Collapsed" />.</param>
+            <param name="preserveSpace"><see langword="true" /> to use <see cref="F:System.Windows.Visibility.Hidden" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />. Only applies if <paramref name="value" /> is <see langword="false" />.</param>
             <returns>
             <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is <see langword="true" />;
             <see cref="F:System.Windows.Visibility.Collapsed" />, if <paramref name="value" /> is <see langword="false" />;
@@ -917,7 +1193,7 @@
             Converts this <see cref="T:System.Byte" />[] into its hexadecimal <see cref="T:System.String" /> representation.
             </summary>
             <param name="array">The <see cref="T:System.Byte" />[] containing the sequence of bytes to convert.</param>
-            <param name="upperCase">A <see cref="T:System.Boolean" /> value indicating whether to use uppercase or lowercase letters (a-f or A-F)</param>
+            <param name="upperCase"><see langword="true" /> to use uppercase letters (a-f); <see langword="false" /> to use lowercase letters (A-F).</param>
             <returns>
             A <see cref="T:System.String" /> that contains the results of converting this sequence of bytes.
             </returns>
@@ -1205,6 +1481,31 @@
             A new <see cref="T:System.String" /> object containing characters with the value of <paramref name="c" /> with a length based on <paramref name="count" />.
             </returns>
         </member>
+        <member name="T:BytecodeApi.WebClientExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Net.WebClient" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WebClientExtensions.DownloadLines(System.Net.WebClient,System.String)">
+            <summary>
+            Downloads the requested resource as a <see cref="T:System.String" />[], separated by either a CRLF or a LF. The resource to download is specified as a <see cref="T:System.String" /> containing the URI.
+            </summary>
+            <param name="webClient">The <see cref="T:System.Net.WebClient" /> to be used.</param>
+            <param name="address">A <see cref="T:System.String" /> containing the URI to download.</param>
+            <returns>
+            A <see cref="T:System.String" />[] containing the requested resource, separated by either a CRLF or a LF.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WebClientExtensions.DownloadLines(System.Net.WebClient,System.Uri)">
+            <summary>
+            Downloads the requested resource as a <see cref="T:System.String" />[], separated by either a CRLF or a LF. The resource to download is specified as a <see cref="T:System.Uri" />.
+            </summary>
+            <param name="webClient">The <see cref="T:System.Net.WebClient" /> to be used.</param>
+            <param name="address">A <see cref="T:System.Uri" /> object containing the URI to download.</param>
+            <returns>
+            A <see cref="T:System.String" />[] containing the requested resource, separated by either a CRLF or a LF.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.CompressionExtensions">
             <summary>
             Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.IO.Compression.ZipArchive" /> and related objects.
@@ -1387,6 +1688,35 @@
             <param name="format">A <see cref="T:System.String" /> value with the format that is used to convert this <see cref="T:System.DateTime" />.</param>
             <returns>
             The equivalent <see cref="T:System.String" /> representation of this <see cref="T:System.DateTime" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime)">
+            <summary>
+            Returns a new <see cref="T:System.DateTime" /> representing the first day of the week according to the current culture.
+            </summary>
+            <param name="dateTime">The original <see cref="T:System.DateTime" /> value.</param>
+            <returns>
+            A new <see cref="T:System.DateTime" /> object representing the first day of the week according to the current culture.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime,System.Globalization.CultureInfo)">
+            <summary>
+            Returns a new <see cref="T:System.DateTime" /> representing the first day of the week using specified culture-specific calendar rules.
+            </summary>
+            <param name="dateTime">The original <see cref="T:System.DateTime" /> value.</param>
+            <param name="culture">An object that supplies culture-specific calendar rules.</param>
+            <returns>
+            A new <see cref="T:System.DateTime" /> object representing the first day of the week according to <paramref name="culture" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.DateTimeExtensions.GetFirstDayOfWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Returns a new <see cref="T:System.DateTime" /> representing the first day of the week, according to the <paramref name="firstDayOfWeek" /> parameter.
+            </summary>
+            <param name="dateTime">The original <see cref="T:System.DateTime" /> value.</param>
+            <param name="firstDayOfWeek">The first day of week.</param>
+            <returns>
+            A new <see cref="T:System.DateTime" /> object representing the first day of the week, according to the <paramref name="firstDayOfWeek" /> parameter.
             </returns>
         </member>
         <member name="T:BytecodeApi.DoubleExtensions">
@@ -1701,6 +2031,40 @@
             <summary>
             Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.IO.DirectoryInfo" /> objects.
             </summary>
+        </member>
+        <member name="M:BytecodeApi.DirectoryInfoExtensions.SendToRecycleBin(System.IO.DirectoryInfo)">
+            <summary>
+            Sends to a directory and all of its contents to recycle bin.
+            </summary>
+            <param name="directory">The <see cref="T:System.IO.DirectoryInfo" /> to process.</param>
+        </member>
+        <member name="M:BytecodeApi.DirectoryInfoExtensions.GetCaseSensitiveName(System.IO.DirectoryInfo)">
+            <summary>
+            Gets the name of this directory with character casing according to the original and existing directory.
+            </summary>
+            <param name="directory">The <see cref="T:System.IO.DirectoryInfo" /> to process.</param>
+            <returns>
+            A <see cref="T:System.String" /> that contains the actual name of this directory.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.DirectoryInfoExtensions.GetCaseSensitiveFullName(System.IO.DirectoryInfo)">
+            <summary>
+            Gets the full path of this directory with character casing according to the original and existing directory.
+            </summary>
+            <param name="directory">The <see cref="T:System.IO.DirectoryInfo" /> to process.</param>
+            <returns>
+            A <see cref="T:System.String" /> that contains the actual full path of this directory.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.DirectoryInfoExtensions.ToUncPath(System.IO.DirectoryInfo)">
+            <summary>
+            Gets the UNC path of this directory. If the path cannot be converted to a UNC path, the original path is returned.
+            </summary>
+            <param name="directory">The <see cref="T:System.IO.DirectoryInfo" /> to process.</param>
+            <returns>
+            The UNC path of this directory, if conversion is possible;
+            otherwise, the original path.
+            </returns>
         </member>
         <member name="T:BytecodeApi.FileSystemInfoExtensions">
             <summary>
@@ -2595,7 +2959,7 @@
             <param name="newValue">The <see cref="T:System.String" /> which is returned, if this string is equal to <paramref name="oldValue" />.</param>
             <returns>
             <paramref name="newValue" />, if this string is equal to <paramref name="oldValue" />;
-            otherwise the original <see cref="T:System.String" /> value.
+            otherwise, the original <see cref="T:System.String" /> value.
             </returns>
         </member>
         <member name="M:BytecodeApi.StringExtensions.ReplaceLineBreaks(System.String,System.String)">
@@ -2857,7 +3221,7 @@
         </member>
         <member name="M:BytecodeApi.UIExtensions.FindDataContext``1(System.Object)">
             <summary>
-            Tries to find the DataContext property, if this <see cref="T:System.Object" /> instance is either a <see cref="T:System.Windows.FrameworkElement" /> or a <see cref="T:System.Windows.FrameworkContentElement" />. If found and can be casted to the specified type, the DataContext is returned, otherwise <see langword="null" />.
+            Tries to find the DataContext property, if this <see cref="T:System.Object" /> instance is either a <see cref="T:System.Windows.FrameworkElement" /> or a <see cref="T:System.Windows.FrameworkContentElement" />. If found and can be casted to the specified type, the DataContext is returned, otherwise, <see langword="null" />.
             </summary>
             <typeparam name="T">The return type to cast the DataContext property to.</typeparam>
             <param name="obj">The <see cref="T:System.Object" /> where the DataContext property looked for. This is typically the sender parameter from an event hanlder.</param>
@@ -2883,15 +3247,15 @@
             Sets the <see cref="T:System.Windows.Visibility" /> of this <see cref="T:System.Windows.UIElement" />.
             </summary>
             <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
-            <param name="visible">A <see cref="T:System.Boolean" /> value indicating whether <see cref="F:System.Windows.Visibility.Visible" /> or <see cref="F:System.Windows.Visibility.Collapsed" /> is used.</param>
+            <param name="visible"><see langword="true" /> to set <see cref="P:System.Windows.UIElement.Visibility" /> to <see cref="F:System.Windows.Visibility.Visible" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />.</param>
         </member>
         <member name="M:BytecodeApi.UIExtensions.SetVisibility(System.Windows.UIElement,System.Boolean,System.Boolean)">
             <summary>
             Sets the <see cref="T:System.Windows.Visibility" /> of this <see cref="T:System.Windows.UIElement" />.
             </summary>
             <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
-            <param name="visible">A <see cref="T:System.Boolean" /> value indicating whether <see cref="F:System.Windows.Visibility.Visible" /> or <see cref="F:System.Windows.Visibility.Collapsed" /> is used. If <paramref name="preserveSpace" /> is <see langword="true" />, <see cref="F:System.Windows.Visibility.Hidden" /> is used.</param>
-            <param name="preserveSpace">A <see cref="T:System.Boolean" /> value indicating whether to use <see cref="F:System.Windows.Visibility.Collapsed" /> or <see cref="F:System.Windows.Visibility.Hidden" />. If <paramref name="preserveSpace" /> is <see langword="true" />, <see cref="F:System.Windows.Visibility.Hidden" /> is used. IF <paramref name="visible" /> is <see langword="true" />, <see cref="F:System.Windows.Visibility.Visible" /> is used.</param>
+            <param name="visible"><see langword="true" /> to set <see cref="P:System.Windows.UIElement.Visibility" /> to <see cref="F:System.Windows.Visibility.Visible" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />, or <see cref="F:System.Windows.Visibility.Hidden" /> according to the <paramref name="preserveSpace" /> parameter.</param>
+            <param name="preserveSpace"><see langword="true" /> to use <see cref="F:System.Windows.Visibility.Hidden" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />. Only applies if <paramref name="visible" /> is <see langword="false" />.</param>
         </member>
         <member name="M:BytecodeApi.UIExtensions.Show(System.Windows.UIElement)">
             <summary>
@@ -2910,7 +3274,7 @@
             Sets the <see cref="P:System.Windows.UIElement.Visibility" /> property of this <see cref="T:System.Windows.UIElement" /> to <see cref="F:System.Windows.Visibility.Collapsed" /> or <see cref="F:System.Windows.Visibility.Hidden" /> based on the <paramref name="preserveSpace" /> parameter.
             </summary>
             <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
-            <param name="preserveSpace">A <see cref="T:System.Boolean" /> value indicating whether to use <see cref="F:System.Windows.Visibility.Collapsed" /> or <see cref="F:System.Windows.Visibility.Hidden" />. If <paramref name="preserveSpace" /> is <see langword="true" />, <see cref="F:System.Windows.Visibility.Hidden" /> is used.</param>
+            <param name="preserveSpace"><see langword="true" /> to use <see cref="F:System.Windows.Visibility.Hidden" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />.</param>
         </member>
         <member name="M:BytecodeApi.UIExtensions.MoveCaretToEnd(System.Windows.Controls.TextBox)">
             <summary>
@@ -2951,6 +3315,46 @@
             <param name="xml">The <see cref="T:System.Xml.Linq.XDocument" /> to be serialized.</param>
             <param name="stream">The <see cref="T:System.IO.Stream" /> to which this <see cref="T:System.Xml.Linq.XDocument" /> is written to.</param>
             <param name="settings">An <see cref="T:System.Xml.XmlWriterSettings" /> value with serialization settings.</param>
+        </member>
+        <member name="M:BytecodeApi.GlobalKeyboardHook.Dispose">
+            <summary>
+            Releases all resources used by the current instance of the <see cref="T:BytecodeApi.GlobalKeyboardHook" /> class.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:BytecodeApi.OutlookDataObject" -->
+        <member name="M:BytecodeApi.OutlookDataObject.#ctor(System.Windows.IDataObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.OutlookDataObject" /> class and adds the specified object to it.
+            </summary>
+            <param name="dataObject">The data to store.</param>
+        </member>
+        <member name="M:BytecodeApi.OutlookDataObject.GetData(System.Type)">
+            <summary>
+            Returns the data associated with the specified class type format.
+            </summary>
+            <param name="format">A <see cref="T:System.Type" /> representing the format of the data to retrieve.</param>
+            <returns>
+            The data associated with the specified format, or <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.OutlookDataObject.GetData(System.String)">
+            <summary>
+            Returns the data associated with the specified data format.
+            </summary>
+            <param name="format">A <see cref="T:System.String" /> that specifies the format of the data to retrieve.</param>
+            <returns>
+            The data associated with the specified format, or <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.OutlookDataObject.GetData(System.String,System.Boolean)">
+            <summary>
+            Returns the data associated with the specified data format, using an automated conversion parameter to determine whether to convert the data to the format.
+            </summary>
+            <param name="format">A <see cref="T:System.String" /> that specifies the format of the data to retrieve.</param>
+            <param name="autoConvert"><see langword="true" /> to the convert data to the specified format; otherwise, <see langword="false" />.</param>
+            <returns>
+            The data associated with the specified format, or <see langword="null" />.
+            </returns>
         </member>
         <member name="T:BytecodeApi.Blob">
             <summary>
@@ -3021,9 +3425,136 @@
             Creates a <see cref="T:BytecodeApi.Blob" />[] from the specified directory.
             </summary>
             <param name="path">A <see cref="T:System.String" /> specifying the path to a directory from which to create the <see cref="T:BytecodeApi.Blob" />[].</param>
-            <param name="recursive">A <see cref="T:System.Boolean" /> value indicating whether or not to search subdirectories recursively.</param>
+            <param name="recursive"><see langword="true" /> to search subdirectories recursively.</param>
             <returns>
             The <see cref="T:BytecodeApi.Blob" />[] this method creates.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.HttpClient">
+            <summary>
+            Provides a base class for sending HTTP requests and receiving HTTP responses from a resource identified by a URI.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.HttpClient.Default">
+            <summary>
+            Represents a singleton <see cref="T:BytecodeApi.HttpClient" /> object. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.HttpClient.DefaultWithCookies">
+            <summary>
+            Represents a singleton <see cref="T:BytecodeApi.HttpClient" /> object with a cookie container. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.HttpClient.DefaultWebClient">
+            <summary>
+            Represents a singleton <see cref="T:System.Net.WebClient" /> object. This field is read-only.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.HttpClient.AlwaysValidCertificateValidationCallback">
+            <summary>
+            Specifies a <see cref="T:System.Net.Security.RemoteCertificateValidationCallback" /> callback that always returns <see langword="true" />, thus always validating the certificate.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClient.UseCookies">
+            <summary>
+            Gets or sets a value indicating whether to use a <see cref="P:BytecodeApi.HttpClient.CookieContainer" /> or not.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClient.UserAgent">
+            <summary>
+            Gets or sets the user agent that is used for HTTP requests.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClient.AllowAutoRedirect">
+            <summary>
+            Gets or sets a value that indicates whether the request should follow redirection responses.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClient.CookieContainer">
+            <summary>
+            Gets the collection of cookies that is used for HTTP requests. If <see cref="P:BytecodeApi.HttpClient.UserAgent" /> is set to <see langword="true" />, <see cref="P:BytecodeApi.HttpClient.CookieContainer" /> is used; otherwise, it is ignored, however cookies will not be deleted.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.HttpClient.WebRequestCreated">
+            <summary>
+            Occurs when a <see cref="T:System.Net.HttpWebRequest" /> is created, prior to sending of the request. This can be used as a hook to modify the internal <see cref="T:System.Net.HttpWebRequest" /> object that is temporarily created with each HTTP request.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.HttpClient" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.HttpClient" /> class.
+            </summary>
+            <param name="useCookies"><see langword="true" /> to use cookies; otherwise, <see langword="false" />.</param>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.HttpClient" /> class.
+            </summary>
+            <param name="useCookies"><see langword="true" /> to use cookies; otherwise, <see langword="false" />.</param>
+            <param name="userAgent">The user agent that is used for HTTP requests.</param>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.GetString(System.String)">
+            <summary>
+            Sends a GET request to the specified URL.
+            </summary>
+            <param name="url">The URL the request is sent to.</param>
+            <returns>
+            A <see cref="T:System.String" /> containing the body of the HTTP response.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.GetBytes(System.String)">
+            <summary>
+            Sends a GET request to the specified URL.
+            </summary>
+            <param name="url">The URL the request is sent to.</param>
+            <returns>
+            A <see cref="T:System.Byte" />[] containing the body of the HTTP response.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.ClearCookies">
+            <summary>
+            Removes all cookies from this instance of <see cref="P:BytecodeApi.HttpClient.CookieContainer" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.HttpClient.OnWebRequestCreated(System.Net.HttpWebRequest)">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.HttpClient.WebRequestCreated" /> event.
+            </summary>
+            <param name="request">The internal <see cref="T:System.Net.HttpWebRequest" /> object that is temporarily created with each HTTP request.</param>
+        </member>
+        <member name="T:BytecodeApi.PostValue">
+            <summary>
+            Represents an HTTP POST value as a key value pair, used by the <see cref="T:BytecodeApi.HttpClient" /> class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.PostValue.Key">
+            <summary>
+            Gets or sets the key of the HTTP POST value.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.PostValue.Value">
+            <summary>
+            Gets or sets the value of the HTTP POST value.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.PostValue.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.PostValue" /> struct with the specified key and value.
+            </summary>
+            <param name="key">A <see cref="T:System.String" /> specifying the key of the HTTP POST value.</param>
+            <param name="value">A <see cref="T:System.String" /> specifying the value of the HTTP POST value.</param>
+        </member>
+        <member name="M:BytecodeApi.PostValue.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
             </returns>
         </member>
         <member name="T:BytecodeApi.Desktop">
@@ -3040,7 +3571,7 @@
             <summary>
             Plays the <see cref="P:System.Media.SystemSounds.Beep" /> or the <see cref="P:System.Media.SystemSounds.Hand" /> sound, depending on the <paramref name="success" /> parameter.
             </summary>
-            <param name="success">A <see cref="T:System.Boolean" /> value indicating which sound to play. <see langword="true" /> means, <see cref="P:System.Media.SystemSounds.Beep" /> is played. <see langword="false" /> means, <see cref="P:System.Media.SystemSounds.Hand" /> is played.</param>
+            <param name="success"><see langword="true" /> to play <see cref="P:System.Media.SystemSounds.Beep" />; <see langword="false" /> to play <see cref="P:System.Media.SystemSounds.Hand" />.</param>
         </member>
         <member name="M:BytecodeApi.Desktop.TurnOnScreenSaver">
             <summary>
@@ -3129,7 +3660,7 @@
             </summary>
             <param name="fileName">A <see cref="T:System.String" /> value specifying the filename.</param>
             <param name="content">A <see cref="T:System.Byte" />[] value specifying the content that is written to the file.</param>
-            <param name="runas">A <see cref="T:System.Boolean" /> value indicating whether or not to execute this file with the "runas" verb.</param>
+            <param name="runas"><see langword="true" /> to execute this file with the "runas" verb.</param>
             <returns>
             The <see cref="T:System.Diagnostics.Process" /> of the executed file and
             <see langword="null" />, if there was an <see cref="T:System.Exception" /> during <see cref="T:System.Diagnostics.Process" /> creation.
@@ -3166,7 +3697,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software.
             </returns>
@@ -3175,7 +3706,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion.
             </returns>
@@ -3184,7 +3715,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run.
             </returns>
@@ -3198,7 +3729,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software.
             </returns>
@@ -3207,7 +3738,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion.
             </returns>
@@ -3216,7 +3747,7 @@
             <summary>
             Creates a new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run.
             </summary>
-            <param name="writable">A <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:Microsoft.Win32.RegistryKey" /> object should be created with write permissions.</param>
+            <param name="writable"><see langword="true" /> to create this <see cref="T:Microsoft.Win32.RegistryKey" /> object with write permissions.</param>
             <returns>
             A new <see cref="T:Microsoft.Win32.RegistryKey" /> object pointing to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run.
             </returns>
@@ -3273,7 +3804,7 @@
         </member>
         <member name="T:BytecodeApi.Compression">
             <summary>
-            Represents a helper class to compress and decompress data.
+            Helper class to compress and decompress data.
             </summary>
         </member>
         <member name="M:BytecodeApi.Compression.Compress(System.Byte[])">
@@ -3296,7 +3827,7 @@
         </member>
         <member name="T:BytecodeApi.Encryption">
             <summary>
-            Represents a helper class to encrypt and decrypt data.
+            Helper class to encrypt and decrypt data.
             </summary>
         </member>
         <member name="M:BytecodeApi.Encryption.GenerateIV">
@@ -3319,7 +3850,7 @@
         </member>
         <member name="T:BytecodeApi.Hashes">
             <summary>
-            Represents a helper class to compute hashes of a specific <see cref="T:BytecodeApi.HashType" />.
+            Helper class to compute hashes of a specific <see cref="T:BytecodeApi.HashType" />.
             </summary>
         </member>
         <member name="M:BytecodeApi.Hashes.ComputeRaw(System.String,BytecodeApi.HashType)">
@@ -3380,7 +3911,7 @@
             </summary>
             <param name="data">The <see cref="T:System.String" /> to be used in the hash computation. The <see cref="T:System.String" /> is converted using the <see cref="P:System.Text.Encoding.UTF8" /> encoding.</param>
             <param name="type">The <see cref="T:BytecodeApi.HashType" /> specifying the algorithm that is used.</param>
-            <param name="upperCase">A <see cref="T:System.Boolean" /> value indicating whether to use uppercase or lowercase characters for the result <see cref="T:System.String" />.</param>
+            <param name="upperCase"><see langword="true" /> to use uppercase characters for the result <see cref="T:System.String" />; otherwise, <see langword="false" />.</param>
             <returns>
             The hexadecimal hash representation of the <paramref name="data" /> parameter.
             </returns>
@@ -3391,7 +3922,7 @@
             </summary>
             <param name="data">The <see cref="T:System.String" /> to be used in the hash computation. The <see cref="T:System.String" /> is converted using the <see cref="P:System.Text.Encoding.UTF8" /> encoding.</param>
             <param name="type">The <see cref="T:BytecodeApi.HashType" /> specifying the algorithm that is used.</param>
-            <param name="upperCase">A <see cref="T:System.Boolean" /> value indicating whether to use uppercase or lowercase characters for the result <see cref="T:System.String" />.</param>
+            <param name="upperCase"><see langword="true" /> to use uppercase characters for the result <see cref="T:System.String" />; otherwise, <see langword="false" />.</param>
             <param name="passes">A <see cref="T:System.Int32" /> value indicating the number of times <paramref name="data" /> should be processed. For successive passes, the binary result of the previous pass is used as input value for the next pass.</param>
             <returns>
             The hexadecimal hash representation of the <paramref name="data" /> parameter.
@@ -3413,7 +3944,7 @@
             </summary>
             <param name="data">The <see cref="T:System.Byte" />[] to be used in the hash computation.</param>
             <param name="type">The <see cref="T:BytecodeApi.HashType" /> specifying the algorithm that is used.</param>
-            <param name="upperCase">A <see cref="T:System.Boolean" /> value indicating whether to use uppercase or lowercase characters for the result <see cref="T:System.String" />.</param>
+            <param name="upperCase"><see langword="true" /> to use uppercase characters for the result <see cref="T:System.String" />; otherwise, <see langword="false" />.</param>
             <returns>
             The hexadecimal hash representation of the <paramref name="data" /> parameter.
             </returns>
@@ -3424,7 +3955,7 @@
             </summary>
             <param name="data">The <see cref="T:System.Byte" />[] to be used in the hash computation.</param>
             <param name="type">The <see cref="T:BytecodeApi.HashType" /> specifying the algorithm that is used.</param>
-            <param name="upperCase">A <see cref="T:System.Boolean" /> value indicating whether to use uppercase or lowercase characters for the result <see cref="T:System.String" />.</param>
+            <param name="upperCase"><see langword="true" /> to use uppercase characters for the result <see cref="T:System.String" />; otherwise, <see langword="false" />.</param>
             <param name="passes">A <see cref="T:System.Int32" /> value indicating the number of times <paramref name="data" /> should be processed. For successive passes, the binary result of the previous pass is used as input value for the next pass.</param>
             <returns>
             The hexadecimal hash representation of the <paramref name="data" /> parameter.
@@ -3788,7 +4319,7 @@
             <param name="valueMax">A <see cref="T:System.Decimal" /> value indicating the expected maximum of <paramref name="value" />.</param>
             <param name="returnMin">A <see cref="T:System.Decimal" /> value indicating the resulting minimum of the new value range.</param>
             <param name="returnMax">A <see cref="T:System.Decimal" /> value indicating the resulting maximum of the new value range.</param>
-            <param name="mapToValueRange">A <see cref="T:System.Boolean" /> value indicating whether to clip the result to the new value range.</param>
+            <param name="mapToValueRange"><see langword="true" /> to clip the result to the new value range.</param>
             <returns>
             A <see cref="T:System.Decimal" /> value, where the range of <paramref name="valueMin" /> through <paramref name="valueMax" /> has been scaled to <paramref name="returnMin" /> through <paramref name="returnMax" />.
             If <paramref name="mapToValueRange" /> is <see langword="true" />, the result clipped and therefore greater than or equal to <paramref name="returnMin" /> or less than or equal to <paramref name="valueMax" />.
@@ -3816,7 +4347,7 @@
             <param name="valueMax">A <see cref="T:System.Double" /> value indicating the expected maximum of <paramref name="value" />.</param>
             <param name="returnMin">A <see cref="T:System.Double" /> value indicating the resulting minimum of the new value range.</param>
             <param name="returnMax">A <see cref="T:System.Double" /> value indicating the resulting maximum of the new value range.</param>
-            <param name="mapToValueRange">A <see cref="T:System.Boolean" /> value indicating whether to clip the result to the new value range.</param>
+            <param name="mapToValueRange"><see langword="true" /> to clip the result to the new value range.</param>
             <returns>
             A <see cref="T:System.Double" /> value, where the range of <paramref name="valueMin" /> through <paramref name="valueMax" /> has been scaled to <paramref name="returnMin" /> through <paramref name="returnMax" />.
             If <paramref name="mapToValueRange" /> is <see langword="true" />, the result clipped and therefore greater than or equal to <paramref name="returnMin" /> or less than or equal to <paramref name="valueMax" />.
@@ -3844,7 +4375,7 @@
             <param name="valueMax">A <see cref="T:System.Single" /> value indicating the expected maximum of <paramref name="value" />.</param>
             <param name="returnMin">A <see cref="T:System.Single" /> value indicating the resulting minimum of the new value range.</param>
             <param name="returnMax">A <see cref="T:System.Single" /> value indicating the resulting maximum of the new value range.</param>
-            <param name="mapToValueRange">A <see cref="T:System.Boolean" /> value indicating whether to clip the result to the new value range.</param>
+            <param name="mapToValueRange"><see langword="true" /> to clip the result to the new value range.</param>
             <returns>
             A <see cref="T:System.Single" /> value, where the range of <paramref name="valueMin" /> through <paramref name="valueMax" /> has been scaled to <paramref name="returnMin" /> through <paramref name="returnMax" />.
             If <paramref name="mapToValueRange" /> is <see langword="true" />, the result clipped and therefore greater than or equal to <paramref name="returnMin" /> or less than or equal to <paramref name="valueMax" />.
@@ -3872,7 +4403,7 @@
             <param name="valueMax">A <see cref="T:System.Int32" /> value indicating the expected maximum of <paramref name="value" />.</param>
             <param name="returnMin">A <see cref="T:System.Int32" /> value indicating the resulting minimum of the new value range.</param>
             <param name="returnMax">A <see cref="T:System.Int32" /> value indicating the resulting maximum of the new value range.</param>
-            <param name="mapToValueRange">A <see cref="T:System.Boolean" /> value indicating whether to clip the result to the new value range.</param>
+            <param name="mapToValueRange"><see langword="true" /> to clip the result to the new value range.</param>
             <returns>
             A <see cref="T:System.Int32" /> value, where the range of <paramref name="valueMin" /> through <paramref name="valueMax" /> has been scaled to <paramref name="returnMin" /> through <paramref name="returnMax" />.
             If <paramref name="mapToValueRange" /> is <see langword="true" />, the result clipped and therefore greater than or equal to <paramref name="returnMin" /> or less than or equal to <paramref name="valueMax" />.
@@ -3986,7 +4517,7 @@
             <param name="range">A <see cref="T:BytecodeApi.Range`1" /> to intersect.</param>
             <returns>
             <see langword="true" />, if there is any intersection;
-            otherwise <see langword="false" />.
+            otherwise, <see langword="false" />.
             </returns>
         </member>
         <member name="T:BytecodeApi.Properties.IconResources">
@@ -6547,7 +7078,7 @@
             Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.MessageBoxes.CaptionForConfirmation" /> as title and "Yes" and "No" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
             </summary>
             <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
-            <param name="isWarning">A <see cref="T:System.Boolean" /> value indicating whether the <see cref="T:System.Windows.MessageBox" /> is a warning or a confirmation.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
             <returns>
             <see langword="true" />, if "Yes" has been selected;
             otherwise, <see langword="false" />.
@@ -6558,8 +7089,8 @@
             Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.MessageBoxes.CaptionForConfirmation" /> as title and "Yes" and "No" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
             </summary>
             <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
-            <param name="isWarning">A <see cref="T:System.Boolean" /> value indicating whether the <see cref="T:System.Windows.MessageBox" /> is a warning or a confirmation.</param>
-            <param name="useOkCancel">A <see cref="T:System.Boolean" /> value indicating whether to use "Yes" and "No", or "OK" and "Cancel" buttons, respectively.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
+            <param name="useOkCancel"><see langword="true" /> to use "Yes" and "No"; <see langword="false" /> to use "OK" and "Cancel" buttons.</param>
             <returns>
             <see langword="true" />, if "Yes" or "OK" has been selected;
             otherwise, <see langword="false" />.
@@ -6573,7 +7104,7 @@
             <returns>
             <see langword="true" />, if "Yes" has been selected;
             <see langword="false" />, if "No" has been selected;
-            <see langword="null" />, if "Cancel" has been selected".
+            <see langword="null" />, if "Cancel" has been selected.
             </returns>
         </member>
         <member name="M:BytecodeApi.MessageBoxes.ConfirmationWithCancel(System.String,System.Boolean)">
@@ -6581,11 +7112,11 @@
             Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.MessageBoxes.CaptionForConfirmation" /> as title and "Yes", "No" and "Cancel" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
             </summary>
             <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
-            <param name="isWarning">A <see cref="T:System.Boolean" /> value indicating whether the <see cref="T:System.Windows.MessageBox" /> is a warning or a confirmation.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
             <returns>
             <see langword="true" />, if "Yes" has been selected;
             <see langword="false" />, if "No" has been selected;
-            <see langword="null" />, if "Cancel" has been selected".
+            <see langword="null" />, if "Cancel" has been selected.
             </returns>
         </member>
         <member name="M:BytecodeApi.MessageBoxes.Warning(System.String)">
