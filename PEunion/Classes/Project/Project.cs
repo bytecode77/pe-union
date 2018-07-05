@@ -504,7 +504,7 @@ namespace PEunion
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has no extension (suggested: " + originalExtension + ")"));
 						}
-						else if (!newExtension.CompareCaseInsensitive(originalExtension))
+						else if (newExtension.CompareTo(originalExtension, SpecialStringComparison.IgnoreCase) != 0)
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has a different extension than the original file (" + originalExtension + ")"));
 						}
@@ -515,12 +515,12 @@ namespace PEunion
 						}
 					}
 
-					if (FileItems.TakeWhile(other => other != file).Any(other => other.Name.CompareCaseInsensitive(file.Name) && other.DropLocation == file.DropLocation) ||
-						Items.TakeWhile(other => other != file).OfType<ProjectUrl>().Any(other => other.Name.CompareCaseInsensitive(file.Name) && other.DropLocation == file.DropLocation))
+					if (FileItems.TakeWhile(other => other != file).Any(other => other.Name.CompareTo(file.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == file.DropLocation) ||
+						Items.TakeWhile(other => other != file).OfType<ProjectUrl>().Any(other => other.Name.CompareTo(file.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == file.DropLocation))
 					{
 						errors.Add(ValidationError.CreateError(file.SourceFileName, "File name '" + file.Name + "' conflicts with other file dropped in the same location"));
 					}
-					else if (FileItems.TakeWhile(other => other != file).Any(other => other.FullName.CompareCaseInsensitive(file.FullName)))
+					else if (FileItems.TakeWhile(other => other != file).Any(other => other.FullName.CompareTo(file.FullName, SpecialStringComparison.IgnoreCase) == 0))
 					{
 						errors.Add(ValidationError.CreateMessage(file.SourceFileName, "Identical file '" + file.SourceFileName + "' added a second time"));
 					}
@@ -559,8 +559,8 @@ namespace PEunion
 						}
 					}
 
-					if (UrlItems.TakeWhile(other => other != url).Any(other => other.Name.CompareCaseInsensitive(url.Name) && other.DropLocation == url.DropLocation) ||
-						Items.TakeWhile(other => other != url).OfType<ProjectFile>().Any(other => other.Name.CompareCaseInsensitive(url.Name) && other.DropLocation == url.DropLocation))
+					if (UrlItems.TakeWhile(other => other != url).Any(other => other.Name.CompareTo(url.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == url.DropLocation) ||
+						Items.TakeWhile(other => other != url).OfType<ProjectFile>().Any(other => other.Name.CompareTo(url.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == url.DropLocation))
 					{
 						errors.Add(ValidationError.CreateError(source, "File name '" + url.Name + "' conflicts with other file dropped in the same location"));
 					}

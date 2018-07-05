@@ -338,7 +338,7 @@ namespace PEunion
 					Properties.Resources.FileRegisterExtension
 						.Replace("{IconPath}", iconPath.Replace(@"\", @"\\"))
 						.Replace("{ApplicationPath}", ApplicationBase.ExecutablePath.Replace(@"\", @"\\"))
-						.ToAnsi()
+						.ToAnsiBytes()
 				);
 			}
 		}

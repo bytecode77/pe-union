@@ -155,7 +155,7 @@ namespace PEunion
 							{
 								string tempPath = Path.Combine(path, DestinationFileName + "~.tmp");
 								File.Copy(SourceFile, tempPath, true);
-								new FileInfo(tempPath).ChangeExecutableIcon(DestinationIcon);
+								ResourceFile.ChangeIcon(tempPath, DestinationIcon);
 								File.Copy(tempPath, fileName, true);
 								File.Delete(tempPath);
 							}

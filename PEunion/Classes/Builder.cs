@@ -90,7 +90,7 @@ namespace PEunion
 					if (results.Errors.Count == 0 && project.IconPath != null)
 					{
 						WindowMain.Singleton.OverlayTitle = "Applying icon '" + Path.GetFileName(project.IconPath) + "'";
-						new FileInfo(path).ChangeExecutableIcon(project.IconPath);
+						ResourceFile.ChangeIcon(path, project.IconPath);
 					}
 					return results;
 				}
@@ -263,7 +263,7 @@ namespace PEunion
 			{
 				case BuildObfuscationType.None:
 					return originalVariableName
-						.TrimEnd("__")
+						.TrimEndString("__")
 						.SubstringFrom("_", true);
 				case BuildObfuscationType.AlphaNumeric:
 					string alphabet = TextResources.Alphabet + TextResources.Alphabet.ToUpper();
