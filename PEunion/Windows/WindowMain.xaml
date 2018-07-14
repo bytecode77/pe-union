@@ -161,7 +161,7 @@
 				<TabItem>
 					<TabItem.Header>
 						<StackPanel Orientation="Horizontal">
-							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringAddConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringConcatConverter}, ConverterParameter={api:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
 							<TextBlock Name="txtProjectTabIsDirty" Text=" *" />
 							<Button Style="{StaticResource CloseButton}" Command="{x:Static local:WindowMain.NewCommand}" />
 						</StackPanel>
@@ -532,7 +532,7 @@
 											<TextBox Grid.Column="2" Text="{Binding SelectedProjectItem.Title, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
 											<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding SelectedProjectItem.Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="100" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource UITextBox}" Margin="0,0,0,5" />
 											<ComboBox Grid.Row="2" Grid.Column="2" ItemsSource="{x:Static local:Lookups.MessageBoxButtons}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedProjectItem.Buttons}" Style="{StaticResource UIComboBox}" Margin="0,0,0,10" />
-											<StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="0,0,0,10" api:MarginSetter.Margin="10">
+											<StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="0,0,0,10">
 												<RadioButton Content="None" VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconNone}" />
 												<RadioButton VerticalContentAlignment="Center" Margin="0,0,10,0" IsChecked="{Binding SelectedProjectItem.IsIconInformation}">
 													<StackPanel Orientation="Horizontal">

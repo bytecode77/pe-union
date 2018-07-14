@@ -155,6 +155,13 @@
             </summary>
             <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
         </member>
+        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean},System.TimeSpan)">
+            <summary>
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />. The specified delay is waited between each call to <paramref name="condition" />.
+            </summary>
+            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
+            <param name="delay">A <see cref="T:System.TimeSpan" /> that specifies the delay between each call to <paramref name="condition" />.</param>
+        </member>
         <member name="T:BytecodeApi.ConvertEx">
             <summary>
             Provides <see langword="static" /> methods that extend the <see cref="T:System.Convert" /> class.
@@ -177,6 +184,24 @@
             <param name="oneBased"><see langword="true" /> to return a one-based index; otherwise, <see langword="false" />.</param>
             <returns>
             A <see cref="T:System.Int32" /> value with the zero-based or one-based index, converted from the Excel column name.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ConvertEx.To7BitEncodedInt(System.Int32)">
+            <summary>
+            Converts a 32-bit integer into a compressed format.
+            </summary>
+            <param name="value">The <see cref="T:System.Int32" /> value to convert.</param>
+            <returns>
+            A new <see cref="T:System.Byte" />[] that represents the specified 32-bit integer in compressed format.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ConvertEx.From7BitEncodedInt(System.Byte[])">
+            <summary>
+            Converts a compressed 32-bit integer into a <see cref="T:System.Int32" /> value.
+            </summary>
+            <param name="value">The <see cref="T:System.Byte" />[] value to convert.</param>
+            <returns>
+            A <see cref="T:System.Int32" /> value that was converted from the specified 32-bit integer in binary format.
             </returns>
         </member>
         <member name="M:BytecodeApi.ConvertEx.FromUnixTimeStamp(System.Int32)">
@@ -276,6 +301,78 @@
             <param name="objA">The <see cref="T:System.Object" /> to be exchanged.</param>
             <param name="objB">The <see cref="T:System.Object" /> to be exchanged.</param>
         </member>
+        <member name="M:BytecodeApi.CSharp.EqualsAny``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to any of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to any of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.EqualsAny``1(``0,``0[])">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to any of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to any of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.EqualsNone``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to none of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to none of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.EqualsNone``1(``0,``0[])">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to none of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to none of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.EqualsAll``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to all of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to all of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.EqualsAll``1(``0,``0[])">
+            <summary>
+            Compares <paramref name="obj" /> with the objects in the specified collection and returns <see langword="true" />, if <paramref name="obj" /> is equal to all of the values.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Object" /> and the value collection.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with the objects in <paramref name="values" />.</param>
+            <param name="values">The value collection to be compared to <paramref name="obj" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="obj" /> is equal to all of the values in the specified collection;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.CSharp.Try(System.Action)">
             <summary>
             Invokes an <see cref="T:System.Action" /> and handles any <see cref="T:System.Exception" />. Returns <see langword="true" /> on successful execution and <see langword="false" />, if an <see cref="T:System.Exception" /> was thrown.
@@ -372,6 +469,18 @@
             otherwise, <see langword="false" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.CSharp.FindDataContext``1(System.Object)">
+            <summary>
+            Returns the DataContext property, if the specified <see cref="T:System.Object" /> instance is either a <see cref="T:System.Windows.FrameworkElement" /> or a <see cref="T:System.Windows.FrameworkContentElement" />. If found and can be casted to the specified type, the DataContext is returned, otherwise, <see langword="null" />.
+            </summary>
+            <typeparam name="T">The return type to cast the DataContext property to.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> where the DataContext property looked for. This is typically a parameter from a WPF event hanlder.</param>
+            <returns>
+            <see cref="P:System.Windows.FrameworkElement.DataContext" />, if this <see cref="T:System.Object" /> instance is a <see cref="T:System.Windows.FrameworkElement" />;
+            <see cref="P:System.Windows.FrameworkContentElement.DataContext" />, if this <see cref="T:System.Object" /> instance is a <see cref="T:System.Windows.FrameworkContentElement" />;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.Create">
             <summary>
             Provides support for creation and generation of generic objects.
@@ -401,6 +510,105 @@
             <param name="size">A <see cref="T:System.Int32" /> value specifying the amount of bytes to be generated.</param>
             <returns>
             A new <see cref="T:System.String" /> with random hexadecimal charaters, where the value of <paramref name="size" /> specifies the amount of bytes to be generated. The returned <see cref="T:System.String" /> has a length of <paramref name="size" /> * 2.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonArray``1(``0)">
+            <summary>
+            Creates an <see cref="T:System.Array" /> with <paramref name="obj" /> as the single element.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Object" /> to create the <see cref="T:System.Array" /> from.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to be inserted into the new <see cref="T:System.Array" />.</param>
+            <returns>
+            A new <see cref="T:System.Array" /> with <paramref name="obj" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonList``1(``0)">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.List`1" /> with <paramref name="obj" /> as the single element.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Object" /> to create the <see cref="T:System.Collections.Generic.List`1" /> from.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to be inserted into the new <see cref="T:System.Collections.Generic.List`1" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.List`1" /> with <paramref name="obj" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonDictionary``2(System.Collections.Generic.KeyValuePair{``0,``1})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2" /> with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </summary>
+            <typeparam name="TKey">The type of the key of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <param name="keyValuePair">The <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonDictionary``2(System.Collections.Generic.KeyValuePair{``0,``1},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2" /> that uses the specified equality comparer for the set type with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </summary>
+            <typeparam name="TKey">The type of the key of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <param name="keyValuePair">The <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when comparing values in the set, or <see langword="null" /> to use the default <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation for the set type.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonDictionary``2(``0,``1)">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2" /> with the a <see cref="T:System.Collections.Generic.KeyValuePair`2" /> from the <paramref name="key" /> and <paramref name="value" /> parameters as the single element.
+            </summary>
+            <typeparam name="TKey">The type of the key of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <param name="key">The key for the <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <param name="value">The value for the <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonDictionary``2(``0,``1,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2" /> that uses the specified equality comparer for the set type with the a <see cref="T:System.Collections.Generic.KeyValuePair`2" /> from the <paramref name="key" /> and <paramref name="value" /> parameters as the single element.
+            </summary>
+            <typeparam name="TKey">The type of the key of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" />.</typeparam>
+            <param name="key">The key for the <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <param name="value">The value for the <see cref="T:System.Collections.Generic.KeyValuePair`2" /> to be inserted into the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when comparing values in the set, or <see langword="null" /> to use the default <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation for the set type.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> with the specified <see cref="T:System.Collections.Generic.KeyValuePair`2" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonHashSet``1(``0)">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.HashSet`1" /> with <paramref name="obj" /> as the single element.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Object" /> to create the <see cref="T:System.Collections.Generic.HashSet`1" /> from.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to be inserted into the new <see cref="T:System.Collections.Generic.HashSet`1" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> with <paramref name="obj" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonHashSet``1(``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.HashSet`1" /> that uses the specified equality comparer for the set type with <paramref name="obj" /> as the single element.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Object" /> to create the <see cref="T:System.Collections.Generic.HashSet`1" /> from.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to be inserted into the new <see cref="T:System.Collections.Generic.HashSet`1" />.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when comparing values in the set, or <see langword="null" /> to use the default <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation for the set type.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> with <paramref name="obj" /> as the single element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Create.SingletonObservableCollection``1(``0)">
+            <summary>
+            Creates an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> with <paramref name="obj" /> as the single element.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Object" /> to create the <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> from.</typeparam>
+            <param name="obj">The <see cref="T:System.Object" /> to be inserted into the new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> with <paramref name="obj" /> as the single element.
             </returns>
         </member>
         <member name="T:BytecodeApi.SpecialStringComparison">
@@ -487,6 +695,139 @@
             <summary>
             The UDPv6 protocol is used.
             </summary>
+        </member>
+        <member name="T:BytecodeApi.IEnumerableConvertExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for conversion of <see cref="T:System.Collections.IEnumerable" /> objects to different collection types.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToArray``1(System.Collections.IEnumerable)">
+            <summary>
+            Converts this <see cref="T:System.Collections.IEnumerable" /> to an <see cref="T:System.Array" /> of the specified type.
+            </summary>
+            <typeparam name="TSource">The type of the returned <see cref="T:System.Array" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.IEnumerable" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Array" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToList``1(System.Collections.IEnumerable)">
+            <summary>
+            Converts this <see cref="T:System.Collections.IEnumerable" /> to a <see cref="T:System.Collections.Generic.List`1" /> of the specified type.
+            </summary>
+            <typeparam name="TSource">The type of the returned a <see cref="T:System.Collections.Generic.List`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.IEnumerable" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.List`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``1,``0}})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <typeparam name="TKey">The type of the key of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="source">The collection of <see cref="T:System.Collections.Generic.KeyValuePair`2" /> objects to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> that contains all <see cref="T:System.Collections.Generic.KeyValuePair`2" /> objects in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``1,``0}},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.Dictionary`2" /> using the specified equality comparer.
+            </summary>
+            <typeparam name="TKey">The type of the key of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="source">The collection of <see cref="T:System.Collections.Generic.KeyValuePair`2" /> objects to convert.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when creating the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> that contains all <see cref="T:System.Collections.Generic.KeyValuePair`2" /> objects in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Tuple{``1,``0}})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.Dictionary`2" />, where Item1 of the <see cref="T:System.Tuple`2" /> is representing the key and Item2 is representing the value.
+            </summary>
+            <typeparam name="TKey">The type of the key of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="source">The collection of <see cref="T:System.Tuple`2" /> objects to convert, where Item1 is representing the key and Item2 is representing the value.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> that contains all converted <see cref="T:System.Tuple`2" /> objects in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Tuple{``1,``0}},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.Dictionary`2" />using the specified equality comparer, where Item1 of the <see cref="T:System.Tuple`2" /> is representing the key and Item2 is representing the value.
+            </summary>
+            <typeparam name="TKey">The type of the key of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of the returned <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="source">The collection of <see cref="T:System.Tuple`2" /> objects to convert, where Item1 is representing the key and Item2 is representing the value.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when creating the new <see cref="T:System.Collections.Generic.Dictionary`2" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.Dictionary`2" /> that contains all converted <see cref="T:System.Tuple`2" /> objects in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToHashSet``1(System.Collections.IEnumerable)">
+            <summary>
+            Converts this <see cref="T:System.Collections.IEnumerable" /> to a <see cref="T:System.Collections.Generic.HashSet`1" /> of the specified type.
+            </summary>
+            <typeparam name="TSource">The type of the returned <see cref="T:System.Collections.Generic.HashSet`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.IEnumerable" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToHashSet``1(System.Collections.IEnumerable,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Converts this <see cref="T:System.Collections.IEnumerable" /> to a <see cref="T:System.Collections.Generic.HashSet`1" /> of the specified type using the specified equality comparer.
+            </summary>
+            <typeparam name="TSource">The type of the returned <see cref="T:System.Collections.Generic.HashSet`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.IEnumerable" /> to convert.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when creating the new <see cref="T:System.Collections.Generic.HashSet`1" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToHashSet``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.HashSet`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToHashSet``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to a <see cref="T:System.Collections.Generic.HashSet`1" /> using the specified equality comparer.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to convert.</param>
+            <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> implementation to use when creating the new <see cref="T:System.Collections.Generic.HashSet`1" />.</param>
+            <returns>
+            A new <see cref="T:System.Collections.Generic.HashSet`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToObservableCollection``1(System.Collections.IEnumerable)">
+            <summary>
+            Converts this <see cref="T:System.Collections.IEnumerable" /> to an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> of the specified type.
+            </summary>
+            <typeparam name="TSource">The type of the returned <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.IEnumerable" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> that contains all values in this <see cref="T:System.Collections.IEnumerable" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableConvertExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts this <see cref="T:System.Collections.Generic.IEnumerable`1" /> to an <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the <see cref="T:System.Collections.Generic.IEnumerable`1" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to convert.</param>
+            <returns>
+            A new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1" /> that contains all values in this <see cref="T:System.Collections.Generic.IEnumerable`1" />.
+            </returns>
         </member>
         <member name="T:BytecodeApi.TcpConnection">
             <summary>
@@ -648,7 +989,7 @@
         </member>
         <member name="M:BytecodeApi.TcpConnection.ReadString">
             <summary>
-            Reads a <see cref="T:System.String" /> value from underlying <see cref="T:System.Net.Sockets.NetworkStream" />. The string is prefixed with the length, encoded as an integer seven bits at a time.
+            Reads a <see cref="T:System.String" /> value from underlying <see cref="T:System.Net.Sockets.NetworkStream" />. The <see cref="T:System.String" /> is prefixed with the length, encoded as an integer seven bits at a time.
             </summary>
             <returns>
             The next <see cref="T:System.String" /> read from the underlying <see cref="T:System.Net.Sockets.NetworkStream" />.
@@ -1177,16 +1518,6 @@
             otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.Validate.PhoneNumber(System.String)">
-            <summary>
-            Validates a <see cref="T:System.String" /> object that is a phone number.
-            </summary>
-            <param name="str">The <see cref="T:System.String" /> to be validated.</param>
-            <returns>
-            <see langword="true" />, if validation of <paramref name="str" /> succeeded;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
         <member name="M:BytecodeApi.Validate.IPAddress(System.String)">
             <summary>
             Validates a <see cref="T:System.String" /> object that is an <see cref="T:System.Net.IPAddress" />. Both IPv4 and IPv6 values are validated.
@@ -1200,6 +1531,26 @@
         <member name="M:BytecodeApi.Validate.MacAddress(System.String)">
             <summary>
             Validates a <see cref="T:System.String" /> object that is a MAC address.
+            </summary>
+            <param name="str">The <see cref="T:System.String" /> to be validated.</param>
+            <returns>
+            <see langword="true" />, if validation of <paramref name="str" /> succeeded;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Validate.PhoneNumber(System.String)">
+            <summary>
+            Validates a <see cref="T:System.String" /> object that is a phone number.
+            </summary>
+            <param name="str">The <see cref="T:System.String" /> to be validated.</param>
+            <returns>
+            <see langword="true" />, if validation of <paramref name="str" /> succeeded;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Validate.CreditCardNumber(System.String)">
+            <summary>
+            Validates a <see cref="T:System.String" /> object that is a credit card number.
             </summary>
             <param name="str">The <see cref="T:System.String" /> to be validated.</param>
             <returns>
@@ -1261,8 +1612,8 @@
             <summary>
             Compares the result of the Count() method of two <see cref="T:System.Collections.Generic.IEnumerable`1" /> objects and returns an indication of their relative sort order. Specified <see cref="T:System.Object" /> parameters that are not <see cref="T:System.Collections.Generic.IEnumerable`1" /> objects are treated as <see langword="null" />.
             </summary>
-            <param name="x">A <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="y" />.</param>
-            <param name="y">A <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="x" />.</param>
+            <param name="x">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="y" />.</param>
+            <param name="y">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="x" />.</param>
             <returns>
             A signed integer that indicates the relative values of the result of the Count() method of <paramref name="x" /> and the result of the Count() method of <paramref name="y" />.
             </returns>
@@ -1271,8 +1622,8 @@
             <summary>
             Compares the result of the Count() method of two <see cref="T:System.Collections.Generic.IEnumerable`1" /> objects and returns an indication of their relative sort order.
             </summary>
-            <param name="x">A <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="y" />.</param>
-            <param name="y">A <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="x" />.</param>
+            <param name="x">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="y" />.</param>
+            <param name="y">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare the result of the Count() method to the result of the Count() method of <paramref name="x" />.</param>
             <returns>
             A signed integer that indicates the relative values of the result of the Count() method of <paramref name="x" /> and the result of the Count() method of <paramref name="y" />.
             </returns>
@@ -1387,38 +1738,38 @@
             The token is a limited token (integrity level is medium, but the user is a local administrator and can elevate with consent).
             </summary>
         </member>
-        <member name="T:BytecodeApi.FriendlySizeNameType">
+        <member name="T:BytecodeApi.ByteSizeFormat">
             <summary>
-            Specifies the display format for the <see cref="T:BytecodeApi.LongToFriendlySizeNameConverter" /> class.
+            Specifies the display format for byte size values to be used in <see cref="T:System.String" /> formatting logic.
             </summary>
         </member>
-        <member name="F:BytecodeApi.FriendlySizeNameType.Unit">
+        <member name="F:BytecodeApi.ByteSizeFormat.ByteSize">
             <summary>
-            Specifies, that the closest unit (Bytes, KB, MB, GB, TB, ...) is displayed. The result is rounded with no decimal places.
+            Specifies that the closest unit (Bytes, KB, MB, GB, TB, ...) is displayed. The result is rounded with no decimal places.
             <para />Example: 12345 is converted to "12 KB"
             </summary>
         </member>
-        <member name="F:BytecodeApi.FriendlySizeNameType.UnitTwoDigits">
+        <member name="F:BytecodeApi.ByteSizeFormat.ByteSizeTwoDigits">
             <summary>
-            Specifies, that the closest unit (Bytes, KB, MB, GB, TB, ...) is displayed. The result is rounded with two decimal places.
+            Specifies that the closest unit (Bytes, KB, MB, GB, TB, ...) is displayed. The result is rounded with two decimal places.
             <para />Example: 12345 is converted to "12,06 KB"
             </summary>
         </member>
-        <member name="F:BytecodeApi.FriendlySizeNameType.Bytes">
+        <member name="F:BytecodeApi.ByteSizeFormat.Bytes">
             <summary>
-            Specifies, that the exact amount of bytes is displayed. A thousands separator is displayed as a dot.
+            Specifies that the exact amount of bytes is displayed. A thousands separator is displayed as a dot.
             <para />Example: 12345 is converted to "12.345 bytes"
             </summary>
         </member>
-        <member name="F:BytecodeApi.FriendlySizeNameType.KiloBytes">
+        <member name="F:BytecodeApi.ByteSizeFormat.KiloBytes">
             <summary>
-            Specifies, that the value is displayed as kilobytes. The result is rounded up. A thousands separator is displayed as a dot.
+            Specifies that the value is displayed as kilobytes. The result is rounded up. A thousands separator is displayed as a dot.
             <para />Example: 12345 is converted to "13 KB"
             </summary>
         </member>
-        <member name="F:BytecodeApi.FriendlySizeNameType.KiloBytesTwoDigits">
+        <member name="F:BytecodeApi.ByteSizeFormat.KiloBytesTwoDigits">
             <summary>
-            Specifies, that the value is displayed as kilobytes. The result is rounded with two decimal places. A thousands separator is displayed as a dot.
+            Specifies that the value is displayed as kilobytes. The result is rounded with two decimal places. A thousands separator is displayed as a dot.
             <para />Example: 12345 is converted to "13 KB"
             </summary>
         </member>
@@ -1710,7 +2061,7 @@
         </member>
         <member name="T:BytecodeApi.StringCasing">
             <summary>
-            Specifies the casing of a <see cref="T:System.String" />.
+            Specifies the character casing of a <see cref="T:System.String" />.
             </summary>
         </member>
         <member name="F:BytecodeApi.StringCasing.Lower">
@@ -1759,28 +2110,6 @@
             <returns>
             <see langword="null" />, if this <see cref="T:System.Boolean" /> value is <see langword="false" />;
             otherwise, its original value.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.BooleanExtensions.ToIndeterminate(System.Collections.Generic.IEnumerable{System.Boolean})">
-            <summary>
-            Converts all <see cref="T:System.Boolean" /> values to a nullable <see cref="T:System.Boolean" /> value representing an indeterminate indicator.
-            </summary>
-            <param name="values">A collection of <see cref="T:System.Boolean" /> of values to be processed.</param>
-            <returns>
-            <see langword="true" />, if all values of <paramref name="values" /> are equal to <see langword="true" />;
-            <see langword="false" />, if all values of <paramref name="values" /> are equal to <see langword="false" />;
-            otherwise, <see langword="null" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.BooleanExtensions.ToIndeterminate(System.Collections.Generic.IEnumerable{System.Nullable{System.Boolean}})">
-            <summary>
-            Converts all <see cref="T:System.Boolean" /> values to a nullable <see cref="T:System.Boolean" /> value representing an indeterminate indicator.
-            </summary>
-            <param name="values">A collection of <see cref="T:System.Boolean" />? of values to be processed.</param>
-            <returns>
-            <see langword="true" />, if all values of <paramref name="values" /> are equal to <see langword="true" />;
-            <see langword="false" />, if all values of <paramref name="values" /> are equal to <see langword="false" />;
-            otherwise, <see langword="null" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.BooleanExtensions.ToVisibility(System.Boolean)">
@@ -2925,11 +3254,110 @@
             Provides a set of <see langword="static" /> methods for querying data structures that implement <see cref="T:System.Collections.IEnumerable" />.
             </summary>
         </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AllValuesEqual``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns <see langword="true" />, if all values of <paramref name="source" /> are equal or if the <see cref="T:System.Collections.Generic.IEnumerable`1" /> has no elements.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to check.</param>
+            <returns>
+            <see langword="true" />, if all values of <paramref name="source" /> are equal or if the <see cref="T:System.Collections.Generic.IEnumerable`1" /> has no elements;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.None``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Determines whether a sequence contains no elements.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to check for emptiness.</param>
+            <returns>
+            <see langword="true" />, if the source sequence is empty;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.None``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Determines whether a sequence that satisfies a specified condition contains no elements.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to check for emptiness.</param>
+            <param name="predicate">A function to test each element for a condition.</param>
+            <returns>
+            <see langword="true" />, if the source sequence that satisfies a specified condition is empty;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0)">
+            <summary>
+            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.Dictionary`2" />, or returns a default value if it was not found.
+            </summary>
+            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="dictionary">The <see cref="T:System.Collections.Generic.Dictionary`2" /> to search.</param>
+            <param name="key">The key of the value to get.</param>
+            <returns>
+            The value associated with the specified key, or a default value if it was not found.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.Dictionary`2" />, or returns a default value if it was not found.
+            </summary>
+            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
+            <param name="dictionary">The <see cref="T:System.Collections.Generic.Dictionary`2" /> to search.</param>
+            <param name="key">The key of the value to get.</param>
+            <param name="defaultValue">The value that is used if the key was not found.</param>
+            <returns>
+            The value associated with the specified key, or a default value if it was not found.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ToIndeterminate(System.Collections.Generic.IEnumerable{System.Boolean})">
+            <summary>
+            Converts all <see cref="T:System.Boolean" /> values to a nullable <see cref="T:System.Boolean" /> value representing an indeterminate indicator.
+            </summary>
+            <param name="values">A collection of <see cref="T:System.Boolean" /> of values to be processed.</param>
+            <returns>
+            <see langword="true" />, if all values of <paramref name="values" /> are equal to <see langword="true" />;
+            <see langword="false" />, if all values of <paramref name="values" /> are equal to <see langword="false" />;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ToIndeterminate(System.Collections.Generic.IEnumerable{System.Nullable{System.Boolean}})">
+            <summary>
+            Converts all <see cref="T:System.Boolean" /> values to a nullable <see cref="T:System.Boolean" /> value representing an indeterminate indicator.
+            </summary>
+            <param name="values">A collection of <see cref="T:System.Boolean" />? of values to be processed.</param>
+            <returns>
+            <see langword="true" />, if all values of <paramref name="values" /> are equal to <see langword="true" />;
+            <see langword="false" />, if all values of <paramref name="values" /> are equal to <see langword="false" />;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Sum(System.Collections.Generic.IEnumerable{System.TimeSpan})">
+            <summary>
+            Computes the sum of the sequence of <see cref="T:System.TimeSpan" /> values.
+            </summary>
+            <param name="source">A sequence of <see cref="T:System.TimeSpan" /> values that are used to calculate a sum.</param>
+            <returns>
+            A new <see cref="T:System.TimeSpan" /> with the sum of the projected values.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Sum(System.Collections.Generic.IEnumerable{System.Nullable{System.TimeSpan}})">
+            <summary>
+            Computes the sum of the sequence of <see cref="T:System.TimeSpan" /> values. Values equal to <see langword="null" /> are excluded from the calculation and treated as <see cref="F:System.TimeSpan.Zero" />.
+            </summary>
+            <param name="source">A sequence of <see cref="T:System.TimeSpan" /> values that are used to calculate a sum.</param>
+            <returns>
+            A new <see cref="T:System.TimeSpan" /> with the sum of the projected values.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.IEnumerableExtensions.FirstOrException``2(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Returns the first element of a sequence or throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />, if <paramref name="source" /> does not have any elements.
             </summary>
-            <typeparam name="TSource"></typeparam>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
             <typeparam name="TException">The type of the <see cref="T:System.Exception" /> that is instantiated and thrown.</typeparam>
             <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
             <returns>
@@ -2941,13 +3369,109 @@
             <summary>
             Returns the first element of a sequence that satisfies a specified condition or throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />, if no such element is found.
             </summary>
-            <typeparam name="TSource"></typeparam>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
             <typeparam name="TException">The type of the <see cref="T:System.Exception" /> that is instantiated and thrown.</typeparam>
             <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
             <param name="predicate">A function to test each element for a condition.</param>
             <returns>
             The first element of a sequence that satisfies a specified condition, if any item satisfied;
             otherwise, instantiates and throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ExceptNull``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Filters a sequence of values and returns only values which are not <see langword="null" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains elements from the input sequence that are not <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Returns all distinct elements of a sequence according to a specified key selector function.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <typeparam name="TKey">The type of the key returned by keySelector.</typeparam>
+            <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+            <param name="keySelector">A <see cref="T:System.Func`2" /> to extract the key for each element.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1" /> with all distinct elements of <paramref name="source" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Concat``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Concatenates a sequence and one element, where the single element is put after all elements of this sequence.
+            </summary>
+            <typeparam name="TSource">The type of the elements to concatenate.</typeparam>
+            <param name="first">The first sequence to concatenate.</param>
+            <param name="second">The element to concatenate to the first sequence.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1" /> that contains the concatenated elements of the source
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Chunk``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Splits up a sequence into chunks with the specified size. Each chunk is an <see cref="T:System.Collections.Generic.IEnumerable`1" />, containing a maximum number of elements according to <paramref name="chunkSize" />. The last chunk may contain less elements than specified <paramref name="chunkSize" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements to chunk.</typeparam>
+            <param name="source">A sequence of values to chunk.</param>
+            <param name="chunkSize">The chunk size. The last chunk may contain less elements than specified <paramref name="chunkSize" />. All previous chunks contain exactly the amount of chunks specified in <paramref name="chunkSize" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerable" /> with an <see cref="T:System.Collections.IEnumerable" /> for each returned chunk.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Sort``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Sorts the elements of a sequence in ascending order.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">A sequence of values to sort.</param>
+            <returns>
+            An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Sort``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts the elements of a sequence in ascending order using a specified comparer.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">A sequence of values to sort.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare the elements.</param>
+            <returns>
+            An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.SortDescending``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Sorts the elements of a sequence in descending order.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">A sequence of values to sort.</param>
+            <returns>
+            An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted in descending order.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.SortDescending``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Sorts the elements of a sequence in descending order using a specified comparer.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">A sequence of values to sort.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare the elements.</param>
+            <returns>
+            An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted in descending order.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.SortRandom``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Randomized the order of the elements of a sequence.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">A sequence of values to sort.</param>
+            <returns>
+            An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted in randomized order.
             </returns>
         </member>
         <member name="T:BytecodeApi.ImageExtensions">
@@ -3068,7 +3592,7 @@
             <summary>
             Returns the first element of a sequence or throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />, if <paramref name="source" /> does not have any elements.
             </summary>
-            <typeparam name="TSource"></typeparam>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
             <typeparam name="TException">The type of the <see cref="T:System.Exception" /> that is instantiated and thrown.</typeparam>
             <param name="source">An <see cref="T:System.Linq.IQueryable`1" /> to return an element from.</param>
             <returns>
@@ -3080,7 +3604,7 @@
             <summary>
             Returns the first element of a sequence that satisfies a specified condition or throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />, if no such element is found.
             </summary>
-            <typeparam name="TSource"></typeparam>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
             <typeparam name="TException">The type of the <see cref="T:System.Exception" /> that is instantiated and thrown.</typeparam>
             <param name="source">An <see cref="T:System.Linq.IQueryable`1" /> to return an element from.</param>
             <param name="predicate">A function to test each element for a condition.</param>
@@ -3217,6 +3741,66 @@
             <summary>
             Provides a set of <see langword="static" /> methods for interaction with .NET reflection objects, such as <see cref="T:System.Type" /> and <see cref="T:System.Reflection.MethodBase" />.
             </summary>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.IsAssignableFrom(System.Type,System.Type,System.Boolean)">
+            <summary>
+            Determines whether an instance of this <see cref="T:System.Type" /> can be assigned to the current <see cref="T:System.Type" /> instance.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to check.</param>
+            <param name="c">The <see cref="T:System.Type" /> to compare with this <see cref="T:System.Type" />.</param>
+            <param name="excludeSelf"><see langword="true" /> to exclude this <see cref="T:System.Type" /> from being checked. If this parameter is <see langword="true" /> and this <see cref="T:System.Type" /> equals <paramref name="c" />, <see langword="false" /> is returned.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="c" /> is derived either directly or indirectly derived from this <see cref="T:System.Type" />, this <see cref="T:System.Type" /> is an interface that <paramref name="c" /> implements, <paramref name="c" /> is a generic type parameter and this <see cref="T:System.Type" /> represents one of the constraints of <paramref name="c" />, <paramref name="c" /> represents a value type and this <see cref="T:System.Type" /> represents <see cref="T:System.Nullable" />&lt;<paramref name="c" />&gt;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type)">
+            <summary>
+            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type,BytecodeApi.TypeNaming)">
+            <summary>
+            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
+            <param name="namingConvention">The <see cref="T:BytecodeApi.TypeNaming" /> that specifies the naming convention for the converted <see cref="T:System.Type" />.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.Invoke(System.Reflection.MethodBase)">
+            <summary>
+            Invokes the method or constructor represented by the current instance with no parameters.
+            </summary>
+            <param name="method">The method to invoke.</param>
+            <returns>
+            An <see cref="T:System.Object" /> containing the return value of the invoked method, or null in the case of a constructor.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.Invoke``1(System.Reflection.MethodBase)">
+            <summary>
+            Invokes the method or constructor represented by the current instance with no parameters.
+            </summary>
+            <param name="method">The method to invoke.</param>
+            <returns>
+            An <see cref="T:System.Object" /> containing the return value of the invoked method, or null in the case of a constructor.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.Invoke``1(System.Reflection.MethodBase,System.Object,System.Object[])">
+            <summary>
+            Invokes the method or constructor represented by the current instance with, using the specified parameters.
+            </summary>
+            <param name="method">The method to invoke.</param>
+            <param name="obj">The <see cref="T:System.Object" /> on which to invoke the method or constructor. If a method is static, this argument is ignored. If a constructor is static, this argument must be <see langword="null" /> or an instance of the class that defines the constructor.</param>
+            <param name="parameters">An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, parameters should be <see langword="null" />. If the method or constructor represented by this instance takes a ref parameter, no special attribute is required for that parameter in order to invoke the method or constructor using this function. Any <see cref="T:System.Object" /> in this array that is not explicitly initialized with a value will contain the default value for that <see cref="T:System.Object" /> type.</param>
+            <returns>
+            An <see cref="T:System.Object" /> containing the return value of the invoked method, or null in the case of a constructor.
+            </returns>
         </member>
         <member name="T:BytecodeApi.ProcessExtensions">
             <summary>
@@ -4281,6 +4865,7 @@
             <summary>
             Converts this <see cref="T:System.String" /> to its equivalent <see cref="T:System.DateTime" /> representation using the specified format. If conversion failed, <see langword="null" /> is returned.
             </summary>
+            <param name="str">The <see cref="T:System.String" /> to convert.</param>
             <param name="format">A <see cref="T:System.String" /> value specifying the format that is used to convert this <see cref="T:System.DateTime" />.</param>
             <returns>
             The converted <see cref="T:System.DateTime" /> value or <see langword="null" />, if conversion failed.
@@ -4290,6 +4875,7 @@
             <summary>
             Converts this <see cref="T:System.String" /> to its equivalent <see cref="T:System.TimeSpan" /> representation using the specified format. If conversion failed, <see langword="null" /> is returned.
             </summary>
+            <param name="str">The <see cref="T:System.String" /> to convert.</param>
             <param name="format">A <see cref="T:System.String" /> value specifying the format that is used to convert this <see cref="T:System.TimeSpan" />.</param>
             <returns>
             The converted <see cref="T:System.TimeSpan" /> value or <see langword="null" />, if conversion failed.
@@ -4463,7 +5049,7 @@
             <param name="str">The <see cref="T:System.String" /> to be center padded.</param>
             <param name="totalWidth">The number of characters in the resulting <see cref="T:System.String" />, equal to the number of original characters plus any additional padding characters.</param>
             <returns>
-            A new <see cref="T:System.String" /> that is equivalent to this <see cref="T:System.String" />, but centered on the left and the right with as many spaces as needed to create a length of <paramref name="totalWidth" />. If <paramref name="totalWidth"/> is less than or equal to the length of this <see cref="T:System.String" />, the method returns the original <see cref="T:System.String" />.
+            A new <see cref="T:System.String" /> that is equivalent to this <see cref="T:System.String" />, but centered on the left and the right with as many spaces as needed to create a length of <paramref name="totalWidth" />. If <paramref name="totalWidth" /> is less than or equal to the length of this <see cref="T:System.String" />, the method returns the original <see cref="T:System.String" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.StringExtensions.PadCenter(System.String,System.Int32,System.Char)">
@@ -4474,7 +5060,7 @@
             <param name="totalWidth">The number of characters in the resulting <see cref="T:System.String" />, equal to the number of original characters plus any additional padding characters.</param>
             <param name="paddingChar">The padding character.</param>
             <returns>
-            A new <see cref="T:System.String" /> that is equivalent to this <see cref="T:System.String" />, but centered on the left and the right with as many padding characters as needed to create a length of <paramref name="totalWidth" />. If <paramref name="totalWidth"/> is less than or equal to the length of this <see cref="T:System.String" />, the method returns the original <see cref="T:System.String" />.
+            A new <see cref="T:System.String" /> that is equivalent to this <see cref="T:System.String" />, but centered on the left and the right with as many padding characters as needed to create a length of <paramref name="totalWidth" />. If <paramref name="totalWidth" /> is less than or equal to the length of this <see cref="T:System.String" />, the method returns the original <see cref="T:System.String" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.StringExtensions.TrimStartString(System.String,System.String)">
@@ -4614,7 +5200,7 @@
         </member>
         <member name="M:BytecodeApi.StringExtensions.ReplaceLineBreaks(System.String,System.String)">
             <summary>
-            Replaces all occurrences of line breaks ("\n" and "\r\n") in this <see cref="T:System.String" /> with a specified replacement value.
+            Replaces all occurrences of linebreaks ("\n" and "\r\n") in this <see cref="T:System.String" /> with a specified replacement value.
             </summary>
             <param name="str">The <see cref="T:System.String" /> to be processed.</param>
             <param name="newValue">The <see cref="T:System.String" /> which will replace "\n" and "\r\n" occurrences in this <see cref="T:System.String" />.</param>
@@ -4859,26 +5445,69 @@
             otherwise, <see langword="null" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.UIExtensions.FindLogicalChildren``1(System.Windows.DependencyObject)">
+        <member name="M:BytecodeApi.UIExtensions.FindResource``1(System.Windows.FrameworkElement,System.Object)">
             <summary>
-            Finds all logical children of this <see cref="T:System.Windows.DependencyObject" /> by traversing the logical tree recursively. If no children have been found, an empty array is returned.
+            Searches for a resource with the specified key, and throws an <see cref="T:System.Exception" />, if the requested resource is not found or not of the specified type.
             </summary>
-            <typeparam name="T">The explicit type of the children to search for.</typeparam>
-            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to traverse the logical tree recursively.</param>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="frameworkElement">The <see cref="T:System.Windows.FrameworkElement" /> to search in.</param>
+            <param name="key">The key identifier for the requested resource.</param>
             <returns>
-            An array of the specified type with all logical children that can be casted to <typeparamref name="T" />. If no children have been found, an empty array is returned.
+            The requested resource. If no resource with the specified key was found or was not of the specified type, an <see cref="T:System.Exception" /> is thrown. An <see cref="F:System.Windows.DependencyProperty.UnsetValue" />. value might also be returned in the <see cref="T:System.Exception" /> case.
             </returns>
         </member>
-        <member name="M:BytecodeApi.UIExtensions.FindDataContext``1(System.Object)">
+        <member name="M:BytecodeApi.UIExtensions.FindResource``1(System.Windows.Application,System.Object)">
             <summary>
-            Tries to find the DataContext property, if this <see cref="T:System.Object" /> instance is either a <see cref="T:System.Windows.FrameworkElement" /> or a <see cref="T:System.Windows.FrameworkContentElement" />. If found and can be casted to the specified type, the DataContext is returned, otherwise, <see langword="null" />.
+            Searches for a user interface (UI) resource, such as a <see cref="T:System.Windows.Style" /> or <see cref="T:System.Windows.Media.Brush" />, with the specified key, and throws an <see cref="T:System.Exception" />, if the requested resource is not found (see XAML Resources) or is not of the specified type.
             </summary>
-            <typeparam name="T">The return type to cast the DataContext property to.</typeparam>
-            <param name="obj">The <see cref="T:System.Object" /> where the DataContext property looked for. This is typically the sender parameter from an event hanlder.</param>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="application">The <see cref="T:System.Windows.Application" /> to search in.</param>
+            <param name="key">The name of the resource to find.</param>
             <returns>
-            <see cref="P:System.Windows.FrameworkElement.DataContext" />, if this <see cref="T:System.Object" /> instance is a <see cref="T:System.Windows.FrameworkElement" />;
-            <see cref="P:System.Windows.FrameworkContentElement.DataContext" />, if this <see cref="T:System.Object" /> instance is a <see cref="T:System.Windows.FrameworkContentElement" />;
-            otherwise, <see langword="null" />.
+            The requested resource object. If the requested resource is not found or is not of the specified type, a <see cref="T:System.Windows.ResourceReferenceKeyNotFoundException" /> is thrown.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UIExtensions.TryFindResource``1(System.Windows.FrameworkElement,System.Object)">
+            <summary>
+            Searches for a resource with the specified key, and returns that resource, if found and of type specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="frameworkElement">The <see cref="T:System.Windows.FrameworkElement" /> to search in.</param>
+            <param name="key">The key identifier of the resource to be found.</param>
+            <returns>
+            The found resource, or <see langword="null" />, if no resource with the provided key is found or a resource was found, but it does not match the specified type.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UIExtensions.TryFindResource``1(System.Windows.Application,System.Object)">
+            <summary>
+            Searches for a resource with the specified key, and returns that resource, if found and of type specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="application">The <see cref="T:System.Windows.Application" /> to search in.</param>
+            <param name="key">The name of the resource to find.</param>
+            <returns>
+            The found resource, or <see langword="null" />, if no resource with the provided key is found or a resource was found, but it does not match the specified type.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UIExtensions.Validate(System.Windows.DependencyObject)">
+            <summary>
+            Validates this <see cref="T:System.Windows.DependencyObject" /> and all of its children and returns <see langword="true" />, if validation succeeded.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to validate.</param>
+            <returns>
+            <see langword="true" />, if validation succeeded;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UIExtensions.Validate(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Validates this <see cref="T:System.Windows.DependencyObject" /> and returns <see langword="true" />, if validation succeeded. If <paramref name="validateChildren" /> is set to <see langword="true" />, logical children are validated recursively.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to validate.</param>
+            <param name="validateChildren"><see langword="true" /> to validate children recursively in addition to this <see cref="T:System.Windows.DependencyObject" />.</param>
+            <returns>
+            <see langword="true" />, if validation succeeded;
+            otherwise, <see langword="false" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.UIExtensions.GetVisibility(System.Windows.UIElement)">
@@ -4940,7 +5569,7 @@
         </member>
         <member name="T:BytecodeApi.WebRequestExtensions">
             <summary>
-            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Net.WebRequest" /> objects.
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Net.WebRequest" /> and related objects.
             </summary>
         </member>
         <member name="T:BytecodeApi.XmlExtensions">
@@ -4970,6 +5599,31 @@
             <param name="xml">The <see cref="T:System.Xml.Linq.XDocument" /> to be serialized.</param>
             <param name="stream">The <see cref="T:System.IO.Stream" /> to which this <see cref="T:System.Xml.Linq.XDocument" /> is written to.</param>
             <param name="settings">An <see cref="T:System.Xml.XmlWriterSettings" /> value with serialization settings.</param>
+        </member>
+        <member name="M:BytecodeApi.XmlExtensions.SaveFormatted(System.Xml.Linq.XDocument,System.String)">
+            <summary>
+            Serializes this <see cref="T:System.Xml.Linq.XDocument" /> to a file with the specified filename using the formatting settings as specified in <see cref="P:BytecodeApi.XmlExtensions.FormattedXmlWriterSettings" />.
+            </summary>
+            <param name="xml">The <see cref="T:System.Xml.Linq.XDocument" /> to be serialized.</param>
+            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which this <see cref="T:System.Xml.Linq.XDocument" /> is written to.</param>
+        </member>
+        <member name="M:BytecodeApi.XmlExtensions.SaveFormatted(System.Xml.Linq.XDocument,System.IO.Stream)">
+            <summary>
+            Serializes this <see cref="T:System.Xml.Linq.XDocument" /> to a <see cref="T:System.IO.Stream" /> using the formatting settings as specified in <see cref="P:BytecodeApi.XmlExtensions.FormattedXmlWriterSettings" />.
+            </summary>
+            <param name="xml">The <see cref="T:System.Xml.Linq.XDocument" /> to be serialized.</param>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this <see cref="T:System.Xml.Linq.XDocument" /> is written to.</param>
+        </member>
+        <member name="M:BytecodeApi.XmlExtensions.Attribute(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.Object)">
+            <summary>
+            Returns the <see cref="T:System.Xml.Linq.XAttribute" /> of this <see cref="T:System.Xml.Linq.XElement" /> that has the specified <see cref="T:System.Xml.Linq.XName" />, or returns a new <see cref="T:System.Xml.Linq.XAttribute" /> with a default value.
+            </summary>
+            <param name="element">The <see cref="T:System.Xml.Linq.XElement" /> to be searched by the <paramref name="name" /> parameter.</param>
+            <param name="name">The <see cref="T:System.Xml.Linq.XName" /> of the <see cref="T:System.Xml.Linq.XAttribute" /> to get.</param>
+            <param name="defaultValue">The value that is used if the <see cref="T:System.Xml.Linq.XAttribute" /> was not found.</param>
+            <returns>
+            The <see cref="T:System.Xml.Linq.XAttribute" /> of this <see cref="T:System.Xml.Linq.XElement" /> that has the specified <see cref="T:System.Xml.Linq.XName" />, or a new <see cref="T:System.Xml.Linq.XAttribute" /> with a default value, if the <see cref="T:System.Xml.Linq.XAttribute" /> was not found.
+            </returns>
         </member>
         <member name="T:BytecodeApi.FileExtensionInfo">
             <summary>
@@ -5953,6 +6607,246 @@
             <see langword="null" />, if there was an <see cref="T:System.Exception" /> during <see cref="T:System.Diagnostics.Process" /> creation.
             </returns>
         </member>
+        <member name="T:BytecodeApi.WmiPropertyCollection">
+            <summary>
+            Represents a collection of WMI properties.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiPropertyCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.WmiProperty" /> with the specified name and throws an <see cref="T:System.Exception" />, if it was not found.
+            </summary>
+            <param name="name">A <see cref="T:System.String" /> specifying the WMI property name.</param>
+        </member>
+        <member name="P:BytecodeApi.WmiPropertyCollection.Item(System.String,System.Object)">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.WmiProperty" /> with the specified name and returns a new <see cref="T:BytecodeApi.WmiProperty" /> with a default value, if it was not found.
+            </summary>
+            <param name="name">A <see cref="T:System.String" /> specifying the WMI property name.</param>
+            <param name="defaultValue">The value that is used if the property with the specified name was not found.</param>
+        </member>
+        <member name="P:BytecodeApi.WmiPropertyCollection.Count">
+            <summary>
+            Gets the number of properties in this <see cref="T:BytecodeApi.WmiPropertyCollection" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiPropertyCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiPropertyCollection" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiPropertyCollection.#ctor(System.Collections.Generic.IEnumerable{BytecodeApi.WmiProperty})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiPropertyCollection" /> class with the specified collection of properties.
+            </summary>
+            <param name="properties">A collection of <see cref="T:BytecodeApi.WmiProperty" /> structures to add to this <see cref="T:BytecodeApi.WmiPropertyCollection" />.</param>
+        </member>
+        <member name="M:BytecodeApi.WmiPropertyCollection.#ctor(BytecodeApi.WmiProperty[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiPropertyCollection" /> class with the specified collection of properties.
+            </summary>
+            <param name="properties">A collection of <see cref="T:BytecodeApi.WmiProperty" /> structures to add to this <see cref="T:BytecodeApi.WmiPropertyCollection" />.</param>
+        </member>
+        <member name="M:BytecodeApi.WmiPropertyCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            An enumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.WmiProperty">
+            <summary>
+            Represents a WMI property, composed of a name and a value.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiProperty.Name">
+            <summary>
+            Gets the name of the <see cref="T:BytecodeApi.WmiProperty" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiProperty.Value">
+            <summary>
+            Gets the value of the <see cref="T:BytecodeApi.WmiProperty" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiProperty.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiProperty" /> struct with the specified name and value.
+            </summary>
+            <param name="name">The name of the <see cref="T:BytecodeApi.WmiProperty" />.</param>
+            <param name="value">The value of the <see cref="T:BytecodeApi.WmiProperty" />.</param>
+        </member>
+        <member name="M:BytecodeApi.WmiProperty.GetValue``1">
+            <summary>
+            Returns the strongly typed representation of <see cref="P:BytecodeApi.WmiProperty.Value" />. If <see cref="P:BytecodeApi.WmiProperty.Value" /> is of another type, an <see cref="T:System.Exception" /> is thrown.
+            </summary>
+            <typeparam name="T">The value type to use for conversion.</typeparam>
+            <returns>
+            The strongly typed representation of <see cref="P:BytecodeApi.WmiProperty.Value" />. If <see cref="P:BytecodeApi.WmiProperty.Value" /> is of another type, an <see cref="T:System.Exception" /> is thrown.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiProperty.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.WmiObject">
+            <summary>
+            Represents a WMI object instance.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiObject.Class">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.WmiClass" /> that this <see cref="T:BytecodeApi.WmiObject" /> was created from.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiObject.Properties">
+            <summary>
+            Gets the collection of properties of this <see cref="T:BytecodeApi.WmiObject" /> instance.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiObject.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.WmiClass">
+            <summary>
+            Represents a WMI class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiClass.Namespace">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.WmiNamespace" /> that this <see cref="T:BytecodeApi.WmiClass" /> was created from.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiClass.Name">
+            <summary>
+            Gets the name of the <see cref="T:BytecodeApi.WmiClass" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiClass.#ctor(BytecodeApi.WmiNamespace,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiClass" /> class with the specified <see cref="T:BytecodeApi.WmiNamespace" /> and the specified name.
+            </summary>
+            <param name="wmiNamespace">The WMI namespace of this class, in accordance to the <paramref name="name" /> parameter.</param>
+            <param name="name">The name of the <see cref="T:BytecodeApi.WmiClass" />.</param>
+        </member>
+        <member name="M:BytecodeApi.WmiClass.GetObjects">
+            <summary>
+            Retrieves all objects of this <see cref="T:BytecodeApi.WmiClass" /> including all columns.
+            </summary>
+            <returns>
+            A new <see cref="T:BytecodeApi.WmiObject" />[] containing all objects of this <see cref="T:BytecodeApi.WmiClass" /> including all columns.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiClass.GetObjects(System.String[])">
+            <summary>
+            Retrieves all objects of this <see cref="T:BytecodeApi.WmiClass" /> including the specified columns. If <paramref name="columns" /> is <see langword="null" />, all columns are retrieved.
+            </summary>
+            <param name="columns">A <see cref="T:System.String" />[] specifying the columns to select. If <see langword="null" />, all columns are retrieved.</param>
+            <returns>
+            A new <see cref="T:BytecodeApi.WmiObject" />[] containing all objects of this <see cref="T:BytecodeApi.WmiClass" /> including the specified columns.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiClass.GetObjects(System.String[],System.String)">
+            <summary>
+            Retrieves objects of this <see cref="T:BytecodeApi.WmiClass" /> including the specified columns using a WHERE condition. If <paramref name="columns" /> is <see langword="null" />, all columns are retrieved. If <paramref name="where" /> is <see langword="null" /> or empty, no filter is applied.
+            </summary>
+            <param name="columns">A <see cref="T:System.String" />[] specifying the columns to select. If <see langword="null" />, all columns are retrieved.</param>
+            <param name="where">A <see cref="T:System.String" /> specifying a WMI query that is appended after a "WHERE". If <see langword="null" /> or empty, no filter is applied.</param>
+            <returns>
+            A new <see cref="T:BytecodeApi.WmiObject" />[] containing objects of this <see cref="T:BytecodeApi.WmiClass" /> including the specified columns using the specified WHERE condition.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiClass.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> whose value is the name of this <see cref="T:BytecodeApi.WmiClass" />.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> whose value is the name of this <see cref="T:BytecodeApi.WmiClass" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.WmiNamespace">
+            <summary>
+            Represents a WMI namespace.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiNamespace.Name">
+            <summary>
+            Gets the name of the <see cref="T:BytecodeApi.WmiNamespace" />. The "ROOT" namespace name is represented as <see cref="F:System.String.Empty" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiNamespace.Path">
+            <summary>
+            Gets the path of the <see cref="T:BytecodeApi.WmiNamespace" />, including all parent namespaces except "ROOT", separated by a backslash.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiNamespace.FullName">
+            <summary>
+            Gets the full path of the <see cref="T:BytecodeApi.WmiNamespace" />, including all parent namespaces, the "ROOT" element and the workstation name.
+            <para />Example: "\\WORKSTATION-NAME\ROOT\CIMV2"
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WmiNamespace.Namespaces">
+            <summary>
+            Gets an array containing all child namespaces. This property is <see langword="null" />, if the loadNamespaces parameter was set to <see langword="false" /> in the constructor.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiNamespace" /> class from the specified path. The <paramref name="path" /> parameter starts after "\\WORKSTATION-NAME\ROOT\" and excludes "ROOT". Child namespaces are not loaded.
+            <para />Example: "CIMV2"
+            </summary>
+            <param name="path">The relative path of the <see cref="T:BytecodeApi.WmiNamespace" />, excluding workstation name and "ROOT".</param>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WmiNamespace" /> class from the specified path. The <paramref name="path" /> parameter starts after "\\WORKSTATION-NAME\ROOT\" and excludes "ROOT".
+            <para />Example: "CIMV2"
+            </summary>
+            <param name="path">The relative path of the <see cref="T:BytecodeApi.WmiNamespace" />, excluding workstation name and "ROOT".</param>
+            <param name="loadNamespaces"><see langword="true" /> to load child namespaces recursively.</param>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.GetRoot">
+            <summary>
+            Retrieves all WMI namespaces, starting from ROOT\ recursively. This is equivalent to <see langword="new" /> <see cref="T:BytecodeApi.WmiNamespace" />(<see langword="null" />).
+            </summary>
+            <returns>
+            A <see cref="T:BytecodeApi.WmiNamespace" /> that is equivalent to <see langword="new" /> <see cref="T:BytecodeApi.WmiNamespace" />(<see langword="null" />).
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.GetClasses">
+            <summary>
+            Retrieves all classes of this <see cref="T:BytecodeApi.WmiNamespace" />.
+            </summary>
+            <returns>
+            A new <see cref="T:BytecodeApi.WmiClass" />[] containing all classes of this <see cref="T:BytecodeApi.WmiNamespace" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.GetClass(System.String)">
+            <summary>
+            Finds a class of this <see cref="T:BytecodeApi.WmiNamespace" /> by the specified name. An <see cref="T:System.Exception" /> is thrown, if the class could not be created.
+            </summary>
+            <returns>
+            A new <see cref="T:BytecodeApi.WmiClass" /> created from the specified name. An <see cref="T:System.Exception" /> is thrown, if the class could not be created.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WmiNamespace.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> whose value is the name of this <see cref="T:BytecodeApi.WmiNamespace" />.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> whose value is the name of this <see cref="T:BytecodeApi.WmiNamespace" />.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.Paths">
             <summary>
             Represents a static set common system paths.
@@ -6076,7 +6970,7 @@
         </member>
         <member name="F:BytecodeApi.TextResources.LoremIpsum">
             <summary>
-            Represents the "Lorem Ipsum" text. The length of the string is 445 characters.
+            Represents the "Lorem Ipsum" text. The length of the <see cref="T:System.String" /> is 445 characters.
             </summary>
         </member>
         <member name="F:BytecodeApi.TextResources.TheQuickBrownFox">
@@ -7055,7 +7949,7 @@
             </summary>
             <param name="extension">A <see cref="T:System.String" /> value specifying the file extension, which is case insensitive and does not require a leading dot character.</param>
             <returns>
-            A <see cref="T:System.Boolean" /> value, indicating whether the specified extension is known and exists in the resources of BytecodeApi.dll.
+            A <see cref="T:System.Boolean" /> value indicating whether the specified extension is known and exists in the resources of BytecodeApi.dll.
             </returns>
         </member>
         <member name="M:BytecodeApi.FileIcon.GetIcon(System.Int32)">
@@ -9133,17 +10027,178 @@
               Looks up a localized resource of type System.Byte[].
             </summary>
         </member>
+        <member name="T:BytecodeApi.ILanguageStringGenerator">
+            <summary>
+            Defines base methods that are implemented in <see cref="T:BytecodeApi.WordGenerator" />, <see cref="T:BytecodeApi.SentenceGenerator" /> and <see cref="T:BytecodeApi.TextGenerator" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.ILanguageStringGenerator.Generate">
+            <summary>
+            Generates a string of einther a <see cref="T:BytecodeApi.WordGenerator" />, <see cref="T:BytecodeApi.SentenceGenerator" /> or <see cref="T:BytecodeApi.TextGenerator" />.
+            </summary>
+            <returns>
+            The <see cref="T:System.String" /> generated by this instance.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.TextGenerator">
+            <summary>
+            Class that generates a random text sequence that match the pattern of real language.
+            A <see cref="T:BytecodeApi.SentenceGenerator" /> is used to generate the sentences that generated text are composed of.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.TextGenerator.SentenceGenerator">
+            <summary>
+            Gets or sets the <see cref="P:BytecodeApi.TextGenerator.SentenceGenerator" /> that is used to generate sentences.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.TextGenerator.MinSentenceCount">
+            <summary>
+            Gets or sets the minimum number sentences used to build text.
+            <para />The default value is 10
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.TextGenerator.MaxSentenceCount">
+            <summary>
+            Gets or sets the maximum number sentences used to build text.
+            <para />The default value is 20
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.TextGenerator.LineBreakChance">
+            <summary>
+            Gets or sets a <see cref="T:System.Single" /> value that specifies the chance of a linebreak being inserted after a sentence, where 0.0f means no linebreaks and 1.0f means a linebreak between every sentence.
+            <para />The default value is 0.0f
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.TextGenerator.ParagraphChance">
+            <summary>
+            Gets or sets a <see cref="T:System.Single" /> value that specifies the chance of a paragraph being inserted after a sentence, where 0.0f means no paragraphs and 1.0f means a paragraph between every sentence. Randomly picked paragraphs have precedence over linebreaks and do not occur consecutively.
+            <para />The default value is 0.1f
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.TextGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.TextGenerator" /> class with default values (<see cref="P:BytecodeApi.TextGenerator.MinSentenceCount" /> = 10, <see cref="P:BytecodeApi.TextGenerator.MaxSentenceCount" /> = 20, <see cref="P:BytecodeApi.TextGenerator.LineBreakChance" /> = 0.0f, <see cref="P:BytecodeApi.TextGenerator.ParagraphChance" /> = 0.1f) and creates a new <see cref="P:BytecodeApi.TextGenerator.SentenceGenerator" /> with default values.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.TextGenerator.#ctor(BytecodeApi.SentenceGenerator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.TextGenerator" /> class with the specified <see cref="P:BytecodeApi.TextGenerator.SentenceGenerator" /> and with default values (<see cref="P:BytecodeApi.TextGenerator.MinSentenceCount" /> = 10, <see cref="P:BytecodeApi.TextGenerator.MaxSentenceCount" /> = 20, <see cref="P:BytecodeApi.TextGenerator.LineBreakChance" /> = 0.0f, <see cref="P:BytecodeApi.TextGenerator.ParagraphChance" /> = 0.1f).
+            </summary>
+            <param name="sentenceGenerator">The <see cref="P:BytecodeApi.TextGenerator.SentenceGenerator" /> to use for sentence generation.</param>
+        </member>
+        <member name="M:BytecodeApi.TextGenerator.Generate">
+            <summary>
+            Generates a random sequence of sentences using the specified parameters of this <see cref="T:BytecodeApi.TextGenerator" /> instance.
+            </summary>
+            <returns>
+            A new <see cref="T:System.String" /> with dynamically generated text.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.SentenceGenerator">
             <summary>
-            Helper class that generates random sentences that match the pattern of real language.
+            Class that generates random sentences that match the pattern of real language.
             A <see cref="T:BytecodeApi.WordGenerator" /> is used to generate the words that generated sentences are composed of.
             </summary>
         </member>
+        <member name="P:BytecodeApi.SentenceGenerator.WordGenerator">
+            <summary>
+            Gets or sets the <see cref="P:BytecodeApi.SentenceGenerator.WordGenerator" /> that is used to generate words.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.SentenceGenerator.MinWords">
+            <summary>
+            Gets or sets the minimum number words used to build sentences.
+            <para />The default value is 3
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.SentenceGenerator.MaxWords">
+            <summary>
+            Gets or sets the maximum number words used to build sentences.
+            <para />The default value is 10
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.SentenceGenerator.CommaChance">
+            <summary>
+            Gets or sets a <see cref="T:System.Single" /> value that specifies the chance of a comma being inserted after a word, where 0.0f means no commas and 1.0f means a comma between every word.
+            <para />The default value is 0.2f
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.SentenceGenerator.FinishPunctuation">
+            <summary>
+            Gets or sets the characters that are used for punctuation after a sentence. Including a character multiple times increases the chance for this character. For example, this can be used to increase the likelihood of a period over a question mark or exclamation mark. Character order is not relevant.
+            <para />The default value is "...?!"
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.SentenceGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.SentenceGenerator" /> class with default values (<see cref="P:BytecodeApi.SentenceGenerator.MinWords" /> = 3, <see cref="P:BytecodeApi.SentenceGenerator.MaxWords" /> = 10, <see cref="P:BytecodeApi.SentenceGenerator.CommaChance" /> = 0.2f, <see cref="P:BytecodeApi.SentenceGenerator.FinishPunctuation" /> = "...?!") and creates a new <see cref="P:BytecodeApi.SentenceGenerator.WordGenerator" /> with default values.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.SentenceGenerator.#ctor(BytecodeApi.WordGenerator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.SentenceGenerator" /> class with the specified <see cref="P:BytecodeApi.SentenceGenerator.WordGenerator" /> and with default values (<see cref="P:BytecodeApi.SentenceGenerator.MinWords" /> = 3, <see cref="P:BytecodeApi.SentenceGenerator.MaxWords" /> = 10, <see cref="P:BytecodeApi.SentenceGenerator.CommaChance" /> = 0.2f, <see cref="P:BytecodeApi.SentenceGenerator.FinishPunctuation" /> = "...?!").
+            </summary>
+            <param name="wordGenerator">The <see cref="P:BytecodeApi.SentenceGenerator.WordGenerator" /> to use for word generation.</param>
+        </member>
+        <member name="M:BytecodeApi.SentenceGenerator.Generate">
+            <summary>
+            Generates a random sentence using the specified parameters of this <see cref="T:BytecodeApi.SentenceGenerator" /> instance.
+            </summary>
+            <returns>
+            A new <see cref="T:System.String" /> with a dynamically generated sentence.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.WordGenerator">
             <summary>
-            Helper class that generates random words that match the pattern of real language.
+            Class that generates random words that match the pattern of real language.
             Word generation is typically used to create arbitrary text that looks like language.
             </summary>
+        </member>
+        <member name="P:BytecodeApi.WordGenerator.MinLength">
+            <summary>
+            Gets or sets the minimum length of a generated word.
+            <para />The default value is 3
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WordGenerator.MaxLength">
+            <summary>
+            Gets or sets the maximum length of a generated word.
+            <para />The default value is 10
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WordGenerator.DoubleConsonantChance">
+            <summary>
+            Gets or sets a <see cref="T:System.Single" /> value that specifies the chance of a consonant being inserted twice, where 0.0f means no double consonants and 1.0f means consonants are always inserted twice.
+            <para />The default value is 0.1f
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.WordGenerator.DoubleVovelChance">
+            <summary>
+            Gets or sets a <see cref="T:System.Single" /> value that specifies the chance of a vovel being inserted twice, where 0.0f means no double vovels and 1.0f means vovels are always inserted twice.
+            <para />The default value is 0.1f
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WordGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.WordGenerator" /> class with default values (<see cref="P:BytecodeApi.WordGenerator.MinLength" /> = 3, <see cref="P:BytecodeApi.WordGenerator.MaxLength" /> = 10, <see cref="P:BytecodeApi.WordGenerator.DoubleConsonantChance" /> = 0.1f, <see cref="P:BytecodeApi.WordGenerator.DoubleVovelChance" /> = 0.1f).
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.WordGenerator.Generate">
+            <summary>
+            Generates a random word in CamelCase character casing using the specified parameters of this <see cref="T:BytecodeApi.WordGenerator" /> instance.
+            </summary>
+            <returns>
+            A new <see cref="T:System.String" /> with a dynamically generated word in CamelCase character casing.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.WordGenerator.Generate(BytecodeApi.StringCasing)">
+            <summary>
+            Generates a random word in the specified <see cref="T:BytecodeApi.StringCasing" /> using the specified parameters of this <see cref="T:BytecodeApi.WordGenerator" /> instance.
+            </summary>
+            <param name="casing">The <see cref="T:BytecodeApi.StringCasing" /> to be used for characters in the generated word.</param>
+            <returns>
+            A new <see cref="T:System.String" /> with a dynamically generated word in the specified <see cref="T:BytecodeApi.StringCasing" />.
+            </returns>
         </member>
         <member name="T:BytecodeApi.Wording">
             <summary>
@@ -9196,6 +10251,39 @@
             <param name="count">A <see cref="T:System.Int32" /> value representing a count number. If this value is not equal to 1, <paramref name="str" /> is pluralized.</param>
             <returns>
             The pluralized representation of the specified <see cref="T:System.String" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan)">
+            <summary>
+            Converts the value of the specified <see cref="T:System.TimeSpan" /> to a human readable <see cref="T:System.String" /> representation by displaying the two most significant elements of either days, hours, minutes or seconds that are greater than zero, separated by a comma.
+            <para />Example: "12:00:03" is converted to "12h, 3s"
+            </summary>
+            <param name="timeSpan">The <see cref="T:System.TimeSpan" /> value to convert.</param>
+            <returns>
+            The value of the specified <see cref="T:System.TimeSpan" /> as a human readable <see cref="T:System.String" /> representation.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32)">
+            <summary>
+            Converts the value of the specified <see cref="T:System.TimeSpan" /> to a human readable <see cref="T:System.String" /> representation by displaying a specified number of most significant elements of either days, hours, minutes or seconds that are greater than zero, separated by a comma.
+            <para />Example: "5.03:30:15" is converted to "5d, 3h", if <paramref name="maxElements" /> is 2 and "5d, 3h, 30m",  if <paramref name="maxElements" /> is 3.
+            </summary>
+            <param name="timeSpan">The <see cref="T:System.TimeSpan" /> value to convert.</param>
+            <param name="maxElements">A <see cref="T:System.Int32" /> value specifying the number of elements of either days, hours, minutes or seconds to display.</param>
+            <returns>
+            The value of the specified <see cref="T:System.TimeSpan" /> as a human readable <see cref="T:System.String" /> representation.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32,System.String)">
+            <summary>
+            Converts the value of the specified <see cref="T:System.TimeSpan" /> to a human readable <see cref="T:System.String" /> representation by displaying a specified number of most significant elements of either days, hours, minutes or seconds that are greater than zero, separated by the specified separator.
+            <para />Example: "5.03:30:15" is converted to "5d, 3h", if <paramref name="maxElements" /> is 2 and "5d, 3h, 30m",  if <paramref name="maxElements" /> is 3.
+            </summary>
+            <param name="timeSpan">The <see cref="T:System.TimeSpan" /> value to convert.</param>
+            <param name="maxElements">A <see cref="T:System.Int32" /> value specifying the number of elements of either days, hours, minutes or seconds to display.</param>
+            <param name="separator">A <see cref="T:System.String" /> specifying the separator to use between each element, including whitespaces, if needed.</param>
+            <returns>
+            The value of the specified <see cref="T:System.TimeSpan" /> as a human readable <see cref="T:System.String" /> representation.
             </returns>
         </member>
         <member name="T:BytecodeApi.ConverterBase`1">
@@ -9256,9 +10344,139 @@
             A converted value. If the method returns <see langword="null" />, the valid null value is used.
             </returns>
         </member>
+        <member name="T:BytecodeApi.BooleanToGridLengthConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to a <see cref="T:System.Windows.GridLength" /> value, where <see langword="true" /> is converted to <see cref="P:System.Windows.GridLength.Auto" /> and <see langword="false" /> is concverted to <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0). If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.BooleanToInverseConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to their inverted <see cref="T:System.Boolean" /> representation.
+            </summary>
+        </member>
         <member name="T:BytecodeApi.BooleanToVisibilityConverter">
             <summary>
-            Represents the converter that converts <see cref="T:System.Boolean" /> values to and from <see cref="T:System.Windows.Visibility" /> enumeration values.
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to <see cref="T:System.Windows.Visibility" /> enumeration values. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.DateTimeToStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.DateTime" /> values to their equivalent <see cref="T:System.String" /> representation using the <see cref="M:BytecodeApi.DateTimeExtensions.ToStringInvariant(System.DateTime,System.String)" /> method and the specified format in the parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableGreaterEqualToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableGreaterEqualToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableGreaterToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableGreaterToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableLessEqualToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableLessEqualToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableLessToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is less than the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.IComparableLessToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than the given parameter.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectEqualsNotToBooleanConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns <see langword="true" />, if the objects are not equal.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectEqualsNotToVisibilityConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns a <see cref="T:System.Windows.Visibility" /> value indicating wheter the objects are not equal.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectEqualsToBooleanConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns <see langword="true" />, if the objects are equal.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectEqualsToVisibilityConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns a <see cref="T:System.Windows.Visibility" /> value indicating wheter the objects are equal.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectIsNullToBooleanConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Boolean" /> value indicating wheter the <see cref="T:System.Object" /> is <see langword="null" />.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectIsNullToGridLengthConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Windows.GridLength" /> value, where <see langword="null" /> is converted to <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0) and <see langword="false" /> is concverted to <see cref="P:System.Windows.GridLength.Auto" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectIsNullToVisibilityConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Windows.Visibility" /> value indicating wheter the <see cref="T:System.Object" /> is <see langword="null" />.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectToHashConverter">
+            <summary>
+            Represents the converter that converts objects of various types to their equivalent hash representation using the specified <see cref="T:BytecodeApi.HashType" /> in the given parameter. The hash is returned as a hexadecimal <see cref="T:System.String" />. Accepted value types are: <see cref="T:System.Byte" />[], <see cref="T:System.String" /> and <see cref="T:System.IO.FileInfo" /> (computes the hash from a file).
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ObjectToImageSourceConverter">
+            <summary>
+            Represents the converter that converts objects of various types to their equivalent <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> representation. Accepted value types are: <see cref="T:System.Drawing.Image" /> and <see cref="T:System.Drawing.Icon" />.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.PathStringToFileNameStringConverter">
+            <summary>
+            Represents the converter that converts paths represented as a <see cref="T:System.String" /> to the filename part. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the filename part without the extension is returned.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.StringIsNullOrEmptyToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.String" /> values to a <see cref="T:System.Boolean" /> value indicating wheter the <see cref="T:System.String" /> is <see langword="null" /> or <see cref="F:System.String.Empty" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.StringConcatConverter">
+            <summary>
+            Represents the converter that concatenates two <see cref="T:System.String" /> values. Both values can be provided using any data type. <see langword="null" /> values are treated as <see cref="F:System.String.Empty" />.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.StringIsNullOrEmptyToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.String" /> values to a <see cref="T:System.Windows.Visibility" /> value indicating wheter the <see cref="T:System.String" /> is <see langword="null" /> or <see cref="F:System.String.Empty" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.TimeSpanToHumanReadableStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.TimeSpan" /> values to their equivalent <see cref="T:System.String" /> representation in human readable form using the <see cref="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan)" /> method. The parameter specifies the maxElement parameter in the <see cref="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32)" /> method.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.TimeSpanToStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.TimeSpan" /> values to their equivalent <see cref="T:System.String" /> representation using the <see cref="M:BytecodeApi.TimeSpanExtensions.ToStringInvariant(System.TimeSpan,System.String)" /> method and the specified format in the parameter.
             </summary>
         </member>
         <member name="T:BytecodeApi.Dialogs">
@@ -9360,6 +10578,11 @@
             Provides a grayscale bitmap effect. This shader is typically used on WPF images.
             </summary>
         </member>
+        <member name="F:BytecodeApi.GrayscaleEffect.InputProperty">
+            <summary>
+            Identifies the <see cref="P:BytecodeApi.GrayscaleEffect.Input" /> dependency property.
+            </summary>
+        </member>
         <member name="M:BytecodeApi.GrayscaleEffect.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:BytecodeApi.GrayscaleEffect" /> class.
@@ -9420,7 +10643,7 @@
             <summary>
             Returns a <see cref="T:System.Char" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.CharExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Char" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.CharExtension" />.
             </returns>
@@ -9450,7 +10673,7 @@
             <summary>
             Returns a <see cref="T:System.UInt16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt16Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.UInt16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt16Extension" />.
             </returns>
@@ -9480,7 +10703,7 @@
             <summary>
             Returns a <see cref="T:System.Int16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int16Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Int16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int16Extension" />.
             </returns>
@@ -9510,7 +10733,7 @@
             <summary>
             Returns a <see cref="T:System.UInt64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt64Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.UInt64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt64Extension" />.
             </returns>
@@ -9540,7 +10763,7 @@
             <summary>
             Returns a <see cref="T:System.UInt32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt32Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.UInt32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UInt32Extension" />.
             </returns>
@@ -9570,7 +10793,7 @@
             <summary>
             Returns a <see cref="T:System.SByte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.SByteExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.SByte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.SByteExtension" />.
             </returns>
@@ -9600,7 +10823,7 @@
             <summary>
             Returns a <see cref="T:System.Byte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.ByteExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Byte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.ByteExtension" />.
             </returns>
@@ -9630,7 +10853,7 @@
             <summary>
             Returns a <see cref="T:System.Boolean" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.BooleanExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Boolean" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.BooleanExtension" />.
             </returns>
@@ -9660,7 +10883,7 @@
             <summary>
             Returns a <see cref="T:System.DateTime" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DateTimeExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.DateTime" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DateTimeExtension" />.
             </returns>
@@ -9690,7 +10913,7 @@
             <summary>
             Returns a <see cref="T:System.Decimal" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DecimalExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Decimal" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DecimalExtension" />.
             </returns>
@@ -9720,9 +10943,40 @@
             <summary>
             Returns a <see cref="T:System.Double" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DoubleExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Double" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.DoubleExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.IconExtension">
+            <summary>
+            Implements icon support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.IconExtension.Source">
+            <summary>
+            Gets or sets the source of the icon.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.IconExtension.Size">
+            <summary>
+            Gets or sets the size (the width) of the icon.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.IconExtension.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.IconExtension" /> class, initializing <paramref name="source" /> and <paramref name="size" /> based on the provided values.
+            </summary>
+            <param name="source">A <see cref="T:System.String" /> value that is assigned to <see cref="P:BytecodeApi.IconExtension.Source" />.</param>
+            <param name="size">A <see cref="T:System.Int32" /> value that is assigned to <see cref="P:BytecodeApi.IconExtension.Size" />.</param>
+        </member>
+        <member name="M:BytecodeApi.IconExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Windows.Media.Imaging.BitmapFrame" /> value that is computed from the parameters supplied in the constructor of <see cref="T:BytecodeApi.IconExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Windows.Media.Imaging.BitmapFrame" /> value that is computed from the parameters supplied in the constructor of <see cref="T:BytecodeApi.IconExtension" />.
             </returns>
         </member>
         <member name="T:BytecodeApi.Int32Extension">
@@ -9750,7 +11004,7 @@
             <summary>
             Returns a <see cref="T:System.Int32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int32Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Int32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int32Extension" />.
             </returns>
@@ -9780,7 +11034,7 @@
             <summary>
             Returns a <see cref="T:System.Int64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int64Extension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.Int64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.Int64Extension" />.
             </returns>
@@ -9810,7 +11064,7 @@
             <summary>
             Returns a <see cref="P:BytecodeApi.SingleExtension.Value" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.SingleExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="P:BytecodeApi.SingleExtension.Value" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.SingleExtension" />.
             </returns>
@@ -9840,10 +11094,36 @@
             <summary>
             Returns a <see cref="T:System.String" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.StringExtension" />.
             </summary>
-            <param name="serviceProvider">Object that can provide services for the markup extension. The provider is expected to provide a service for <see cref="T:System.Windows.Markup.IXamlTypeResolver" />.</param>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
             <returns>
             A <see cref="T:System.String" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.StringExtension" />.
             </returns>
+        </member>
+        <member name="T:BytecodeApi.MenuItemService">
+            <summary>
+            Helper class for the WPF <see cref="T:System.Windows.Controls.MenuItem" /> control that implements an icon that can be defined in XAML.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.MenuItemService.ImageSourceProperty">
+            <summary>
+            Identifies the <see cref="T:BytecodeApi.MenuItemService" />.ImageSource dependency property.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.MenuItemService.GetImageSource(System.Windows.DependencyObject)">
+            <summary>
+            Gets the image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.Controls.MenuItem" /> to get the image source from.</param>
+            <returns>
+            The image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MenuItemService.SetImageSource(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Gets the image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.Controls.MenuItem" /> to assign the image source to.</param>
+            <param name="value">The image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.</param>
         </member>
         <member name="T:BytecodeApi.MessageBoxes">
             <summary>
@@ -10046,13 +11326,13 @@
         </member>
         <member name="M:BytecodeApi.ObservableWindow.Dispatch(System.Action)">
             <summary>
-            Executes the specified <see cref="T:System.Action" /> synchronously on the thread the <see cref="!:Dispatcher" /> is associated with.
+            Executes the specified <see cref="T:System.Action" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
             </summary>
             <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
         </member>
         <member name="M:BytecodeApi.ObservableWindow.Dispatch``1(System.Func{``0})">
             <summary>
-            Executes the specified <see cref="T:System.Func`1" /> synchronously on the thread the <see cref="!:Dispatcher" /> is associated with.
+            Executes the specified <see cref="T:System.Func`1" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
             </summary>
             <typeparam name="T">The return type of <paramref name="func" />.</typeparam>
             <param name="func">The <see cref="T:System.Func`1" /> to be invoked.</param>
@@ -10173,6 +11453,26 @@
             <summary>
             Sends a notification to other running instances. The <see cref="F:BytecodeApi.SingleInstanceManager.Activated" /> event will be triggered in all instances, except the current.
             </summary>
+        </member>
+        <member name="T:BytecodeApi.TreeViewItemHelper">
+            <summary>
+            Helper class for the WPF <see cref="T:System.Windows.Controls.TreeView" /> control that checks whether a MouseOver event occurrs over an item directly. This is relevant, when MouseOver effects need to be implemented for a <see cref="T:System.Windows.Controls.TreeViewItem" /> excluding its children.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.TreeViewItemHelper.IsMouseDirectlyOverItemProperty">
+            <summary>
+            Identifies the <see cref="T:BytecodeApi.TreeViewItemHelper" />.IsMouseDirectlyOverItem dependency property.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.TreeViewItemHelper.GetIsMouseDirectlyOverItem(System.Windows.DependencyObject)">
+            <summary>
+            Returns <see langword="true" />, if the mouse is directly hovering a <see cref="T:System.Windows.Controls.TreeViewItem" /> and <see langword="false" /> if it is hovering a child or no <see cref="T:System.Windows.Controls.TreeViewItem" /> at all.
+            </summary>
+            <param name="obj">The <see cref="T:System.Windows.Controls.TreeViewItem" /> object to check.</param>
+            <returns>
+            <see langword="true" />, if the mouse is directly hovering a <see cref="T:System.Windows.Controls.TreeViewItem" />;
+            <see langword="false" /> if it is hovering a child or no <see cref="T:System.Windows.Controls.TreeViewItem" /> at all.
+            </returns>
         </member>
     </members>
 </doc>

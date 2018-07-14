@@ -77,7 +77,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentProjects.Except(value.First().Substring(1).CreateSingletonArray()).ToArray());
+					File.WriteAllLines(path, RecentProjects.Except(Create.SingletonArray(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -104,7 +104,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentFiles.Except(value.First().Substring(1).CreateSingletonArray()).ToArray());
+					File.WriteAllLines(path, RecentFiles.Except(Create.SingletonArray(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -194,7 +194,7 @@ namespace PEunion
 		{
 			if (ConfirmSaveChanges())
 			{
-				string path = Dialogs.Open("peu".CreateSingletonArray(), "PEunion Project Files");
+				string path = Dialogs.Open(Create.SingletonArray("peu"), "PEunion Project Files");
 				if (path != null) LoadProject(path);
 			}
 		}
@@ -294,7 +294,7 @@ namespace PEunion
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent projects?", true, true))
 				{
-					RecentProjects = ("-" + path).CreateSingletonArray();
+					RecentProjects = Create.SingletonArray("-" + path);
 				}
 			}
 		}
@@ -307,13 +307,13 @@ namespace PEunion
 			}
 			else if (File.Exists(path))
 			{
-				AddFiles(path.CreateSingletonArray());
+				AddFiles(Create.SingletonArray(path));
 			}
 			else if (path != null)
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent files?", true, true))
 				{
-					RecentFiles = ("-" + path).CreateSingletonArray();
+					RecentFiles = Create.SingletonArray("-" + path);
 				}
 			}
 		}
@@ -359,7 +359,7 @@ namespace PEunion
 			//TODO: Workaround for App.xaml style lacking "Foreground" support for TextBlock
 			foreach (TabItem tab in tabMain.Items)
 			{
-				tab.FindLogicalChildren<TextBlock>().First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
+				tab.FindChildren<TextBlock>(UITreeType.Logical).First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
 			}
 		}
 		private void tabMain_Close_Click(object sender, RoutedEventArgs e)
@@ -368,7 +368,7 @@ namespace PEunion
 		}
 		private void tabMain_TabItem_MouseUp(object sender, MouseButtonEventArgs e)
 		{
-			if (e.ChangedButton == MouseButton.Middle)
+			if (e.ChangedButton == MouseButton.Middle && (e.OriginalSource as FrameworkElement).FindParent<TabItem>(UITreeType.Visual) != null)
 			{
 				if ((sender as TabItem) == tabMain.Items[0]) NewCommand.Execute(null, this);
 				else tabMain.Items.Remove(sender);
@@ -510,7 +510,7 @@ namespace PEunion
 			else
 			{
 				Project.Save();
-				RecentProjects = Project.SaveLocation.CreateSingletonArray();
+				RecentProjects = Create.SingletonArray(Project.SaveLocation);
 				return true;
 			}
 		}
@@ -546,7 +546,7 @@ namespace PEunion
 		private void LoadProject(string path)
 		{
 			Project = Project.Load(path);
-			RecentProjects = path.CreateSingletonArray();
+			RecentProjects = Create.SingletonArray(path);
 			UpdateValidationErrorList();
 		}
 		private bool PrepareBuild()

@@ -448,7 +448,7 @@ namespace PEunion
 		{
 			List<ValidationError> errors = new List<ValidationError>();
 
-			if (Manifest == BuildManifest.None && (!AssemblyTitle.IsNullOrEmpty() || !AssemblyProduct.IsNullOrEmpty() || !AssemblyCopyright.IsNullOrEmpty() || AssemblyVersion != null && !AssemblyVersion.EqualsAny("", "0.0.0.0")))
+			if (Manifest == BuildManifest.None && (!AssemblyTitle.IsNullOrEmpty() || !AssemblyProduct.IsNullOrEmpty() || !AssemblyCopyright.IsNullOrEmpty() || AssemblyVersion != null && CSharp.EqualsNone(AssemblyVersion, "", "0.0.0.0")))
 			{
 				errors.Add(ValidationError.CreateWarning(null, "Assembly Information will be ignored when building without manifest"));
 			}
@@ -509,7 +509,7 @@ namespace PEunion
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has a different extension than the original file (" + originalExtension + ")"));
 						}
 
-						if (Path.GetExtension(file.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
+						if (CSharp.EqualsAny(Path.GetExtension(file.Name).TrimStart('.').ToLower(), unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "File extension '" + Path.GetExtension(file.Name) + "' - Possibly unintended file"));
 						}
@@ -553,7 +553,7 @@ namespace PEunion
 						{
 							errors.Add(ValidationError.CreateWarning(source, "'" + url.Name.Trim() + "' has no extension"));
 						}
-						if (Path.GetExtension(url.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
+						if (CSharp.EqualsAny(Path.GetExtension(url.Name).TrimStart('.').ToLower(), unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(source, "File extension '" + Path.GetExtension(url.Name) + "' - Possibly unintended file"));
 						}

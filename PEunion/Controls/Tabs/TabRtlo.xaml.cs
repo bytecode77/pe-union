@@ -84,7 +84,7 @@ namespace PEunion
 						new[] { "mid", "midi" }
 					};
 
-					return alternatives.FirstOrDefault(alt => alt.Contains(DestinationOldExtension.ToLower())) ?? DestinationOldExtension.CreateSingletonArray();
+					return alternatives.FirstOrDefault(alt => alt.Contains(DestinationOldExtension.ToLower())) ?? Create.SingletonArray(DestinationOldExtension);
 				}
 			}
 		}
