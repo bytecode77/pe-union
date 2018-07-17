@@ -284,7 +284,11 @@
     <Resource Include="Resources\IconRtlo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BytecodeApi.xml" />
+    <None Include="BytecodeApi.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)$Build" &gt; NUL
+xcopy /Y "$(TargetPath)" "$(SolutionDir)$Build" &gt; NUL</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -4,6 +4,79 @@
         <name>BytecodeApi</name>
     </assembly>
     <members>
+        <member name="T:BytecodeApi.HttpClientException">
+            <summary>
+            The exception that is thrown when a <see cref="T:BytecodeApi.HttpClient" /> instance fails to process a request.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="P:BytecodeApi.HttpClientException.Status">
+            <summary>
+            Gets the status of the response.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClientException.Response">
+            <summary>
+            Gets the response that the remote host returned.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.HttpClientException.ResponseBody">
+            <summary>
+            Gets the response body, typically an HTML error page.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.HttpClientException.#ctor(System.Net.WebExceptionStatus,System.Net.WebResponse,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.HttpClientException" /> class.
+            </summary>
+            <param name="status">The status of the response.</param>
+            <param name="response">The response that the remote host returned.</param>
+            <param name="responseBody">The response body.</param>
+            <param name="innerException">A nested <see cref="T:System.Exception" />.</param>
+        </member>
+        <member name="T:BytecodeApi.PostFile">
+            <summary>
+            Represents a file for HTTP multipart requests, used by the <see cref="T:BytecodeApi.HttpClient" /> class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.PostFile.FormName">
+            <summary>
+            Gets or sets the posted form name of the HTTP multipart entry.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.PostFile.FileName">
+            <summary>
+            Gets or sets the uploaded filename of the HTTP multipart entry.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.PostFile.Content">
+            <summary>
+            Gets or sets the binary content of the HTTP multipart entry.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.PostFile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.PostFile" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.PostFile.#ctor(System.String,System.String,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.PostFile" /> class with the specified name, filename and content.
+            </summary>
+            <param name="formName">The posted form name of the HTTP multipart entry.</param>
+            <param name="fileName">The uploaded filename of the HTTP multipart entry.</param>
+            <param name="content">The binary content of the HTTP multipart entry.</param>
+        </member>
+        <member name="M:BytecodeApi.PostFile.FromFile(System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.PostFile" /> from the specified file with the specified form name. The name of the file will be assigned to <see cref="P:BytecodeApi.PostFile.FileName" />.
+            </summary>
+            <param name="formName">The posted form name of the HTTP multipart entry.</param>
+            <param name="path">A <see cref="T:System.String" /> specifying the path of a file from which to create the <see cref="T:BytecodeApi.PostFile" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.PostFile" /> this method creates.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.ActionDelayer">
             <summary>
             Provoides a wrapper for <see cref="T:System.Action" /> and <see cref="T:System.Windows.RoutedEvent" /> actions to be postponed.
@@ -61,106 +134,146 @@
             Provides <see langword="static" /> methods that extend the <see cref="T:System.Windows.Application" /> and the <see cref="T:System.Windows.Forms.Application" /> class.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.StartupPath">
+        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean})">
             <summary>
-            Gets the path for the executable file that started the application, not including the executable name.
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is the WPF equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />.
+            </summary>
+            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
+        </member>
+        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean},System.TimeSpan)">
+            <summary>
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is the WPF equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />. The specified delay is waited between each call to <paramref name="condition" />.
+            </summary>
+            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
+            <param name="delay">A <see cref="T:System.TimeSpan" /> that specifies the delay between each call to <paramref name="condition" />.</param>
+        </member>
+        <member name="T:BytecodeApi.ApplicationBase.OperatingSystem">
+            <summary>
+            Provides information about the installed operating system.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.ExecutablePath">
-            <summary>
-            Gets the path for the executable file that started the application, including the executable name.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentUser">
-            <summary>
-            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, including the domain or workstation name.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentUserShort">
-            <summary>
-            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, not including the domain or workstation name.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.ApplicationBase.DomainName">
-            <summary>
-            Gets the domain in which the local computer is registered.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.ApplicationBase.Workgroup">
-            <summary>
-            Gets the workgroup in which the local computer is registered.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.ApplicationBase.OperatingSystemName">
+        <member name="P:BytecodeApi.ApplicationBase.OperatingSystem.Name">
             <summary>
             Gets the name of the operating system.
             <para />Examples: "Windows 7 Professional", "Windows 10 Pro"
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.InstalledAntiVirusSoftware">
+        <member name="P:BytecodeApi.ApplicationBase.OperatingSystem.InstallDate">
+            <summary>
+            Gets the installation date of the operating system.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.OperatingSystem.InstalledAntiVirusSoftware">
             <summary>
             Gets an array containing a list of installed antivirus software.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.FrameworkVersion">
+        <member name="P:BytecodeApi.ApplicationBase.OperatingSystem.FrameworkVersion">
             <summary>
             Gets the latest version of the .NET Framework and returns the version number as a fallback, if the version could not be looked up. Works only for .NET 4.0+.
             <para />Examples: 4.6, 4.7, 4.7.1
             <para />Example of a fallback version number: 461310
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.IsElevated">
+        <member name="T:BytecodeApi.ApplicationBase.Hardware">
             <summary>
-            Gets a <see cref="T:System.Boolean" /> value indicating whether the current <see cref="T:System.Diagnostics.Process" /> is elevated or not.
+            Provides information about installed hardware.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.ElevationType">
+        <member name="P:BytecodeApi.ApplicationBase.Hardware.Processor">
             <summary>
-            Gets the <see cref="P:BytecodeApi.ApplicationBase.ElevationType" /> for the current <see cref="T:System.Diagnostics.Process" />.
+            Gets the name of the processor. If multiple processors are installed, the name of the first processor is returned.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.DebugMode">
+        <member name="P:BytecodeApi.ApplicationBase.Hardware.Memory">
+            <summary>
+            Gets the total amount of installed physical memory.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Hardware.VideoController">
+            <summary>
+            Gets the name of the video controller. If multiple video controllers are installed, the name of the first video controller is returned.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.ApplicationBase.Process">
+            <summary>
+            Provides information about the current process.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.Id">
+            <summary>
+            Gets the ProcessID of the current <see cref="T:BytecodeApi.ApplicationBase.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.SessionId">
+            <summary>
+            Gets the SessionID of the current <see cref="T:BytecodeApi.ApplicationBase.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.IntegrityLevel">
+            <summary>
+            Gets the mandatory integrity level for the current <see cref="T:BytecodeApi.ApplicationBase.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.IsElevated">
+            <summary>
+            Gets a <see cref="T:System.Boolean" /> value indicating whether the current <see cref="T:BytecodeApi.ApplicationBase.Process" /> is elevated or not.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.ElevationType">
+            <summary>
+            Gets the <see cref="P:BytecodeApi.ApplicationBase.Process.ElevationType" /> for the current <see cref="T:BytecodeApi.ApplicationBase.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.StartupPath">
+            <summary>
+            Gets the path for the executable file that started the application, not including the executable name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.ExecutablePath">
+            <summary>
+            Gets the path for the executable file that started the application, including the executable name.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.Memory">
+            <summary>
+            Gets the amount of private memory, in bytes, allocated for the current <see cref="T:BytecodeApi.ApplicationBase.Process" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Process.DebugMode">
             <summary>
             Gets a <see cref="T:System.Boolean" /> value indicating whether <see cref="P:System.Diagnostics.Debugger.IsAttached" /> was equal to <see langword="true" /> on application startup, or if this executable is located in a directory named like "\bin\Debug", "\bin\x86\Debug", or "\bin\x64\Debug".
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessId">
+        <member name="T:BytecodeApi.ApplicationBase.Session">
             <summary>
-            Gets the ProcessID of the current <see cref="T:System.Diagnostics.Process" />.
+            Provides information about the current logon session and related information.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessSessionId">
+        <member name="P:BytecodeApi.ApplicationBase.Session.CurrentUser">
             <summary>
-            Gets the SessionID of the current <see cref="T:System.Diagnostics.Process" />.
+            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, including the domain or workstation name.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessIntegrityLevel">
+        <member name="P:BytecodeApi.ApplicationBase.Session.CurrentUserShort">
             <summary>
-            Gets the mandatory integrity level for the current <see cref="T:System.Diagnostics.Process" />.
+            Gets the name of the current <see cref="T:System.Security.Principal.WindowsIdentity" />, not including the domain or workstation name.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.CurrentProcessMemory">
+        <member name="P:BytecodeApi.ApplicationBase.Session.DomainName">
             <summary>
-            Gets the amount of private memory, in bytes, allocated for the current <see cref="T:System.Diagnostics.Process" />.
+            Gets the domain in which the local computer is registered.
             </summary>
         </member>
-        <member name="P:BytecodeApi.ApplicationBase.IsWorkstationLocked">
+        <member name="P:BytecodeApi.ApplicationBase.Session.Workgroup">
+            <summary>
+            Gets the workgroup in which the local computer is registered.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.ApplicationBase.Session.IsWorkstationLocked">
             <summary>
             Gets a <see cref="T:System.Boolean" /> value indicating whether the workstation is locked.
             </summary>
-        </member>
-        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean})">
-            <summary>
-            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />.
-            </summary>
-            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
-        </member>
-        <member name="M:BytecodeApi.ApplicationBase.DoEventsWhile(System.Func{System.Boolean},System.TimeSpan)">
-            <summary>
-            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of <see cref="P:System.Windows.Application.Current" /> while <paramref name="condition" /> evaluates to <see langword="true" />, thereby refreshing the UI. This is equivalent to <see cref="M:System.Windows.Forms.Application.DoEvents" />. The specified delay is waited between each call to <paramref name="condition" />.
-            </summary>
-            <param name="condition">The <see cref="T:System.Func`1" /> to be evaluated.</param>
-            <param name="delay">A <see cref="T:System.TimeSpan" /> that specifies the delay between each call to <paramref name="condition" />.</param>
         </member>
         <member name="T:BytecodeApi.ConvertEx">
             <summary>
@@ -415,6 +528,19 @@
             <returns>
             The result of <see cref="T:System.Func`1" />, on successful execution and
             <paramref name="defaultValue" />, if an <see cref="T:System.Exception" /> was thrown.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CSharp.Try``1(System.Func{``0},``0,System.Boolean)">
+            <summary>
+            Invokes a <see cref="T:System.Func`1" /> and handles any <see cref="T:System.Exception" />. Returns the result of <see cref="T:System.Func`1" /> on successful execution and <paramref name="defaultValue" />, if an <see cref="T:System.Exception" /> was thrown.
+            </summary>
+            <typeparam name="T">The return type of <paramref name="func" />.</typeparam>
+            <param name="func">The <see cref="T:System.Func`1" /> to be invoked.</param>
+            <param name="defaultValue">The default value that is returned if an <see cref="T:System.Exception" /> was thrown.</param>
+            <param name="throws"><see langword="true" /> to throw the <see cref="T:System.Exception" /> anyway, effectively bypassing the function logic and just executing <paramref name="func" /> without exception handling.</param>
+            <returns>
+            The result of <see cref="T:System.Func`1" />, on successful execution and
+            <paramref name="defaultValue" />, if an <see cref="T:System.Exception" /> was thrown and <paramref name="throws" /> equals to <see langword="false" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.CSharp.Retry(System.Action,System.Int32)">
@@ -1528,11 +1654,13 @@
             otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.Validate.MacAddress(System.String)">
+        <member name="M:BytecodeApi.Validate.MacAddress(System.String,System.Byte[]@)">
             <summary>
-            Validates a <see cref="T:System.String" /> object that is a MAC address.
+            Validates a <see cref="T:System.String" /> object that is a MAC address in EUI-48 format.
+            <para />Allowed formats are: 000000000000, 00:00:00:00:00:00, 00-00-00-00-00-00 and 0000.0000.0000
             </summary>
             <param name="str">The <see cref="T:System.String" /> to be validated.</param>
+            <param name="result">When this method returns, contains the address bytes as a <see cref="T:System.Byte" />[].</param>
             <returns>
             <see langword="true" />, if validation of <paramref name="str" /> succeeded;
             otherwise, <see langword="false" />.
@@ -2001,27 +2129,27 @@
         </member>
         <member name="F:BytecodeApi.ProcessIntegrityLevel.Untrusted">
             <summary>
-            The <see cref="T:System.Diagnostics.Process" /> is running with untrusted integrity (SECURITY_MANDATORY_UNTRUSTED_RID)
+            The <see cref="T:System.Diagnostics.Process" /> is running with untrusted integrity (SECURITY_MANDATORY_UNTRUSTED_RID).
             </summary>
         </member>
         <member name="F:BytecodeApi.ProcessIntegrityLevel.Low">
             <summary>
-            The <see cref="T:System.Diagnostics.Process" /> is running with low integrity (SECURITY_MANDATORY_LOW_RID)
+            The <see cref="T:System.Diagnostics.Process" /> is running with low integrity (SECURITY_MANDATORY_LOW_RID).
             </summary>
         </member>
         <member name="F:BytecodeApi.ProcessIntegrityLevel.Medium">
             <summary>
-            The <see cref="T:System.Diagnostics.Process" /> is running with medium integrity (SECURITY_MANDATORY_MEDIUM_RID or SECURITY_MANDATORY_MEDIUM_PLUS_RID)
+            The <see cref="T:System.Diagnostics.Process" /> is running with medium integrity (SECURITY_MANDATORY_MEDIUM_RID or SECURITY_MANDATORY_MEDIUM_PLUS_RID).
             </summary>
         </member>
         <member name="F:BytecodeApi.ProcessIntegrityLevel.High">
             <summary>
-            The <see cref="T:System.Diagnostics.Process" /> is running with high integrity (SECURITY_MANDATORY_HIGH_RID)
+            The <see cref="T:System.Diagnostics.Process" /> is running with high integrity (SECURITY_MANDATORY_HIGH_RID).
             </summary>
         </member>
         <member name="F:BytecodeApi.ProcessIntegrityLevel.System">
             <summary>
-            The <see cref="T:System.Diagnostics.Process" /> is running with system integrity (SECURITY_MANDATORY_SYSTEM_RID)
+            The <see cref="T:System.Diagnostics.Process" /> is running with system integrity (SECURITY_MANDATORY_SYSTEM_RID).
             </summary>
         </member>
         <member name="T:BytecodeApi.ProcessLoadLibraryResult">
@@ -2515,6 +2643,15 @@
             <param name="archive">The <see cref="T:System.IO.Compression.ZipArchive" /> where the <see cref="T:System.IO.Compression.ZipArchiveEntry" /> is created in.</param>
             <param name="name">A <see cref="T:System.String" /> value speficying the name for the entry.</param>
             <param name="content">A <see cref="T:System.Byte" />[] object speficying the content for the entry.</param>
+        </member>
+        <member name="M:BytecodeApi.CompressionExtensions.CreateEntry(System.IO.Compression.ZipArchive,System.String,System.Byte[],System.IO.Compression.CompressionLevel)">
+            <summary>
+            Adds a <see cref="T:System.IO.Compression.ZipArchiveEntry" /> to this <see cref="T:System.IO.Compression.ZipArchive" /> with the specified name, content and <see cref="T:System.IO.Compression.CompressionLevel" />.
+            </summary>
+            <param name="archive">The <see cref="T:System.IO.Compression.ZipArchive" /> where the <see cref="T:System.IO.Compression.ZipArchiveEntry" /> is created in.</param>
+            <param name="name">A <see cref="T:System.String" /> value speficying the name for the entry.</param>
+            <param name="content">A <see cref="T:System.Byte" />[] object speficying the content for the entry.</param>
+            <param name="compressionLevel">The <see cref="T:System.IO.Compression.CompressionLevel" /> to apply to the data in <paramref name="content" />.</param>
         </member>
         <member name="M:BytecodeApi.CompressionExtensions.GetContent(System.IO.Compression.ZipArchiveEntry)">
             <summary>
@@ -3288,25 +3425,25 @@
             otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0)">
+        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
             <summary>
-            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.Dictionary`2" />, or returns a default value if it was not found.
+            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.IDictionary`2" />, or returns a default value if it was not found.
             </summary>
-            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
-            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
-            <param name="dictionary">The <see cref="T:System.Collections.Generic.Dictionary`2" /> to search.</param>
+            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.IDictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.IDictionary`2" />.</typeparam>
+            <param name="dictionary">The <see cref="T:System.Collections.Generic.IDictionary`2" /> to search.</param>
             <param name="key">The key of the value to get.</param>
             <returns>
             The value associated with the specified key, or a default value if it was not found.
             </returns>
         </member>
-        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+        <member name="M:BytecodeApi.IEnumerableExtensions.ValueOrDefault``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
             <summary>
-            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.Dictionary`2" />, or returns a default value if it was not found.
+            Gets the value associated with the specified key from this <see cref="T:System.Collections.Generic.IDictionary`2" />, or returns a default value if it was not found.
             </summary>
-            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
-            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.Dictionary`2" />.</typeparam>
-            <param name="dictionary">The <see cref="T:System.Collections.Generic.Dictionary`2" /> to search.</param>
+            <typeparam name="TKey">The type of the key of this <see cref="T:System.Collections.Generic.IDictionary`2" />.</typeparam>
+            <typeparam name="TValue">The type of the value of this <see cref="T:System.Collections.Generic.IDictionary`2" />.</typeparam>
+            <param name="dictionary">The <see cref="T:System.Collections.Generic.IDictionary`2" /> to search.</param>
             <param name="key">The key of the value to get.</param>
             <param name="defaultValue">The value that is used if the key was not found.</param>
             <returns>
@@ -3378,6 +3515,91 @@
             otherwise, instantiates and throws an <see cref="T:System.Exception" /> of the type <typeparamref name="TException" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsString(System.Collections.Generic.IEnumerable{System.Char})">
+            <summary>
+            Creates a <see cref="T:System.String" /> from this collection of characters.
+            </summary>
+            <param name="source">The collection of characters to create the <see cref="T:System.String" /> from.</param>
+            <returns>
+            A new <see cref="T:System.String" />, created from this collection of characters.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsString(System.Char[])">
+            <summary>
+            Creates a <see cref="T:System.String" /> from this <see cref="T:System.Char" />[].
+            </summary>
+            <param name="source">The <see cref="T:System.Char" />[] to create the <see cref="T:System.String" /> from.</param>
+            <returns>
+            A new <see cref="T:System.String" />, created from this <see cref="T:System.Char" />[].
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsString(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Creates a <see cref="T:System.String" /> from this collection of objects. All objects in <paramref name="source" /> are converted to <see cref="T:System.String" /> by calling <see cref="M:System.Object.ToString" />. Then, the resulting strings are concatenated.
+            </summary>
+            <param name="source">The collection of objects to concatenate.</param>
+            <returns>
+            A new <see cref="T:System.String" />, created from this collection of objects, where <see cref="M:System.Object.ToString" /> was called on each object prior to concatenation.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsString(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a <see cref="T:System.String" /> from this collection of strings, by concatenating all values in <paramref name="source" />.
+            </summary>
+            <param name="source">The collection strings to concatenate.</param>
+            <returns>
+            A new <see cref="T:System.String" />, created from this collection of strings, where all values in <paramref name="source" /> are concatenated.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsString(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Creates a <see cref="T:System.String" /> from this collection of strings, by concatenating all values in <paramref name="source" /> using the specified separator.
+            </summary>
+            <param name="source">The collection strings to concatenate.</param>
+            <param name="separator">A <see cref="T:System.String" /> specifying the separator to concatenate the values in <paramref name="source" /> with, or <see langword="null" /> to not use a separator.</param>
+            <returns>
+            A new <see cref="T:System.String" />, created from this collection of strings, where all values in <paramref name="source" /> are concatenated using the specified separator.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsStrings(System.Collections.IEnumerable)">
+            <summary>
+            Converts a sequence of values to their <see cref="T:System.String" /> representation by calling <see cref="M:System.Object.ToString" /> on each element.
+            </summary>
+            <param name="source">A sequence of values to convert to <see cref="T:System.String" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the converted elements from the input sequence.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsMultilineString(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a multiline <see cref="T:System.String" /> from this collection of strings, by concatenating all values with a CRLF.
+            </summary>
+            <param name="array">The <see cref="T:System.String" />[] to concatenate.</param>
+            <returns>
+            A new <see cref="T:System.String" /> that represents this <see cref="T:System.String" /> collection as multiline text, where each element is concatenated with a CRLF.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AsMultilineString(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Creates a multiline <see cref="T:System.String" /> from this collection of strings, by concatenating all values with a CRLF.
+            </summary>
+            <param name="array">The <see cref="T:System.String" />[] to concatenate.</param>
+            <param name="lastLine"><see langword="true" /> to add an additional CRLF at the end.</param>
+            <returns>
+            A new <see cref="T:System.String" /> that represents this <see cref="T:System.String" /> collection as multiline text, where each element is concatenated with a CRLF.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.SkipLast``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Bypasses a specified number of elements at the end of a sequence and then returns the preceding elements.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
+            <param name="count">The number of elements to remove from the end of <paramref name="source" /> before returning the preceding elements.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the preceding elements that occur before the removed elements in the input sequence.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.IEnumerableExtensions.ExceptNull``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Filters a sequence of values and returns only values which are not <see langword="null" />.
@@ -3400,6 +3622,19 @@
             An <see cref="T:System.Collections.Generic.IEnumerator`1" /> with all distinct elements of <paramref name="source" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <summary>
+            Returns all distinct elements of a sequence according to a specified key selector function by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+            <typeparam name="TKey">The type of the key returned by keySelector.</typeparam>
+            <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+            <param name="keySelector">A <see cref="T:System.Func`2" /> to extract the key for each element.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare the elements.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerator`1" /> with all distinct elements of <paramref name="source" />.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.IEnumerableExtensions.Concat``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
             Concatenates a sequence and one element, where the single element is put after all elements of this sequence.
@@ -3409,6 +3644,52 @@
             <param name="second">The element to concatenate to the first sequence.</param>
             <returns>
             An <see cref="T:System.Collections.Generic.IEnumerator`1" /> that contains the concatenated elements of the source
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Union``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces the set union of a sequence and one element.
+            </summary>
+            <typeparam name="TSource">The type of the elements of the input sequence and the second element.</typeparam>
+            <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose distinct elements form the first set for the union.</param>
+            <param name="second">The second element, which forms the second set for the union.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements from the input sequence and the second element, excluding duplicates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Union``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces the set union of a sequence and one element by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements of the input sequence and the second element.</typeparam>
+            <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose distinct elements form the first set for the union.</param>
+            <param name="second">The second element, which forms the second set for the union.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare the elements.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements from the input sequence and the second element, excluding duplicates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Except``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Produces the set difference of a sequence and one element.
+            </summary>
+            <typeparam name="TSource">The type of the elements of the input sequence and the second element.</typeparam>
+            <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements that are not equal to <paramref name="second" /> will be returned.</param>
+            <param name="second">The second element, which will be removed from the returned sequence, if it also occurs in the first sequence.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the set difference of the elements from the input sequence and the second element.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.Except``1(System.Collections.Generic.IEnumerable{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Produces the set difference of a sequence and one element by using the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements of the input sequence and the second element.</typeparam>
+            <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements that are not equal to <paramref name="second" /> will be returned.</param>
+            <param name="second">The second element, which will be removed from the returned sequence, if it also occurs in the first sequence.</param>
+            <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare the elements.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the set difference of the elements from the input sequence and the second element.
             </returns>
         </member>
         <member name="M:BytecodeApi.IEnumerableExtensions.Chunk``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
@@ -3473,6 +3754,38 @@
             <returns>
             An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted in randomized order.
             </returns>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the elements of the specified collection to the end of <paramref name="source" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements to add.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.ICollection`1" /> to add the elements from <paramref name="collection" /> to.</param>
+            <param name="collection">The collection of elements to be addded to <paramref name="source" />.</param>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.RemoveAll``1(System.Collections.Generic.ICollection{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Removes all elements that satisfy a specified condition.
+            </summary>
+            <typeparam name="TSource">The type of the elements to remove.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.ICollection`1" /> to remove elements from.</param>
+            <param name="predicate">A function to test each element for a condition.</param>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.RemoveRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Removes all elements that occur in the specified collection.
+            </summary>
+            <typeparam name="TSource">The type of the elements to remove.</typeparam>
+            <param name="source">The <see cref="T:System.Collections.Generic.ICollection`1" /> to remove elements from.</param>
+            <param name="collection">The <see cref="T:System.Collections.Generic.ICollection`1" /> with all elements to remove from <paramref name="source" />.</param>
+        </member>
+        <member name="M:BytecodeApi.IEnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs the specified <see cref="T:System.Action" /> on each element of this <see cref="T:System.Collections.Generic.IEnumerable`1" />.
+            </summary>
+            <typeparam name="TSource">The type of the elements to process.</typeparam>
+            <param name="source">A sequence of values to process.</param>
+            <param name="action">The action to perform on each element of <paramref name="source" />.</param>
         </member>
         <member name="T:BytecodeApi.ImageExtensions">
             <summary>
@@ -3754,25 +4067,6 @@
             otherwise, <see langword="false" />.
             </returns>
         </member>
-        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type)">
-            <summary>
-            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
-            </summary>
-            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
-            <returns>
-            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type,BytecodeApi.TypeNaming)">
-            <summary>
-            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
-            </summary>
-            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
-            <param name="namingConvention">The <see cref="T:BytecodeApi.TypeNaming" /> that specifies the naming convention for the converted <see cref="T:System.Type" />.</param>
-            <returns>
-            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
-            </returns>
-        </member>
         <member name="M:BytecodeApi.ReflectionExtensions.Invoke(System.Reflection.MethodBase)">
             <summary>
             Invokes the method or constructor represented by the current instance with no parameters.
@@ -3800,6 +4094,43 @@
             <param name="parameters">An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, parameters should be <see langword="null" />. If the method or constructor represented by this instance takes a ref parameter, no special attribute is required for that parameter in order to invoke the method or constructor using this function. Any <see cref="T:System.Object" /> in this array that is not explicitly initialized with a value will contain the default value for that <see cref="T:System.Object" /> type.</param>
             <returns>
             An <see cref="T:System.Object" /> containing the return value of the invoked method, or null in the case of a constructor.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.GetNestedName(System.Type)">
+            <summary>
+            Returns the name of this <see cref="T:System.Type" />, including its nested class names.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to test.</param>
+            <returns>
+            The name of this <see cref="T:System.Type" />, including its nested class names.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.GetNestedFullName(System.Type)">
+            <summary>
+            Returns the fully qualified name of this <see cref="T:System.Type" />, including its nested class names and its namespace but not its assembly.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to test.</param>
+            <returns>
+            The fully qualified name of this <see cref="T:System.Type" />, including its nested class names and its namespace but not its assembly.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type)">
+            <summary>
+            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the <see cref="F:BytecodeApi.TypeNaming.CSharp" /> naming convention.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.ReflectionExtensions.ToCSharpName(System.Type,BytecodeApi.TypeNaming)">
+            <summary>
+            Returns the equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
+            </summary>
+            <param name="type">The <see cref="T:System.Type" /> to be converted.</param>
+            <param name="namingConvention">The <see cref="T:BytecodeApi.TypeNaming" /> that specifies the naming convention for the converted <see cref="T:System.Type" />.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the name of this <see cref="T:System.Type" /> using the specified naming convention.
             </returns>
         </member>
         <member name="T:BytecodeApi.ProcessExtensions">
@@ -5445,6 +5776,17 @@
             otherwise, <see langword="null" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.UIExtensions.FindChildren``1(System.Windows.DependencyObject,BytecodeApi.UITreeType)">
+            <summary>
+            Finds all children of this <see cref="T:System.Windows.DependencyObject" /> matching the specified type by traversing either the visual or the logical tree recursively. If no children have been found, an empty array is returned.
+            </summary>
+            <typeparam name="T">The explicit type of the children to search for.</typeparam>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to traverse the tree recursively.</param>
+            <param name="treeType">A <see cref="T:BytecodeApi.UITreeType" /> value indicating whether to use the <see cref="T:System.Windows.LogicalTreeHelper" /> or the <see cref="T:System.Windows.Media.VisualTreeHelper" />.</param>
+            <returns>
+            An array of the specified type with all children, depending on <paramref name="treeType" />, that can be casted to <typeparamref name="T" />. If no children have been found, an empty array is returned.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.UIExtensions.FindResource``1(System.Windows.FrameworkElement,System.Object)">
             <summary>
             Searches for a resource with the specified key, and throws an <see cref="T:System.Exception" />, if the requested resource is not found or not of the specified type.
@@ -5571,6 +5913,15 @@
             <summary>
             Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Net.WebRequest" /> and related objects.
             </summary>
+        </member>
+        <member name="M:BytecodeApi.WebRequestExtensions.GetCookies(System.Net.CookieContainer)">
+            <summary>
+            Gets the cookies from all domains from this <see cref="T:System.Net.CookieContainer" />.
+            </summary>
+            <param name="cookieContainer">The <see cref="T:System.Net.CookieContainer" /> to get the cookies from.</param>
+            <returns>
+            A new <see cref="T:System.Net.Cookie" />[] with the cookies from all domains from this <see cref="T:System.Net.CookieContainer" />.
+            </returns>
         </member>
         <member name="T:BytecodeApi.XmlExtensions">
             <summary>
@@ -6048,7 +6399,7 @@
         </member>
         <member name="P:BytecodeApi.HttpClient.UseCookies">
             <summary>
-            Gets or sets a value indicating whether to use a <see cref="P:BytecodeApi.HttpClient.CookieContainer" /> or not.
+            Gets or sets a value indicating whether to use a <see cref="P:BytecodeApi.HttpClient.CookieContainer" /> or not. Changing the value will not empty the <see cref="P:BytecodeApi.HttpClient.CookieContainer" />, until <see cref="M:BytecodeApi.HttpClient.ClearCookies" /> is called.
             </summary>
         </member>
         <member name="P:BytecodeApi.HttpClient.UserAgent">
@@ -6212,14 +6563,49 @@
             Initializes a new instance of the <see cref="T:BytecodeApi.CsvFile" /> class.
             </summary>
         </member>
+        <member name="M:BytecodeApi.CsvFile.FromFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.CsvFile.FromFile(System.String,System.String,System.Boolean,System.Boolean)">
             <summary>
             Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified file.
             </summary>
             <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
             <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromFile(System.String,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromBinary(System.Byte[],System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <returns>
             The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
             </returns>
@@ -6229,9 +6615,33 @@
             Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
             </summary>
             <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
             <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromBinary(System.Byte[],System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <returns>
             The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
             </returns>
@@ -6241,11 +6651,49 @@
             Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
             </summary>
             <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
             <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
             <returns>
             The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an <see cref="T:System.Exception" /> is thrown.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.CsvFile" /> object this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
             </returns>
         </member>
         <member name="M:BytecodeApi.CsvFile.EnumerateFile(System.String,System.String,System.Boolean,System.Boolean)">
@@ -6256,6 +6704,30 @@
             <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
             <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateFile(System.String,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateBinary(System.Byte[],System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.Byte" />[] that represents a flat file database. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
             <returns>
             An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
             </returns>
@@ -6272,6 +6744,30 @@
             An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
             </returns>
         </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateBinary(System.Byte[],System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.Byte" />[] that represents a flat file database. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean)">
             <summary>
             Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
@@ -6282,6 +6778,138 @@
             <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
             <returns>
             An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.CsvFile.Headers" /> property.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.CsvRowBase" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.String)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.String,System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.String,System.Text.Encoding,System.Int32,System.Int32,System.String[])">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
+            <param name="maximumToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
+            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.Byte[])">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.Byte[],System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.Byte[],System.Text.Encoding,System.Int32,System.Int32,System.String[])">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
+            <param name="maximumToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
+            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.IO.Stream)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.CsvFile.DetectDelimiter(System.IO.Stream,System.Text.Encoding,System.Int32,System.Int32,System.String[])">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
+            <param name="maximumToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
+            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
             </returns>
         </member>
         <member name="M:BytecodeApi.CsvFile.CheckColumnCount(System.Int32)">
@@ -6544,6 +7172,11 @@
             Provides a set of <see langword="static" /> methods for network operations.
             </summary>
         </member>
+        <member name="M:BytecodeApi.NetworkIO.DisableCertificateValidation">
+            <summary>
+            Sets up the <see cref="P:System.Net.ServicePointManager.ServerCertificateValidationCallback" /> to validate all certificates without checking.
+            </summary>
+        </member>
         <member name="M:BytecodeApi.NetworkIO.WakeOnLan(System.Net.NetworkInformation.PhysicalAddress)">
             <summary>
             Sends a Wake-on-LAN magic packet containing the specified <see cref="T:System.Net.NetworkInformation.PhysicalAddress" /> to UDP broadcast on port 9.
@@ -6792,7 +7425,7 @@
         <member name="P:BytecodeApi.WmiNamespace.FullName">
             <summary>
             Gets the full path of the <see cref="T:BytecodeApi.WmiNamespace" />, including all parent namespaces, the "ROOT" element and the workstation name.
-            <para />Example: "\\WORKSTATION-NAME\ROOT\CIMV2"
+            <para />Example: \\WORKSTATION-NAME\ROOT\CIMV2
             </summary>
         </member>
         <member name="P:BytecodeApi.WmiNamespace.Namespaces">
@@ -6803,14 +7436,14 @@
         <member name="M:BytecodeApi.WmiNamespace.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:BytecodeApi.WmiNamespace" /> class from the specified path. The <paramref name="path" /> parameter starts after "\\WORKSTATION-NAME\ROOT\" and excludes "ROOT". Child namespaces are not loaded.
-            <para />Example: "CIMV2"
+            <para />Example: CIMV2
             </summary>
             <param name="path">The relative path of the <see cref="T:BytecodeApi.WmiNamespace" />, excluding workstation name and "ROOT".</param>
         </member>
         <member name="M:BytecodeApi.WmiNamespace.#ctor(System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:BytecodeApi.WmiNamespace" /> class from the specified path. The <paramref name="path" /> parameter starts after "\\WORKSTATION-NAME\ROOT\" and excludes "ROOT".
-            <para />Example: "CIMV2"
+            <para />Example: CIMV2
             </summary>
             <param name="path">The relative path of the <see cref="T:BytecodeApi.WmiNamespace" />, excluding workstation name and "ROOT".</param>
             <param name="loadNamespaces"><see langword="true" /> to load child namespaces recursively.</param>
@@ -6854,13 +7487,13 @@
         </member>
         <member name="F:BytecodeApi.Paths.HostsFile">
             <summary>
-            Represents the path to the Windows hosts file.
+            Represents the path to the Windows hosts file. This field is read-only.
             <para />Example: C:\Windows\System32\drivers\etc\hosts
             </summary>
         </member>
         <member name="F:BytecodeApi.Paths.ServicesFile">
             <summary>
-            Represents the path to the Windows services file.
+            Represents the path to the Windows services file. This field is read-only.
             <para />Example: C:\Windows\System32\drivers\etc\services
             </summary>
         </member>
@@ -7718,6 +8351,15 @@
             The least common multiple of <paramref name="a" /> and <paramref name="b" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.MathEx.LeastCommonMultiple(System.Int32[])">
+            <summary>
+            Computes the least common multiple of an array of <see cref="T:System.Int32" /> values.
+            </summary>
+            <param name="values">The array of <see cref="T:System.Int32" /> values to compute the least common multiple from.</param>
+            <returns>
+            The least common multiple of all <see cref="T:System.Int32" /> values.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.MathEx.LeastCommonMultiple(System.Int64,System.Int64)">
             <summary>
             Computes the least common multiple of two <see cref="T:System.Int64" /> values.
@@ -7726,6 +8368,15 @@
             <param name="b">The second <see cref="T:System.Int64" /> value.</param>
             <returns>
             The least common multiple of <paramref name="a" /> and <paramref name="b" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MathEx.LeastCommonMultiple(System.Int64[])">
+            <summary>
+            Computes the least common multiple of an array of <see cref="T:System.Int64" /> values.
+            </summary>
+            <param name="values">The array of <see cref="T:System.Int64" /> values to compute the least common multiple from.</param>
+            <returns>
+            The least common multiple of all <see cref="T:System.Int64" /> values.
             </returns>
         </member>
         <member name="M:BytecodeApi.MathEx.Fibonacci(System.Int32)">
@@ -7744,6 +8395,26 @@
             <param name="n">A <see cref="T:System.Int32" /> value specifying the number of Fibonacci values to compute.</param>
             <returns>
             An enumerable of Fibonacci values that yields <paramref name="n" /> elements.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MathEx.IsPrimeNumber(System.Int32)">
+            <summary>
+            Determines whether <paramref name="n" /> is a prime number.
+            </summary>
+            <param name="n">A <see cref="T:System.Int32" /> value specifying the number to test.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="n" /> is a prime number;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MathEx.IsPrimeNumber(System.Int64)">
+            <summary>
+            Determines whether <paramref name="n" /> is a prime number.
+            </summary>
+            <param name="n">A <see cref="T:System.Int64" /> value specifying the number to test.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="n" /> is a prime number;
+            otherwise, <see langword="false" />.
             </returns>
         </member>
         <member name="M:BytecodeApi.MathEx.ComputePrimeNumbers(System.Int32)">
@@ -7771,6 +8442,25 @@
             <param name="value">The <see cref="T:System.Int64" /> to compute its prime factors from.</param>
             <returns>
             A <see cref="T:System.Int64" />[] containing all prime factors of <paramref name="value" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MathEx.CalculateAgeFromBirthday(System.DateTime)">
+            <summary>
+            Calculates the age from a birthday.
+            </summary>
+            <param name="birthday">A <see cref="T:System.DateTime" /> value representing the birhtday to calculate the age from.</param>
+            <returns>
+            An equivalent <see cref="T:System.Int32" /> value representing an age, calculated from <paramref name="birthday" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.MathEx.CalculateAgeFromBirthday(System.DateTime,System.DateTime)">
+            <summary>
+            Calculates the age from a birthday at a specified point in time.
+            </summary>
+            <param name="birthday">A <see cref="T:System.DateTime" /> value representing the birhtday to calculate the age from.</param>
+            <param name="now">A <see cref="T:System.DateTime" /> value representing the current time stamp. This is usually <see cref="P:System.DateTime.Now" />.</param>
+            <returns>
+            An equivalent <see cref="T:System.Int32" /> value representing an age, calculated from <paramref name="birthday" /> and <paramref name="now" />.
             </returns>
         </member>
         <member name="T:BytecodeApi.ProgressCalculator">
@@ -10253,6 +10943,37 @@
             The pluralized representation of the specified <see cref="T:System.String" />.
             </returns>
         </member>
+        <member name="M:BytecodeApi.Wording.FormatByteSizeString(System.Int64)">
+            <summary>
+            Formats a <see cref="T:System.Int64" /> value representing a byte size in the <see cref="F:BytecodeApi.ByteSizeFormat.ByteSizeTwoDigits" /> format.
+            <para />Example: 12345 is converted to "12,06 KB"
+            </summary>
+            <param name="size">A <see cref="T:System.Int64" /> value representing a byte size.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> value representing the byte size value in the <see cref="F:BytecodeApi.ByteSizeFormat.ByteSizeTwoDigits" /> format.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Wording.FormatByteSizeString(System.Int64,System.Int32)">
+            <summary>
+            Formats a <see cref="T:System.Int64" /> value representing a byte size with the specified number of decimal places.
+            <para />Example: 12345 is converted to "12,06 KB" (given, that <paramref name="decimalPlaces" /> = 2)
+            </summary>
+            <param name="size">A <see cref="T:System.Int64" /> value representing a byte size.</param>
+            <param name="decimalPlaces">The number of decimal places to round the result to.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> value representing the formatted byte size value.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.Wording.FormatByteSizeString(System.Int64,BytecodeApi.ByteSizeFormat)">
+            <summary>
+            Formats a <see cref="T:System.Int64" /> value representing a byte size in the specified <see cref="T:BytecodeApi.ByteSizeFormat" /> and returns its equivalent <see cref="T:System.String" /> representation.
+            </summary>
+            <param name="size">A <see cref="T:System.Int64" /> value representing a byte size.</param>
+            <param name="format">The <see cref="T:BytecodeApi.ByteSizeFormat" /> to use to format <paramref name="size" />.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> value representing the byte size value in the specified <see cref="T:BytecodeApi.ByteSizeFormat" />.
+            </returns>
+        </member>
         <member name="M:BytecodeApi.Wording.FormatTimeSpanString(System.TimeSpan)">
             <summary>
             Converts the value of the specified <see cref="T:System.TimeSpan" /> to a human readable <see cref="T:System.String" /> representation by displaying the two most significant elements of either days, hours, minutes or seconds that are greater than zero, separated by a comma.
@@ -10581,6 +11302,11 @@
         <member name="F:BytecodeApi.GrayscaleEffect.InputProperty">
             <summary>
             Identifies the <see cref="P:BytecodeApi.GrayscaleEffect.Input" /> dependency property.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.GrayscaleEffect.Input">
+            <summary>
+            Gets or sets a <see cref="T:System.Windows.Media.Brush" /> that applies a grayscale effect on the bitmap.
             </summary>
         </member>
         <member name="M:BytecodeApi.GrayscaleEffect.#ctor">

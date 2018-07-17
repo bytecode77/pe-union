@@ -327,7 +327,7 @@ namespace PEunion
 		}
 		private void mnuToolsRegisterFileExtension_Click(object sender, RoutedEventArgs e)
 		{
-			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.StartupPath + "'.\r\nProceed?", false, true))
+			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.Process.StartupPath + "'.\r\nProceed?", false, true))
 			{
 				string iconPath = Path.Combine(App.ApplicationDirectoryPath, "ShellIcon.ico");
 				File.WriteAllBytes(iconPath, Properties.Resources.FileShellIcon);
@@ -337,7 +337,7 @@ namespace PEunion
 					"PEunion_RegisterFileExtension.reg",
 					Properties.Resources.FileRegisterExtension
 						.Replace("{IconPath}", iconPath.Replace(@"\", @"\\"))
-						.Replace("{ApplicationPath}", ApplicationBase.ExecutablePath.Replace(@"\", @"\\"))
+						.Replace("{ApplicationPath}", ApplicationBase.Process.ExecutablePath.Replace(@"\", @"\\"))
 						.ToAnsiBytes()
 				);
 			}
