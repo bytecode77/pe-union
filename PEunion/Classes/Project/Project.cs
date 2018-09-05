@@ -534,7 +534,7 @@ namespace PEunion
 					{
 						errors.Add(ValidationError.CreateError(source, "Must specify a URL"));
 					}
-					else if (!Validate.Uri(url.Url))
+					else if (!Validate.Url(url.Url))
 					{
 						errors.Add(ValidationError.CreateError(source, "'" + url.Url + "' is not a valid URL"));
 					}

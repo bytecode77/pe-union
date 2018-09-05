@@ -146,7 +146,7 @@ namespace PEunion
 					foreach (IEnumerable<byte> chunk in data.Chunk(1024))
 					{
 						byte[] line = chunk.ToArray();
-						block.AppendLine("\t\t\t\t" + line.Select(b => "0x" + b.ToString("x2") + ", ").AsString().Trim());
+						block.AppendLine("\t\t\t\t" + line.Select(b => "0x" + b.ToStringInvariant("x2") + ", ").AsString().Trim());
 						progress += line.Length;
 						WindowMain.Singleton.OverlayProgress = progress * 100 / totalSize;
 					}
@@ -317,7 +317,7 @@ namespace PEunion
 			{
 				str = str.Replace(@"\\", @"\").Replace("\\\"", "\"");
 				byte key = MathEx.Random.NextByte();
-				return "__F_DecryptString__(\"\\x" + key.ToString("x") + str.Select(c => @"\x" + (c ^ key).ToString("x")).AsString() + "\")";
+				return "__F_DecryptString__(\"\\x" + key.ToStringInvariant("x") + str.Select(c => @"\x" + (c ^ key).ToStringInvariant("x")).AsString() + "\")";
 			}
 			else
 			{

@@ -66,7 +66,7 @@ namespace PEunion
 		}
 		private void btnBrowse_Click(object sender, RoutedEventArgs e)
 		{
-			OnFilesSelect(AllowMultiple ? Dialogs.OpenMultiple(AllowedExtensionsArray) : Create.SingletonArray(Dialogs.Open(AllowedExtensionsArray)));
+			OnFilesSelect(AllowMultiple ? Dialogs.OpenMultiple(AllowedExtensionsArray) : Singleton.Array(Dialogs.Open(AllowedExtensionsArray)));
 		}
 		private void btnReset_Click(object sender, RoutedEventArgs e)
 		{

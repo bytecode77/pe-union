@@ -77,7 +77,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentProjects.Except(Create.SingletonArray(value.First().Substring(1))).ToArray());
+					File.WriteAllLines(path, RecentProjects.Except(BytecodeApi.Singleton.Array(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -104,7 +104,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentFiles.Except(Create.SingletonArray(value.First().Substring(1))).ToArray());
+					File.WriteAllLines(path, RecentFiles.Except(BytecodeApi.Singleton.Array(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -194,7 +194,7 @@ namespace PEunion
 		{
 			if (ConfirmSaveChanges())
 			{
-				string path = Dialogs.Open(Create.SingletonArray("peu"), "PEunion Project Files");
+				string path = Dialogs.Open(BytecodeApi.Singleton.Array("peu"), "PEunion Project Files");
 				if (path != null) LoadProject(path);
 			}
 		}
@@ -294,7 +294,7 @@ namespace PEunion
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent projects?", true, true))
 				{
-					RecentProjects = Create.SingletonArray("-" + path);
+					RecentProjects = BytecodeApi.Singleton.Array("-" + path);
 				}
 			}
 		}
@@ -307,13 +307,13 @@ namespace PEunion
 			}
 			else if (File.Exists(path))
 			{
-				AddFiles(Create.SingletonArray(path));
+				AddFiles(BytecodeApi.Singleton.Array(path));
 			}
 			else if (path != null)
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent files?", true, true))
 				{
-					RecentFiles = Create.SingletonArray("-" + path);
+					RecentFiles = BytecodeApi.Singleton.Array("-" + path);
 				}
 			}
 		}
@@ -510,7 +510,7 @@ namespace PEunion
 			else
 			{
 				Project.Save();
-				RecentProjects = Create.SingletonArray(Project.SaveLocation);
+				RecentProjects = BytecodeApi.Singleton.Array(Project.SaveLocation);
 				return true;
 			}
 		}
@@ -546,7 +546,7 @@ namespace PEunion
 		private void LoadProject(string path)
 		{
 			Project = Project.Load(path);
-			RecentProjects = Create.SingletonArray(path);
+			RecentProjects = BytecodeApi.Singleton.Array(path);
 			UpdateValidationErrorList();
 		}
 		private bool PrepareBuild()

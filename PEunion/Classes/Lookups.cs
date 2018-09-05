@@ -6,9 +6,9 @@ namespace PEunion
 {
 	public static class Lookups
 	{
-		public static readonly Dictionary<BuildPlatform, string> Platforms = EnumExtensions.GetDescriptionLookup<BuildPlatform>();
-		public static readonly Dictionary<BuildManifest, string> Manifests = EnumExtensions.GetDescriptionLookup<BuildManifest>();
-		public static readonly Dictionary<BuildObfuscationType, string> Obfuscations = EnumExtensions.GetDescriptionLookup<BuildObfuscationType>();
+		public static readonly Dictionary<BuildPlatform, string> Platforms = CSharp.GetEnumDescriptionLookup<BuildPlatform>();
+		public static readonly Dictionary<BuildManifest, string> Manifests = CSharp.GetEnumDescriptionLookup<BuildManifest>();
+		public static readonly Dictionary<BuildObfuscationType, string> Obfuscations = CSharp.GetEnumDescriptionLookup<BuildObfuscationType>();
 		public static readonly Dictionary<BuildObfuscationType, string> ObfuscationExamples = new Dictionary<BuildObfuscationType, string>
 		{
 			{ BuildObfuscationType.None, "processStartInfo" },
