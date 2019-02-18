@@ -46,6 +46,10 @@
       <HintPath>.\BytecodeApi.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="BytecodeApi.UI, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\BytecodeApi.UI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -284,7 +288,15 @@
     <Resource Include="Resources\IconRtlo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BytecodeApi.xml" />
+    <None Include="BytecodeApi.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BytecodeApi.UI.dll" />
+    <None Include="BytecodeApi.UI.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)$Build" &gt; NUL
+xcopy /Y "$(TargetPath)" "$(SolutionDir)$Build" &gt; NUL</PostBuildEvent>
+  </PropertyGroup>
 </Project>

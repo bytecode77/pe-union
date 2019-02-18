@@ -1,4 +1,8 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.UI.Data;
+using BytecodeApi.UI.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -448,7 +452,7 @@ namespace PEunion
 		{
 			List<ValidationError> errors = new List<ValidationError>();
 
-			if (Manifest == BuildManifest.None && (!AssemblyTitle.IsNullOrEmpty() || !AssemblyProduct.IsNullOrEmpty() || !AssemblyCopyright.IsNullOrEmpty() || AssemblyVersion != null && !AssemblyVersion.EqualsAny("", "0.0.0.0")))
+			if (Manifest == BuildManifest.None && (!AssemblyTitle.IsNullOrEmpty() || !AssemblyProduct.IsNullOrEmpty() || !AssemblyCopyright.IsNullOrEmpty() || AssemblyVersion != null && CSharp.EqualsNone(AssemblyVersion, "", "0.0.0.0")))
 			{
 				errors.Add(ValidationError.CreateWarning(null, "Assembly Information will be ignored when building without manifest"));
 			}
@@ -504,23 +508,23 @@ namespace PEunion
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has no extension (suggested: " + originalExtension + ")"));
 						}
-						else if (!newExtension.CompareCaseInsensitive(originalExtension))
+						else if (newExtension.CompareTo(originalExtension, SpecialStringComparison.IgnoreCase) != 0)
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "'" + file.Name.Trim() + "' has a different extension than the original file (" + originalExtension + ")"));
 						}
 
-						if (Path.GetExtension(file.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
+						if (CSharp.EqualsAny(Path.GetExtension(file.Name).TrimStart('.').ToLower(), unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(file.SourceFileName, "File extension '" + Path.GetExtension(file.Name) + "' - Possibly unintended file"));
 						}
 					}
 
-					if (FileItems.TakeWhile(other => other != file).Any(other => other.Name.CompareCaseInsensitive(file.Name) && other.DropLocation == file.DropLocation) ||
-						Items.TakeWhile(other => other != file).OfType<ProjectUrl>().Any(other => other.Name.CompareCaseInsensitive(file.Name) && other.DropLocation == file.DropLocation))
+					if (FileItems.TakeWhile(other => other != file).Any(other => other.Name.CompareTo(file.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == file.DropLocation) ||
+						Items.TakeWhile(other => other != file).OfType<ProjectUrl>().Any(other => other.Name.CompareTo(file.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == file.DropLocation))
 					{
 						errors.Add(ValidationError.CreateError(file.SourceFileName, "File name '" + file.Name + "' conflicts with other file dropped in the same location"));
 					}
-					else if (FileItems.TakeWhile(other => other != file).Any(other => other.FullName.CompareCaseInsensitive(file.FullName)))
+					else if (FileItems.TakeWhile(other => other != file).Any(other => other.FullName.CompareTo(file.FullName, SpecialStringComparison.IgnoreCase) == 0))
 					{
 						errors.Add(ValidationError.CreateMessage(file.SourceFileName, "Identical file '" + file.SourceFileName + "' added a second time"));
 					}
@@ -534,7 +538,7 @@ namespace PEunion
 					{
 						errors.Add(ValidationError.CreateError(source, "Must specify a URL"));
 					}
-					else if (!Validate.Uri(url.Url))
+					else if (!Validate.Url(url.Url))
 					{
 						errors.Add(ValidationError.CreateError(source, "'" + url.Url + "' is not a valid URL"));
 					}
@@ -553,14 +557,14 @@ namespace PEunion
 						{
 							errors.Add(ValidationError.CreateWarning(source, "'" + url.Name.Trim() + "' has no extension"));
 						}
-						if (Path.GetExtension(url.Name).TrimStart('.').ToLower().EqualsAny(unintendedFileExtensions))
+						if (CSharp.EqualsAny(Path.GetExtension(url.Name).TrimStart('.').ToLower(), unintendedFileExtensions))
 						{
 							errors.Add(ValidationError.CreateWarning(source, "File extension '" + Path.GetExtension(url.Name) + "' - Possibly unintended file"));
 						}
 					}
 
-					if (UrlItems.TakeWhile(other => other != url).Any(other => other.Name.CompareCaseInsensitive(url.Name) && other.DropLocation == url.DropLocation) ||
-						Items.TakeWhile(other => other != url).OfType<ProjectFile>().Any(other => other.Name.CompareCaseInsensitive(url.Name) && other.DropLocation == url.DropLocation))
+					if (UrlItems.TakeWhile(other => other != url).Any(other => other.Name.CompareTo(url.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == url.DropLocation) ||
+						Items.TakeWhile(other => other != url).OfType<ProjectFile>().Any(other => other.Name.CompareTo(url.Name, SpecialStringComparison.IgnoreCase) == 0 && other.DropLocation == url.DropLocation))
 					{
 						errors.Add(ValidationError.CreateError(source, "File name '" + url.Name + "' conflicts with other file dropped in the same location"));
 					}

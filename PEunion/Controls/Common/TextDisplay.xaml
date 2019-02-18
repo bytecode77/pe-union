@@ -1,4 +1,4 @@
-﻿<api:ObservableUserControl
+﻿<controls:ObservableUserControl
 	x:Class="PEunion.TextDisplay"
 	x:Name="textDisplay"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -7,10 +7,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:PEunion"
 	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
+	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
 	mc:Ignorable="d">
 	<DockPanel>
 		<Image Source="{Binding ImageSource, ElementName=textDisplay}" Margin="0,0,5,0" Visibility="{Binding ImageSource, Converter={StaticResource ObjectIsNullToVisibilityConverter}, ElementName=textDisplay}" />
 		<TextBlock Text="{Binding Text, ElementName=textDisplay}" />
 		<Image Source="/PEunion;component/Resources/IconInfoIcon.png" Margin="5,0,0,0" ToolTip="{Binding InfoIcon, ElementName=textDisplay}" Visibility="{Binding InfoIcon, ElementName=textDisplay, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
 	</DockPanel>
-</api:ObservableUserControl>
+</controls:ObservableUserControl>

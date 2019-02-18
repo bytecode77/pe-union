@@ -1,4 +1,6 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.Text;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
@@ -158,7 +160,7 @@ namespace PEunion
 
 		public string SourceDirectory => Path.GetDirectoryName(FullName);
 		public string SourceFileName => Path.GetFileName(FullName);
-		public string SourceFileSize => File.Exists(FullName) ? Wording.GetFriendlySizeName(new FileInfo(FullName).Length) : "<file not found>";
+		public string SourceFileSize => File.Exists(FullName) ? Wording.FormatByteSizeString(new FileInfo(FullName).Length) : "<file not found>";
 		public int DropAction
 		{
 			get => ExecuteDelete ? 3 : ExecuteWait ? 2 : Execute ? 1 : 0;

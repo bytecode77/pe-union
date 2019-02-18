@@ -1,4 +1,5 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.UI;
 using System;
 using System.IO;
 using System.Windows.Media.Imaging;

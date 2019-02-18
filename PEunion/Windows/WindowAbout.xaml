@@ -1,4 +1,4 @@
-﻿<api:ObservableWindow
+﻿<controls:ObservableWindow
 	x:Class="PEunion.WindowAbout"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,6 +6,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:PEunion"
 	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
+	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
 	mc:Ignorable="d"
 	Title="About PEunion" Width="700" Height="450" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" UseLayoutRounding="True">
 	<Grid>
@@ -59,4 +60,4 @@
 			<Button Content="OK" Style="{StaticResource UIButton}" HorizontalAlignment="Right" IsDefault="True" IsCancel="True" FontSize="14" />
 		</Border>
 	</Grid>
-</api:ObservableWindow>
+</controls:ObservableWindow>

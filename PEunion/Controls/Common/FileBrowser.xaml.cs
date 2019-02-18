@@ -1,4 +1,7 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.UI.Controls;
+using BytecodeApi.UI.Dialogs;
 using System;
 using System.IO;
 using System.Linq;
@@ -66,7 +69,7 @@ namespace PEunion
 		}
 		private void btnBrowse_Click(object sender, RoutedEventArgs e)
 		{
-			OnFilesSelect(AllowMultiple ? Dialogs.OpenMultiple(null, AllowedExtensionsArray) : Dialogs.Open(AllowedExtensionsArray).CreateSingletonArray());
+			OnFilesSelect(AllowMultiple ? FileDialogs.OpenMultiple(AllowedExtensionsArray) : Singleton.Array(FileDialogs.Open(AllowedExtensionsArray)));
 		}
 		private void btnReset_Click(object sender, RoutedEventArgs e)
 		{
@@ -79,7 +82,7 @@ namespace PEunion
 				files?.Length > 0 &&
 				files.All(File.Exists) &&
 				(AllowMultiple || files.Length == 1) &&
-				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => Path.GetExtension(file).TrimStart('.').CompareCaseInsensitive(ext))));
+				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => Path.GetExtension(file).TrimStart('.').CompareTo(ext, SpecialStringComparison.IgnoreCase) == 0)));
 		}
 		private static void AllowMultipleProperty_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{

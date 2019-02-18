@@ -4,11 +4,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:PEunion"
 	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
+	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
+	xmlns:effects="clr-namespace:BytecodeApi.UI.Effects;assembly=BytecodeApi.UI"
 	StartupUri="Windows/WindowMain.xaml" ShutdownMode="OnMainWindowClose" Startup="Application_Startup">
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="/BytecodeApi;component/Resources.xaml" />
+				<ResourceDictionary Source="/BytecodeApi.UI;component/Converters.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<Style TargetType="{x:Type Image}">
 				<Setter Property="Stretch" Value="None" />
@@ -17,7 +19,7 @@
 						<Setter Property="Opacity" Value=".5" />
 						<Setter Property="Effect">
 							<Setter.Value>
-								<api:GrayscaleEffect />
+								<effects:GrayscaleEffect />
 							</Setter.Value>
 						</Setter>
 					</Trigger>
@@ -134,7 +136,7 @@
 					</Trigger>
 					<MultiTrigger>
 						<MultiTrigger.Conditions>
-							<Condition Property="api:TreeViewItemHelper.IsMouseDirectlyOverItem" Value="True" />
+							<Condition Property="controls:TreeViewItemService.IsMouseDirectlyOverItem" Value="True" />
 							<Condition Property="IsSelected" Value="False" />
 						</MultiTrigger.Conditions>
 						<Setter Property="Background" Value="#e5f3fb" />

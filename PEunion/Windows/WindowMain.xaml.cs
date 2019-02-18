@@ -1,4 +1,10 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.UI;
+using BytecodeApi.UI.Controls;
+using BytecodeApi.UI.Dialogs;
+using BytecodeApi.UI.Extensions;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -77,7 +83,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentProjects.Except(value.First().Substring(1).CreateSingletonArray()).ToArray());
+					File.WriteAllLines(path, RecentProjects.Except(BytecodeApi.Singleton.Array(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -104,7 +110,7 @@ namespace PEunion
 				}
 				else if (value.Length == 1 && value.First().StartsWith("-"))
 				{
-					File.WriteAllLines(path, RecentFiles.Except(value.First().Substring(1).CreateSingletonArray()).ToArray());
+					File.WriteAllLines(path, RecentFiles.Except(BytecodeApi.Singleton.Array(value.First().Substring(1))).ToArray());
 				}
 				else
 				{
@@ -194,7 +200,7 @@ namespace PEunion
 		{
 			if (ConfirmSaveChanges())
 			{
-				string path = Dialogs.Open("peu".CreateSingletonArray(), "PEunion Project Files");
+				string path = FileDialogs.Open(BytecodeApi.Singleton.Array("peu"), "PEunion Project Files");
 				if (path != null) LoadProject(path);
 			}
 		}
@@ -210,7 +216,7 @@ namespace PEunion
 		{
 			if (PrepareBuild())
 			{
-				string path = Dialogs.Save(Project.ProjectName, "exe");
+				string path = FileDialogs.Save(Project.ProjectName, "exe");
 				if (path != null)
 				{
 					ctrlOverlay.Show();
@@ -233,7 +239,7 @@ namespace PEunion
 		{
 			if (PrepareBuild())
 			{
-				string path = Dialogs.Save(Project.ProjectName, "cs");
+				string path = FileDialogs.Save(Project.ProjectName, "cs");
 				if (path != null)
 				{
 					ctrlOverlay.Show();
@@ -294,7 +300,7 @@ namespace PEunion
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent projects?", true, true))
 				{
-					RecentProjects = ("-" + path).CreateSingletonArray();
+					RecentProjects = BytecodeApi.Singleton.Array("-" + path);
 				}
 			}
 		}
@@ -307,13 +313,13 @@ namespace PEunion
 			}
 			else if (File.Exists(path))
 			{
-				AddFiles(path.CreateSingletonArray());
+				AddFiles(BytecodeApi.Singleton.Array(path));
 			}
 			else if (path != null)
 			{
 				if (MessageBoxes.Confirmation("'" + path + "' not found.\r\nDo you want to remove it from recent files?", true, true))
 				{
-					RecentFiles = ("-" + path).CreateSingletonArray();
+					RecentFiles = BytecodeApi.Singleton.Array("-" + path);
 				}
 			}
 		}
@@ -327,7 +333,7 @@ namespace PEunion
 		}
 		private void mnuToolsRegisterFileExtension_Click(object sender, RoutedEventArgs e)
 		{
-			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.StartupPath + "'.\r\nProceed?", false, true))
+			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.Process.StartupPath + "'.\r\nProceed?", false, true))
 			{
 				string iconPath = Path.Combine(App.ApplicationDirectoryPath, "ShellIcon.ico");
 				File.WriteAllBytes(iconPath, Properties.Resources.FileShellIcon);
@@ -337,8 +343,8 @@ namespace PEunion
 					"PEunion_RegisterFileExtension.reg",
 					Properties.Resources.FileRegisterExtension
 						.Replace("{IconPath}", iconPath.Replace(@"\", @"\\"))
-						.Replace("{ApplicationPath}", ApplicationBase.ExecutablePath.Replace(@"\", @"\\"))
-						.ToAnsi()
+						.Replace("{ApplicationPath}", ApplicationBase.Process.ExecutablePath.Replace(@"\", @"\\"))
+						.ToAnsiBytes()
 				);
 			}
 		}
@@ -359,7 +365,7 @@ namespace PEunion
 			//TODO: Workaround for App.xaml style lacking "Foreground" support for TextBlock
 			foreach (TabItem tab in tabMain.Items)
 			{
-				tab.FindLogicalChildren<TextBlock>().First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
+				tab.FindChildren<TextBlock>(UITreeType.Logical).First().Foreground = tabMain.SelectedItem == tab ? Brushes.Black : Brushes.White;
 			}
 		}
 		private void tabMain_Close_Click(object sender, RoutedEventArgs e)
@@ -368,7 +374,7 @@ namespace PEunion
 		}
 		private void tabMain_TabItem_MouseUp(object sender, MouseButtonEventArgs e)
 		{
-			if (e.ChangedButton == MouseButton.Middle)
+			if (e.ChangedButton == MouseButton.Middle && (e.OriginalSource as FrameworkElement).FindParent<TabItem>(UITreeType.Visual) != null)
 			{
 				if ((sender as TabItem) == tabMain.Items[0]) NewCommand.Execute(null, this);
 				else tabMain.Items.Remove(sender);
@@ -433,7 +439,7 @@ namespace PEunion
 		}
 		private void mnuTreeItemsAddFiles_Click(object sender, RoutedEventArgs e)
 		{
-			string[] files = Dialogs.OpenMultiple();
+			string[] files = FileDialogs.OpenMultiple();
 			if (files != null) AddFiles(files);
 		}
 		private void mnuTreeItemsAddUrl_Click(object sender, RoutedEventArgs e)
@@ -466,7 +472,7 @@ namespace PEunion
 		}
 		private void btnSelectAssemblyInfo_Click(object sender, RoutedEventArgs e)
 		{
-			string path = Dialogs.Open();
+			string path = FileDialogs.Open();
 			if (path != null)
 			{
 				FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(path);
@@ -510,13 +516,13 @@ namespace PEunion
 			else
 			{
 				Project.Save();
-				RecentProjects = Project.SaveLocation.CreateSingletonArray();
+				RecentProjects = BytecodeApi.Singleton.Array(Project.SaveLocation);
 				return true;
 			}
 		}
 		private bool FileSaveAs()
 		{
-			string path = Dialogs.Save(Project.ProjectName, "peu");
+			string path = FileDialogs.Save(Project.ProjectName, "peu");
 			if (path != null)
 			{
 				Project.SaveLocation = path;
@@ -546,7 +552,7 @@ namespace PEunion
 		private void LoadProject(string path)
 		{
 			Project = Project.Load(path);
-			RecentProjects = path.CreateSingletonArray();
+			RecentProjects = BytecodeApi.Singleton.Array(path);
 			UpdateValidationErrorList();
 		}
 		private bool PrepareBuild()
