@@ -71,6 +71,16 @@ namespace PEunion.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BytecodeApiUI {
+            get {
+                object obj = ResourceManager.GetObject("BytecodeApiUI", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copyright (c) 2017, bytecode77
         ///All rights reserved.
         ///

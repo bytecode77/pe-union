@@ -1,0 +1,2249 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BytecodeApi.UI</name>
+    </assembly>
+    <members>
+        <member name="T:BytecodeApi.UI.Controls.MenuItemService">
+            <summary>
+            Helper class for the WPF <see cref="T:System.Windows.Controls.MenuItem" /> control that implements an icon that can be defined in XAML.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Controls.MenuItemService.ImageSourceProperty">
+            <summary>
+            Identifies the <see cref="T:BytecodeApi.UI.Controls.MenuItemService" />.ImageSource dependency property. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.MenuItemService.GetImageSource(System.Windows.DependencyObject)">
+            <summary>
+            Gets the image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.Controls.MenuItem" /> to get the image source from.</param>
+            <returns>
+            The image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.MenuItemService.SetImageSource(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Gets the image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.Controls.MenuItem" /> to assign the image source to.</param>
+            <param name="value">The image source of this <see cref="P:System.Windows.Controls.MenuItem.Icon" />.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.NoInheritanceContainer">
+            <summary>
+            Represents an <see cref="T:BytecodeApi.UI.Controls.ObservableUserControl" /> that does not inherit style (<see cref="P:System.Windows.FrameworkElement.InheritanceBehavior" /> is set to <see cref="F:System.Windows.InheritanceBehavior.SkipToAppNext" />).
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.NoInheritanceContainer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Controls.NoInheritanceContainer" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.NoInheritanceContainer.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Controls.NoInheritanceContainer" /> class with the specified content.
+            </summary>
+            <param name="content">An <see cref="T:System.Object" /> representing the content of this <see cref="T:BytecodeApi.UI.Controls.NoInheritanceContainer" />.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.TreeViewItemService">
+            <summary>
+            Helper class for the WPF <see cref="T:System.Windows.Controls.TreeView" /> control that checks whether a MouseOver event occurrs over an item directly. This is relevant, when MouseOver effects need to be implemented for a <see cref="T:System.Windows.Controls.TreeViewItem" /> excluding its children.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Controls.TreeViewItemService.IsMouseDirectlyOverItemProperty">
+            <summary>
+            Identifies the <see cref="T:BytecodeApi.UI.Controls.TreeViewItemService" />.IsMouseDirectlyOverItem dependency property. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.TreeViewItemService.GetIsMouseDirectlyOverItem(System.Windows.DependencyObject)">
+            <summary>
+            Returns <see langword="true" />, if the mouse is directly hovering a <see cref="T:System.Windows.Controls.TreeViewItem" /> and <see langword="false" />, if it is hovering a child or no <see cref="T:System.Windows.Controls.TreeViewItem" /> at all.
+            </summary>
+            <param name="obj">The <see cref="T:System.Windows.Controls.TreeViewItem" /> object to check.</param>
+            <returns>
+            <see langword="true" />, if the mouse is directly hovering a <see cref="T:System.Windows.Controls.TreeViewItem" />;
+            <see langword="false" />, if it is hovering a child or no <see cref="T:System.Windows.Controls.TreeViewItem" /> at all.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.WatermarkAdorner">
+            <summary>
+            Represents an <see cref="T:System.Windows.Documents.Adorner" /> for watermark elements.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Controls.WatermarkAdorner.VisualChildrenCount">
+            <summary>
+            Gets the number of visual child elements within this element.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkAdorner.#ctor(System.Windows.UIElement,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Controls.WatermarkAdorner" /> class with the specified element and watermark.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to apply the watermark to.</param>
+            <param name="watermark">The <see cref="T:System.Object" /> that represents the watermark. This is typically a <see cref="T:System.Windows.Controls.TextBlock" /> element.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkAdorner.GetVisualChild(System.Int32)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Media.Visual.GetVisualChild(System.Int32)" />, and returns a child at the specified index from a collection of child elements.
+            </summary>
+            <param name="index">The zero-based index of the requested child element in the collection.</param>
+            <returns>
+            The requested child element. This should not return <see langword="null" />;
+            if the provided index is out of range, an exception is thrown.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkAdorner.MeasureOverride(System.Windows.Size)">
+            <summary>
+            Implements any custom measuring behavior for the adorner.
+            </summary>
+            <param name="constraint">A size to constrain the adorner to.</param>
+            <returns>
+            A <see cref="T:System.Windows.Size" /> object representing the amount of layout space needed by the adorner.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkAdorner.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            Positions child elements and determines a size for a <see cref="T:System.Windows.FrameworkElement" /> derived class.
+            </summary>
+            <param name="finalSize">The final area within the parent that this element should use to arrange itself and its children.</param>
+            <returns>
+            The actual size used.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.WatermarkService">
+            <summary>
+            Helper class to display watermark elements on top of <see cref="T:System.Windows.Controls.TextBox" />, <see cref="T:System.Windows.Controls.ComboBox" /> and <see cref="T:System.Windows.Controls.ItemsControl" /> elements.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Controls.WatermarkService.WatermarkProperty">
+            <summary>
+            Identifies the <see cref="T:BytecodeApi.UI.Controls.WatermarkService" />.Watermark dependency property. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkService.GetWatermark(System.Windows.DependencyObject)">
+            <summary>
+            Gets the watermark of this <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to get the watermark from.</param>
+            <returns>
+            The watermark of this <see cref="T:System.Windows.DependencyObject" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.WatermarkService.SetWatermark(System.Windows.DependencyObject,System.Object)">
+            <summary>
+            Sets the watermark of this <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to set the watermark of.</param>
+            <param name="value">The <see cref="T:System.Object" /> that represents the watermark. This is typically a <see cref="T:System.Windows.Controls.TextBlock" /> element.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.ObservableUserControl">
+            <summary>
+            Class that wraps a <see cref="T:System.Windows.Controls.UserControl" /> object, implementing the <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> interface. Typically, properties of this class are set as a <see cref="T:System.Windows.DependencyProperty" /> on a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Controls.ObservableUserControl.PropertyChanged">
+            <summary>
+            Occurs when a property value has changed and is typically used by a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Controls.ObservableUserControl" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.GetValue``1(System.Windows.DependencyProperty)">
+            <summary>
+            Returns the current effective value of a <see cref="T:System.Windows.DependencyProperty" /> on this instance of a <see cref="T:System.Windows.Controls.UserControl" />.
+            </summary>
+            <typeparam name="T">The return type of the <see cref="T:System.Windows.DependencyProperty" />.</typeparam>
+            <param name="dependencyProperty">The <see cref="T:System.Windows.DependencyProperty" /> identifier of the property to retrieve the value for.</param>
+            <returns>
+            The effective value of <paramref name="dependencyProperty" /> on this instance of a <see cref="T:System.Windows.Controls.UserControl" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.Dispatch(System.Action)">
+            <summary>
+            Executes the specified <see cref="T:System.Action" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.Dispatch``1(System.Func{``0})">
+            <summary>
+            Executes the specified <see cref="T:System.Func`1" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
+            </summary>
+            <typeparam name="T">The return type of <paramref name="func" />.</typeparam>
+            <param name="func">The <see cref="T:System.Func`1" /> to be invoked.</param>
+            <returns>
+            The result of <paramref name="func" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Method that can be used by the <see langword="get" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />).
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <returns>
+            The value of the property backing field. The default value is <see langword="default" />(<typeparamref name="T" />).
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)">
+            <summary>
+            Method that can be used by the <see langword="set" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />). After modification, the <see cref="E:BytecodeApi.UI.Controls.ObservableUserControl.PropertyChanged" /> event is raised.
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableUserControl.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Controls.ObservableUserControl.PropertyChanged" /> event on any custom property. <see cref="M:BytecodeApi.UI.Controls.ObservableUserControl.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Controls.ObservableUserControl.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" /> do not necessarily need to be used in conjunction with this method. Likewise, this method is not required when using <see cref="M:BytecodeApi.UI.Controls.ObservableUserControl.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Controls.ObservableUserControl.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" />.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Controls.ObservableWindow">
+            <summary>
+            Class that wraps a <see cref="T:System.Windows.Window" /> object, implementing the <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> interface. Typically, properties of this class are set as a <see cref="T:System.Windows.DependencyProperty" /> on a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Controls.ObservableWindow.PropertyChanged">
+            <summary>
+            Occurs when a property value has changed and is typically used by a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Controls.ObservableWindow" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.GetValue``1(System.Windows.DependencyProperty)">
+            <summary>
+            Returns the current effective value of a <see cref="T:System.Windows.DependencyProperty" /> on this instance of a <see cref="T:System.Windows.Window" />.
+            </summary>
+            <typeparam name="T">The return type of the <see cref="T:System.Windows.DependencyProperty" />.</typeparam>
+            <param name="dependencyProperty">The <see cref="T:System.Windows.DependencyProperty" /> identifier of the property to retrieve the value for.</param>
+            <returns>
+            The effective value of <paramref name="dependencyProperty" /> on this instance of a <see cref="T:System.Windows.Window" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.Dispatch(System.Action)">
+            <summary>
+            Executes the specified <see cref="T:System.Action" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.Dispatch``1(System.Func{``0})">
+            <summary>
+            Executes the specified <see cref="T:System.Func`1" /> synchronously on the thread the <see cref="T:System.Windows.Threading.Dispatcher" /> is associated with.
+            </summary>
+            <typeparam name="T">The return type of <paramref name="func" />.</typeparam>
+            <param name="func">The <see cref="T:System.Func`1" /> to be invoked.</param>
+            <returns>
+            The result of <paramref name="func" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Method that can be used by the <see langword="get" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />).
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <returns>
+            The value of the property backing field. The default value is <see langword="default" />(<typeparamref name="T" />).
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)">
+            <summary>
+            Method that can be used by the <see langword="set" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />). After modification, the <see cref="E:BytecodeApi.UI.Controls.ObservableWindow.PropertyChanged" /> event is raised.
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Controls.ObservableWindow.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Controls.ObservableWindow.PropertyChanged" /> event on any custom property. <see cref="M:BytecodeApi.UI.Controls.ObservableWindow.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Controls.ObservableWindow.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" /> do not necessarily need to be used in conjunction with this method. Likewise, this method is not required when using <see cref="M:BytecodeApi.UI.Controls.ObservableWindow.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Controls.ObservableWindow.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" />.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.ConverterBase`1">
+            <summary>
+            Represents the base class that wraps the <see cref="T:System.Windows.Data.IValueConverter" /> and provides a simplified wrapper method for Convert. ConvertBack always returns <see cref="F:System.Windows.DependencyProperty.UnsetValue" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.ConverterBase`1.Convert(`0)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <returns>
+            A converted value. If the method returns <see langword="null" />, the valid null value is used.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.ConverterBase`2">
+            <summary>
+            Represents the base class that wraps the <see cref="T:System.Windows.Data.IValueConverter" /> and provides a simplified wrapper method for Convert. ConvertBack always returns <see cref="F:System.Windows.DependencyProperty.UnsetValue" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.ConverterBase`2.Convert(`0,`1)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <returns>
+            A converted value. If the method returns <see langword="null" />, the valid null value is used.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.ConverterBaseExtended`2">
+            <summary>
+            Represents the base class that wraps the <see cref="T:System.Windows.Data.IValueConverter" /> and provides simplified wrapper methods for Convert and ConvertBack.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.ConverterBaseExtended`2.ConvertBack(`1)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <returns>
+            A converted value. If the method returns <see langword="null" />, the valid null value is used.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.ConverterBaseExtended`3">
+            <summary>
+            Represents the base class that wraps the <see cref="T:System.Windows.Data.IValueConverter" /> and provides simplified wrapper methods for Convert and ConvertBack.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.ConverterBaseExtended`3.ConvertBack(`1,`2)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <returns>
+            A converted value. If the method returns <see langword="null" />, the valid null value is used.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.BooleanToGridLengthConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to a <see cref="T:System.Windows.GridLength" /> value, where <see langword="true" /> is converted to <see cref="P:System.Windows.GridLength.Auto" /> and <see langword="false" /> is converted to <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0). If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToGridLengthConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.BooleanToGridLengthConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToGridLengthConverter.Convert(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Converts a <see cref="T:System.Boolean" /> value to a <see cref="T:System.Windows.GridLength" /> value, where <see langword="true" /> is converted to <see cref="P:System.Windows.GridLength.Auto" /> and <see langword="false" /> is converted to <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0).
+            </summary>
+            <param name="value">The <see cref="T:System.Boolean" /> value to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see cref="P:System.Windows.GridLength.Auto" />, if <paramref name="value" /> is <see langword="true" />;
+            otherwise, <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0).
+            If <paramref name="parameter" /> is <see langword="true" />, the result is inverted.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.BooleanToInverseConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to their inverted <see cref="T:System.Boolean" /> representation.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToInverseConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.BooleanToInverseConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToInverseConverter.Convert(System.Boolean)">
+            <summary>
+            Converts a <see cref="T:System.Boolean" /> value to its inverted representation.
+            </summary>
+            <param name="value">The <see cref="T:System.Boolean" /> value to convert.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is <see langword="false" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToInverseConverter.ConvertBack(System.Boolean)">
+            <summary>
+            Converts an inverted <see cref="T:System.Boolean" /> value back to its original representation. This method returns an equal result to <see cref="M:BytecodeApi.UI.Converters.BooleanToInverseConverter.Convert(System.Boolean)" />.
+            </summary>
+            <param name="value">The <see cref="T:System.Boolean" /> value to convert.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is <see langword="false" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.BooleanToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Boolean" /> values to <see cref="T:System.Windows.Visibility" /> enumeration values. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.BooleanToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.BooleanToVisibilityConverter.Convert(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Converts a <see cref="T:System.Boolean" /> value to a <see cref="T:System.Windows.Visibility" /> value.
+            </summary>
+            <param name="value">The <see cref="T:System.Boolean" /> value to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is <see langword="true" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            If <paramref name="parameter" /> is <see langword="true" />, the result is inverted.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.LongToByteSizeStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.Int64" /> values to a <see cref="T:System.String" /> using the <see cref="M:BytecodeApi.Text.Wording.FormatByteSizeString(System.Int64,BytecodeApi.Text.ByteSizeFormat)" /> method using the specified <see cref="T:BytecodeApi.Text.ByteSizeFormat" /> in the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.LongToByteSizeStringConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.LongToByteSizeStringConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.LongToByteSizeStringConverter.Convert(System.Nullable{System.Int64},System.Nullable{BytecodeApi.Text.ByteSizeFormat})">
+            <summary>
+            Converts a <see cref="T:System.Int64" /> value to a <see cref="T:System.String" /> using the <see cref="M:BytecodeApi.Text.Wording.FormatByteSizeString(System.Int64,BytecodeApi.Text.ByteSizeFormat)" /> method using the specified <see cref="T:BytecodeApi.Text.ByteSizeFormat" /> in the given parameter.
+            </summary>
+            <param name="value">The <see cref="T:System.Int64" /> value to convert.</param>
+            <param name="parameter">The <see cref="T:BytecodeApi.Text.ByteSizeFormat" /> specifying the format to use for conversion. The default value is <see cref="F:BytecodeApi.Text.ByteSizeFormat.ByteSizeTwoDigits" />.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.DateTimeToStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.DateTime" /> values to their equivalent <see cref="T:System.String" /> representation using the <see cref="M:BytecodeApi.Extensions.DateTimeExtensions.ToStringInvariant(System.DateTime,System.String)" /> method and the specified format in the parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.DateTimeToStringConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.DateTimeToStringConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.DateTimeToStringConverter.Convert(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Converts a <see cref="T:System.DateTime" /> value to its equivalent <see cref="T:System.String" /> representation using the specified format in the parameter.
+            </summary>
+            <param name="value">The <see cref="T:System.DateTime" /> value to convert.</param>
+            <param name="parameter">A <see cref="T:System.String" /> specifying the format to be used for conversion.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableGreaterEqualToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterEqualToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableGreaterEqualToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterEqualToBooleanConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is greater than or equal to <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableGreaterEqualToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterEqualToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableGreaterEqualToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterEqualToVisibilityConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than or equal to the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is greater than or equal to <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableGreaterToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableGreaterToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterToBooleanConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Boolean" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is greater than <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableGreaterToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableGreaterToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableGreaterToVisibilityConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is greater than the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is greater than <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableLessEqualToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessEqualToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableLessEqualToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessEqualToBooleanConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Boolean" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is less than or equal to <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableLessEqualToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessEqualToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableLessEqualToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessEqualToVisibilityConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than or equal to the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is less than or equal to <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableLessToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Boolean" /> value indicating whether the value is less than the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableLessToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessToBooleanConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Boolean" /> value indicating whether the value is less than the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is less than <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.IComparableLessToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.IComparable" /> objects, such as integer values, to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than the given parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.IComparableLessToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.IComparableLessToVisibilityConverter.Convert(System.IComparable,System.IComparable)">
+            <summary>
+            Converts an <see cref="T:System.IComparable" /> value to a <see cref="T:System.Windows.Visibility" /> value indicating whether the value is less than the given parameter.
+            </summary>
+            <param name="value">An <see cref="T:System.IComparable" /> value to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.IComparable" /> value to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is less than <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectEqualsNotToBooleanConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns <see langword="true" />, if the objects are not equal.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsNotToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectEqualsNotToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsNotToBooleanConverter.Convert(System.Object,System.Object)">
+            <summary>
+            Compares two objects and returns a <see cref="T:System.Boolean" /> value indicating their equality. Returns <see langword="true" />, if <paramref name="value" /> is not equal to <paramref name="parameter" />; otherwise, <see langword="false" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.Object" /> to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is not equal to <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectEqualsNotToVisibilityConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns a <see cref="T:System.Windows.Visibility" /> value indicating wheter the objects are not equal.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsNotToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectEqualsNotToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsNotToVisibilityConverter.Convert(System.Object,System.Object)">
+            <summary>
+            Compares two objects and returns a <see cref="T:System.Windows.Visibility" /> value indicating their equality. Returns <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is not equal to <paramref name="parameter" />; otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.Object" /> to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is not equal to <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectEqualsToBooleanConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns <see langword="true" />, if the objects are equal.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectEqualsToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsToBooleanConverter.Convert(System.Object,System.Object)">
+            <summary>
+            Compares two objects and returns a <see cref="T:System.Boolean" /> value indicating their equality. Returns <see langword="true" />, if <paramref name="value" /> is equal to <paramref name="parameter" />; otherwise, <see langword="false" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.Object" /> to compare to <paramref name="value" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is equal to <paramref name="parameter" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectEqualsToVisibilityConverter">
+            <summary>
+            Represents the converter that compares an <see cref="T:System.Object" /> with the <see cref="T:System.Object" /> in the given parameter and returns a <see cref="T:System.Windows.Visibility" /> value indicating wheter the objects are equal.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectEqualsToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectEqualsToVisibilityConverter.Convert(System.Object,System.Object)">
+            <summary>
+            Compares two objects and returns a <see cref="T:System.Windows.Visibility" /> value indicating their equality. Returns <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is equal to <paramref name="parameter" />; otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to compare to <paramref name="parameter" />.</param>
+            <param name="parameter">An <see cref="T:System.Object" /> to compare to <paramref name="value" />.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is equal to <paramref name="parameter" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectIsNullToBooleanConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Boolean" /> value indicating wheter the <see cref="T:System.Object" /> is <see langword="null" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectIsNullToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToBooleanConverter.Convert(System.Object,System.Nullable{System.Boolean})">
+            <summary>
+            Converts an <see cref="T:System.Object" /> to a <see cref="T:System.Boolean" /> value indicating whether the given value is <see langword="null" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is not <see langword="null" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectIsNullToGridLengthConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Windows.GridLength" /> value, where <see langword="null" /> is converted to <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0) and <see langword="false" /> is converted to <see cref="P:System.Windows.GridLength.Auto" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToGridLengthConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectIsNullToGridLengthConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToGridLengthConverter.Convert(System.Object,System.Nullable{System.Boolean})">
+            <summary>
+            Converts an <see cref="T:System.Object" /> to a <see cref="T:System.Windows.GridLength" /> value indicating whether the given value is <see langword="null" />. Returns <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0), if <paramref name="value" /> is <see langword="null" />; otherwise, <see cref="P:System.Windows.GridLength.Auto" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see cref="P:System.Windows.GridLength.Auto" />, if <paramref name="value" /> is <see langword="null" />;
+            otherwise, <see langword="new" /> <see cref="T:System.Windows.GridLength" />(0).
+            If <paramref name="parameter" /> is <see langword="true" />, the result is inverted.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectIsNullToVisibilityConverter">
+            <summary>
+            Represents the converter that converts objects to a <see cref="T:System.Windows.Visibility" /> value indicating wheter the <see cref="T:System.Object" /> is <see langword="null" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectIsNullToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectIsNullToVisibilityConverter.Convert(System.Object,System.Nullable{System.Boolean})">
+            <summary>
+            Converts an <see cref="T:System.Object" /> to a <see cref="T:System.Windows.Visibility" /> value indicating whether the given value is <see langword="null" />.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is not <see langword="null" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectToHashStringConverter">
+            <summary>
+            Represents the converter that converts objects of various types to their equivalent hash representation using the specified <see cref="T:BytecodeApi.Cryptography.HashType" /> in the given parameter. The default hash type is <see cref="F:BytecodeApi.Cryptography.HashType.MD5" />. The hash is returned as a hexadecimal <see cref="T:System.String" />. Accepted value types are: <see cref="T:System.Byte" />[], <see cref="T:System.String" /> and <see cref="T:System.IO.FileInfo" /> (computes the hash from a file).
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectToHashStringConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectToHashStringConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectToHashStringConverter.Convert(System.Object,System.Nullable{BytecodeApi.Cryptography.HashType})">
+            <summary>
+            Creates a hash from a variety of types and returns their equivalent <see cref="T:System.String" /> representation. The parameter specifies the <see cref="T:BytecodeApi.Cryptography.HashType" /> to be used.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to convert. Allowed value types are: <see cref="T:System.Byte" />[], <see cref="T:System.String" /> and <see cref="T:System.IO.FileInfo" />, where <see cref="T:System.IO.FileInfo" /> specifies a file to compute the hash from.</param>
+            <param name="parameter">The <see cref="T:BytecodeApi.Cryptography.HashType" /> specifying the hash algorithm to use.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the hash that has been computed.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.ObjectToImageSourceConverter">
+            <summary>
+            Represents the converter that converts objects of various types to their equivalent <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> representation. Accepted value types are: <see cref="T:System.Drawing.Image" /> and <see cref="T:System.Drawing.Icon" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectToImageSourceConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.ObjectToImageSourceConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.ObjectToImageSourceConverter.Convert(System.Object)">
+            <summary>
+            Creates an <see cref="T:System.Windows.Media.ImageSource" /> from a variety of types.
+            </summary>
+            <param name="value">An <see cref="T:System.Object" /> to convert. Allowed value types are: <see cref="T:System.Drawing.Image" /> and <see cref="T:System.Drawing.Icon" />.</param>
+            <returns>
+            The <see cref="T:System.Windows.Media.ImageSource" /> this method creates.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.PathToDirectoryNameConverter">
+            <summary>
+            Represents the converter that converts paths represented as a <see cref="T:System.String" /> to the directory name part.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.PathToDirectoryNameConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.PathToDirectoryNameConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.PathToDirectoryNameConverter.Convert(System.String)">
+            <summary>
+            Converts a path represented as a <see cref="T:System.String" /> to the directory name part.
+            </summary>
+            <param name="value">The <see cref="T:System.String" /> value to convert.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.PathToFileNameConverter">
+            <summary>
+            Represents the converter that converts paths represented as a <see cref="T:System.String" /> to the filename part. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the filename part without the extension is returned.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.PathToFileNameConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.PathToFileNameConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.PathToFileNameConverter.Convert(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Converts a path represented as a <see cref="T:System.String" /> to the filename part. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the filename part without the extension is returned.
+            </summary>
+            <param name="value">The <see cref="T:System.String" /> value to convert.</param>
+            <param name="parameter"><see langword="true" /> to return the filename part without the extension.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.StringConcatConverter">
+            <summary>
+            Represents the converter that concatenates two <see cref="T:System.String" /> values. Both values can be provided using any data type. <see langword="null" /> values are treated as <see cref="F:System.String.Empty" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringConcatConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.StringConcatConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringConcatConverter.Convert(System.Object,System.Object)">
+            <summary>
+            Concatenates the <see cref="T:System.String" /> representations of <paramref name="value" /> and <paramref name="parameter" /> to a new <see cref="T:System.String" />. <see langword="null" /> values are treated as <see cref="F:System.String.Empty" />.
+            </summary>
+            <param name="value">The first <see cref="T:System.Object" /> that is converted to a <see cref="T:System.String" />.</param>
+            <param name="parameter">The second <see cref="T:System.Object" /> that is converted to a <see cref="T:System.String" /> and appended to <paramref name="value" />.</param>
+            <returns>
+            A new <see cref="T:System.String" />, where <paramref name="value" /> and <paramref name="parameter" /> are converted to a <see cref="T:System.String" /> and concatenated.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.StringIsNullOrEmptyToBooleanConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.String" /> values to a <see cref="T:System.Boolean" /> value indicating wheter the <see cref="T:System.String" /> is <see langword="null" /> or <see cref="F:System.String.Empty" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringIsNullOrEmptyToBooleanConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.StringIsNullOrEmptyToBooleanConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringIsNullOrEmptyToBooleanConverter.Convert(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Converts a <see cref="T:System.String" /> value to a <see cref="T:System.Boolean" /> value indicating whether the <see cref="T:System.String" /> value is <see langword="null" /> or <see cref="F:System.String.Empty" />.
+            </summary>
+            <param name="value">A <see cref="T:System.String" /> value to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="value" /> is not <see langword="null" /> or <see cref="F:System.String.Empty" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.StringIsNullOrEmptyToVisibilityConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.String" /> values to a <see cref="T:System.Windows.Visibility" /> value indicating wheter the <see cref="T:System.String" /> is <see langword="null" /> or <see cref="F:System.String.Empty" />. If the given <see cref="T:System.Boolean" /> parameter is <see langword="true" />, the result is inverted.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringIsNullOrEmptyToVisibilityConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.StringIsNullOrEmptyToVisibilityConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.StringIsNullOrEmptyToVisibilityConverter.Convert(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Converts a <see cref="T:System.String" /> value to a <see cref="T:System.Windows.Visibility" /> value indicating whether the <see cref="T:System.String" /> value is <see langword="null" /> or <see cref="F:System.String.Empty" />.
+            </summary>
+            <param name="value">A <see cref="T:System.String" /> value to convert.</param>
+            <param name="parameter"><see langword="true" /> to invert the result.</param>
+            <returns>
+            <see cref="F:System.Windows.Visibility.Visible" />, if <paramref name="value" /> is not <see langword="null" /> or <see cref="F:System.String.Empty" />;
+            otherwise, <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.TimeSpanToHumanReadableStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.TimeSpan" /> values to their equivalent <see cref="T:System.String" /> representation in human readable form using the <see cref="M:BytecodeApi.Text.Wording.FormatTimeSpanString(System.TimeSpan)" /> method. The parameter specifies the maxElement parameter in the <see cref="M:BytecodeApi.Text.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32)" /> method.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.TimeSpanToHumanReadableStringConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.TimeSpanToHumanReadableStringConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.TimeSpanToHumanReadableStringConverter.Convert(System.Nullable{System.TimeSpan},System.Nullable{System.Int32})">
+            <summary>
+            Converts a <see cref="T:System.TimeSpan" /> value to its equivalent <see cref="T:System.String" /> representation in human readable form using the <see cref="M:BytecodeApi.Text.Wording.FormatTimeSpanString(System.TimeSpan)" /> method. The parameter specifies the maxElement parameter in the <see cref="M:BytecodeApi.Text.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32)" /> method.
+            </summary>
+            <param name="value">The <see cref="T:System.TimeSpan" /> value to convert.</param>
+            <param name="parameter">A <see cref="T:System.Int32" /> specifying the maxElement parameter in the <see cref="M:BytecodeApi.Text.Wording.FormatTimeSpanString(System.TimeSpan,System.Int32)" /> method.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Converters.TimeSpanToStringConverter">
+            <summary>
+            Represents the converter that converts <see cref="T:System.TimeSpan" /> values to their equivalent <see cref="T:System.String" /> representation using the <see cref="M:BytecodeApi.Extensions.TimeSpanExtensions.ToStringInvariant(System.TimeSpan,System.String)" /> method and the specified format in the parameter.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.TimeSpanToStringConverter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Converters.TimeSpanToStringConverter" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Converters.TimeSpanToStringConverter.Convert(System.Nullable{System.TimeSpan},System.String)">
+            <summary>
+            Converts a <see cref="T:System.TimeSpan" /> value to its equivalent <see cref="T:System.String" /> representation using the specified format in the parameter.
+            </summary>
+            <param name="value">The <see cref="T:System.TimeSpan" /> value to convert.</param>
+            <param name="parameter">A <see cref="T:System.String" /> specifying the format to be used for conversion.</param>
+            <returns>
+            An equivalent <see cref="T:System.String" /> representation of the specified value.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Dialogs.FileDialogs">
+            <summary>
+            Helper class for UI dialogs, such as Open and Save for files and directories.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.Open">
+            <summary>
+            Displays an open file dialog with a filter that allows any file to be opened. Returns a <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.Open(System.String[])">
+            <summary>
+            Displays an open file dialog with a filter that allows any file with one of the specified extensions to be opened. The extension description is retrieved using the <see cref="T:BytecodeApi.IO.FileExtensionInfo" /> class. Returns a <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <param name="extensions">The collection of extensions that are allowed to be opened. The extension description is retrieved using the <see cref="T:BytecodeApi.IO.FileExtensionInfo" /> class.</param>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.Open(System.String[],System.String)">
+            <summary>
+            Displays an open file dialog with a filter that allows any file with one of the specified extensions to be opened. Returns a <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <param name="extensions">The collection of extensions that are allowed to be opened.</param>
+            <param name="extensionsDescription">The description to be used. If <see langword="null" />, the <see cref="T:BytecodeApi.IO.FileExtensionInfo" /> class is used to retrieve the description.</param>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.OpenMultiple">
+            <summary>
+            Displays an open file dialog with a filter that allows any file to be opened. Returns a <see cref="T:System.String" />[] representing the full path to all selected files and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" />[] representing the full path to all selected files and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.OpenMultiple(System.String[])">
+            <summary>
+            Displays an open file dialog with a filter that allows any file with one of the specified extensions to be opened. The extension description is retrieved using the <see cref="T:BytecodeApi.IO.FileExtensionInfo" /> class. Returns a <see cref="T:System.String" />[] representing the full path to all selected files and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <param name="extensions">The collection of extensions that are allowed to be opened. The extension description is retrieved using the <see cref="T:BytecodeApi.IO.FileExtensionInfo" /> class.</param>
+            <returns>
+            A <see cref="T:System.String" />[] representing the full path to all selected files and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.OpenFolder">
+            <summary>
+            Displays a folder browser dialog and returns a <see cref="T:System.String" /> representing the full path to the selected directory and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the selected directory and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.OpenFolder(System.String)">
+            <summary>
+            Displays a folder browser dialog, starting from the specified root folder, and returns a <see cref="T:System.String" /> representing the full path to the selected directory and <see langword="null" />, if selection has been canceled by the user.
+            </summary>
+            <param name="rootFolder">A <see cref="T:System.String" /> specifying the root folder to start browsing from.</param>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the selected directory and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.SelectIcon(System.Int32@)">
+            <summary>
+            Displays an <see cref="T:BytecodeApi.UI.Dialogs.IconPickerDialog" /> that allows an icon from a resource file to be selected. Returns a <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user. The selected icon index is written to the <paramref name="index" /> parameter.
+            </summary>
+            <param name="index">When this method returns, a <see cref="T:System.String" /> that contains the index of the selected icon; otherwise, -1.</param>
+            <returns>
+            Returns a <see cref="T:System.String" /> representing the full path to the selected file and <see langword="null" />, if selection has been canceled by the user. The selected icon index is written to the <paramref name="index" /> parameter.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.Save(System.String)">
+            <summary>
+            Displays a save file dialog and automatically adds an extension to the filename, if the user omits an extension. The extension is taken from the <paramref name="fileName" /> parameter.
+            </summary>
+            <param name="fileName">A <see cref="T:System.String" /> specifying the initial filename that can be changed by the user.</param>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the saved file and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.FileDialogs.Save(System.String,System.String)">
+            <summary>
+            Displays a save file dialog and automatically adds an extension to the filename, if the user omits an extension.
+            </summary>
+            <param name="fileName">A <see cref="T:System.String" /> specifying the initial filename that can be changed by the user.</param>
+            <param name="extension">A <see cref="T:System.String" /> specifying the extension to be added.</param>
+            <returns>
+            A <see cref="T:System.String" /> representing the full path to the saved file and <see langword="null" />, if selection has been canceled by the user.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Dialogs.IconPickerDialog">
+            <summary>
+            Represents a common dialog box that allows a user to pick an icon from a resource file.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.IconPickerDialog.FileName">
+            <summary>
+            Gets a <see cref="T:System.String" /> containing the full path of the selected file.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.IconPickerDialog.IconIndex">
+            <summary>
+            Gets a <see cref="T:System.Int32" /> value specifying the selected icon index.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.IconPickerDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Dialogs.IconPickerDialog" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.IconPickerDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Is called to display the icon picker dialog.
+            </summary>
+            <param name="hwndOwner">Handle to the window that owns the dialog box.</param>
+            <returns>
+            If the user clicks the OK button of the dialog that is displayed, <see langword="true" /> is returned;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.IconPickerDialog.Reset">
+            <summary>
+            Resets the properties of a common dialog to their default values.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.UI.Dialogs.MessageBoxes">
+            <summary>
+            Helper class for dialogs using the <see cref="T:System.Windows.MessageBox" /> class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.MessageBoxes.Window">
+            <summary>
+            Gets or sets the <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.Window" /> object that is used as the owner parameter for calls to the <see cref="T:System.Windows.MessageBox" /> class. If <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.Window" /> is <see langword="null" />, no owner is specified.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForInformation">
+            <summary>
+            Gets or sets the caption for message boxes shown by the <see cref="M:BytecodeApi.UI.Dialogs.MessageBoxes.Information(System.String)" /> method. The initial value is "Information".
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation">
+            <summary>
+            Gets or sets the caption for message boxes shown by the <see cref="M:BytecodeApi.UI.Dialogs.MessageBoxes.Confirmation(System.String)" /> method. The initial value is "Confirmation".
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForWarning">
+            <summary>
+            Gets or sets the caption for message boxes shown by the <see cref="M:BytecodeApi.UI.Dialogs.MessageBoxes.Warning(System.String)" /> method. The initial value is "Warning".
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForError">
+            <summary>
+            Gets or sets the caption for message boxes shown by the <see cref="M:BytecodeApi.UI.Dialogs.MessageBoxes.Error(System.String)" /> method. The initial value is "Error".
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Information(System.String)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForInformation" /> as title and an "OK" button. The title is a static <see cref="T:System.String" /> value, set to "Information" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Confirmation(System.String)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation" /> as title and "Yes" and "No" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+            <returns>
+            <see langword="true" />, if "Yes" has been selected;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Confirmation(System.String,System.Boolean)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation" /> as title and "Yes" and "No" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
+            <returns>
+            <see langword="true" />, if "Yes" has been selected;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Confirmation(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation" /> as title and "Yes" and "No" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
+            <param name="useOkCancel"><see langword="true" /> to use "Yes" and "No"; <see langword="false" /> to use "OK" and "Cancel" buttons.</param>
+            <returns>
+            <see langword="true" />, if "Yes" or "OK" has been selected;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.ConfirmationWithCancel(System.String)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation" /> as title and "Yes", "No" and "Cancel" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+            <returns>
+            <see langword="true" />, if "Yes" has been selected;
+            <see langword="false" />, if "No" has been selected;
+            <see langword="null" />, if "Cancel" has been selected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.ConfirmationWithCancel(System.String,System.Boolean)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForConfirmation" /> as title and "Yes", "No" and "Cancel" buttons. The title is a static <see cref="T:System.String" /> value, set to "Confirmation" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+            <param name="isWarning"><see langword="true" /> to use the warning icon; <see langword="false" /> to use the information icon.</param>
+            <returns>
+            <see langword="true" />, if "Yes" has been selected;
+            <see langword="false" />, if "No" has been selected;
+            <see langword="null" />, if "Cancel" has been selected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Warning(System.String)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForWarning" /> as title and an "OK" button. The title is a static <see cref="T:System.String" /> value, set to "Warning" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Dialogs.MessageBoxes.Error(System.String)">
+            <summary>
+            Shows a <see cref="T:System.Windows.MessageBox" /> dialog with the specified message, using <see cref="P:BytecodeApi.UI.Dialogs.MessageBoxes.CaptionForError" /> as title and an "OK" button. The title is a static <see cref="T:System.String" /> value, set to "Error" by default.
+            </summary>
+            <param name="message">A <see cref="T:System.String" /> specifying the message to be displayed.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Effects.GrayscaleEffect">
+            <summary>
+            Provides a grayscale bitmap effect. This shader is typically used on WPF images to render the disabled state of an element.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Effects.GrayscaleEffect.InputProperty">
+            <summary>
+            Identifies the <see cref="P:BytecodeApi.UI.Effects.GrayscaleEffect.Input" /> dependency property. This field is read-only.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Effects.GrayscaleEffect.Input">
+            <summary>
+            Gets or sets a <see cref="T:System.Windows.Media.Brush" /> that applies a grayscale effect on the bitmap.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Effects.GrayscaleEffect.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Effects.GrayscaleEffect" /> class.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.UI.Data.KeyboardShortcut">
+            <summary>
+            Represents a keyboard shortcut composed of a key and a set of modifiers (Ctrl, Shift, Alt).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.IsCtrl">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" /> uses the Ctrl modifier.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.IsShift">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" /> uses the Shift modifier.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.IsAlt">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" /> uses the Alt modifier.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.Key">
+            <summary>
+            Gets or sets the key for this <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.KeyName">
+            <summary>
+            Gets the equivalent display name for the <see cref="P:BytecodeApi.UI.Data.KeyboardShortcut.Key" /> property.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Data.KeyboardShortcut.DisplayName">
+            <summary>
+            Gets the display name for this instance.
+            <para /> Example: Ctrl+Shift+A
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Data.KeyboardShortcut.Changed">
+            <summary>
+            Occurs when any property of this instance changed.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.KeyboardShortcut.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.KeyboardShortcut.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Windows.Input.Key)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Data.KeyboardShortcut" /> class with the specified modifiers and the specified key.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.KeyboardShortcut.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> whose value represents the <see cref="P:BytecodeApi.UI.Data.KeyboardShortcut.DisplayName" /> property.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> whose value represents the <see cref="P:BytecodeApi.UI.Data.KeyboardShortcut.DisplayName" /> property.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.KeyboardShortcut.OnChanged">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Data.KeyboardShortcut.Changed" /> event.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.UI.Data.ObservableObject">
+            <summary>
+            Class that wraps an object, implementing the <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> interface. Typically, this class is set as a <see cref="T:System.Windows.DependencyProperty" /> on a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Data.ObservableObject.PropertyChanged">
+            <summary>
+            Occurs when a property value has changed and is typically used by a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.ObservableObject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Data.ObservableObject" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.ObservableObject.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Method that can be used by the <see langword="get" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />).
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <returns>
+            The value of the property backing field. The default value is <see langword="default" />(<typeparamref name="T" />).
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.ObservableObject.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)">
+            <summary>
+            Method that can be used by the <see langword="set" /> accessor of a property. Backing fields are automatically generated and stored in a <see langword="private" /> <see cref="T:System.Collections.Generic.Dictionary`2" /> with default values set to <see langword="default" />(<typeparamref name="T" />). After modification, the <see cref="E:BytecodeApi.UI.Data.ObservableObject.PropertyChanged" /> event is raised.
+            <para /> Example:
+            <para /> public int X { get => Get(() => X); set => Set(() => X, value); }
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Data.ObservableObject.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Data.ObservableObject.PropertyChanged" /> event on any custom property. <see cref="M:BytecodeApi.UI.Data.ObservableObject.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Data.ObservableObject.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" /> do not necessarily need to be used in conjunction with this method. Likewise, this method is not required when using <see cref="M:BytecodeApi.UI.Data.ObservableObject.Get``1(System.Linq.Expressions.Expression{System.Func{``0}})" /> and <see cref="M:BytecodeApi.UI.Data.ObservableObject.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0)" />.
+            </summary>
+            <typeparam name="T">The type of the property.</typeparam>
+            <param name="property">The strongly typed lambda expression of the property.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.ApplicationExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.Application" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.ApplicationExtensions.FindResource``1(System.Windows.Application,System.Object)">
+            <summary>
+            Searches for a user interface (UI) resource, such as a <see cref="T:System.Windows.Style" /> or <see cref="T:System.Windows.Media.Brush" />, with the specified key, and throws an exception, if the requested resource is not found (see XAML Resources) or is not of the specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="application">The <see cref="T:System.Windows.Application" /> to search in.</param>
+            <param name="key">The name of the resource to find.</param>
+            <returns>
+            The requested resource object. If the requested resource is not found or is not of the specified type, a <see cref="T:System.Windows.ResourceReferenceKeyNotFoundException" /> is thrown.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.ApplicationExtensions.TryFindResource``1(System.Windows.Application,System.Object)">
+            <summary>
+            Searches for a resource with the specified key, and returns that resource, if found and of type specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="application">The <see cref="T:System.Windows.Application" /> to search in.</param>
+            <param name="key">The name of the resource to find.</param>
+            <returns>
+            The found resource, or <see langword="null" />, if no resource with the provided key is found or a resource was found, but it does not match the specified type.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.UIElementExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.UIElement" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.GetVisibility(System.Windows.UIElement)">
+            <summary>
+            Returns the converted <see cref="T:System.Windows.Visibility" /> of this <see cref="T:System.Windows.UIElement" />.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be tested.</param>
+            <returns>
+            <see langword="true" />, if the <see cref="P:System.Windows.UIElement.Visibility" /> property of this <see cref="T:System.Windows.UIElement" /> is equal to <see cref="F:System.Windows.Visibility.Visible" />;
+            <see langword="false" />, if <see cref="P:System.Windows.UIElement.Visibility" /> is equal to <see cref="F:System.Windows.Visibility.Collapsed" />;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.SetVisibility(System.Windows.UIElement,System.Boolean)">
+            <summary>
+            Sets the <see cref="T:System.Windows.Visibility" /> of this <see cref="T:System.Windows.UIElement" />.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
+            <param name="visible"><see langword="true" /> to set <see cref="P:System.Windows.UIElement.Visibility" /> to <see cref="F:System.Windows.Visibility.Visible" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.SetVisibility(System.Windows.UIElement,System.Boolean,System.Boolean)">
+            <summary>
+            Sets the <see cref="T:System.Windows.Visibility" /> of this <see cref="T:System.Windows.UIElement" />.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
+            <param name="visible"><see langword="true" /> to set <see cref="P:System.Windows.UIElement.Visibility" /> to <see cref="F:System.Windows.Visibility.Visible" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />, or <see cref="F:System.Windows.Visibility.Hidden" /> according to the <paramref name="preserveSpace" /> parameter.</param>
+            <param name="preserveSpace"><see langword="true" /> to use <see cref="F:System.Windows.Visibility.Hidden" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />. Only applies if <paramref name="visible" /> is <see langword="false" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.Show(System.Windows.UIElement)">
+            <summary>
+            Sets the <see cref="P:System.Windows.UIElement.Visibility" /> property of this <see cref="T:System.Windows.UIElement" /> to <see cref="F:System.Windows.Visibility.Visible" />.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.Hide(System.Windows.UIElement)">
+            <summary>
+            Sets the <see cref="P:System.Windows.UIElement.Visibility" /> property of this <see cref="T:System.Windows.UIElement" /> to <see cref="F:System.Windows.Visibility.Collapsed" />.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.UIElementExtensions.Hide(System.Windows.UIElement,System.Boolean)">
+            <summary>
+            Sets the <see cref="P:System.Windows.UIElement.Visibility" /> property of this <see cref="T:System.Windows.UIElement" /> to <see cref="F:System.Windows.Visibility.Collapsed" /> or <see cref="F:System.Windows.Visibility.Hidden" /> based on the <paramref name="preserveSpace" /> parameter.
+            </summary>
+            <param name="uiElement">The <see cref="T:System.Windows.UIElement" /> to be changed.</param>
+            <param name="preserveSpace"><see langword="true" /> to use <see cref="F:System.Windows.Visibility.Hidden" />; <see langword="false" /> to use <see cref="F:System.Windows.Visibility.Collapsed" />.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.FrameworkElementExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.FrameworkElement" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.FrameworkElementExtensions.FindResource``1(System.Windows.FrameworkElement,System.Object)">
+            <summary>
+            Searches for a resource with the specified key, and throws an exception, if the requested resource is not found or not of the specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="frameworkElement">The <see cref="T:System.Windows.FrameworkElement" /> to search in.</param>
+            <param name="key">The key identifier for the requested resource.</param>
+            <returns>
+            The requested resource. If no resource with the specified key was found or was not of the specified type, an exception is thrown. An <see cref="F:System.Windows.DependencyProperty.UnsetValue" />. value might also be returned in the exception case.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.FrameworkElementExtensions.TryFindResource``1(System.Windows.FrameworkElement,System.Object)">
+            <summary>
+            Searches for a resource with the specified key, and returns that resource, if found and of type specified type.
+            </summary>
+            <typeparam name="T">The return type of the resource.</typeparam>
+            <param name="frameworkElement">The <see cref="T:System.Windows.FrameworkElement" /> to search in.</param>
+            <param name="key">The key identifier of the resource to be found.</param>
+            <returns>
+            The found resource, or <see langword="null" />, if no resource with the provided key is found or a resource was found, but it does not match the specified type.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.FrameworkElementExtensions.ScrollToTop(System.Windows.FrameworkElement)">
+            <summary>
+            Attempts to bring the top left corner of this <see cref="T:System.Windows.FrameworkElement" /> into view.
+            </summary>
+            <param name="frameworkElement">The <see cref="T:System.Windows.FrameworkElement" /> to be processed.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.DependencyObjectExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.DependencyObject" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DependencyObjectExtensions.GetValue``1(System.Windows.DependencyObject,System.Windows.DependencyProperty)">
+            <summary>
+            Returns the current effective value of a <see cref="T:System.Windows.DependencyProperty" /> on this instance of a <see cref="T:System.Windows.DependencyObject" />.
+            </summary>
+            <typeparam name="T">The return type of the <see cref="T:System.Windows.DependencyProperty" />.</typeparam>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to retrieve the value from.</param>
+            <param name="dependencyProperty">The <see cref="T:System.Windows.DependencyProperty" /> identifier of the property to retrieve the value for.</param>
+            <returns>
+            The effective value of <paramref name="dependencyProperty" /> on this instance of a <see cref="T:System.Windows.DependencyObject" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DependencyObjectExtensions.FindParent``1(System.Windows.DependencyObject,BytecodeApi.UI.UITreeType)">
+            <summary>
+            Tries to find the closest parent of this <see cref="T:System.Windows.DependencyObject" /> matching the specified type by traversing either the visual or the logical tree.
+            </summary>
+            <typeparam name="T">The explicit type of the parent to search for.</typeparam>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to traverse the tree from.</param>
+            <param name="treeType">A <see cref="T:BytecodeApi.UI.UITreeType" /> value indicating whether to use the <see cref="T:System.Windows.LogicalTreeHelper" /> or the <see cref="T:System.Windows.Media.VisualTreeHelper" />.</param>
+            <returns>
+            The closest visual or logical parent of this <see cref="T:System.Windows.DependencyObject" />, depending on <paramref name="treeType" />, that is of type <typeparamref name="T" />, if found;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DependencyObjectExtensions.FindChildren``1(System.Windows.DependencyObject,BytecodeApi.UI.UITreeType)">
+            <summary>
+            Finds all children of this <see cref="T:System.Windows.DependencyObject" /> matching the specified type by traversing either the visual or the logical tree recursively. If no children have been found, an empty array is returned.
+            </summary>
+            <typeparam name="T">The explicit type of the children to search for.</typeparam>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to traverse the tree recursively.</param>
+            <param name="treeType">A <see cref="T:BytecodeApi.UI.UITreeType" /> value indicating whether to use the <see cref="T:System.Windows.LogicalTreeHelper" /> or the <see cref="T:System.Windows.Media.VisualTreeHelper" />.</param>
+            <returns>
+            An array of the specified type with all children, depending on <paramref name="treeType" />, that can be casted to <typeparamref name="T" />. If no children have been found, an empty array is returned.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DependencyObjectExtensions.Validate(System.Windows.DependencyObject)">
+            <summary>
+            Validates this <see cref="T:System.Windows.DependencyObject" /> and all of its children and returns <see langword="true" />, if validation succeeded.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to validate.</param>
+            <returns>
+            <see langword="true" />, if validation succeeded;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DependencyObjectExtensions.Validate(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Validates this <see cref="T:System.Windows.DependencyObject" /> and returns <see langword="true" />, if validation succeeded. If <paramref name="validateChildren" /> is set to <see langword="true" />, logical children are validated recursively.
+            </summary>
+            <param name="dependencyObject">The <see cref="T:System.Windows.DependencyObject" /> to validate.</param>
+            <param name="validateChildren"><see langword="true" /> to validate children recursively in addition to this <see cref="T:System.Windows.DependencyObject" />.</param>
+            <returns>
+            <see langword="true" />, if validation succeeded;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.ControlExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with WPF controls.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.ControlExtensions.MoveCaretToEnd(System.Windows.Controls.TextBox)">
+            <summary>
+            Sets the insertion position index of the caret to the end of this <see cref="T:System.Windows.Controls.TextBox" />.
+            </summary>
+            <param name="textBox">The <see cref="T:System.Windows.Controls.TextBox" /> to be processed.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.VisibilityExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.Visibility" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.VisibilityExtensions.ToBoolean(System.Windows.Visibility)">
+            <summary>
+            Converts this <see cref="T:System.Windows.Visibility" /> value to its equivalent <see cref="T:System.Boolean" /> representation. <see cref="F:System.Windows.Visibility.Visible" /> is converted to <see langword="true" />, <see cref="F:System.Windows.Visibility.Collapsed" /> is converted to <see langword="false" /> and <see cref="F:System.Windows.Visibility.Hidden" /> is converted to <see langword="null" />.
+            </summary>
+            <param name="visibility">The <see cref="T:System.Windows.Visibility" /> value to convert.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="visibility" /> is equal to <see cref="F:System.Windows.Visibility.Visible" />;
+            <see langword="false" />, if <paramref name="visibility" /> is equal to <see cref="F:System.Windows.Visibility.Collapsed" />;
+            otherwise, <see langword="null" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Extensions.DispatcherObjectExtensions">
+            <summary>
+            Provides a set of <see langword="static" /> methods for interaction with <see cref="T:System.Windows.Threading.DispatcherObject" /> objects.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DispatcherObjectExtensions.Refresh(System.Windows.Threading.DispatcherObject)">
+            <summary>
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of this <see cref="T:System.Windows.Threading.DispatcherObject" />, using the <see cref="F:System.Windows.Threading.DispatcherPriority.Render" /> priority, thereby refreshing the UI.
+            </summary>
+            <param name="dispatcherObject">The <see cref="T:System.Windows.Threading.DispatcherObject" /> to be refreshed.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Extensions.DispatcherObjectExtensions.Refresh(System.Windows.Threading.DispatcherObject,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Invokes an empty <see cref="T:System.Action" /> on the <see cref="T:System.Windows.Threading.Dispatcher" /> of this <see cref="T:System.Windows.Threading.DispatcherObject" />, using the specified priority, thereby refreshing the UI.
+            </summary>
+            <param name="dispatcherObject">The <see cref="T:System.Windows.Threading.DispatcherObject" /> to be refreshed.</param>
+            <param name="priority">The <see cref="T:System.Windows.Threading.DispatcherPriority" /> to be used during <see cref="T:System.Windows.Threading.Dispatcher" /> invocation.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.BooleanExtension">
+            <summary>
+            Implements <see cref="T:System.Boolean" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.BooleanExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Boolean" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.BooleanExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.BooleanExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.BooleanExtension.Value" /> to false.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.BooleanExtension.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.BooleanExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.BooleanExtension.Value" /> based on the provided <see cref="T:System.Boolean" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Boolean" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.BooleanExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.BooleanExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Boolean" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.BooleanExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Boolean" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.BooleanExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.ByteExtension">
+            <summary>
+            Implements <see cref="T:System.Byte" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.ByteExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Byte" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.ByteExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.ByteExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.ByteExtension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.ByteExtension.#ctor(System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.ByteExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.ByteExtension.Value" /> based on the provided <see cref="T:System.Byte" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Byte" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.ByteExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.ByteExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Byte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.ByteExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Byte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.ByteExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.CharExtension">
+            <summary>
+            Implements <see cref="T:System.Char" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.CharExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Char" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.CharExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.CharExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.CharExtension.Value" /> to '\0'.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.CharExtension.#ctor(System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.CharExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.CharExtension.Value" /> based on the provided <see cref="T:System.Char" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Char" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.CharExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.CharExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Char" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.CharExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Char" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.CharExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.DateTimeExtension">
+            <summary>
+            Implements <see cref="T:System.DateTime" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.DateTimeExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.DateTime" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DateTimeExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DateTimeExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.DateTimeExtension.Value" /> to <see cref="F:System.DateTime.MinValue" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DateTimeExtension.#ctor(System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DateTimeExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.DateTimeExtension.Value" /> based on the provided <see cref="T:System.DateTime" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.DateTime" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.DateTimeExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DateTimeExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.DateTime" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DateTimeExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.DateTime" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DateTimeExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.DecimalExtension">
+            <summary>
+            Implements <see cref="T:System.Decimal" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.DecimalExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Decimal" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DecimalExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DecimalExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.DecimalExtension.Value" /> to 0.0m.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DecimalExtension.#ctor(System.Decimal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DecimalExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.DecimalExtension.Value" /> based on the provided <see cref="T:System.Decimal" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Decimal" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.DecimalExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DecimalExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Decimal" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DecimalExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Decimal" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DecimalExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.DoubleExtension">
+            <summary>
+            Implements <see cref="T:System.Double" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.DoubleExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Double" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DoubleExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DoubleExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.DoubleExtension.Value" /> to 0.0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DoubleExtension.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.DoubleExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.DoubleExtension.Value" /> based on the provided <see cref="T:System.Double" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Double" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.DoubleExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.DoubleExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Double" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DoubleExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Double" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.DoubleExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.IconExtension">
+            <summary>
+            Implements icon support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.IconExtension.Source">
+            <summary>
+            Gets or sets the source of the icon.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.IconExtension.Size">
+            <summary>
+            Gets or sets the size (the width) of the icon.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.IconExtension.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.IconExtension" /> class, initializing <paramref name="source" /> and <paramref name="size" /> based on the provided values.
+            </summary>
+            <param name="source">A <see cref="T:System.String" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.IconExtension.Source" />.</param>
+            <param name="size">A <see cref="T:System.Int32" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.IconExtension.Size" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.IconExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Windows.Media.Imaging.BitmapFrame" /> value that is computed from the parameters supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.IconExtension" />. If the specified icon size could not be found, the smallest icon is returned that is larger than <see cref="P:BytecodeApi.UI.Markup.IconExtension.Size" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Windows.Media.Imaging.BitmapFrame" /> value that is computed from the parameters supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.IconExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.Int16Extension">
+            <summary>
+            Implements <see cref="T:System.Int16" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.Int16Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Int16" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int16Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int16Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.Int16Extension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int16Extension.#ctor(System.Int16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int16Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.Int16Extension.Value" /> based on the provided <see cref="T:System.Int16" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Int16" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.Int16Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int16Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Int16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int16Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Int16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int16Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.Int32Extension">
+            <summary>
+            Implements <see cref="T:System.Int32" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.Int32Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Int32" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int32Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int32Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.Int32Extension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int32Extension.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int32Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.Int32Extension.Value" /> based on the provided <see cref="T:System.Int32" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Int32" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.Int32Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int32Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Int32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int32Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Int32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int32Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.Int64Extension">
+            <summary>
+            Implements <see cref="T:System.Int64" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.Int64Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Int64" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int64Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int64Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.Int64Extension.Value" /> to 0L.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int64Extension.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.Int64Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.Int64Extension.Value" /> based on the provided <see cref="T:System.Int64" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Int64" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.Int64Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.Int64Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.Int64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int64Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.Int64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.Int64Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.SByteExtension">
+            <summary>
+            Implements <see cref="T:System.SByte" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.SByteExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.SByte" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SByteExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.SByteExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.SByteExtension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SByteExtension.#ctor(System.SByte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.SByteExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.SByteExtension.Value" /> based on the provided <see cref="T:System.SByte" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.SByte" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.SByteExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SByteExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.SByte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.SByteExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.SByte" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.SByteExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.SingleExtension">
+            <summary>
+            Implements <see cref="T:System.Single" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.SingleExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.Single" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SingleExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.SingleExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.SingleExtension.Value" /> to 0.0f.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SingleExtension.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.SingleExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.SingleExtension.Value" /> based on the provided <see cref="T:System.Single" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.Single" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.SingleExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.SingleExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="P:BytecodeApi.UI.Markup.SingleExtension.Value" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.SingleExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="P:BytecodeApi.UI.Markup.SingleExtension.Value" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.SingleExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.StringExtension">
+            <summary>
+            Implements <see cref="T:System.String" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.StringExtension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.String" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.StringExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.StringExtension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.StringExtension.Value" /> to <see langword="null" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.StringExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.StringExtension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.StringExtension.Value" /> based on the provided <see cref="T:System.String" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.String" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.StringExtension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.StringExtension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.String" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.StringExtension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.String" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.StringExtension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.UInt16Extension">
+            <summary>
+            Implements <see cref="T:System.UInt16" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.UInt16Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.UInt16" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt16Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt16Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.UInt16Extension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt16Extension.#ctor(System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt16Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.UInt16Extension.Value" /> based on the provided <see cref="T:System.UInt16" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.UInt16" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.UInt16Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt16Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.UInt16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt16Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.UInt16" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt16Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.UInt32Extension">
+            <summary>
+            Implements <see cref="T:System.UInt32" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.UInt32Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.UInt32" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt32Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt32Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.UInt32Extension.Value" /> to 0.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt32Extension.#ctor(System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt32Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.UInt32Extension.Value" /> based on the provided <see cref="T:System.UInt32" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.UInt32" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.UInt32Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt32Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.UInt32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt32Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.UInt32" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt32Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Markup.UInt64Extension">
+            <summary>
+            Implements <see cref="T:System.UInt64" /> support for .NET Framework XAML Services.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Markup.UInt64Extension.Value">
+            <summary>
+            Gets or sets the <see cref="T:System.UInt64" /> value for this extension.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt64Extension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt64Extension" /> class and sets <see cref="P:BytecodeApi.UI.Markup.UInt64Extension.Value" /> to 0UL.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt64Extension.#ctor(System.UInt64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Markup.UInt64Extension" /> class, initializing <see cref="P:BytecodeApi.UI.Markup.UInt64Extension.Value" /> based on the provided <see cref="T:System.UInt64" /> value.
+            </summary>
+            <param name="value">A <see cref="T:System.UInt64" /> value that is assigned to <see cref="P:BytecodeApi.UI.Markup.UInt64Extension.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Markup.UInt64Extension.ProvideValue(System.IServiceProvider)">
+            <summary>
+            Returns a <see cref="T:System.UInt64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt64Extension" />.
+            </summary>
+            <param name="serviceProvider">Object that can provide services for the markup extension.</param>
+            <returns>
+            A <see cref="T:System.UInt64" /> value that is supplied in the constructor of <see cref="T:BytecodeApi.UI.Markup.UInt64Extension" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.UI.Mathematics.ActionDelayer">
+            <summary>
+            Provoides a wrapper for <see cref="T:System.Action" /> and <see cref="T:System.Windows.RoutedEvent" /> actions to be postponed.
+            <para /> Example: A search text box, where the search is performed after 0.5 seconds with no typing activity.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay">
+            <summary>
+            Gets or sets the amount of time that needs to pass between a consecutive call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" />, before the speficied <see cref="T:System.Action" /> or <see cref="T:System.Windows.RoutedEvent" /> is invoked.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.#ctor(System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Mathematics.ActionDelayer" /> class with the specified delay.
+            </summary>
+            <param name="delay">The amount of time that needs to pass between a consecutive call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" />, before the speficied <see cref="T:System.Action" /> or <see cref="T:System.Windows.RoutedEvent" /> is invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.Dispose">
+            <summary>
+            Releases all resources used by the current instance of the <see cref="T:BytecodeApi.UI.Mathematics.ActionDelayer" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)">
+            <summary>
+            Invokes <paramref name="action" />, if the last call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action,System.Boolean)">
+            <summary>
+            Invokes <paramref name="action" />, if the last call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.
+            </summary>
+            <param name="action">The <see cref="T:System.Action" /> to be invoked.</param>
+            <param name="now"><see langword="true" /> to always invoke <paramref name="action" /> regardless of <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Windows.Input.RoutedCommand,System.Object,System.Windows.IInputElement)">
+            <summary>
+            Executes <paramref name="command" />, if the last call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.
+            </summary>
+            <param name="command">The <see cref="T:System.Windows.Input.RoutedCommand" /> to be executed.</param>
+            <param name="parameter">The user defined parameter to be passed to <paramref name="command" />.</param>
+            <param name="target">The element at which to begin looking for command handlers.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Windows.Input.RoutedCommand,System.Object,System.Windows.IInputElement,System.Boolean)">
+            <summary>
+            Executes <paramref name="command" />, if the last call to <see cref="M:BytecodeApi.UI.Mathematics.ActionDelayer.Execute(System.Action)" /> was longer ago than <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.
+            </summary>
+            <param name="command">The <see cref="T:System.Windows.Input.RoutedCommand" /> to be executed.</param>
+            <param name="parameter">The user defined parameter to be passed to <paramref name="command" />.</param>
+            <param name="target">The element at which to begin looking for command handlers.</param>
+            <param name="now"><see langword="true" /> to always execute <paramref name="command" /> regardless of <see cref="P:BytecodeApi.UI.Mathematics.ActionDelayer.Delay" />.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Mathematics.ProgressCalculator">
+            <summary>
+            Represents a performance counter for progress calculations, typically used in binary transfers (file transferring, downloads, ...)
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value">
+            <summary>
+            Gets or sets the value indicating the total progress. This is typically the amount of transferred bytes in a binary transfer operation.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue">
+            <summary>
+            Gets or sets the expected maximum value. This is typically the total size in bytes in a binary transfer operation. If <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue" /> is <see langword="null" />, values calculated based on it will also be <see langword="null" />. This is useful for display of an indeterminate status of progress bars.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MeasureTimeSpan">
+            <summary>
+            Gets or sets the interval in which <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> is measured. The <see cref="E:BytecodeApi.UI.Mathematics.ProgressCalculator.Measured" /> event is raised in the approximate interval of this value, however only after <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> has changed.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Progress">
+            <summary>
+            Gets a <see cref="T:System.Double" /> value indicating the progress. This value is between 0.0 and 1.0, if <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> is in bounds of 0.0 and <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.ProgressPercentage">
+            <summary>
+            Gets a <see cref="T:System.Double" /> value indicating the progress in percent. This value is between 0.0 and 100.0, if <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> is in bounds of 0.0 and <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Difference">
+            <summary>
+            Gets the difference of the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> property between the last two measurements.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculator.DifferencePerSecond">
+            <summary>
+            Gets the difference of the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> property between the last two measurements, interpolated to one second based on <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MeasureTimeSpan" />.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Mathematics.ProgressCalculator.ValueChanged">
+            <summary>
+            Occurs when the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> property changed.
+            </summary>
+        </member>
+        <member name="E:BytecodeApi.UI.Mathematics.ProgressCalculator.Measured">
+            <summary>
+            Occurs when the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> property changed and the interval specified in <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MeasureTimeSpan" /> has been reached.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculator" /> class with no maximum value and a measurement interval of 1 second.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculator.#ctor(System.Nullable{System.Double})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculator" /> class with the specified maximum value and a measurement interval of 1 second.
+            </summary>
+            <param name="maxValue">A <see cref="T:System.Double" /> value indicating the maximum expected value for <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" />.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculator.#ctor(System.Nullable{System.Double},System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculator" /> class with the specified maximum value and the specified measurement interval.
+            </summary>
+            <param name="maxValue">A <see cref="T:System.Double" /> value indicating the maximum expected value for <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" />.</param>
+            <param name="measureTimeSpan">A <see cref="T:System.TimeSpan" /> value indicating the interval in which to measure the progress.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculator.OnValueChanged(BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs)">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Mathematics.ProgressCalculator.ValueChanged" /> event.
+            </summary>
+            <param name="e">The event data for the <see cref="E:BytecodeApi.UI.Mathematics.ProgressCalculator.ValueChanged" /> event.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculator.OnMeasured(BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs)">
+            <summary>
+            Raises the <see cref="E:BytecodeApi.UI.Mathematics.ProgressCalculator.Measured" /> event.
+            </summary>
+            <param name="e">The event data for the <see cref="E:BytecodeApi.UI.Mathematics.ProgressCalculator.Measured" /> event.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs">
+            <summary>
+            Provides data for <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculator" /> events.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Value">
+            <summary>
+            Gets the value indicating the total progress. This is typically the amount of transferred bytes in a binary transfer operation.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Progress">
+            <summary>
+            Gets a <see cref="T:System.Double" /> value indicating the progress. This value is between 0.0 and 1.0, if <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Value" /> is in bounds of 0.0 and <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.ProgressPercentage">
+            <summary>
+            Gets a <see cref="T:System.Double" /> value indicating the progress in percent. This value is between 0.0 and 100.0, if <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Value" /> is in bounds of 0.0 and <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MaxValue" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Difference">
+            <summary>
+            Gets the difference of the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Value" /> property between the last two measurements.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.DifferencePerSecond">
+            <summary>
+            Gets the difference of the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.Value" /> property between the last two measurements, interpolated to one second based on <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.MeasureTimeSpan" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs.#ctor(System.Double,System.Nullable{System.Double},System.Nullable{System.Double},System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculatorEventArgs" /> class using the specified properties equivalent to the properties of <see cref="T:BytecodeApi.UI.Mathematics.ProgressCalculator" />.
+            </summary>
+            <param name="value">The value representing the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Value" /> property.</param>
+            <param name="progress">The value representing the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Progress" /> property.</param>
+            <param name="progressPercentage">The value representing the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.ProgressPercentage" /> property.</param>
+            <param name="difference">The value representing the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.Difference" /> property.</param>
+            <param name="differencePerSecond">The value representing the <see cref="P:BytecodeApi.UI.Mathematics.ProgressCalculator.DifferencePerSecond" /> property.</param>
+        </member>
+        <member name="T:BytecodeApi.UI.Packs">
+            <summary>
+            Represents the URI prefixes for WPF pack URIs with the "pack://" scheme.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Packs.Application">
+            <summary>
+            Represents the "application:///" authority.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.Packs.SiteOfOrigin">
+            <summary>
+            Represents the "siteoforigin:///" authority.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.UI.SingleInstanceManager">
+            <summary>
+            Class for managing single instance UI applications. A second instance can detect an already running instance and optionally trigger the first instance to be notified.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.SingleInstanceManager.Activated">
+            <summary>
+            Occurs when <see cref="M:BytecodeApi.UI.SingleInstanceManager.SendActivationMessage" /> is called by another running instance.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.SingleInstanceManager.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.UI.SingleInstanceManager" /> class and registers a <see cref="T:System.Threading.Mutex" /> as well as a WindowMessage using the specified identifier.
+            </summary>
+            <param name="mutexName">A <see cref="T:System.String" /> representing the name of the <see cref="T:System.Threading.Mutex" /> and the WindowMessage.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.SingleInstanceManager.Dispose">
+            <summary>
+            Releases all resources used by the current instance of the <see cref="T:BytecodeApi.UI.SingleInstanceManager" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.UI.SingleInstanceManager.RegisterMainWindow(System.Windows.Window)">
+            <summary>
+            Registers a <see cref="T:System.Windows.Window" /> object that identifies as the main application window and creates a WndProc message pump.
+            </summary>
+            <param name="window">The <see cref="T:System.Windows.Window" /> object identifying as the main application window.</param>
+        </member>
+        <member name="M:BytecodeApi.UI.SingleInstanceManager.CheckInstanceRunning">
+            <summary>
+            Checks whether an instance is already running by querying the <see cref="T:System.Threading.Mutex" />.
+            </summary>
+            <returns>
+            <see langword="true" />, if an instance is already running;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.UI.SingleInstanceManager.SendActivationMessage">
+            <summary>
+            Sends a notification to other running instances. The <see cref="F:BytecodeApi.UI.SingleInstanceManager.Activated" /> event will be triggered in all instances, except the current.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.UI.UITreeType">
+            <summary>
+            Specifies the type of the WPF tree.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.UITreeType.Logical">
+            <summary>
+            Specifies the WPF logical tree. For traversing operations, <see cref="T:System.Windows.LogicalTreeHelper" /> is used.
+            </summary>
+        </member>
+        <member name="F:BytecodeApi.UI.UITreeType.Visual">
+            <summary>
+            Specifies the WPF visual tree. For traversing operations, <see cref="T:System.Windows.Media.VisualTreeHelper" /> is used.
+            </summary>
+        </member>
+    </members>
+</doc>

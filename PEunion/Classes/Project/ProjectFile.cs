@@ -1,4 +1,6 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.Text;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;

@@ -1,4 +1,7 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.UI.Controls;
+using BytecodeApi.UI.Dialogs;
 using System;
 using System.IO;
 using System.Linq;
@@ -66,7 +69,7 @@ namespace PEunion
 		}
 		private void btnBrowse_Click(object sender, RoutedEventArgs e)
 		{
-			OnFilesSelect(AllowMultiple ? Dialogs.OpenMultiple(AllowedExtensionsArray) : Singleton.Array(Dialogs.Open(AllowedExtensionsArray)));
+			OnFilesSelect(AllowMultiple ? FileDialogs.OpenMultiple(AllowedExtensionsArray) : Singleton.Array(FileDialogs.Open(AllowedExtensionsArray)));
 		}
 		private void btnReset_Click(object sender, RoutedEventArgs e)
 		{

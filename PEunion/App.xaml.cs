@@ -30,7 +30,11 @@ namespace PEunion
 		}
 		private static Assembly AppDomain_ResolveAssembly(object sender, ResolveEventArgs e)
 		{
-			return new AssemblyName(e.Name).Name == "BytecodeApi" ? Assembly.Load(PEunion.Properties.Resources.BytecodeApi) : null;
+			string name = new AssemblyName(e.Name).Name;
+
+			if (name == "BytecodeApi") return Assembly.Load(PEunion.Properties.Resources.BytecodeApi);
+			else if (name == "BytecodeApi.UI") return Assembly.Load(PEunion.Properties.Resources.BytecodeApiUI);
+			else return null;
 		}
 	}
 }

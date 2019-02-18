@@ -1,4 +1,10 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.UI;
+using BytecodeApi.UI.Controls;
+using BytecodeApi.UI.Dialogs;
+using BytecodeApi.UI.Extensions;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -194,7 +200,7 @@ namespace PEunion
 		{
 			if (ConfirmSaveChanges())
 			{
-				string path = Dialogs.Open(BytecodeApi.Singleton.Array("peu"), "PEunion Project Files");
+				string path = FileDialogs.Open(BytecodeApi.Singleton.Array("peu"), "PEunion Project Files");
 				if (path != null) LoadProject(path);
 			}
 		}
@@ -210,7 +216,7 @@ namespace PEunion
 		{
 			if (PrepareBuild())
 			{
-				string path = Dialogs.Save(Project.ProjectName, "exe");
+				string path = FileDialogs.Save(Project.ProjectName, "exe");
 				if (path != null)
 				{
 					ctrlOverlay.Show();
@@ -233,7 +239,7 @@ namespace PEunion
 		{
 			if (PrepareBuild())
 			{
-				string path = Dialogs.Save(Project.ProjectName, "cs");
+				string path = FileDialogs.Save(Project.ProjectName, "cs");
 				if (path != null)
 				{
 					ctrlOverlay.Show();
@@ -433,7 +439,7 @@ namespace PEunion
 		}
 		private void mnuTreeItemsAddFiles_Click(object sender, RoutedEventArgs e)
 		{
-			string[] files = Dialogs.OpenMultiple();
+			string[] files = FileDialogs.OpenMultiple();
 			if (files != null) AddFiles(files);
 		}
 		private void mnuTreeItemsAddUrl_Click(object sender, RoutedEventArgs e)
@@ -466,7 +472,7 @@ namespace PEunion
 		}
 		private void btnSelectAssemblyInfo_Click(object sender, RoutedEventArgs e)
 		{
-			string path = Dialogs.Open();
+			string path = FileDialogs.Open();
 			if (path != null)
 			{
 				FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(path);
@@ -516,7 +522,7 @@ namespace PEunion
 		}
 		private bool FileSaveAs()
 		{
-			string path = Dialogs.Save(Project.ProjectName, "peu");
+			string path = FileDialogs.Save(Project.ProjectName, "peu");
 			if (path != null)
 			{
 				Project.SaveLocation = path;

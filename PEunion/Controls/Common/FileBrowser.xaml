@@ -1,4 +1,4 @@
-﻿<api:ObservableUserControl
+﻿<controls:ObservableUserControl
 	x:Class="PEunion.FileBrowser"
 	x:Name="fileBrowser"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -7,13 +7,15 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:PEunion"
 	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
+	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
+	xmlns:markup="clr-namespace:BytecodeApi.UI.Markup;assembly=BytecodeApi.UI"
 	mc:Ignorable="d"
 	Background="Transparent" AllowDrop="True" PreviewDragOver="UserControl_PreviewDragOver" Drop="UserControl_Drop">
 	<Border Padding="10" BorderThickness="2" BorderBrush="#d0d0d0" Background="White">
 		<DockPanel>
 			<Image Source="{Binding IconImageSource, ElementName=fileBrowser}" Margin="0,0,10,0" VerticalAlignment="Top" />
 			<StackPanel>
-				<TextBlock Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}, ConverterParameter={api:Boolean True}}">
+				<TextBlock Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}, ConverterParameter={markup:Boolean True}}">
 					<Run Text="{Binding DragDropText, ElementName=fileBrowser, Mode=OneWay}" /><Run Text=", or" />
 				</TextBlock>
 				<TextBlock Text="{Binding Text, ElementName=fileBrowser}" Margin="0,0,0,10" Visibility="{Binding Text, ElementName=fileBrowser, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
@@ -24,4 +26,4 @@
 			</StackPanel>
 		</DockPanel>
 	</Border>
-</api:ObservableUserControl>
+</controls:ObservableUserControl>

@@ -1,4 +1,9 @@
 ﻿using BytecodeApi;
+using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.Text;
+using BytecodeApi.UI.Controls;
+using BytecodeApi.UI.Dialogs;
 using System;
 using System.IO;
 using System.Linq;
@@ -8,8 +13,6 @@ namespace PEunion
 {
 	public partial class TabRtlo : ObservableUserControl
 	{
-		private const char RtloCharacter = '\u202e';
-
 		public string SourceFile
 		{
 			get => Get(() => SourceFile);
@@ -97,7 +100,7 @@ namespace PEunion
 
 		private void ctrlBrowseSourceFile_FilesSelect(object sender, string[] e)
 		{
-			if (e.First().Contains(RtloCharacter))
+			if (e.First().Contains(TextResources.RightToLeftMark))
 			{
 				MessageBoxes.Warning("This file already contains a RTLO character (U+202e).");
 			}
@@ -128,22 +131,22 @@ namespace PEunion
 			{
 				MessageBoxes.Warning("'" + SourceFile + "' not found.");
 			}
-			else if (DestinationFileName.Contains(RtloCharacter))
+			else if (DestinationFileName.Contains(TextResources.RightToLeftMark))
 			{
 				MessageBoxes.Warning("There is a RTLO character (U+202e) in the destination file name. It must be removed first.");
 			}
-			else if (DestinationNewExtension.Contains(RtloCharacter))
+			else if (DestinationNewExtension.Contains(TextResources.RightToLeftMark))
 			{
 				MessageBoxes.Warning("There is a RTLO character (U+202e) in the destination file extension. It must be removed first.");
 			}
 			else
 			{
-				string path = Dialogs.OpenFolder();
+				string path = FileDialogs.OpenFolder();
 				if (path != null)
 				{
 					try
 					{
-						string fileName = Path.Combine(path, DestinationFileName + RtloCharacter + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
+						string fileName = Path.Combine(path, DestinationFileName + TextResources.RightToLeftMark + DestinationNewExtension.Reverse() + "." + DestinationOldExtension);
 
 						if (!File.Exists(fileName) || MessageBoxes.Confirmation("A file named '" + ctrlPreview.Text + "' already exists in the selected directory.\r\nOverwrite?", true))
 						{
@@ -170,7 +173,7 @@ namespace PEunion
 		}
 		private void lnkCopyCharacterToClipboard_Click(object sender, RoutedEventArgs e)
 		{
-			Clipboard.SetDataObject(new string(RtloCharacter, 1));
+			Clipboard.SetDataObject(new string(TextResources.RightToLeftMark, 1));
 		}
 
 		private void UpdatePreview()

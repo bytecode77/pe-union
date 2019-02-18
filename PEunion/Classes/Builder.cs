@@ -1,4 +1,7 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.IO;
+using BytecodeApi.Mathematics;
+using BytecodeApi.Text;
 using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;

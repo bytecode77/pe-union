@@ -1,4 +1,5 @@
-﻿using BytecodeApi;
+﻿using BytecodeApi.Extensions;
+using BytecodeApi.Text;
 using System.Windows.Forms;
 
 namespace PEunion
