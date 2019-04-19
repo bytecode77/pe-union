@@ -1,5 +1,5 @@
 ﻿using BytecodeApi.Extensions;
-using BytecodeApi.IO;
+using BytecodeApi.IO.FileSystem;
 using BytecodeApi.Text;
 using System.IO;
 using System.Linq;

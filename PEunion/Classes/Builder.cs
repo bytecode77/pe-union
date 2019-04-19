@@ -1,5 +1,5 @@
 ﻿using BytecodeApi.Extensions;
-using BytecodeApi.IO;
+using BytecodeApi.FileFormats.ResourceFile;
 using BytecodeApi.Mathematics;
 using BytecodeApi.Text;
 using Microsoft.CSharp;
@@ -93,7 +93,7 @@ namespace PEunion
 					if (results.Errors.Count == 0 && project.IconPath != null)
 					{
 						WindowMain.Singleton.OverlayTitle = "Applying icon '" + Path.GetFileName(project.IconPath) + "'";
-						ResourceFile.ChangeIcon(path, project.IconPath);
+						new ResourceFileInfo(path).ChangeIcon(project.IconPath);
 					}
 					return results;
 				}

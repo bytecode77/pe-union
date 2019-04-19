@@ -1,6 +1,7 @@
 ﻿using BytecodeApi;
 using BytecodeApi.Extensions;
-using BytecodeApi.IO;
+using BytecodeApi.FileFormats.ResourceFile;
+using BytecodeApi.IO.FileSystem;
 using BytecodeApi.Text;
 using BytecodeApi.UI.Controls;
 using BytecodeApi.UI.Dialogs;
@@ -158,7 +159,7 @@ namespace PEunion
 							{
 								string tempPath = Path.Combine(path, DestinationFileName + "~.tmp");
 								File.Copy(SourceFile, tempPath, true);
-								ResourceFile.ChangeIcon(tempPath, DestinationIcon);
+								new ResourceFileInfo(tempPath).ChangeIcon(DestinationIcon);
 								File.Copy(tempPath, fileName, true);
 								File.Delete(tempPath);
 							}

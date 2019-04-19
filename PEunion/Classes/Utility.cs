@@ -31,7 +31,7 @@ namespace PEunion
 		}
 		public static BitmapImage GetImageResource(string name)
 		{
-			return new BitmapImage((Packs.Application + "/PEunion;component/Resources/" + name + ".png").ToUriOrDefault(UriKind.Absolute));
+			return new BitmapImage((Packs.Application + "/PEunion;component/Resources/" + name + ".png").ToUri(UriKind.Absolute));
 		}
 	}
 }

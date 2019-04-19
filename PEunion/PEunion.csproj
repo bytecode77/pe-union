@@ -46,6 +46,10 @@
       <HintPath>.\BytecodeApi.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="BytecodeApi.FileFormats, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\BytecodeApi.FileFormats.dll</HintPath>
+    </Reference>
     <Reference Include="BytecodeApi.UI, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\BytecodeApi.UI.dll</HintPath>
@@ -293,6 +297,10 @@
   <ItemGroup>
     <None Include="BytecodeApi.UI.dll" />
     <None Include="BytecodeApi.UI.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BytecodeApi.FileFormats.dll" />
+    <None Include="BytecodeApi.FileFormats.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

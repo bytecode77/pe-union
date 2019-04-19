@@ -1,5 +1,6 @@
 ﻿using BytecodeApi;
 using BytecodeApi.Extensions;
+using BytecodeApi.UI;
 using BytecodeApi.UI.Controls;
 using BytecodeApi.UI.Dialogs;
 using System;
@@ -12,41 +13,41 @@ namespace PEunion
 {
 	public partial class FileBrowser : ObservableUserControl
 	{
-		public static readonly DependencyProperty AllowMultipleProperty = DependencyProperty.Register(nameof(AllowMultiple), typeof(bool), typeof(FileBrowser), new PropertyMetadata(AllowMultipleProperty_Changed));
-		public static readonly DependencyProperty AllowedExtensionsProperty = DependencyProperty.Register(nameof(AllowedExtensions), typeof(string), typeof(FileBrowser));
-		public static readonly DependencyProperty AllowResetProperty = DependencyProperty.Register(nameof(AllowReset), typeof(bool), typeof(FileBrowser));
-		public static readonly DependencyProperty TextProperty = DependencyProperty.Register(nameof(Text), typeof(string), typeof(FileBrowser));
-		public static readonly DependencyProperty IconImageSourceProperty = DependencyProperty.Register(nameof(IconImageSource), typeof(ImageSource), typeof(FileBrowser), new PropertyMetadata(Utility.GetImageResource("ImageDragDrop"), IconImageSourceProperty_Changed));
-		public static readonly DependencyProperty IsResetButtonEnabledProperty = DependencyProperty.Register(nameof(IsResetButtonEnabled), typeof(bool), typeof(FileBrowser));
+		public static readonly DependencyProperty AllowMultipleProperty = DependencyPropertyEx.Register(nameof(AllowMultiple), new PropertyMetadata(AllowMultipleProperty_Changed));
+		public static readonly DependencyProperty AllowedExtensionsProperty = DependencyPropertyEx.Register(nameof(AllowedExtensions));
+		public static readonly DependencyProperty AllowResetProperty = DependencyPropertyEx.Register(nameof(AllowReset));
+		public static readonly DependencyProperty TextProperty = DependencyPropertyEx.Register(nameof(Text));
+		public static readonly DependencyProperty IconImageSourceProperty = DependencyPropertyEx.Register(nameof(IconImageSource), new PropertyMetadata(Utility.GetImageResource("ImageDragDrop"), IconImageSourceProperty_Changed));
+		public static readonly DependencyProperty IsResetButtonEnabledProperty = DependencyPropertyEx.Register(nameof(IsResetButtonEnabled));
 		public bool AllowMultiple
 		{
-			get => GetValue<bool>(AllowMultipleProperty);
-			set => SetValue(AllowMultipleProperty, value);
+			get => GetValue(() => AllowMultiple);
+			set => SetValue(() => AllowMultiple, value);
 		}
 		public string AllowedExtensions
 		{
-			get => GetValue<string>(AllowedExtensionsProperty);
-			set => SetValue(AllowedExtensionsProperty, value);
+			get => GetValue(() => AllowedExtensions);
+			set => SetValue(() => AllowedExtensions, value);
 		}
 		public bool AllowReset
 		{
-			get => GetValue<bool>(AllowResetProperty);
-			set => SetValue(AllowResetProperty, value);
+			get => GetValue(() => AllowReset);
+			set => SetValue(() => AllowReset, value);
 		}
 		public string Text
 		{
-			get => GetValue<string>(TextProperty);
-			set => SetValue(TextProperty, value);
+			get => GetValue(() => Text);
+			set => SetValue(() => Text, value);
 		}
 		public ImageSource IconImageSource
 		{
-			get => GetValue<ImageSource>(IconImageSourceProperty);
-			set => SetValue(IconImageSourceProperty, value);
+			get => GetValue(() => IconImageSource);
+			set => SetValue(() => IconImageSource, value);
 		}
 		public bool IsResetButtonEnabled
 		{
-			get => GetValue<bool>(IsResetButtonEnabledProperty);
-			set => SetValue(IsResetButtonEnabledProperty, value);
+			get => GetValue(() => IsResetButtonEnabled);
+			set => SetValue(() => IsResetButtonEnabled, value);
 		}
 		private string[] AllowedExtensionsArray => AllowedExtensions.ToNullIfEmpty()?.Split(';');
 		public string DragDropText => AllowMultiple ? "Drag one or multiple files here" : "Drag a file here";
@@ -82,7 +83,7 @@ namespace PEunion
 				files?.Length > 0 &&
 				files.All(File.Exists) &&
 				(AllowMultiple || files.Length == 1) &&
-				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => Path.GetExtension(file).TrimStart('.').CompareTo(ext, SpecialStringComparison.IgnoreCase) == 0)));
+				(AllowedExtensionsArray == null || files.All(file => AllowedExtensionsArray.Any(ext => Path.GetExtension(file).TrimStart('.').CompareTo(ext, SpecialStringComparisons.IgnoreCase) == 0)));
 		}
 		private static void AllowMultipleProperty_Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
