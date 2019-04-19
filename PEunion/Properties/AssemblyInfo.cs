@@ -2,5 +2,6 @@
 
 [assembly: AssemblyTitle("PEunion")]
 [assembly: AssemblyProduct("PEunion")]
-[assembly: AssemblyVersion("3.1.4")]
-[assembly: AssemblyCopyright("© bytecode77")]
+[assembly: AssemblyVersion("3.1.5")]
+[assembly: AssemblyFileVersion("3.1.5")]
+[assembly: AssemblyCopyright("© bytecode77, 2019.")]
