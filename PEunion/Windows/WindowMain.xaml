@@ -1,13 +1,12 @@
-﻿<controls:ObservableWindow
+﻿<ui:ObservableWindow
 	x:Class="PEunion.WindowMain"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:PEunion"
-	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
-	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
-	xmlns:markup="clr-namespace:BytecodeApi.UI.Markup;assembly=BytecodeApi.UI"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
 	mc:Ignorable="d"
 	Title="PEunion" Width="1100" Height="750" MinWidth="900" MinHeight="550" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" UseLayoutRounding="True" SourceInitialized="Window_SourceInitialized" Closing="Window_Closing">
 	<Window.CommandBindings>
@@ -30,50 +29,50 @@
 	</Window.InputBindings>
 	<Control.Resources>
 		<ContextMenu x:Key="mnuTreeItems">
-			<MenuItem Header="Add Files..." controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
-			<MenuItem Header="Add Message Box" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
-			<MenuItem Header="Add URL" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
+			<MenuItem Header="Add Files..." ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
+			<MenuItem Header="Add Message Box" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
+			<MenuItem Header="Add URL" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
 		</ContextMenu>
 		<ContextMenu x:Key="mnuTreeFile">
 			<MenuItem Header="Add">
-				<MenuItem Header="Files..." controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
-				<MenuItem Header="Message Box" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
-				<MenuItem Header="URL" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
+				<MenuItem Header="Files..." ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
+				<MenuItem Header="Message Box" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
+				<MenuItem Header="URL" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
 			</MenuItem>
 			<Separator />
-			<MenuItem Header="Move Up" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 -1}" />
-			<MenuItem Header="Move Down" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 1}" />
+			<MenuItem Header="Move Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 -1}" />
+			<MenuItem Header="Move Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 1}" />
 			<Separator />
-			<MenuItem Header="Open Folder" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuTreeFileOpenSourceDirectory_Click" />
+			<MenuItem Header="Open Folder" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuTreeFileOpenSourceDirectory_Click" />
 			<MenuItem Header="Properties" Click="mnuTreeFileProperties_Click" />
 			<Separator />
-			<MenuItem Header="Delete" InputGestureText="Del" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
+			<MenuItem Header="Delete" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
 		</ContextMenu>
 		<ContextMenu x:Key="mnuTreeUrl">
 			<MenuItem Header="Add">
-				<MenuItem Header="Files..." controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
-				<MenuItem Header="Message Box" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
-				<MenuItem Header="URL" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
+				<MenuItem Header="Files..." ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
+				<MenuItem Header="Message Box" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
+				<MenuItem Header="URL" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
 			</MenuItem>
 			<Separator />
-			<MenuItem Header="Move Up" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 -1}" />
-			<MenuItem Header="Move Down" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 1}" />
+			<MenuItem Header="Move Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 -1}" />
+			<MenuItem Header="Move Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 1}" />
 			<Separator />
-			<MenuItem Header="Delete" InputGestureText="Del" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
+			<MenuItem Header="Delete" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
 		</ContextMenu>
 		<ContextMenu x:Key="mnuTreeMessageBox">
 			<MenuItem Header="Add">
-				<MenuItem Header="Files..." controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
-				<MenuItem Header="Message Box" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
-				<MenuItem Header="URL" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
+				<MenuItem Header="Files..." ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddFiles.png" Click="mnuTreeItemsAddFiles_Click" />
+				<MenuItem Header="Message Box" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddMessageBox.png" Click="mnuTreeItemsAddMessageBox_Click" />
+				<MenuItem Header="URL" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAddUrl.png" Click="mnuTreeItemsAddUrl_Click" />
 			</MenuItem>
 			<Separator />
-			<MenuItem Header="Move Up" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 -1}" />
-			<MenuItem Header="Move Down" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{markup:Int32 1}" />
+			<MenuItem Header="Move Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowUp.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 -1}" />
+			<MenuItem Header="Move Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconArrowDown.png" Command="{x:Static local:WindowMain.MoveSelectedProjectItemCommand}" CommandParameter="{ui:Int32 1}" />
 			<Separator />
 			<MenuItem Header="Preview" Click="mnuTreeMessageBoxPreview_Click" />
 			<Separator />
-			<MenuItem Header="Delete" InputGestureText="Del" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
+			<MenuItem Header="Delete" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconDelete.png" Command="{x:Static local:WindowMain.DeleteSelectedProjectItemCommand}" />
 		</ContextMenu>
 	</Control.Resources>
 	<Grid>
@@ -87,13 +86,13 @@
 		</Grid.RowDefinitions>
 		<Menu>
 			<MenuItem Header="_File">
-				<MenuItem Header="_New" InputGestureText="Ctrl+N" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconNew.png" Command="{x:Static local:WindowMain.NewCommand}" />
-				<MenuItem Header="_Open..." InputGestureText="Ctrl+O" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconOpen.png" Command="{x:Static local:WindowMain.OpenCommand}" />
+				<MenuItem Header="_New" InputGestureText="Ctrl+N" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconNew.png" Command="{x:Static local:WindowMain.NewCommand}" />
+				<MenuItem Header="_Open..." InputGestureText="Ctrl+O" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconOpen.png" Command="{x:Static local:WindowMain.OpenCommand}" />
 				<Separator />
-				<MenuItem Header="_Save" InputGestureText="CtrlS+S" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconSave.png" Command="{x:Static local:WindowMain.SaveCommand}" />
+				<MenuItem Header="_Save" InputGestureText="CtrlS+S" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconSave.png" Command="{x:Static local:WindowMain.SaveCommand}" />
 				<MenuItem Header="Save _As..." InputGestureText="Ctrl+Shift+S" Command="{x:Static local:WindowMain.SaveAsCommand}" />
 				<Separator />
-				<MenuItem Header="Open _Project Folder" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconOpenProjectFolder.png" IsEnabled="{Binding Project.SaveLocation, Converter={StaticResource ObjectIsNullToBooleanConverter}}" Click="mnuFileOpenProjectFolder_Click" />
+				<MenuItem Header="Open _Project Folder" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconOpenProjectFolder.png" IsEnabled="{Binding Project.SaveLocation, Converter={ui:NullConverter}}" Click="mnuFileOpenProjectFolder_Click" />
 				<MenuItem Header="Recent _Projects" ItemsSource="{Binding RecentProjectMenuItems}">
 					<MenuItem.Resources>
 						<Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
@@ -109,22 +108,22 @@
 					</MenuItem.Resources>
 				</MenuItem>
 				<Separator />
-				<MenuItem Header="E_xit" InputGestureText="Alt+F4" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconExit.png" Click="mnuFileExit_Click" />
+				<MenuItem Header="E_xit" InputGestureText="Alt+F4" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconExit.png" Click="mnuFileExit_Click" />
 			</MenuItem>
 			<MenuItem Header="_Build">
-				<MenuItem Header="_Build" InputGestureText="Ctrl+B" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconBuild.png" Command="{x:Static local:WindowMain.BuildCommand}" />
-				<MenuItem Header="Generate _Code" InputGestureText="Ctrl+Shift+B" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconCode.png" Command="{x:Static local:WindowMain.BuildCodeCommand}" />
+				<MenuItem Header="_Build" InputGestureText="Ctrl+B" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconBuild.png" Command="{x:Static local:WindowMain.BuildCommand}" />
+				<MenuItem Header="Generate _Code" InputGestureText="Ctrl+Shift+B" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconCode.png" Command="{x:Static local:WindowMain.BuildCodeCommand}" />
 			</MenuItem>
 			<MenuItem Header="_Tools">
-				<MenuItem Header="_Open AppData Directory" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuToolsOpenAppDataDirectory_Click" />
+				<MenuItem Header="_Open AppData Directory" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconDirectory.png" Click="mnuToolsOpenAppDataDirectory_Click" />
 				<MenuItem Header="_Register .peu File Extension" Click="mnuToolsRegisterFileExtension_Click" />
 				<Separator />
-				<MenuItem Header="Right to _Left Override" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconRtlo.png" Click="mnuToolsRtlo_Click" />
+				<MenuItem Header="Right to _Left Override" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconRtlo.png" Click="mnuToolsRtlo_Click" />
 			</MenuItem>
 			<MenuItem Header="_Help">
-				<MenuItem Header="PEunion on _GitHub" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconGitHub.png" Click="mnuHelpGitHub_Click" />
+				<MenuItem Header="PEunion on _GitHub" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconGitHub.png" Click="mnuHelpGitHub_Click" />
 				<Separator />
-				<MenuItem Header="_About" controls:MenuItemService.ImageSource="/PEunion;component/Resources/IconAbout.png" Click="mnuHelpAbout_Click" />
+				<MenuItem Header="_About" ui:MenuItemService.ImageSource="/PEunion;component/Resources/IconAbout.png" Click="mnuHelpAbout_Click" />
 			</MenuItem>
 		</Menu>
 		<ToolBarTray Grid.Row="1">
@@ -163,7 +162,7 @@
 				<TabItem>
 					<TabItem.Header>
 						<StackPanel Orientation="Horizontal">
-							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={StaticResource StringConcatConverter}, ConverterParameter={markup:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
+							<local:TextDisplay Text="{Binding Project.ProjectName, Converter={ui:StringConverter Concat}, ConverterParameter={ui:String .peu}}" ImageSource="/PEunion;component/Resources/IconPeuFile.png" />
 							<TextBlock Name="txtProjectTabIsDirty" Text=" *" />
 							<Button Style="{StaticResource CloseButton}" Command="{x:Static local:WindowMain.NewCommand}" />
 						</StackPanel>
@@ -181,7 +180,7 @@
 										<DockPanel>
 											<Grid Margin="0,0,5,0">
 												<Image Source="{Binding Icon}" />
-												<Image Source="/PEunion;component/Resources/IconUacOverlay.png" Visibility="{Binding Runas, Converter={StaticResource BooleanToVisibilityConverter}}" />
+												<Image Source="/PEunion;component/Resources/IconUacOverlay.png" Visibility="{Binding Runas, Converter={ui:BooleanConverter Visibility}}" />
 											</Grid>
 											<TextBlock Text="{Binding Name}" />
 										</DockPanel>
@@ -622,9 +621,9 @@
 									<GridViewColumn.CellTemplate>
 										<DataTemplate>
 											<Grid>
-												<Image Source="/PEunion;component/Resources/IconError.png" Visibility="{Binding Type, Converter={StaticResource ObjectEqualsToVisibilityConverter}, ConverterParameter={x:Static local:ValidationErrorType.Error}}" />
-												<Image Source="/PEunion;component/Resources/IconWarning.png" Visibility="{Binding Type, Converter={StaticResource ObjectEqualsToVisibilityConverter}, ConverterParameter={x:Static local:ValidationErrorType.Warning}}" />
-												<Image Source="/PEunion;component/Resources/IconInformation.png" Visibility="{Binding Type, Converter={StaticResource ObjectEqualsToVisibilityConverter}, ConverterParameter={x:Static local:ValidationErrorType.Message}}" />
+												<Image Source="/PEunion;component/Resources/IconError.png" Visibility="{Binding Type, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static local:ValidationErrorType.Error}}" />
+												<Image Source="/PEunion;component/Resources/IconWarning.png" Visibility="{Binding Type, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static local:ValidationErrorType.Warning}}" />
+												<Image Source="/PEunion;component/Resources/IconInformation.png" Visibility="{Binding Type, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static local:ValidationErrorType.Message}}" />
 											</Grid>
 										</DataTemplate>
 									</GridViewColumn.CellTemplate>
@@ -656,4 +655,4 @@
 			</Border>
 		</Border>
 	</Grid>
-</controls:ObservableWindow>
+</ui:ObservableWindow>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BytecodeApi;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -8,7 +9,7 @@ namespace PEunion
 {
 	public partial class App : Application
 	{
-		public static readonly string Version = Assembly.GetEntryAssembly().GetName().Version.ToString(3);
+		public static string Version => ApplicationBase.Version.ToString(3);
 		public static string ApplicationDirectoryPath
 		{
 			get
@@ -34,6 +35,7 @@ namespace PEunion
 
 			if (name == "BytecodeApi") return Assembly.Load(PEunion.Properties.Resources.BytecodeApi);
 			else if (name == "BytecodeApi.UI") return Assembly.Load(PEunion.Properties.Resources.BytecodeApiUI);
+			else if (name == "BytecodeApi.FileFormats") return Assembly.Load(PEunion.Properties.Resources.BytecodeApiFileFormats);
 			else return null;
 		}
 	}

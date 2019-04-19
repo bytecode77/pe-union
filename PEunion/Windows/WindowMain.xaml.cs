@@ -1,6 +1,8 @@
 ﻿using BytecodeApi;
 using BytecodeApi.Extensions;
 using BytecodeApi.IO;
+using BytecodeApi.IO.FileSystem;
+using BytecodeApi.IO.SystemInfo;
 using BytecodeApi.UI;
 using BytecodeApi.UI.Controls;
 using BytecodeApi.UI.Dialogs;
@@ -71,8 +73,7 @@ namespace PEunion
 			get
 			{
 				string path = Path.Combine(App.ApplicationDirectoryPath, "RecentProjects.txt");
-				if (File.Exists(path)) return File.ReadAllLines(path).Where(line => line != "").Take(10).ToArray();
-				else return new string[0];
+				return File.Exists(path) ? File.ReadAllLines(path).Where(line => line != "").Take(10).ToArray() : new string[0];
 			}
 			set
 			{
@@ -333,7 +334,7 @@ namespace PEunion
 		}
 		private void mnuToolsRegisterFileExtension_Click(object sender, RoutedEventArgs e)
 		{
-			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.Process.StartupPath + "'.\r\nProceed?", false, true))
+			if (MessageBoxes.Confirmation("This will register the .peu file extension for the installation directory\r\n'" + ApplicationBase.Path + "'.\r\nProceed?", false, true))
 			{
 				string iconPath = Path.Combine(App.ApplicationDirectoryPath, "ShellIcon.ico");
 				File.WriteAllBytes(iconPath, Properties.Resources.FileShellIcon);
@@ -343,7 +344,7 @@ namespace PEunion
 					"PEunion_RegisterFileExtension.reg",
 					Properties.Resources.FileRegisterExtension
 						.Replace("{IconPath}", iconPath.Replace(@"\", @"\\"))
-						.Replace("{ApplicationPath}", ApplicationBase.Process.ExecutablePath.Replace(@"\", @"\\"))
+						.Replace("{ApplicationPath}", ApplicationBase.FileName.Replace(@"\", @"\\"))
 						.ToAnsiBytes()
 				);
 			}

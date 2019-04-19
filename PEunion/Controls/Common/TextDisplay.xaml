@@ -1,4 +1,4 @@
-﻿<controls:ObservableUserControl
+﻿<ui:ObservableUserControl
 	x:Class="PEunion.TextDisplay"
 	x:Name="textDisplay"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,12 +6,12 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:PEunion"
-	xmlns:api="clr-namespace:BytecodeApi;assembly=BytecodeApi"
-	xmlns:controls="clr-namespace:BytecodeApi.UI.Controls;assembly=BytecodeApi.UI"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
 	mc:Ignorable="d">
 	<DockPanel>
-		<Image Source="{Binding ImageSource, ElementName=textDisplay}" Margin="0,0,5,0" Visibility="{Binding ImageSource, Converter={StaticResource ObjectIsNullToVisibilityConverter}, ElementName=textDisplay}" />
+		<Image Source="{Binding ImageSource, ElementName=textDisplay}" Margin="0,0,5,0" Visibility="{Binding ImageSource, Converter={ui:NullConverter Visibility}, ElementName=textDisplay}" />
 		<TextBlock Text="{Binding Text, ElementName=textDisplay}" />
-		<Image Source="/PEunion;component/Resources/IconInfoIcon.png" Margin="5,0,0,0" ToolTip="{Binding InfoIcon, ElementName=textDisplay}" Visibility="{Binding InfoIcon, ElementName=textDisplay, Converter={StaticResource StringIsNullOrEmptyToVisibilityConverter}}" />
+		<Image Source="/PEunion;component/Resources/IconInfoIcon.png" Margin="5,0,0,0" ToolTip="{Binding InfoIcon, ElementName=textDisplay}" Visibility="{Binding InfoIcon, ElementName=textDisplay, Converter={ui:StringEmptyConverter NotNullOrEmpty, Visibility}}" />
 	</DockPanel>
-</controls:ObservableUserControl>
+</ui:ObservableUserControl>
