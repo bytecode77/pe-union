@@ -18,7 +18,7 @@ encrypted.
 PEunion can be either used as a binder for multiple files, as a crypter for a
 single file, or as a downloader.
 
-## Screenshots
+## Features
 
 This is the application interface. First, you add the files to your project.
 
