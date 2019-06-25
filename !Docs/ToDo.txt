@@ -1,0 +1,45 @@
+Features
+	* General
+		* Tools / Plugins
+			* "exe 2 docx"
+		* Startup
+			* Run key (HKCU, HKLM)
+			* Task Scheduler
+			* Service
+		* Item Types
+			* Command (file + commandline)
+			* DLL
+				* Execute using rundll32.exe, injection, or create thread in current process
+			* Time Delay property for all items
+	* Build
+		* Obfuscation: Random API/.NET calls between actual code lines
+		* Variable names: Specify length (currently random length between 10 and 20)
+		* DateModified of stub and files
+	* Output Binary
+		* Icon
+			* Pick from exe file
+			* Pick from presets
+		* Pick digital signature from file
+	* Files
+		* Re-locate missing files
+		* Pass command line of stub to file
+		* Option to randomize drop filename
+		* Execute in memory (.NET Invoke)
+
+UI
+	* ContextMenu in white area of TreeView
+	* TreeViewItems for Files\
+		* Alt+Up, Alt+Down keys
+		* Drag&Drop for re-ordering
+	* Double click on validation -> Jump to UI location
+	* Bold font for non-default values
+	* "Reset to defaults" for each page
+	* VS Style
+		* Window
+		* Docking Panels focus style incorrect
+	* Dirty flag for each page
+
+Next
+	* AV evasion
+	* Pad result file size to X bytes
+	* Privilege Escalation
