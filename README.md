@@ -10,7 +10,7 @@ On top of that, obfuscation is maximized during code generation. Variable names 
 
 PEunion can be either used as a binder for multiple files, as a crypter for a single file, or as a downloader.
 
-![](https://bytecode77.com/images/pages/pe-union/001.png)
+![](https://bytecode77.com/images/pages/pe-union/app1.png)
 
 In the application interface, files can be added to a project. Each file can be configured individually. By default, obfuscation, compression, and encryption are enabled.
 
@@ -18,28 +18,28 @@ The project can be saved into a .peu file, which includes all project informatio
 
 PEunion can also be used as a downloader. Simply specify a URL and provide drop & execution parameters. Of course, bundled files and URL downloads can be mixed in any constellation.
 
-![](https://bytecode77.com/images/pages/pe-union/002.png)
+![](https://bytecode77.com/images/pages/pe-union/app2.png)
 
 ## Settings
 
 For the C# code that is generated, compiler settings can be configured here. Usually, you will be looking to change the icon and assembly info:
 
-![](https://bytecode77.com/images/pages/pe-union/003.png)
+![](https://bytecode77.com/images/pages/pe-union/app3.png)
 
 The next two pages include settings for obfuscation and startup parameters. Default obfuscation settings are at maximum, however, they can be changed, if required.
 
-![](https://bytecode77.com/images/pages/pe-union/004.png)
-![](https://bytecode77.com/images/pages/pe-union/005.png)
+![](https://bytecode77.com/images/pages/pe-union/app4.png)
+![](https://bytecode77.com/images/pages/pe-union/app5.png)
 
 ## Compiling
 
 Finally, the project is compiled into a single executable file:
 
-![](https://bytecode77.com/images/pages/pe-union/006.png)
+![](https://bytecode77.com/images/pages/pe-union/build.png)
 
 Any errors in project configuration or the build process are displayed in a comprehensive way:
 
-![](https://bytecode77.com/images/pages/pe-union/007.png)
+![](https://bytecode77.com/images/pages/pe-union/errors.png)
 
 ## Additional Tools
 
@@ -51,17 +51,17 @@ A lesser-known ~~bug~~ feature: Right to left override. By using the `U+202e` Un
 
 Example: `Colorful A[U+202E]gpj.scr` will be displayed as `Colorful Arcs.jpg` in File Explorer. The "scr" (screensaver) file extension is easily overlooked. And with a matching icon, the file may look just like a harmless jpeg image:
 
-![](https://bytecode77.com/images/pages/pe-union/008.png)
+![](https://bytecode77.com/images/pages/pe-union/rtlo.png)
 
 ## Behind the scenes - Obfuscation
 
 Starting here, an array with the included files is declared. This is the definition for the files and what to do with them. The byte[] literal contains the encrypted and compressed file:
 
-![](https://bytecode77.com/images/pages/pe-union/code1.png)
+![](https://bytecode77.com/images/pages/pe-union/obfuscation1.png)
 
 Symbols for variables, methods and classes are obfuscated using barely readable characters:
 
-![](https://bytecode77.com/images/pages/pe-union/code2.gif)
+![](https://bytecode77.com/images/pages/pe-union/obfuscation2.gif)
 
 Some variables don't require obfuscation. This is because the C# compiler doesn't assign names to variables scoped inside a method. When decompiled, variables will look like str1, str2, str3...
 
@@ -71,17 +71,17 @@ Wondered, what "DecryptString(...)" means?
 
 String literals are encrypted using a simple 8-bit XOR. This increases reverse engineering effort even more. Take a look at this very simple line of code:
 
-![](https://bytecode77.com/images/pages/pe-union/code3.png)
+![](https://bytecode77.com/images/pages/pe-union/string-encryption-before.png)
 
 In addition to the "runas" boolean variable being obfuscated, the string literal "runas" is encrypted, too.
 
-![](https://bytecode77.com/images/pages/pe-union/code4.png)
+![](https://bytecode77.com/images/pages/pe-union/string-encryption-after.png)
 
 Skilled reverse engineers will quickly assume that this *maybe* means `ProcessStartInfo.Verb = "runas"`. However, considering the amount of code that is generated, with meaningless and unreadable variable names, and no visible strings at all - analyzing this binary isn't particularly pleasing. And to anyone unfamiliar, a file like this is completely incomprehensive.
 
 And in fact, decompilation will require *some* effort to figure out the payloads of the binary. Needless to say, obfuscation does not equal "protection" of the content. It just shouldn't be too easy.
 
-![](https://bytecode77.com/images/pages/pe-union/code5.png)
+![](https://bytecode77.com/images/pages/pe-union/decompiled.png)
 
 ## Downloads
 
