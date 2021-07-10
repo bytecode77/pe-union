@@ -2,6 +2,9 @@
 
 ## Binder, downloader & crypter
 
+> **Important: PEunion 4.0 is under active development and scheduled for release in early 2022. Please understand that there will be no fixes or FUD updates until version 4.0 is available. The next major release will include multiple stubs (handwritten assembly, C#), state of the art in-memory injection & AV evasion and will be overall superior over the current version.<br /><br />
+Because of other obligations and limited time, I have to prioritize in favor for the next release being available in time. In the meantime, PEunion 3.x is available as-is.**
+
 PEunion bundles executables into a single file. Each executable can be configured individually to be compressed, encrypted, etc. In addition, an URL can be specified to download and execute files from the web.
 
 The resulting binary is compiled from dynamically generated C# code. No resources are exposed that can be harvested using tools like [Resource Hacker](http://www.angusj.com/resourcehacker/). PEunion does not use managed resources either. Files are stored in byte[] literals and when encryption and compression is applied, files become as obscure as they can get.
