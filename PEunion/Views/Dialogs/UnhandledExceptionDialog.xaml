@@ -1,0 +1,33 @@
+﻿<local:DialogBase
+	x:Class="PEunion.UnhandledExceptionDialog"
+	x:Name="unhandledExceptionDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	DataContext="{Binding ViewModel, ElementName=unhandledExceptionDialog}"
+	Title="PEunion" Width="700" SizeToContent="Height" Closed="{ui:EventBinding WindowClosedCommand}">
+	<StackPanel>
+		<StackPanel Margin="15">
+			<DockPanel Margin="0,0,0,20">
+				<Image DockPanel.Dock="Left" Source="/PEunion;component/Resources/Icons/UnhandledException48.png" Margin="0,0,10,0" />
+				<TextBox Text="{Binding Exception.Message, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="100" VerticalScrollBarVisibility="Auto" BorderThickness="0" />
+			</DockPanel>
+			<TextBox Text="{Binding StackTrace, Mode=OneWay}" IsReadOnly="True" Height="200" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" />
+			<Border Padding="10" Background="#e9f0ff">
+				<TextBlock TextWrapping="Wrap">
+					Please consider reporting crashes and bugs. It will improve the quality of this project, when bugs that did not occur during tests are reported by users.
+					<LineBreak />
+					<LineBreak />
+					If you want to report this error, please create a <Hyperlink Command="{Binding ReportIssueCommand}">GitHub Issue</Hyperlink> with the above stack trace and all relevant information that are useful to reproduce the issue.
+				</TextBlock>
+			</Border>
+		</StackPanel>
+		<ItemsControl Style="{StaticResource DialogButtonRow}">
+			<Button Style="{StaticResource UIButton}" Content="Continue" HorizontalAlignment="Right" Command="{Binding ContinueCommand}" Margin="0,0,10,0" Visibility="{Binding CanContinue, Converter={ui:BooleanConverter Visibility}}" />
+			<Button Style="{StaticResource UIButton}" Content="Exit" HorizontalAlignment="Right" Command="{Binding ExitCommand}" />
+		</ItemsControl>
+	</StackPanel>
+</local:DialogBase>

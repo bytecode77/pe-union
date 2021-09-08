@@ -1,132 +1,97 @@
 # PEunion
 
-PEunion bundles multiple executables *(or any other file type)* into a single
-file. Each file can be configured individually to be compressed, encrypted, etc.
-In addition, an URL can be provided for a download to be executed.
+## Crypter, binder & downloader
 
-The resulting binary is compiled from dynamically generated C# code. No
-resources are exposed that can be harvested using tools like
-[Resource Hacker](http://www.angusj.com/resourcehacker/). PEunion does not use
-managed resources either. Files are stored in `byte[]` code definitions and when
-encryption and compression is applied, files become as obscure as they can get.
+PEunion encrypts executables, which are decrypted at runtime and executed in-memory.
 
-And on top of that, obfuscation is applied to a maximal extent! Variable names
-are obfuscated using barely distinguishable Unicode characters. String literals
-for both strings that you provide, as well as constant string literals are
-encrypted.
+![](https://bytecode77.com/images/pages/pe-union/runpe.png)
 
-PEunion can be either used as a binder for multiple files, as a crypter for a
-single file, or as a downloader.
+## Stub
 
-## Features
+Two stubs are available to choose from, both of which work in a similar way.
 
-This is the application interface. First, you add the files to your project.
+* **Native:** Written in assembly (FASM)
+* **.NET:** Written in C#
 
-Each file can be configured individually. Default settings already include
-obfuscation, compression and encryption. Relevant settings are primarily: Where
-to drop the file, using what name and whether or not to execute it and so on...
+![](https://bytecode77.com/images/pages/pe-union/stub.png)
 
-The project can be saved into a .peu file, which includes all project
-information. Paths to your files are relative if they are located in the same
-directory or a sub directory.
+## Key feature overview
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/001.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/001.png)
+* Emulator detection
+* Low-entropy packing scheme
+* Two-layer execution architecture
+* Code obfuscation
+* File compression
+* Binder (combine multiple files)
+* Downloader
+* RunPE (process hollowing)
+* In-memory invocation of .NET executables
+* Drop files to disk
+* Melt (self-deleting stub)
+* EOF support
+* Specify icon, version information & manifest
+* Well-designed UI
+* Commandline compiler
 
-PEunion can also be used as a downloader. Simply specify a URL and provide
-drop & execution parameters. Of course, bundled files and URL downloads can be
-mixed in any constellation.
+Multiple files can be compiled into the stub. A file can either be embedded within the compiled executable, or the stub downloads the file at runtime.
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/002.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/002.png)
+Typically, an executable is decrypted and executed in-memory by the stub. If the executable is a native PE file, `RunPE` (process hollowing) is used. For .NET executables, the .NET stub uses `Invoke`. Legitimate files with no known signatures can be written to the disk.
 
-### Settings
+[![](https://bytecode77.com/images/pages/pe-union/drop.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/drop.png)
+[![](https://bytecode77.com/images/pages/pe-union/items.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/items.png)
 
-For the C# code that is generated, compiler settings can be configured here.
-Usually, you will be looking to change the icon and assembly info:
+## Implementation & execution flow
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
+Obfuscation and evasive features are fundamental to the design of PEunion and do not need further configuration. The exact implementation is fine tuned to decrease detection and is subject to change in future releases.
 
-The next two pages include settings for obfuscation and startup parameters.
-Default obfuscation settings are at maximum, however they can be changed, if
-required.
+This graph illustrates the execution flow of the native stub decrypting and executing a PE file. The .NET stub works similarly.
 
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/003.png&height=250)](https://bytecode77.com/images/sites/hacking/tools/peunion/003.png)
-[![](https://bytecode77.com/cache/thumbs/?path=images/sites/hacking/tools/peunion/004.png&height=250)](https://bytecode77.com/images/sites/hacking/tools/peunion/004.png)
+![](https://bytecode77.com/images/pages/pe-union/execution-flow-light.png)
 
-### Compiling
+The **fundamental concept** is that the stub **only** contains code to detect emulators and to decrypt and pass execution to the next layer. The second stage is position independent shellcode that retrieves function pointers from the PEB and handles the payload. To mitigate AV detections, only the stub requires adjustments. Stage 2 contains all the "suspicious" code that is not readable at scantime and not decrypted, if an emulator is detected.
 
-Finally, the project is compiled into a single executable file. In addition,
-generating just the code will compile the .cs file, but not the binary.
+The shellcode is encrypted using a proprietary 4-byte XOR stream cipher. To decrease entropy, the encrypted shellcode is intermingled with null-bytes at randomized offsets. Because the resulting data has no repeating patterns, it is impossible to identify this particular encoding and infer YARA rules from it. Hence, AV detection is limited to the stub itself.
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/006.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/006.png)
+## Obfuscation
 
-And any errors that creep in will either prevent building or display a warning:
+Assembly code is obfuscated by nop-like instructions intermingled with the actual code, such as an increment followed by a decrement. Strings are not stored in the data section, but instead constructed on the stack using mov-opcodes.
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/007.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/007.png)
+The C# obfuscator replaces symbol names with barely distinguishable Unicode characters. Both string and integer literals are decrypted at runtime.
 
-## Additional Tools
+[![](https://bytecode77.com/images/pages/pe-union/obfuscation.png)](https://bytecode77.com/images/pages/pe-union/obfuscation.png)
+[![](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.png)
 
-There are additional tools and utilities. Currently, there is only one, however
-more will follow, such as an exe to docx "converter", etc.
+## Right-To-Left Override Tool
 
-### Right to Left Override
+The Unicode character `U+202e` allows to create a filename that masquerades the actual extension of a file.
 
-A lesser-known ~~bug~~ feature: Right to left override. By using the `U+202e`
-unicode character, file name strings can be reversed, yielding additional
-obscurity.
+It is a simple renaming technique, where all characters followed by `U+202e` are displayed in reversed order. This way, an executable can be crafted in such a way that it looks like a JPEG file.
 
-Example: `Colorful A[U+202E]gpj.scr` will be displayed as `Colorful Arcs.jpg` in
-File Explorer. Since "scr" (for screensaver) easily goes unseen, it may be
-superior over "exe". With the matching icon applied, the file may look just like
-an image or document file:
+![](https://bytecode77.com/images/pages/pe-union/rtlo.png)
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/008.png)
+## Audience
 
-## Behind the scenes - Obfuscation!
+In order to use this program, you should:
 
-Starting here, an array with all the files is declared. This is the definition
-of all files, what to do with them and the `byte[]` literal contains the
-encrypted and compressed file:
+* be familiar with crypters and the basic concept of what a crypter does
+* have a basic understanding of in-memory execution and evasion techniques
+* acknowledge that uploading the stub to VirusTotal will decrease the time that the stub remains FUD
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/code1.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/code1.png)
+I do not take any responsibility for anybody who uses PEunion in illegal malware campaigns. This is an educational project.
 
-Symbol names for variables, methods and classes are obfuscated using barely
-readable characters. This is the difference:
+## FUD
 
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/code2.gif)](https://bytecode77.com/images/sites/hacking/tools/peunion/code2.gif)
+This project is FUD on the day of release (September 2021). A crypter that is free, publicly available, and open source will not remain undetected for a long time. Adjusting the stub so it does not get detected is a daunting task and all efforts are in vain several days later. Therefore, there will be **no updates** to fix detection issues.
 
-Some variables don't require obfuscation. This is because the C# compiler
-doesn't assign names to variables scoped inside a method. When decompiled,
-variables will look like str1, str2, str3...
+Rather, PEunion offers a fully functional implementation that is easy to modify and extend. If you want PEunion to be FUD, please get familiar with the code of the stub and adjust it until you are satisfied with the result.
 
-### And String Encryption!
-
-But wait! What is this orange text `"DecryptString(...)"`?
-
-String literals are encrypted using a simple 8-bit XOR. This increases reverse
-engineering effort even further. Take a look at this very simple line of code:
-
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/code3.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/code3.png)
-
-In addition to the "runas" boolean variable being obfuscated, the string literal "runas" is encrypted, too.
-
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/code4.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/code4.png)
-
-Sophisticated reverse engineers will quickly assume that this means
-`ProcessStartInfo.Verb = "runas"`. However, considering the amount of code that
-is generated, with absolutely meaningless variable names, and no visible strings
-at all - analyzing this binary will become a mission! And to anyone unfamiliar,
-a file like this is completely incomprehensive.
-
-And in fact, decompilation will require *some* effort to figure out the payloads
-of the binary. Needless to say, that this is no "protection" of the content,
-which can be still decrypted by debugging.
-
-[![](https://bytecode77.com/images/sites/hacking/tools/peunion/code5.png)](https://bytecode77.com/images/sites/hacking/tools/peunion/code5.png)
+However, additional evasion techniques may be implemented in future releases to improve the baseline design.
 
 ## Downloads
 
-[![](https://bytecode77.com/images/shared/fileicons/zip.png) PEunion 3.1.5 Binaries.zip](https://bytecode77.com/downloads/hacking/tools/PEunion%203.1.5%20Binaries.zip)
+[![](https://bytecode77.com/public/fileicons/zip.png) PEunion 4.0.0.zip](https://bytecode77.com/downloads/PEunion%204.0.0.zip)
+(**ZIP Password:** bytecode77)
 
 ## Project Page
 
-[![](https://bytecode77.com/images/shared/favicon16.png) bytecode77.com/hacking/tools/peunion](https://bytecode77.com/hacking/tools/peunion)
+[![](https://bytecode77.com/public/favicon16.png) bytecode77.com/pe-union](https://bytecode77.com/pe-union)

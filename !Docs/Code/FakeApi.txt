@@ -1,0 +1,117 @@
+; Random WinAPI functions that make the stub look like a valid Win32 application
+
+; Data types:
+; ptr		32 / 64 bit value
+; dword		32 bit value
+
+; Data content types:
+; (no suffix)	must be zero
+; $				random number
+; !				pointer to allocated memory that the function may write to
+
+kernel32		GetCurrentProcessId
+kernel32		GetModuleHandleW			ptr
+kernel32		GlobalFree					ptr
+kernel32		GetLocaleInfoW				dword$, dword$, ptr!, ptr
+kernel32		CreateFileW					ptr, dword, dword, ptr, dword, dword, ptr
+kernel32		ReadFile					ptr, ptr!, dword, ptr!, ptr
+kernel32		MulDiv						ptr$, ptr$, ptr$
+kernel32		GetCurrentProcess
+kernel32		GetCommandLineW
+kernel32		LocalFree					ptr
+kernel32		LocalAlloc					ptr, ptr
+kernel32		FindFirstFileW				ptr, ptr!
+kernel32		FindClose					ptr
+kernel32		CompareStringOrdinal		ptr, ptr, ptr, ptr, ptr$
+kernel32		FoldStringW					dword, ptr, ptr, ptr, ptr
+kernel32		GetModuleFileNameW			ptr, ptr!, dword
+kernel32		GetUserDefaultUILanguage
+kernel32		GetLocalTime				ptr!
+kernel32		GetDateFormatW				dword$, dword$, ptr, ptr, ptr!, ptr
+kernel32		GetTimeFormatW				dword$, dword$, ptr, ptr, ptr!, ptr
+kernel32		WideCharToMultiByte			ptr$, dword$, ptr, ptr, ptr, ptr, ptr, ptr!
+kernel32		WriteFile					ptr, ptr!, dword, ptr!, ptr
+kernel32		GetFileAttributesW			ptr
+kernel32		LocalLock					ptr
+kernel32		GetACP
+kernel32		LocalUnlock					ptr
+kernel32		DeleteFileW					ptr
+kernel32		SetEndOfFile				ptr
+kernel32		GetFileAttributesExW		ptr, dword, ptr!
+kernel32		GetFileInformationByHandle	ptr, ptr!
+kernel32		MultiByteToWideChar			ptr$, dword$, ptr, ptr, ptr, ptr
+kernel32		LocalReAlloc				ptr, ptr, ptr
+kernel32		GetFullPathNameW			ptr, dword, ptr!, ptr!
+kernel32		LocalSize					ptr
+kernel32		lstrcmpiW					ptr, ptr
+kernel32		FindNLSString				dword$, dword$, ptr!, ptr, ptr, ptr, ptr!
+kernel32		GlobalLock					ptr
+kernel32		GlobalUnlock				ptr
+kernel32		GlobalAlloc					ptr, ptr
+kernel32		CreateDirectoryW			ptr, ptr
+kernel32		CloseHandle					ptr
+kernel32		GetLastError
+kernel32		FormatMessageW				dword, ptr, dword, dword, ptr!, dword, ptr
+kernel32		GetCurrentThreadId
+kernel32		GetModuleHandleExW			dword, ptr, ptr!
+kernel32		HeapFree					ptr, dword, ptr
+kernel32		GetModuleFileNameA			ptr, ptr!, dword
+user32			PostMessageW				ptr, ptr, ptr, ptr
+user32			GetMenu						ptr
+user32			CheckMenuItem				ptr, ptr$, ptr$
+user32			GetSubMenu					ptr, ptr$
+user32			EnableMenuItem				ptr, ptr$, ptr$
+user32			ShowWindow					ptr, ptr$
+user32			GetDC						ptr
+user32			ReleaseDC					ptr, ptr
+user32			GetDpiForWindow				ptr
+user32			LoadStringW					ptr, ptr, ptr!, ptr
+user32			DefWindowProcW				ptr, ptr, ptr, ptr
+user32			IsIconic					ptr
+user32			SetFocus					ptr
+user32			DestroyWindow				ptr
+user32			GetForegroundWindow
+user32			GetDlgCtrlID				ptr
+user32			SetWindowPos				ptr, ptr, ptr$, ptr$, ptr$, ptr$, ptr
+user32			GetKeyboardLayout			ptr
+user32			IsDialogMessageW			ptr, ptr
+user32			SetWindowTextW				ptr, ptr
+user32			SetDlgItemTextW				ptr, ptr$, ptr
+user32			GetDlgItemTextW				ptr, ptr$, ptr!, ptr
+user32			EndDialog					ptr, ptr$
+user32			SendDlgItemMessageW			ptr, ptr$, ptr, ptr, ptr
+user32			SetScrollPos				ptr, ptr$, ptr$, ptr$
+user32			InvalidateRect				ptr, ptr, ptr
+user32			UpdateWindow				ptr
+user32			GetWindowPlacement			ptr, ptr!
+user32			SetWindowPlacement			ptr, ptr!
+user32			CharUpperW					ptr
+user32			GetSystemMenu				ptr, ptr$
+user32			LoadAcceleratorsW			ptr, ptr
+user32			SetWindowLongW				ptr, ptr$, dword$
+user32			MonitorFromWindow			ptr, dword$
+user32			LoadCursorW					ptr, ptr
+user32			GetWindowTextLengthW		ptr
+user32			GetWindowLongW				ptr, ptr$
+user32			PeekMessageW				ptr, ptr, ptr, ptr, ptr
+user32			GetWindowTextW				ptr, ptr!, ptr
+user32			EnableWindow				ptr, ptr$
+user32			LoadIconW					ptr, ptr
+user32			LoadImageW					ptr, ptr, ptr$, ptr$, ptr$, ptr
+user32			SendMessageW				ptr, ptr, ptr, ptr
+user32			MoveWindow					ptr, ptr$, ptr$, ptr$, ptr$, ptr$
+user32			GetClientRect				ptr, ptr!
+user32			GetFocus
+advapi32		IsTextUnicode				ptr, ptr, ptr!
+advapi32		RegSetValueExW				ptr, ptr, dword, dword, ptr!, dword
+advapi32		RegQueryValueExW			ptr, ptr, ptr, ptr!, ptr!, ptr
+advapi32		RegCreateKeyW				ptr, ptr, ptr!
+advapi32		RegCloseKey					ptr
+advapi32		RegOpenKeyExW				ptr, ptr, dword, dword, ptr!
+advapi32		RegCreateKeyExW				ptr, ptr, dword, ptr, dword, dword, ptr, ptr!, ptr!
+advapi32		RegDeleteKeyExW				ptr, ptr, dword, dword
+advapi32		RegQueryInfoKeyW			ptr, ptr!, ptr, ptr, ptr, ptr, ptr, ptr, ptr, ptr, ptr, ptr!
+shell32			SHGetKnownFolderPath		ptr!, dword, ptr, ptr!
+shell32			DragQueryFileW				ptr, ptr, ptr, ptr
+shell32			DragFinish					ptr
+shell32			DragAcceptFiles				ptr, ptr

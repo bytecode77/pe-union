@@ -1,9 +1,131 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEunion", "PEunion\PEunion.csproj", "{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEunion.Compiler", "PEunion.Compiler\PEunion.Compiler.csproj", "{A5525DB4-91BE-4F4E-A383-C7B1280F54EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SlnBin", "SlnBin", "{3CEA2FC2-1654-44D4-9F9D-B7371408F9AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{4FBDA78F-132F-4508-9C18-FFA6D6361624}"
+	ProjectSection(SolutionItems) = preProject
+		Global\GlobalAssemblyInfo.cs = Global\GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEunion.Build", "PEunion.Build\PEunion.Build.csproj", "{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stub", "Stub", "{F60A9431-1C6F-44FE-9657-FDFC47844F4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pe32", "pe32", "{F1593537-4536-4ABE-850C-83AC14812D8F}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\pe32\Compression.asm = SlnBin\Stub\pe32\Compression.asm
+		SlnBin\Stub\pe32\Download.asm = SlnBin\Stub\pe32\Download.asm
+		SlnBin\Stub\pe32\Drop.asm = SlnBin\Stub\pe32\Drop.asm
+		SlnBin\Stub\pe32\Emulator.asm = SlnBin\Stub\pe32\Emulator.asm
+		SlnBin\Stub\pe32\Melt.asm = SlnBin\Stub\pe32\Melt.asm
+		SlnBin\Stub\pe32\nt.inc = SlnBin\Stub\pe32\nt.inc
+		SlnBin\Stub\pe32\PebApi.asm = SlnBin\Stub\pe32\PebApi.asm
+		SlnBin\Stub\pe32\PebApi.inc = SlnBin\Stub\pe32\PebApi.inc
+		SlnBin\Stub\pe32\RunPE.asm = SlnBin\Stub\pe32\RunPE.asm
+		SlnBin\Stub\pe32\Stage2.asm = SlnBin\Stub\pe32\Stage2.asm
+		SlnBin\Stub\pe32\Stub.asm = SlnBin\Stub\pe32\Stub.asm
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Obfuscator", "Obfuscator", "{360BB50B-A368-4C7A-9EF8-67FBC5018BE2}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\pe32\Obfuscator\nop.txt = SlnBin\Stub\pe32\Obfuscator\nop.txt
+		SlnBin\Stub\pe32\Obfuscator\nop_minimal.txt = SlnBin\Stub\pe32\Obfuscator\nop_minimal.txt
+		SlnBin\Stub\pe32\Obfuscator\register.txt = SlnBin\Stub\pe32\Obfuscator\register.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{2A4B549F-51C7-47E3-B776-2E1107A518F0}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\pe32\Resources\default.manifest = SlnBin\Stub\pe32\Resources\default.manifest
+		SlnBin\Stub\pe32\Resources\elevated.manifest = SlnBin\Stub\pe32\Resources\elevated.manifest
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{87CAC333-5EE9-4533-A406-11C59D5A1C10}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\dotnet\Api.cs = SlnBin\Stub\dotnet\Api.cs
+		SlnBin\Stub\dotnet\Compression.cs = SlnBin\Stub\dotnet\Compression.cs
+		SlnBin\Stub\dotnet\Download.cs = SlnBin\Stub\dotnet\Download.cs
+		SlnBin\Stub\dotnet\Drop.cs = SlnBin\Stub\dotnet\Drop.cs
+		SlnBin\Stub\dotnet\Emulator.cs = SlnBin\Stub\dotnet\Emulator.cs
+		SlnBin\Stub\dotnet\GetResource.cs = SlnBin\Stub\dotnet\GetResource.cs
+		SlnBin\Stub\dotnet\Invoke.cs = SlnBin\Stub\dotnet\Invoke.cs
+		SlnBin\Stub\dotnet\RunPE.cs = SlnBin\Stub\dotnet\RunPE.cs
+		SlnBin\Stub\dotnet\Stage2.cs = SlnBin\Stub\dotnet\Stage2.cs
+		SlnBin\Stub\dotnet\Stub.cs = SlnBin\Stub\dotnet\Stub.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{956B7E77-12BA-4C8A-BA16-64711A0D59B1}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\dotnet\Resources\default.manifest = SlnBin\Stub\dotnet\Resources\default.manifest
+		SlnBin\Stub\dotnet\Resources\elevated.manifest = SlnBin\Stub\dotnet\Resources\elevated.manifest
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEunion", "PEunion\PEunion.csproj", "{74D9099B-A671-4B27-BA03-333DC8D951E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6} = {D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{E7F02407-1E79-472D-A247-D2E0FC01D0C6}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Config\rtlo_extension_alternatives.ini = SlnBin\Config\rtlo_extension_alternatives.ini
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{F1A9F5F3-4968-43F5-B705-11ADBE577403}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\lib\BytecodeApi.dll = SlnBin\lib\BytecodeApi.dll
+		SlnBin\lib\BytecodeApi.FileFormats.dll = SlnBin\lib\BytecodeApi.FileFormats.dll
+		SlnBin\lib\BytecodeApi.FileIcons.dll = SlnBin\lib\BytecodeApi.FileIcons.dll
+		SlnBin\lib\BytecodeApi.UI.dll = SlnBin\lib\BytecodeApi.UI.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Help", "Help", "{65FE7D99-87A1-4BCA-B0D8-83673335C6A4}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Help\Default.md = SlnBin\Help\Default.md
+		SlnBin\Help\Template.html = SlnBin\Help\Template.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rtlo", "Rtlo", "{F6E3CA60-47F2-4976-9519-95B0B976EF56}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Help\Rtlo\Icon.md = SlnBin\Help\Rtlo\Icon.md
+		SlnBin\Help\Rtlo\NewFilename.md = SlnBin\Help\Rtlo\NewFilename.md
+		SlnBin\Help\Rtlo\OriginalFile.md = SlnBin\Help\Rtlo\OriginalFile.md
+		SlnBin\Help\Rtlo\Preview.md = SlnBin\Help\Rtlo\Preview.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{A1C6F994-4BA1-4BFF-81D4-29EC04A65098}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Help\Project\Manifest.md = SlnBin\Help\Project\Manifest.md
+		SlnBin\Help\Project\StartupMelt.md = SlnBin\Help\Project\StartupMelt.md
+		SlnBin\Help\Project\StubIcon.md = SlnBin\Help\Project\StubIcon.md
+		SlnBin\Help\Project\StubPadding.md = SlnBin\Help\Project\StubPadding.md
+		SlnBin\Help\Project\StubType.md = SlnBin\Help\Project\StubType.md
+		SlnBin\Help\Project\VersionInfo.md = SlnBin\Help\Project\VersionInfo.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{519FD821-79E8-4BBF-917F-D0F1D2BD2464}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Help\Project\Items\Drop.md = SlnBin\Help\Project\Items\Drop.md
+		SlnBin\Help\Project\Items\Invoke.md = SlnBin\Help\Project\Items\Invoke.md
+		SlnBin\Help\Project\Items\MessageBox.md = SlnBin\Help\Project\Items\MessageBox.md
+		SlnBin\Help\Project\Items\RunPE.md = SlnBin\Help\Project\Items\RunPE.md
+		SlnBin\Help\Project\Items\Source.md = SlnBin\Help\Project\Items\Source.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{02D919E3-2766-4CA0-9CD7-8FC62D3C0A5D}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Help\App\Changelog.md = SlnBin\Help\App\Changelog.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{9735AF0B-42E0-4E9A-B238-E699250D120D}"
+	ProjectSection(SolutionItems) = preProject
+		SlnBin\Stub\pe32\Api\kernel32.inc = SlnBin\Stub\pe32\Api\kernel32.inc
+		SlnBin\Stub\pe32\Api\msvcrt.inc = SlnBin\Stub\pe32\Api\msvcrt.inc
+		SlnBin\Stub\pe32\Api\shlwapi.inc = SlnBin\Stub\pe32\Api\shlwapi.inc
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +133,39 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5525DB4-91BE-4F4E-A383-C7B1280F54EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5525DB4-91BE-4F4E-A383-C7B1280F54EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5525DB4-91BE-4F4E-A383-C7B1280F54EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5525DB4-91BE-4F4E-A383-C7B1280F54EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15AF1EB-5F09-4B66-8A61-BD29AC304BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74D9099B-A671-4B27-BA03-333DC8D951E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D9099B-A671-4B27-BA03-333DC8D951E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D9099B-A671-4B27-BA03-333DC8D951E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D9099B-A671-4B27-BA03-333DC8D951E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F60A9431-1C6F-44FE-9657-FDFC47844F4C} = {3CEA2FC2-1654-44D4-9F9D-B7371408F9AC}
+		{F1593537-4536-4ABE-850C-83AC14812D8F} = {F60A9431-1C6F-44FE-9657-FDFC47844F4C}
+		{360BB50B-A368-4C7A-9EF8-67FBC5018BE2} = {F1593537-4536-4ABE-850C-83AC14812D8F}
+		{2A4B549F-51C7-47E3-B776-2E1107A518F0} = {F1593537-4536-4ABE-850C-83AC14812D8F}
+		{87CAC333-5EE9-4533-A406-11C59D5A1C10} = {F60A9431-1C6F-44FE-9657-FDFC47844F4C}
+		{956B7E77-12BA-4C8A-BA16-64711A0D59B1} = {87CAC333-5EE9-4533-A406-11C59D5A1C10}
+		{E7F02407-1E79-472D-A247-D2E0FC01D0C6} = {3CEA2FC2-1654-44D4-9F9D-B7371408F9AC}
+		{F1A9F5F3-4968-43F5-B705-11ADBE577403} = {3CEA2FC2-1654-44D4-9F9D-B7371408F9AC}
+		{65FE7D99-87A1-4BCA-B0D8-83673335C6A4} = {3CEA2FC2-1654-44D4-9F9D-B7371408F9AC}
+		{F6E3CA60-47F2-4976-9519-95B0B976EF56} = {65FE7D99-87A1-4BCA-B0D8-83673335C6A4}
+		{A1C6F994-4BA1-4BFF-81D4-29EC04A65098} = {65FE7D99-87A1-4BCA-B0D8-83673335C6A4}
+		{519FD821-79E8-4BBF-917F-D0F1D2BD2464} = {A1C6F994-4BA1-4BFF-81D4-29EC04A65098}
+		{02D919E3-2766-4CA0-9CD7-8FC62D3C0A5D} = {65FE7D99-87A1-4BCA-B0D8-83673335C6A4}
+		{9735AF0B-42E0-4E9A-B238-E699250D120D} = {F1593537-4536-4ABE-850C-83AC14812D8F}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2823AB8F-B635-4CB7-8B8D-4C569B1821CA}
+		SolutionGuid = {F582558C-D8F1-4FFB-896E-A984749F2F62}
 	EndGlobalSection
 EndGlobal

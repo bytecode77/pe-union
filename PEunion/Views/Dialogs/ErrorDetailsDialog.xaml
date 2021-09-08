@@ -1,0 +1,21 @@
+﻿<local:DialogBase
+	x:Class="PEunion.ErrorDetailsDialog"
+	x:Name="errorDetailsDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	DataContext="{Binding ViewModel, ElementName=errorDetailsDialog}"
+	Title="{Binding Title}" Width="500" SizeToContent="Height">
+	<StackPanel>
+		<StackPanel Margin="15">
+			<TextBox Text="{Binding Error.Message, Mode=OneWay}" FontWeight="Bold" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="100" VerticalScrollBarVisibility="Auto" BorderThickness="0" Margin="0,0,0,10" />
+			<TextBox Text="{Binding Error.Details, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="100" VerticalScrollBarVisibility="Auto" BorderThickness="0" />
+		</StackPanel>
+		<ItemsControl Style="{StaticResource DialogButtonRow}">
+			<Button Style="{StaticResource UIButton}" Content="OK" HorizontalAlignment="Right" IsDefault="True" IsCancel="True" Command="{Binding CloseCommand}" />
+		</ItemsControl>
+	</StackPanel>
+</local:DialogBase>

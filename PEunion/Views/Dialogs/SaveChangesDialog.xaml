@@ -1,0 +1,34 @@
+﻿<local:DialogBase
+	x:Class="PEunion.SaveChangesDialog"
+	x:Name="saveChangesDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	DataContext="{Binding ViewModel, ElementName=saveChangesDialog}"
+	Title="PEunion" Width="450" SizeToContent="Height">
+	<StackPanel>
+		<StackPanel Margin="15">
+			<TextBlock Text="Save changes to the following items?" Margin="0,0,0,10" />
+			<ListBox ItemsSource="{Binding ItemNames}" Height="200">
+				<ListBox.ItemContainerStyle>
+					<Style TargetType="ListBoxItem">
+						<Setter Property="IsEnabled" Value="False" />
+					</Style>
+				</ListBox.ItemContainerStyle>
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}" Foreground="Black" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</StackPanel>
+		<ItemsControl Style="{StaticResource DialogButtonRow}">
+			<Button Style="{StaticResource UIButton}" Content="Save" Command="{Binding SaveCommand}" Margin="0,0,10,0" />
+			<Button Style="{StaticResource UIButton}" Content="Don't Save" Command="{Binding DontSaveCommand}" Margin="0,0,10,0" />
+			<Button Style="{StaticResource UIButton}" Content="Cancel" IsCancel="True" Command="{Binding CancelCommand}" />
+		</ItemsControl>
+	</StackPanel>
+</local:DialogBase>

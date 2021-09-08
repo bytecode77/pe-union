@@ -1,0 +1,775 @@
+﻿<local:WindowBase
+	x:Class="PEunion.MainWindow"
+	x:Name="mainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:html="clr-namespace:TheArtOfDev.HtmlRenderer.WPF;assembly=HtmlRenderer.WPF"
+	DataContext="{Binding ViewModel, ElementName=mainWindow}"
+	Title="PEunion" MinWidth="900" MinHeight="550" AllowDrop="True" Loaded="MainWindow_Loaded" Closing="MainWindow_Closing" ContentRendered="MainWindow_ContentRendered" StateChanged="MainWindow_StateChanged" LocationChanged="MainWindow_LocationChanged" SizeChanged="MainWindow_SizeChanged" DragOver="MainWindow_DragOver" Drop="MainWindow_Drop">
+	<Window.InputBindings>
+		<KeyBinding Key="N" Modifiers="Ctrl" Command="{Binding NewProjectCommand}" />
+		<KeyBinding Key="O" Modifiers="Ctrl" Command="{Binding OpenProjectCommand}" />
+		<KeyBinding Key="F4" Modifiers="Ctrl" Command="{Binding CloseCommand}" />
+		<KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveProjectCommand}" />
+		<KeyBinding Key="S" Modifiers="Shift+Ctrl" Command="{Binding SaveAllCommand}" />
+		<KeyBinding Key="B" Modifiers="Ctrl" Command="{Binding BuildProjectCommand}" />
+	</Window.InputBindings>
+	<DockPanel>
+		<local:WindowTitleBar DockPanel.Dock="Top" Icon="/PEunion;component/Resources/Images/WindowIcon.png">
+			<local:WindowTitleBar.MainMenu>
+				<Menu>
+					<MenuItem Header="_File">
+						<MenuItem Header="_New Project" InputGestureText="Ctrl+N" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/NewProject16.png" Command="{Binding NewProjectCommand}" />
+						<MenuItem Header="_Open Project..." InputGestureText="Ctrl+O" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Open16.png" Command="{Binding OpenProjectCommand}" />
+						<Separator />
+						<MenuItem Header="_Close" Command="{Binding CloseCommand}" />
+						<MenuItem Header="Close All" Command="{Binding CloseAllCommand}" />
+						<Separator />
+						<MenuItem Header="_Save Project" InputGestureText="Ctrl+S" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Save16.png" Command="{Binding SaveProjectCommand}" />
+						<MenuItem Header="Save Project _As..." Command="{Binding SaveProjectAsCommand}" />
+						<MenuItem Header="Save A_ll" InputGestureText="Ctrl+Shift+S" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/SaveAll16.png" Command="{Binding SaveAllCommand}" />
+						<Separator />
+						<MenuItem Header="_Recent Projects" ItemsSource="{Binding RecentProjects}" IsEnabled="{Binding RecentProjects, Converter={ui:IEnumerableAnyConverter}}">
+							<MenuItem.ItemTemplate>
+								<HierarchicalDataTemplate DataType="{x:Type sys:String}">
+									<TextBlock Text="{Binding}" />
+								</HierarchicalDataTemplate>
+							</MenuItem.ItemTemplate>
+							<MenuItem.ItemContainerStyle>
+								<Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+									<Setter Property="Command" Value="{Binding DataContext.OpenProjectCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+									<Setter Property="CommandParameter" Value="{Binding}" />
+								</Style>
+							</MenuItem.ItemContainerStyle>
+						</MenuItem>
+						<Separator />
+						<MenuItem Header="E_xit" InputGestureText="Alt+F4" Command="{Binding ExitCommand}" />
+					</MenuItem>
+					<MenuItem Header="_Build">
+						<MenuItem Header="_Build Project" InputGestureText="Ctrl+B" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Build16.png" Command="{Binding BuildProjectCommand}" />
+					</MenuItem>
+					<MenuItem Header="_Tools">
+						<MenuItem Header="_Right-to-Left Override" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Rtlo16.png" Command="{Binding RtloCommand}" />
+					</MenuItem>
+					<MenuItem Header="_Help">
+						<MenuItem Header="_Changelog" Command="{Binding ChangelogCommand}" />
+						<Separator />
+						<MenuItem Header="_About" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Information16.png" Command="{Binding AboutCommand}" />
+					</MenuItem>
+				</Menu>
+			</local:WindowTitleBar.MainMenu>
+			<local:WindowTitleBar.ToolBar>
+				<ToolBarTray>
+					<ToolBar>
+						<Button ToolTip="New Project (Ctrl+N)" Command="{Binding NewProjectCommand}">
+							<Image Source="/PEunion;component/Resources/Icons/NewProject16.png" />
+						</Button>
+						<Button ToolTip="Open Project (Ctrl+O)" Command="{Binding OpenProjectCommand}">
+							<Image Source="/PEunion;component/Resources/Icons/Open16.png" />
+						</Button>
+						<Button ToolTip="Save Project (Ctrl+S)" Command="{Binding SaveProjectCommand}">
+							<Image Source="/PEunion;component/Resources/Icons/Save16.png" />
+						</Button>
+						<Button ToolTip="Save All (Ctrl+Shift+S)" Command="{Binding SaveAllCommand}">
+							<Image Source="/PEunion;component/Resources/Icons/SaveAll16.png" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Build Project (Ctrl+B)" Command="{Binding BuildProjectCommand}">
+							<Image Source="/PEunion;component/Resources/Icons/Build16.png" />
+						</Button>
+					</ToolBar>
+				</ToolBarTray>
+			</local:WindowTitleBar.ToolBar>
+		</local:WindowTitleBar>
+		<StatusBar DockPanel.Dock="Bottom">
+			<StatusBarItem>
+				<TextBlock Text="Version ">
+					<Run Text="{Binding Source={x:Static api:ApplicationBase.Version}, Mode=OneWay, Converter={ui:VersionConverter 3}}" />
+				</TextBlock>
+			</StatusBarItem>
+		</StatusBar>
+		<Border Grid.Row="1" BorderThickness="6" BorderBrush="#5d6b99">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="6" />
+					<RowDefinition Height="{Binding View.Splitter2Position, Mode=TwoWay}" MinHeight="150" MaxHeight="500" />
+				</Grid.RowDefinitions>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="{Binding View.Splitter1Position, Mode=TwoWay}" MinWidth="150" MaxWidth="500" />
+						<ColumnDefinition Width="6" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<local:DockingPanel Header="Project">
+						<DockPanel IsEnabled="{Binding SelectedTab, Converter={ui:TypeConverter TypeEqual}, ConverterParameter={x:Type local:ProjectModel}}">
+							<ToolBarTray DockPanel.Dock="Top">
+								<ToolBar>
+									<local:ToolBarDropDownButton ToolTip="New Item">
+										<Image Source="/PEunion;component/Resources/Icons/NewItem16.png" />
+										<local:ToolBarDropDownButton.DropDownMenu>
+											<ContextMenu>
+												<MenuItem Header="RunPE" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RunPE16.png" Command="{Binding NewRunPEItemCommand}" />
+												<MenuItem Header="Invoke" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Invoke16.png" Command="{Binding NewInvokeItemCommand}" />
+												<MenuItem Header="Drop" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Drop16.png" Command="{Binding NewDropItemCommand}" />
+												<MenuItem Header="Message Box" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MessageBox16.png" Command="{Binding NewMessageBoxItemCommand}" />
+											</ContextMenu>
+										</local:ToolBarDropDownButton.DropDownMenu>
+									</local:ToolBarDropDownButton>
+									<Button ToolTip="Remove Item (Del)" Command="{Binding RemoveItemCommand}">
+										<Image Source="/PEunion;component/Resources/Icons/RemoveItem16.png" />
+									</Button>
+								</ToolBar>
+							</ToolBarTray>
+							<local:TreeViewEx ItemsSource="{Binding SelectedTab.Pages}" SelectedItemBinding="{Binding SelectedTab.SelectedPage, Mode=TwoWay}" BorderThickness="0">
+								<TreeView.InputBindings>
+									<KeyBinding Key="Up" Modifiers="Ctrl" Command="{Binding MoveItemUpCommand}" />
+									<KeyBinding Key="Down" Modifiers="Ctrl" Command="{Binding MoveItemDownCommand}" />
+									<KeyBinding Key="Delete" Command="{Binding RemoveItemCommand}" />
+								</TreeView.InputBindings>
+								<TreeView.Resources>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectPage}" ItemsSource="{Binding SubPages}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Project16.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:StubModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Stub16.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:StartupModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Startup16.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:VersionInfoModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/VersionInfo16.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ManifestModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Manifest16.png" />
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ItemsPage}" ItemsSource="{Binding SubPages}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="{Binding IsExpanded, Converter={ui:IfConverter '/PEunion;component/Resources/Icons/DirectoryOpen16.png', '/PEunion;component/Resources/Icons/Directory16.png'}}">
+											<local:TextDisplay.ContextMenu>
+												<ContextMenu>
+													<MenuItem Header="New RunPE Item" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RunPE16.png" Command="{Binding NewRunPEItemCommand}" />
+													<MenuItem Header="New Invoke Item" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Invoke16.png" Command="{Binding NewInvokeItemCommand}" />
+													<MenuItem Header="New Drop Item" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/Drop16.png" Command="{Binding NewDropItemCommand}" />
+													<MenuItem Header="New Message Box Item" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MessageBox16.png" Command="{Binding NewMessageBoxItemCommand}" />
+												</ContextMenu>
+											</local:TextDisplay.ContextMenu>
+										</local:TextDisplay>
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectRunPEItemModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/RunPE16.png">
+											<local:TextDisplay.ContextMenu>
+												<ContextMenu>
+													<MenuItem Header="File Properties" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/FileProperties16.png" Command="{Binding FilePropertiesCommand}" />
+													<MenuItem Header="Open File Location" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/OpenFileLocation16.png" Command="{Binding OpenFileLocationCommand}" />
+													<Separator />
+													<MenuItem Header="Move Up" InputGestureText="Ctrl+Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveUp16.png" Command="{Binding MoveItemUpCommand}" />
+													<MenuItem Header="Move Down" InputGestureText="Ctrl+Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveDown16.png" Command="{Binding MoveItemDownCommand}" />
+													<Separator />
+													<MenuItem Header="Remove Item" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RemoveItem16.png" Command="{Binding RemoveItemCommand}" />
+												</ContextMenu>
+											</local:TextDisplay.ContextMenu>
+										</local:TextDisplay>
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectInvokeItemModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Invoke16.png">
+											<local:TextDisplay.ContextMenu>
+												<ContextMenu>
+													<MenuItem Header="File Properties" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/FileProperties16.png" Command="{Binding FilePropertiesCommand}" />
+													<MenuItem Header="Open File Location" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/OpenFileLocation16.png" Command="{Binding OpenFileLocationCommand}" />
+													<Separator />
+													<MenuItem Header="Move Up" InputGestureText="Ctrl+Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveUp16.png" Command="{Binding MoveItemUpCommand}" />
+													<MenuItem Header="Move Down" InputGestureText="Ctrl+Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveDown16.png" Command="{Binding MoveItemDownCommand}" />
+													<Separator />
+													<MenuItem Header="Remove Item" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RemoveItem16.png" Command="{Binding RemoveItemCommand}" />
+												</ContextMenu>
+											</local:TextDisplay.ContextMenu>
+										</local:TextDisplay>
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectDropItemModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/Drop16.png">
+											<local:TextDisplay.ContextMenu>
+												<ContextMenu>
+													<MenuItem Header="File Properties" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/FileProperties16.png" Command="{Binding FilePropertiesCommand}" />
+													<MenuItem Header="Open File Location" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/OpenFileLocation16.png" Command="{Binding OpenFileLocationCommand}" />
+													<Separator />
+													<MenuItem Header="Move Up" InputGestureText="Ctrl+Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveUp16.png" Command="{Binding MoveItemUpCommand}" />
+													<MenuItem Header="Move Down" InputGestureText="Ctrl+Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveDown16.png" Command="{Binding MoveItemDownCommand}" />
+													<Separator />
+													<MenuItem Header="Remove Item" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RemoveItem16.png" Command="{Binding RemoveItemCommand}" />
+												</ContextMenu>
+											</local:TextDisplay.ContextMenu>
+										</local:TextDisplay>
+									</HierarchicalDataTemplate>
+									<HierarchicalDataTemplate DataType="{x:Type local:ProjectMessageBoxItemModel}">
+										<local:TextDisplay Text="{Binding PageTitle}" Icon="/PEunion;component/Resources/Icons/MessageBox16.png">
+											<local:TextDisplay.ContextMenu>
+												<ContextMenu>
+													<MenuItem Header="Preview" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MessageBoxPreview16.png" Command="{Binding MessageBoxPreviewCommand}" CommandParameter="{Binding SelectedTab.SelectedPage}" />
+													<Separator />
+													<MenuItem Header="Move Up" InputGestureText="Ctrl+Up" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveUp16.png" Command="{Binding MoveItemUpCommand}" />
+													<MenuItem Header="Move Down" InputGestureText="Ctrl+Down" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/MoveDown16.png" Command="{Binding MoveItemDownCommand}" />
+													<Separator />
+													<MenuItem Header="Remove Item" InputGestureText="Del" ui:MenuItemService.ImageSource="/PEunion;component/Resources/Icons/RemoveItem16.png" Command="{Binding RemoveItemCommand}" />
+												</ContextMenu>
+											</local:TextDisplay.ContextMenu>
+										</local:TextDisplay>
+									</HierarchicalDataTemplate>
+								</TreeView.Resources>
+								<TreeView.ItemContainerStyle>
+									<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+										<Setter Property="Padding" Value="0" />
+										<Setter Property="Visibility" Value="{Binding IsVisible, Converter={ui:BooleanConverter Visibility}}" />
+										<Setter Property="IsSelected" Value="{Binding IsSelected}" />
+										<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+										<Style.Resources>
+											<Style TargetType="{x:Type local:TextDisplay}">
+												<Setter Property="Padding" Value="5,2" />
+												<Setter Property="Background" Value="Transparent" />
+												<Setter Property="Tag" Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+												<Style.Resources>
+													<Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource {x:Type ContextMenu}}">
+														<Setter Property="DataContext" Value="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}" />
+													</Style>
+												</Style.Resources>
+											</Style>
+										</Style.Resources>
+									</Style>
+								</TreeView.ItemContainerStyle>
+							</local:TreeViewEx>
+						</DockPanel>
+					</local:DockingPanel>
+					<GridSplitter Grid.Column="1" />
+					<local:TabControlEx Grid.Column="2" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab}" CloseCommand="{Binding CloseCommand}" BorderThickness="0">
+						<TabControl.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+									<local:TextDisplay Text="{Binding TabTitle}" Icon="{Binding TabIcon}" />
+									<TextBlock Text=" *" Visibility="{Binding IsDirty, Converter={ui:BooleanConverter Visibility}}" />
+								</StackPanel>
+							</DataTemplate>
+						</TabControl.ItemTemplate>
+						<TabControl.ContentTemplateSelector>
+							<local:TabTemplateSelector>
+								<local:TabTemplateSelector.ProjectTemplate>
+									<DataTemplate>
+										<ScrollViewer VerticalScrollBarVisibility="Auto">
+											<ContentControl Content="{Binding SelectedPage}" Margin="10">
+												<ContentControl.Resources>
+													<ControlTemplate x:Key="SourceEditor">
+														<StackPanel>
+															<local:TextDisplay Text="Source" Margin="0,0,0,5" HelpFile="Project/Items/Source" />
+															<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum local:ProjectItemSource}" SelectedValue="{Binding Source}" SelectedValuePath="Key" DisplayMemberPath="Value" Margin="0,0,0,10" />
+															<StackPanel Visibility="{Binding Source, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static local:ProjectItemSource.Embedded}}">
+																<TextBlock Text="File" Margin="0,0,0,5" />
+																<local:FilePicker Path="{Binding SourceEmbeddedPath, Mode=TwoWay}" BaseDirectory="{Binding DataContext.SelectedTab.ProjectPath, ElementName=mainWindow, Converter={ui:PathConverter DirectoryName}}" BaseDirectoryDisplayName="{}{ProjectDir}\" Margin="0,0,0,10" />
+																<TextBlock Text="File Properties" Margin="0,0,0,5" />
+																<CheckBox IsChecked="{Binding SourceEmbeddedCompress}" Content="Compress" Margin="0,0,0,5" />
+																<CheckBox IsChecked="{Binding SourceEmbeddedEofData}" Content="Use EOF Data" />
+															</StackPanel>
+															<StackPanel Visibility="{Binding Source, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static local:ProjectItemSource.Download}}">
+																<TextBlock Text="URL" Margin="0,0,0,5" />
+																<TextBox Style="{StaticResource UITextBox}" Text="{Binding SourceDownloadUrl, UpdateSourceTrigger=PropertyChanged}" />
+															</StackPanel>
+														</StackPanel>
+													</ControlTemplate>
+												</ContentControl.Resources>
+												<ContentControl.ContentTemplateSelector>
+													<local:PageTemplateSelector>
+														<local:PageTemplateSelector.ProjectTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<TextBlock Style="{StaticResource Header}" Text="{Binding DataContext.SelectedTab.ProjectFileName, ElementName=mainWindow}" />
+																	<TextBlock Text="Global configuration of the compiled executable." TextWrapping="Wrap" Margin="0,0,0,20" />
+																	<TextBlock Style="{StaticResource Header2}" Text="Configuration" />
+																	<Grid>
+																		<Grid.RowDefinitions>
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																		</Grid.RowDefinitions>
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition Width="Auto" />
+																			<ColumnDefinition Width="10" />
+																			<ColumnDefinition Width="*" />
+																		</Grid.ColumnDefinitions>
+																		<local:TextDisplay Text="Stub" Icon="/PEunion;component/Resources/Icons/Stub16.png" VerticalAlignment="Top" Command="{Binding DataContext.SelectPageCommand, ElementName=mainWindow}" CommandParameter="{x:Static local:PageTemplate.Stub}" />
+																		<local:TextDisplay Grid.Row="2" Text="Startup" Icon="/PEunion;component/Resources/Icons/Startup16.png" VerticalAlignment="Top" Command="{Binding DataContext.SelectPageCommand, ElementName=mainWindow}" CommandParameter="{x:Static local:PageTemplate.Startup}" />
+																		<local:TextDisplay Grid.Row="4" Text="Version Info" Icon="/PEunion;component/Resources/Icons/VersionInfo16.png" VerticalAlignment="Top" Command="{Binding DataContext.SelectPageCommand, ElementName=mainWindow}" CommandParameter="{x:Static local:PageTemplate.VersionInfo}" />
+																		<local:TextDisplay Grid.Row="6" Text="Manifest" Icon="/PEunion;component/Resources/Icons/Manifest16.png" VerticalAlignment="Top" Command="{Binding DataContext.SelectPageCommand, ElementName=mainWindow}" CommandParameter="{x:Static local:PageTemplate.Manifest}" />
+																		<TextBlock Grid.Column="2" Text="Configuration of the compiled executable." TextWrapping="Wrap" />
+																		<TextBlock Grid.Row="2" Grid.Column="2" Text="Operations that are perfomed when the stub has started." TextWrapping="Wrap" />
+																		<TextBlock Grid.Row="4" Grid.Column="2" Text="Version information of the compiled executable." TextWrapping="Wrap">
+																			<LineBreak />
+																			Should match that of the main binary that is expected by the user.
+																		</TextBlock>
+																		<TextBlock Grid.Row="6" Grid.Column="2" Text="Manifest file of compiled executable." TextWrapping="Wrap">
+																			<LineBreak />
+																			Select a predefined or a custom manifest file. A UAC manifest can be included, if required.
+																		</TextBlock>
+																	</Grid>
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectTemplate>
+														<local:PageTemplateSelector.StubTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<TextBlock Style="{StaticResource Header}" Text="Stub" />
+																	<local:TextDisplay Text="Stub" Margin="0,0,0,5" HelpFile="Project\StubType" />
+																	<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:StubType}" SelectedValue="{Binding Type}" SelectedValuePath="Key" DisplayMemberPath="Value" Margin="0,0,0,10" />
+																	<local:TextDisplay Text="Icon" Margin="0,0,0,5" HelpFile="Project\StubIcon" />
+																	<DockPanel Margin="0,0,0,10">
+																		<Button DockPanel.Dock="Right" Style="{StaticResource UIButton}" Content="From Item..." Margin="5,0,0,0" Command="{Binding DataContext.CopyStubIconCommand, ElementName=mainWindow}" />
+																		<local:FilePicker Path="{Binding IconPath, Mode=TwoWay}" BaseDirectory="{Binding DataContext.SelectedTab.ProjectPath, ElementName=mainWindow, Converter={ui:PathConverter DirectoryName}}" BaseDirectoryDisplayName="{}{ProjectDir}\" Extensions="ico,exe" ExtensionsDescription="Icon Files" />
+																	</DockPanel>
+																	<local:TextDisplay Text="Padding" Margin="0,0,0,5" HelpFile="Project\StubPadding" />
+																	<DockPanel Margin="0,0,0,5">
+																		<TextBlock DockPanel.Dock="Left" Text="{Binding Padding}" MinWidth="30" />
+																		<Slider Value="{Binding Padding}" Minimum="0" Maximum="1000" LargeChange="10" TickFrequency="100" />
+																	</DockPanel>
+																	<TextBlock Text="{Binding Padding, Converter={local:StubPaddingToTextConverter}}" TextWrapping="Wrap" Margin="30,0,0,0" />
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.StubTemplate>
+														<local:PageTemplateSelector.StartupTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<TextBlock Style="{StaticResource Header}" Text="Startup" />
+																	<CheckBox IsChecked="{Binding Melt}" Margin="0,0,0,5">
+																		<local:TextDisplay Text="Melt" HelpFile="Project\StartupMelt" />
+																	</CheckBox>
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.StartupTemplate>
+														<local:PageTemplateSelector.VersionInfoTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="Version Info" />
+																		<local:HelpButton HelpFile="Project\VersionInfo" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<TextBlock Text="File Description" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileDescription, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<TextBlock Text="Product Name" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding ProductName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<TextBlock Text="File Version" Margin="0,0,0,5" />
+																	<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+																		<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileVersion1, UpdateSourceTrigger=PropertyChanged}" Width="60" />
+																		<TextBlock Text="." VerticalAlignment="Center" Margin="5,0" />
+																		<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileVersion2, UpdateSourceTrigger=PropertyChanged}" Width="60" />
+																		<TextBlock Text="." VerticalAlignment="Center" Margin="5,0" />
+																		<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileVersion3, UpdateSourceTrigger=PropertyChanged}" Width="60" />
+																		<TextBlock Text="." VerticalAlignment="Center" Margin="5,0" />
+																		<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileVersion4, UpdateSourceTrigger=PropertyChanged}" Width="60" />
+																	</StackPanel>
+																	<TextBlock Text="Product Version" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding ProductVersion, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<TextBlock Text="Copyright" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding Copyright, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<TextBlock Text="Original Filename" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding OriginalFilename, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+																		<Button Style="{StaticResource UIButton}" Content="From Item..." HorizontalAlignment="Right" Command="{Binding DataContext.CopyVersionInfoFromItemCommand, ElementName=mainWindow}" Margin="0,0,10,0" />
+																		<Button Style="{StaticResource UIButton}" Content="From File..." HorizontalAlignment="Right" Command="{Binding DataContext.CopyVersionInfoFromFileCommand, ElementName=mainWindow}" />
+																	</StackPanel>
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.VersionInfoTemplate>
+														<local:PageTemplateSelector.ManifestTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="Manifest" />
+																		<local:HelpButton HelpFile="Project\Manifest" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<RadioButton IsChecked="{Binding UseNone}" Content="No manifest" GroupName="ManifestNone" Margin="0,0,0,5" />
+																	<RadioButton IsChecked="{Binding UseTemplate}" Content="Template" GroupName="ManifestTemplate" Margin="0,0,0,5" />
+																	<DockPanel Margin="20,0,0,10">
+																		<Button DockPanel.Dock="Right" Style="{StaticResource UIButton}" Content="Preview" Margin="5,0,0,0" Command="{Binding DataContext.ManifestPreviewCommand, ElementName=mainWindow}" />
+																		<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ManifestTemplate}" SelectedValue="{Binding Template}" SelectedValuePath="Key" DisplayMemberPath="Value" IsEnabled="{Binding UseTemplate}" />
+																	</DockPanel>
+																	<RadioButton IsChecked="{Binding UseFile}" Content="Custom manifest file" GroupName="ManifestFile" Margin="0,0,0,5" />
+																	<local:FilePicker Path="{Binding Path, Mode=TwoWay}" BaseDirectory="{Binding DataContext.SelectedTab.ProjectPath, ElementName=mainWindow, Converter={ui:PathConverter DirectoryName}}" BaseDirectoryDisplayName="{}{ProjectDir}\" Extensions="manifest" ExtensionsDescription="Manifest Files" IsEnabled="{Binding UseFile}" Margin="20,0,0,0" />
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ManifestTemplate>
+														<local:PageTemplateSelector.ProjectItemsTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<TextBlock Style="{StaticResource Header}" Text="Items" />
+																	<TextBlock Text="The compiled stub executes items in the order they appear in the project tree." TextWrapping="Wrap" Margin="0,0,0,20" />
+																	<TextBlock Style="{StaticResource Header2}" Text="Item Types" />
+																	<Grid>
+																		<Grid.RowDefinitions>
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																		</Grid.RowDefinitions>
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition Width="Auto" />
+																			<ColumnDefinition Width="10" />
+																			<ColumnDefinition Width="*" />
+																		</Grid.ColumnDefinitions>
+																		<local:TextDisplay Text="RunPE" Icon="/PEunion;component/Resources/Icons/RunPE16.png" VerticalAlignment="Top" Command="{Binding DataContext.NewRunPEItemCommand, ElementName=mainWindow}" />
+																		<local:TextDisplay Grid.Row="2" Text="Invoke" Icon="/PEunion;component/Resources/Icons/Invoke16.png" VerticalAlignment="Top" Command="{Binding DataContext.NewInvokeItemCommand, ElementName=mainWindow}" />
+																		<local:TextDisplay Grid.Row="4" Text="Drop" Icon="/PEunion;component/Resources/Icons/Drop16.png" VerticalAlignment="Top" Command="{Binding DataContext.NewDropItemCommand, ElementName=mainWindow}" />
+																		<local:TextDisplay Grid.Row="6" Text="Message Box" Icon="/PEunion;component/Resources/Icons/MessageBox16.png" VerticalAlignment="Top" Command="{Binding DataContext.NewMessageBoxItemCommand, ElementName=mainWindow}" />
+																		<TextBlock Grid.Column="2" Text="A native executable is started in-memory using process hollowing." TextWrapping="Wrap" />
+																		<TextBlock Grid.Row="2" Grid.Column="2" Text="A .NET executable is started in-memory using Assembly.Load(...).EntryPoint.Invoke()." TextWrapping="Wrap">
+																			<LineBreak />
+																			This is only supported in a .NET stub.
+																		</TextBlock>
+																		<TextBlock Grid.Row="4" Grid.Column="2" Text="A file is written to the disk." TextWrapping="Wrap">
+																			<LineBreak />
+																			This file can optionally be executed.
+																		</TextBlock>
+																		<TextBlock Grid.Row="6" Grid.Column="3" Text="A MessageBox is displayed." TextWrapping="Wrap" />
+																	</Grid>
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectItemsTemplate>
+														<local:PageTemplateSelector.ProjectRunPEItemTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="RunPE (process hollowing)" />
+																		<local:HelpButton HelpFile="Project\Items\RunPE" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<ContentControl Template="{StaticResource SourceEditor}" />
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectRunPEItemTemplate>
+														<local:PageTemplateSelector.ProjectInvokeItemTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="Invoke (.NET)" />
+																		<local:HelpButton HelpFile="Project\Items\Invoke" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<ContentControl Template="{StaticResource SourceEditor}" />
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectInvokeItemTemplate>
+														<local:PageTemplateSelector.ProjectDropItemTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="Drop file" />
+																		<local:HelpButton HelpFile="Project\Items\Drop" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<ContentControl Template="{StaticResource SourceEditor}" Margin="0,0,0,10" />
+																	<Grid Margin="0,0,0,10">
+																		<Grid.RowDefinitions>
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="5" />
+																			<RowDefinition Height="Auto" />
+																		</Grid.RowDefinitions>
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition Width="*" />
+																			<ColumnDefinition Width="Auto" />
+																			<ColumnDefinition Width="*" />
+																		</Grid.ColumnDefinitions>
+																		<TextBlock Text="Drop Location" />
+																		<TextBlock Grid.Column="2" Text="Drop Filename" />
+																		<ComboBox Grid.Row="2" Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:DropLocation}" SelectedValue="{Binding Location}" SelectedValuePath="Key" DisplayMemberPath="Value" />
+																		<TextBlock Grid.Row="2" Grid.Column="1" Text="\" Margin="5,3,5,0" />
+																		<TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource UITextBox}" Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" />
+																	</Grid>
+																	<TextBlock Text="Set File Attributes" Margin="0,0,0,5" />
+																	<CheckBox IsChecked="{Binding FileAttributeHidden}" Content="Hidden" Margin="0,0,0,5" />
+																	<CheckBox IsChecked="{Binding FileAttributeSystem}" Content="System" Margin="0,0,0,10" />
+																	<TextBlock Text="Execute" Margin="0,0,0,5" />
+																	<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ExecuteVerb}" SelectedValue="{Binding ExecuteVerb}" SelectedValuePath="Key" DisplayMemberPath="Value" />
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectDropItemTemplate>
+														<local:PageTemplateSelector.ProjectMessageBoxItemTemplate>
+															<DataTemplate>
+																<StackPanel>
+																	<StackPanel Orientation="Horizontal">
+																		<TextBlock Style="{StaticResource Header}" Text="Message Box" />
+																		<local:HelpButton HelpFile="Project\Items\MessageBox" Small="False" VerticalAlignment="Top" Margin="5,8,0,0" />
+																	</StackPanel>
+																	<TextBlock Text="Title" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+																	<TextBlock Text="Text" Margin="0,0,0,5" />
+																	<TextBox Style="{StaticResource UITextBox}" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" MinHeight="50" Margin="0,0,0,10" />
+																	<Grid>
+																		<Grid.RowDefinitions>
+																			<RowDefinition Height="Auto" />
+																			<RowDefinition Height="10" />
+																			<RowDefinition Height="Auto" />
+																		</Grid.RowDefinitions>
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition Width="*" />
+																			<ColumnDefinition Width="10" />
+																			<ColumnDefinition Width="*" />
+																		</Grid.ColumnDefinitions>
+																		<StackPanel>
+																			<TextBlock Text="Icon" Margin="0,0,0,5" />
+																			<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:MessageBoxIcon}" SelectedValue="{Binding Icon}" SelectedValuePath="Key" DisplayMemberPath="Value">
+																				<ComboBox.ItemTemplate>
+																					<DataTemplate>
+																						<Grid>
+																							<local:TextDisplay Text="{Binding Value}" Icon="/PEunion;component/Resources/Icons/Empty16.png" Visibility="{Binding Key, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:MessageBoxIcon.None}}" />
+																							<local:TextDisplay Text="{Binding Value}" Icon="/PEunion;component/Resources/Icons/Information16.png" Visibility="{Binding Key, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:MessageBoxIcon.Information}}" />
+																							<local:TextDisplay Text="{Binding Value}" Icon="/PEunion;component/Resources/Icons/Confirmation16.png" Visibility="{Binding Key, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:MessageBoxIcon.Confirmation}}" />
+																							<local:TextDisplay Text="{Binding Value}" Icon="/PEunion;component/Resources/Icons/Warning16.png" Visibility="{Binding Key, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:MessageBoxIcon.Warning}}" />
+																							<local:TextDisplay Text="{Binding Value}" Icon="/PEunion;component/Resources/Icons/Error16.png" Visibility="{Binding Key, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:MessageBoxIcon.Error}}" />
+																						</Grid>
+																					</DataTemplate>
+																				</ComboBox.ItemTemplate>
+																			</ComboBox>
+																		</StackPanel>
+																		<StackPanel Grid.Column="2">
+																			<TextBlock Text="Buttons" Margin="0,0,0,5" />
+																			<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:MessageBoxButtons}" SelectedValue="{Binding Buttons}" SelectedValuePath="Key" DisplayMemberPath="Value" />
+																		</StackPanel>
+																		<StackPanel Grid.Row="2">
+																			<TextBlock Text="Events" Margin="0,0,0,5" />
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Yes}}">
+																				<TextBlock Text="On Yes:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnYes}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.No}}">
+																				<TextBlock Text="On No:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnNo}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Abort}}">
+																				<TextBlock Text="On Abort:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnAbort}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Retry}}">
+																				<TextBlock Text="On Retry:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnRetry}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Ok}}">
+																				<TextBlock Text="On Ok:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnOk}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Cancel}}">
+																				<TextBlock Text="On Cancel:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnCancel}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal" Margin="0,0,0,10" Visibility="{Binding Buttons, Converter={local:MessageBoxHasEventConverter Then={ui:BooleanConverter Visibility}}, ConverterParameter={x:Static peu:MessageBoxEvent.Ignore}}">
+																				<TextBlock Text="On Ignore:" MinWidth="80" VerticalAlignment="Center" />
+																				<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{local:UiEnum peu:ActionEvent}" SelectedValue="{Binding OnIgnore}" SelectedValuePath="Key" DisplayMemberPath="Value" MinWidth="150" />
+																			</StackPanel>
+																		</StackPanel>
+																		<StackPanel Grid.Row="2" Grid.Column="2">
+																			<TextBlock Text="Preview MessageBox" Margin="0,0,0,5" />
+																			<Button Style="{StaticResource UIButton}" HorizontalAlignment="Left" Command="{Binding DataContext.MessageBoxPreviewCommand, ElementName=mainWindow}" CommandParameter="{Binding}">
+																				<local:TextDisplay Text="Preview" Icon="/PEunion;component/Resources/Icons/MessageBoxPreview16.png" />
+																			</Button>
+																		</StackPanel>
+																	</Grid>
+																</StackPanel>
+															</DataTemplate>
+														</local:PageTemplateSelector.ProjectMessageBoxItemTemplate>
+													</local:PageTemplateSelector>
+												</ContentControl.ContentTemplateSelector>
+											</ContentControl>
+										</ScrollViewer>
+									</DataTemplate>
+								</local:TabTemplateSelector.ProjectTemplate>
+								<local:TabTemplateSelector.RtloTemplate>
+									<DataTemplate>
+										<ScrollViewer VerticalScrollBarVisibility="Auto">
+											<StackPanel Margin="10">
+												<TextBlock Style="{StaticResource Header}" Text="Right-to-Left Override" />
+												<GroupBox Margin="0,0,0,10">
+													<GroupBox.Header>
+														<local:TextDisplay Text="Original File" HelpFile="Rtlo\OriginalFile" />
+													</GroupBox.Header>
+													<local:FilePicker Path="{Binding OriginalFilePath, Mode=TwoWay}" />
+												</GroupBox>
+												<GroupBox Margin="0,0,0,10">
+													<GroupBox.Header>
+														<local:TextDisplay Text="New Filename" HelpFile="Rtlo\NewFilename" />
+													</GroupBox.Header>
+													<Grid>
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition Width="*" />
+															<ColumnDefinition Width="5" />
+															<ColumnDefinition Width="120" />
+															<ColumnDefinition Width="5" />
+															<ColumnDefinition Width="Auto" />
+															<ColumnDefinition Width="5" />
+															<ColumnDefinition Width="200" />
+														</Grid.ColumnDefinitions>
+														<StackPanel>
+															<TextBlock Text="Filename" Margin="0,0,0,5" />
+															<TextBox Style="{StaticResource UITextBox}" Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" />
+														</StackPanel>
+														<StackPanel Grid.Column="2">
+															<TextBlock Text="Extension" Margin="0,0,0,5" />
+															<ComboBox Style="{StaticResource UIComboBox}" ItemsSource="{Binding Extensions, Mode=OneWay}" SelectedValue="{Binding Extension}">
+																<ComboBox.ItemTemplate>
+																	<DataTemplate>
+																		<TextBlock Text="{Binding Converter={ui:StringConverter Reverse}}" />
+																	</DataTemplate>
+																</ComboBox.ItemTemplate>
+															</ComboBox>
+														</StackPanel>
+														<StackPanel Grid.Column="4">
+															<TextBlock Text="" Margin="0,0,0,5" />
+															<TextBlock Text="." Margin="0,8,0,0" />
+														</StackPanel>
+														<StackPanel Grid.Column="6">
+															<TextBlock Text="Spoofed Extension" Margin="0,0,0,5" />
+															<TextBox Style="{StaticResource UITextBox}" Text="{Binding SpoofedExtension, UpdateSourceTrigger=PropertyChanged}" />
+														</StackPanel>
+													</Grid>
+												</GroupBox>
+												<GroupBox Margin="0,0,0,10">
+													<GroupBox.Header>
+														<local:TextDisplay Text="Icon" HelpFile="Rtlo\Icon" />
+													</GroupBox.Header>
+													<StackPanel IsEnabled="{Binding CanChangeIcon, Mode=OneWay}">
+														<CheckBox IsChecked="{Binding ChangeIcon}" Content="Change icon" Margin="0,0,0,5" />
+														<local:FilePicker Path="{Binding IconPath, Mode=TwoWay}" Extensions="ico" ExtensionsDescription="Icon Files" IsEnabled="{Binding ChangeIcon}" />
+													</StackPanel>
+												</GroupBox>
+												<GroupBox Margin="0,0,0,10">
+													<GroupBox.Header>
+														<local:TextDisplay Text="Preview" HelpFile="Rtlo\Preview" />
+													</GroupBox.Header>
+													<StackPanel>
+														<TextBlock Text="Display Name in File Explorer" Margin="0,0,0,5" />
+														<Border Style="{StaticResource TextBoxDisplay}" Margin="0,0,0,10">
+															<Grid>
+																<DockPanel Visibility="{Binding IsValid, Mode=OneWay, Converter={ui:BooleanConverter Visibility}}">
+																	<Image Source="{Binding DisplayIcon}" Width="16" Height="16" Margin="0,1,5,-1" />
+																	<TextBlock>
+																		<Run Text="{Binding FileName, Mode=OneWay}" /><Run Text="{Binding Extension, Mode=OneWay, Converter={ui:StringConverter Reverse}}" />.<Run Text="{Binding SpoofedExtension, Mode=OneWay}" />
+																	</TextBlock>
+																</DockPanel>
+																<TextBlock Text="" Visibility="{Binding IsValid, Mode=OneWay, Converter={ui:BooleanConverter VisibilityInverse}}" />
+															</Grid>
+														</Border>
+														<TextBlock Text="Exact Character Representation" Margin="0,0,0,5" />
+														<Border Style="{StaticResource TextBoxDisplay}">
+															<Grid>
+																<TextBlock Visibility="{Binding IsValid, Mode=OneWay, Converter={ui:BooleanConverter Visibility}}">
+																	<Run Text="{Binding FileName, Mode=OneWay}" /><Run Text="(U+202E)" Background="#ffeca3" /><Run Text="{Binding SpoofedExtension, Mode=OneWay, Converter={ui:StringConverter Reverse}}" Background="#c4ffc1" /><Run Text="." Background="#bae9ff" /><Run Text="{Binding Extension, Mode=OneWay}" Background="#bae9ff" />
+																</TextBlock>
+																<TextBlock Text="" Visibility="{Binding IsValid, Mode=OneWay, Converter={ui:BooleanConverter VisibilityInverse}}" />
+															</Grid>
+														</Border>
+													</StackPanel>
+												</GroupBox>
+												<Button Style="{StaticResource UIButton}" HorizontalAlignment="Left" Command="{Binding DataContext.RtloSaveCommand, ElementName=mainWindow}" CommandParameter="{Binding}">
+													<local:TextDisplay Text="Save" Icon="/PEunion;component/Resources/Icons/Save16.png" />
+												</Button>
+											</StackPanel>
+										</ScrollViewer>
+									</DataTemplate>
+								</local:TabTemplateSelector.RtloTemplate>
+								<local:TabTemplateSelector.LicenseTemplate>
+									<DataTemplate>
+										<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+											<TextBox Text="{Binding Text}" IsReadOnly="True" FontFamily="Courier New" Margin="10" Background="Transparent" BorderThickness="0" />
+										</ScrollViewer>
+									</DataTemplate>
+								</local:TabTemplateSelector.LicenseTemplate>
+							</local:TabTemplateSelector>
+						</TabControl.ContentTemplateSelector>
+					</local:TabControlEx>
+				</Grid>
+				<GridSplitter Grid.Row="1" />
+				<local:TabDockingPanel Grid.Row="2" SelectedIndex="{Binding View.BottomPanelSelectedIndex, Mode=TwoWay}">
+					<local:TabDockingPanelItem Header="Error List">
+						<DockPanel IsEnabled="{Binding SelectedTab.Errors, Converter={ui:NullConverter}}">
+							<ToolBarTray DockPanel.Dock="Top">
+								<ToolBar>
+									<ToggleButton IsChecked="{Binding SelectedTab.Errors.ShowSeverityError}">
+										<StackPanel Orientation="Horizontal">
+											<Image Source="/PEunion;component/Resources/Icons/Error16.png" Margin="0,0,5,0" />
+											<TextBlock>
+												<Run Text="{Binding SelectedTab.Errors.SeverityCountError, Mode=OneWay}" /> Errors
+											</TextBlock>
+										</StackPanel>
+									</ToggleButton>
+									<Separator />
+									<ToggleButton IsChecked="{Binding SelectedTab.Errors.ShowSeverityWarning}">
+										<StackPanel Orientation="Horizontal">
+											<Image Source="/PEunion;component/Resources/Icons/Warning16.png" Margin="0,0,5,0" />
+											<TextBlock>
+												<Run Text="{Binding SelectedTab.Errors.SeverityCountWarning, Mode=OneWay}" /> Warnings
+											</TextBlock>
+										</StackPanel>
+									</ToggleButton>
+									<Separator />
+									<ToggleButton IsChecked="{Binding SelectedTab.Errors.ShowSeverityMessage}">
+										<StackPanel Orientation="Horizontal">
+											<Image Source="/PEunion;component/Resources/Icons/Information16.png" Margin="0,0,5,0" />
+											<TextBlock>
+												<Run Text="{Binding SelectedTab.Errors.SeverityCountMessage, Mode=OneWay}" /> Messages
+											</TextBlock>
+										</StackPanel>
+									</ToggleButton>
+								</ToolBar>
+							</ToolBarTray>
+							<ListView ItemsSource="{Binding SelectedTab.Errors.FilteredErrors}" BorderThickness="0">
+								<ListView.Resources>
+									<Style TargetType="{x:Type TextBlock}">
+										<Setter Property="TextTrimming" Value="CharacterEllipsis" />
+									</Style>
+								</ListView.Resources>
+								<ListView.View>
+									<GridView>
+										<GridViewColumn Width="30">
+											<GridViewColumn.CellTemplate>
+												<DataTemplate>
+													<Grid>
+														<Image Source="/PEunion;component/Resources/Icons/Error16.png" Visibility="{Binding Severity, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:ErrorSeverity.Error}}" />
+														<Image Source="/PEunion;component/Resources/Icons/Warning16.png" Visibility="{Binding Severity, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:ErrorSeverity.Warning}}" />
+														<Image Source="/PEunion;component/Resources/Icons/Information16.png" Visibility="{Binding Severity, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static peu:ErrorSeverity.Message}}" />
+													</Grid>
+												</DataTemplate>
+											</GridViewColumn.CellTemplate>
+										</GridViewColumn>
+										<GridViewColumn Header="Source" Width="70">
+											<GridViewColumn.CellTemplate>
+												<DataTemplate>
+													<TextBlock Text="{Binding Source, Converter={ui:EnumConverter Description}}" TextTrimming="CharacterEllipsis" />
+												</DataTemplate>
+											</GridViewColumn.CellTemplate>
+										</GridViewColumn>
+										<GridViewColumn Header="Description" Width="600" DisplayMemberBinding="{Binding Message}" />
+										<GridViewColumn Header="Details" Width="300">
+											<GridViewColumn.CellTemplate>
+												<DataTemplate>
+													<TextBlock TextTrimming="CharacterEllipsis">
+														<Hyperlink Command="{Binding DataContext.ShowErrorDetailsCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}">
+															<Run Text="{Binding Details, Mode=OneWay, Converter={ui:StringConverter ReplaceLineBreaks}, ConverterParameter=' '}" />
+														</Hyperlink>
+													</TextBlock>
+												</DataTemplate>
+											</GridViewColumn.CellTemplate>
+										</GridViewColumn>
+									</GridView>
+								</ListView.View>
+							</ListView>
+						</DockPanel>
+					</local:TabDockingPanelItem>
+					<local:TabDockingPanelItem Header="Help">
+						<html:HtmlPanel Text="{Binding HelpHtml}" />
+					</local:TabDockingPanelItem>
+				</local:TabDockingPanel>
+			</Grid>
+		</Border>
+	</DockPanel>
+</local:WindowBase>

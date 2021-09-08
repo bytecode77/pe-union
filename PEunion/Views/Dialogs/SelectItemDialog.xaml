@@ -1,0 +1,37 @@
+﻿<local:DialogBase
+	x:Class="PEunion.SelectItemDialog"
+	x:Name="selectItemDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	DataContext="{Binding ViewModel, ElementName=selectItemDialog}"
+	Title="PEunion" Width="450" SizeToContent="Height">
+	<StackPanel>
+		<StackPanel Margin="15">
+			<TextBlock Text="{Binding Text}" TextWrapping="Wrap" Margin="0,0,0,10" />
+			<local:TreeViewEx ItemsSource="{Binding Items}" SelectedItemBinding="{Binding SelectedItem, Mode=TwoWay}" Height="200">
+				<TreeView.Resources>
+					<HierarchicalDataTemplate DataType="{x:Type local:ItemsPage}" ItemsSource="{Binding SubPages}">
+						<local:TextDisplay Text="{Binding PageTitle}" Icon="{Binding IsExpanded, Converter={ui:IfConverter '/PEunion;component/Resources/Icons/DirectoryOpen16.png', '/PEunion;component/Resources/Icons/Directory16.png'}}" />
+					</HierarchicalDataTemplate>
+					<HierarchicalDataTemplate DataType="{x:Type local:ProjectItemModel}">
+						<local:TextDisplay Text="{Binding SourceEmbeddedPath, Converter={ui:PathConverter FileName}}" Icon="{Binding SourceEmbeddedPath, Converter={local:PathToFileIconConverter}}" />
+					</HierarchicalDataTemplate>
+				</TreeView.Resources>
+				<TreeView.ItemContainerStyle>
+					<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+						<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+						<EventSetter Event="MouseDoubleClick" Handler="TreeViewItem_MouseDoubleClick" />
+					</Style>
+				</TreeView.ItemContainerStyle>
+			</local:TreeViewEx>
+		</StackPanel>
+		<ItemsControl Style="{StaticResource DialogButtonRow}">
+			<Button Style="{StaticResource UIButton}" Content="{Binding ButtonText}" IsDefault="True" Command="{Binding SelectItemCommand}" Margin="0,0,10,0" />
+			<Button Style="{StaticResource UIButton}" Content="Cancel" IsCancel="True" Command="{Binding CancelCommand}" />
+		</ItemsControl>
+	</StackPanel>
+</local:DialogBase>
