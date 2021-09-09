@@ -1,0 +1,130 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation">
+	<Style TargetType="{x:Type ToolBarTray}">
+		<Setter Property="Background" Value="#ccd5f0" />
+	</Style>
+	<Style TargetType="{x:Type ToolBar}">
+		<Setter Property="ToolBarTray.IsLocked" Value="True" />
+		<Setter Property="Padding" Value="11,0,0,0" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<ImageBrush ImageSource="/PEunion;component/Resources/Theme/ToolBarThumb.png" Stretch="None" AlignmentX="Left" />
+			</Setter.Value>
+		</Setter>
+		<Style.Resources>
+			<Style TargetType="{x:Type Grid}">
+				<Style.Triggers>
+					<Trigger Property="Name" Value="OverflowGrid">
+						<Setter Property="Visibility" Value="Collapsed" />
+					</Trigger>
+				</Style.Triggers>
+			</Style>
+		</Style.Resources>
+	</Style>
+	<Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}">
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Margin" Value="0,-1" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border Name="Border" Padding="{TemplateBinding Padding}" BorderThickness="1" Background="Transparent" SnapsToDevicePixels="True">
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="#ecf4ff" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="White" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" TargetType="{x:Type ToggleButton}">
+		<Setter Property="Margin" Value="0,-1" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Border Name="Border" Padding="{TemplateBinding Padding}" BorderThickness="1" Background="Transparent" SnapsToDevicePixels="True">
+						<ContentPresenter Margin="1,0,3,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="#ecf4ff" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="White" />
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#825d07" />
+							<Setter TargetName="Border" Property="Background" Value="#ffedc8" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsChecked" Value="True" />
+								<Condition Property="IsMouseOver" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="Border" Property="Background" Value="White" />
+						</MultiTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type local:ToolBarDropDownButton}">
+		<Setter Property="Margin" Value="0,-1" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:ToolBarDropDownButton}">
+					<Border Name="Border" Padding="{TemplateBinding Padding}" BorderThickness="1" Background="Transparent" SnapsToDevicePixels="True">
+						<DockPanel>
+							<Path Name="DropDownIcon" DockPanel.Dock="Right" HorizontalAlignment="Center" Margin="2,0,1,0" VerticalAlignment="Center" Fill="#1e1e1e" Data="M 0 0 L 6 0 L 3 3 Z" />
+							<ContentPresenter Margin="1,0,3,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</DockPanel>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="#ecf4ff" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="White" />
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter TargetName="Border" Property="BorderBrush" Value="#5d6b99" />
+							<Setter TargetName="Border" Property="Background" Value="White" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter TargetName="DropDownIcon" Property="Fill" Value="#757575" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="{x:Static ToolBar.SeparatorStyleKey}">
+		<Setter Property="Panel.Margin" Value="3,1" />
+		<Setter Property="Panel.Background" Value="#94a6ca" />
+	</Style>
+</ResourceDictionary>

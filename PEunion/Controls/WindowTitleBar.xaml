@@ -1,0 +1,60 @@
+﻿<ui:ObservableUserControl
+	x:Class="PEunion.WindowTitleBar"
+	x:Name="windowTitleBar"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation">
+	<ContentControl.Template>
+		<ControlTemplate>
+			<Border Background="#ccd5f0" MouseDown="TitleBar_MouseDown">
+				<Grid>
+					<StackPanel>
+						<DockPanel Margin="0,7">
+							<Image DockPanel.Dock="Left" Source="{Binding Icon, ElementName=windowTitleBar}" Margin="12,0,1,0" IsEnabled="{Binding Owner.IsActive, Mode=OneWay, ElementName=windowTitleBar}" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="Icon_MouseDown" />
+							<ContentControl Content="{Binding MainMenu, ElementName=windowTitleBar}" WindowChrome.IsHitTestVisibleInChrome="True" />
+						</DockPanel>
+						<ContentControl Content="{Binding ToolBar, ElementName=windowTitleBar}" Margin="6,0,0,6" />
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True">
+						<StackPanel.Resources>
+							<Style TargetType="{x:Type Button}">
+								<Setter Property="Focusable" Value="False" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type Button}">
+											<Border Name="Border" Background="Transparent" SnapsToDevicePixels="True">
+												<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" Opacity="{Binding Owner.IsActive, Mode=OneWay, ElementName=windowTitleBar, Converter={ui:IfConverter 1, .4}}" />
+											</Border>
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsMouseOver" Value="True">
+													<Setter TargetName="Border" Property="Background" Value="#f8f9ff" />
+												</Trigger>
+												<Trigger Property="IsPressed" Value="True">
+													<Setter TargetName="Border" Property="Background" Value="White" />
+												</Trigger>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</StackPanel.Resources>
+						<Button ToolTip="Minimize" Click="MinimizeButton_Click">
+							<Image Source="/PEunion;component/Resources/Theme/WindowMinimize.png" />
+						</Button>
+						<Button ToolTip="Maximize" Click="MaximizeButton_Click" Visibility="{Binding Owner.WindowState, Mode=OneWay, ElementName=windowTitleBar, Converter={ui:EqualityConverter NotEqual, Visibility}, ConverterParameter={x:Static WindowState.Maximized}}">
+							<Image Source="/PEunion;component/Resources/Theme/WindowMaximize.png" />
+						</Button>
+						<Button ToolTip="Restore" Click="RestoreButton_Click" Visibility="{Binding Owner.WindowState, Mode=OneWay, ElementName=windowTitleBar, Converter={ui:EqualityConverter Equal, Visibility}, ConverterParameter={x:Static WindowState.Maximized}}">
+							<Image Source="/PEunion;component/Resources/Theme/WindowRestore.png" />
+						</Button>
+						<Button ToolTip="Close" Click="CloseButton_Click">
+							<Image Source="/PEunion;component/Resources/Theme/WindowClose.png" />
+						</Button>
+					</StackPanel>
+				</Grid>
+			</Border>
+		</ControlTemplate>
+	</ContentControl.Template>
+</ui:ObservableUserControl>

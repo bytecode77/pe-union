@@ -1,0 +1,21 @@
+﻿<ui:ObservableUserControl
+	x:Class="PEunion.HelpButton"
+	x:Name="helpButton"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation">
+	<Button Cursor="Hand" ToolTip="Help" Click="Button_Click">
+		<Button.Template>
+			<ControlTemplate>
+				<Grid>
+					<Image Source="/PEunion;component/Resources/Icons/Help16.png" Visibility="{Binding Small, ElementName=helpButton, Converter={ui:BooleanConverter VisibilityInverse}}" />
+					<Border Padding="2" Background="Transparent" Visibility="{Binding Small, ElementName=helpButton, Converter={ui:BooleanConverter Visibility}}">
+						<Image Source="/PEunion;component/Resources/Icons/Help12.png" />
+					</Border>
+				</Grid>
+			</ControlTemplate>
+		</Button.Template>
+	</Button>
+</ui:ObservableUserControl>

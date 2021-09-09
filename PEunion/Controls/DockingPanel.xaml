@@ -1,0 +1,27 @@
+﻿<HeaderedContentControl
+	x:Class="PEunion.DockingPanel"
+	x:Name="dockingPanel"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation">
+	<Control.Template>
+		<ControlTemplate TargetType="{x:Type local:DockingPanel}">
+			<Border Focusable="True">
+				<DockPanel>
+					<Border Name="Border" DockPanel.Dock="Top" Background="#40568d" Padding="4,2,4,3">
+						<ContentPresenter Name="Header" ContentSource="Header" RecognizesAccessKey="True" TextBlock.Foreground="White" />
+					</Border>
+					<ContentPresenter />
+				</DockPanel>
+			</Border>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsKeyboardFocusWithin" Value="True">
+					<Setter TargetName="Header" Property="TextBlock.Foreground" Value="#1e1e1e" />
+					<Setter TargetName="Border" Property="Background" Value="#f5cc84" />
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+	</Control.Template>
+</HeaderedContentControl>

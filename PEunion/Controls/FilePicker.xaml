@@ -1,0 +1,44 @@
+﻿<ui:ObservableUserControl
+	x:Class="PEunion.FilePicker"
+	x:Name="filePicker"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	Background="Transparent" AllowDrop="True" PreviewDragOver="FilePicker_PreviewDragOver" Drop="FilePicker_Drop">
+	<DockPanel>
+		<Button DockPanel.Dock="Right" Style="{StaticResource UIButton}" Margin="5,0,0,0" Click="Browse_Click">
+			<local:TextDisplay Text="Browse..." Icon="/PEunion;component/Resources/Icons/Open16.png" />
+		</Button>
+		<Grid>
+			<Grid Visibility="{Binding Path, ElementName=filePicker, Converter={ui:NullConverter Visibility}}">
+				<TextBox Style="{StaticResource UITextBox}" Text="{Binding DisplayPath, Mode=OneWay, ElementName=filePicker}" IsReadOnly="True" Padding="22,2,3,4" DragOver="TextBox_DragOver" />
+				<Image Source="{Binding DisplayIcon, ElementName=filePicker}" Margin="4,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+			</Grid>
+			<Grid Visibility="{Binding Path, ElementName=filePicker, Converter={ui:NullConverter VisibilityInverse}}">
+				<TextBox Style="{StaticResource UITextBox}" IsReadOnly="True" DragOver="TextBox_DragOver" />
+				<TextBlock Text="Select or drag&amp;drop a file" Margin="6,-1,0,1" VerticalAlignment="Center" Opacity=".5" IsHitTestVisible="False" />
+			</Grid>
+			<Grid Visibility="{Binding IsEnabled, ElementName=filePicker, Converter={ui:BooleanConverter Visibility}}">
+				<Button HorizontalAlignment="Right" ToolTip="Clear" Visibility="{Binding Path, ElementName=filePicker, Converter={ui:NullConverter Visibility}}" Click="Clear_Click">
+					<Button.Template>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Border Name="Border" Margin="1" Padding="5,0" Background="#d0ffffff">
+								<Image Source="/PEunion;component/Resources/Theme/FilePickerClear.png" />
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter TargetName="Border" Property="Background" Value="#f0f0f0" />
+								</Trigger>
+								<Trigger Property="IsPressed" Value="True">
+									<Setter TargetName="Border" Property="Background" Value="#e7e7e7" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Button.Template>
+				</Button>
+			</Grid>
+		</Grid>
+	</DockPanel>
+</ui:ObservableUserControl>

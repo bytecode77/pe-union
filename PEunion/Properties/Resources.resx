@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,7 +60,6 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -69,10 +68,9 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -87,10 +85,9 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -112,166 +109,9 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BytecodeApi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BytecodeApi.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BytecodeApiFileFormats" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BytecodeApi.FileFormats.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BytecodeApiUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BytecodeApi.UI.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileLicense" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileLicense.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="FileManifestAsInvoker" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileManifestAsInvoker.manifest;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileManifestNone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileManifestNone.res;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileManifestRequireAdministrator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileManifestRequireAdministrator.manifest;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileRegisterExtension" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileRegisterExtension.reg;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
-  </data>
-  <data name="FileShellIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileShellIcon;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileStub" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileStub.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="IconAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconAddFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconAddFiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconAddMessageBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconAddMessageBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconAddUrl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconAddUrl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconArrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconArrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconArrowUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconArrowUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconBuild" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconBuild.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconBytecode77" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconBytecode77.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconClearRecents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconClearRecents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconCode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconCode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconDirectory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconDirectory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconError" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconError.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconExit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconFiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconFiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconGitHub" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconGitHub.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconInfoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconInfoIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconInformation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconInformation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconMessageBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconMessageBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconMissingFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconMissingFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconOpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconOpenProjectFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconOpenProjectFolder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconOutputBinary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconOutputBinary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconPeuFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconPeuFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconRtlo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconRtlo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconStartup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconStartup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconTabItemClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconTabItemClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconTabItemCloseMouseDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconTabItemCloseMouseDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconTabItemCloseMouseOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconTabItemCloseMouseOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconUacOverlay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconUacOverlay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconUrl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconUrl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconWarning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageAboutBanner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageAboutBanner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageDragDrop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageDragDrop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageMessageBoxConfirmation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageMessageBoxConfirmation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageMessageBoxError" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageMessageBoxError.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageMessageBoxInformation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageMessageBoxInformation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageMessageBoxWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageMessageBoxWarning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageMissingIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageMissingIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageSplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImageSplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

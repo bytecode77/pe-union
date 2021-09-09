@@ -1,0 +1,2631 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BytecodeApi.FileIcons</name>
+    </assembly>
+    <members>
+        <member name="T:BytecodeApi.FileIcons.KnownFileIconImages">
+            <summary>
+            Represents a <see langword="static" /> set of <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> objects (from <see cref="T:BytecodeApi.FileIcons.FileIcon" />) for all file extensions. These properties are typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Accdb16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".accdb" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Accdb32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".accdb" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Accdb48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".accdb" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Asm16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".asm" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Asm32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".asm" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Asm48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".asm" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Aspx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".aspx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Aspx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".aspx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Aspx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".aspx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Avi16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".avi" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Avi32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".avi" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Avi48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".avi" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bat16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bat" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bat32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bat" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bat48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bat" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bmp16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bmp" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bmp32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bmp" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Bmp48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".bmp" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.C16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".c" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.C32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".c" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.C48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".c" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cer16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cer" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cer32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cer" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cer48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cer" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Chm16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".chm" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Chm32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".chm" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Chm48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".chm" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Com16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".com" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Com32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".com" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Com48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".com" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Config16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".config" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Config32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".config" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Config48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".config" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Contact16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".contact" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Contact32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".contact" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Contact48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".contact" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cpp16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cpp" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cpp32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cpp" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cpp48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cpp" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cs16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cs" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cs32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cs" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Cs48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".cs" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csproj16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csproj" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csproj32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csproj" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csproj48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csproj" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Css16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".css" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Css32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".css" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Css48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".css" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csv16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csv" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csv32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csv" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Csv48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".csv" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Db16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".db" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Db32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".db" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Db48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".db" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dll16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dll" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dll32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dll" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dll48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dll" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Doc16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".doc" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Doc32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".doc" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Doc48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".doc" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Docx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".docx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Docx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".docx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Docx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".docx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dotx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dotx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dotx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dotx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dotx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dotx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dtd16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dtd" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dtd32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dtd" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Dtd48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".dtd" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Exe16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".exe" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Exe32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".exe" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Exe48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".exe" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Filters16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".filters" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Filters32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".filters" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Filters48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".filters" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Gif16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".gif" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Gif32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".gif" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Gif48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".gif" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.H16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".h" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.H32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".h" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.H48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".h" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hlp16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hlp" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hlp32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hlp" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hlp48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hlp" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hpp16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hpp" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hpp32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hpp" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Hpp48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".hpp" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Htm16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".htm" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Htm32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".htm" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Htm48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".htm" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Html16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".html" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Html32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".html" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Html48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".html" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Inf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".inf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Inf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".inf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Inf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".inf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ini16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ini" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ini32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ini" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ini48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ini" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ino16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ino" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ino32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ino" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ino48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ino" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Iso16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".iso" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Iso32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".iso" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Iso48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".iso" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpeg16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpeg" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpeg32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpeg" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpeg48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpeg" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpg16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpg" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpg32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpg" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Jpg48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".jpg" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Js16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".js" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Js32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".js" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Js48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".js" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Json16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".json" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Json32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".json" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Json48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".json" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lib16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lib" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lib32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lib" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lib48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lib" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lnk16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lnk" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lnk32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lnk" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Lnk48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".lnk" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Log16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".log" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Log32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".log" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Log48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".log" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4a16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4a" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4a32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4a" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4a48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4a" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4v16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4v" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4v32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4v" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.M4v48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".m4v" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mak16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mak" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mak32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mak" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mak48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mak" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Manifest16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".manifest" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Manifest32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".manifest" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Manifest48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".manifest" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Md16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".md" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Md32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".md" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Md48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".md" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mdb16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mdb" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mdb32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mdb" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mdb48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mdb" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mid16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mid" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mid32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mid" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mid48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mid" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Midi16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".midi" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Midi32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".midi" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Midi48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".midi" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp316">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp3" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp332">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp3" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp348">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp3" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp416">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp432">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp448">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp4v16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4v" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp4v32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4v" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mp4v48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mp4v" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpeg16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpeg" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpeg32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpeg" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpeg48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpeg" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpg16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpg" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpg32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpg" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Mpg48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".mpg" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msc16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msc" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msc32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msc" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msc48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msc" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msi16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msi" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msi32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msi" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Msi48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".msi" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdb16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdb" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdb32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdb" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdb48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdb" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdn16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdn" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdn32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdn" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pdn48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pdn" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Php16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".php" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Php32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".php" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Php48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".php" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Phpproj16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".phpproj" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Phpproj32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".phpproj" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Phpproj48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".phpproj" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Png16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".png" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Png32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".png" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Png48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".png" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Potx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".potx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Potx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".potx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Potx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".potx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ppt16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ppt" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ppt32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ppt" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Ppt48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".ppt" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pptx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pptx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pptx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pptx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Pptx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".pptx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rar16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rar" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rar32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rar" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rar48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rar" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rdp16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rdp" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rdp32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rdp" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rdp48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rdp" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Reg16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".reg" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Reg32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".reg" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Reg48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".reg" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Res16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".res" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Res32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".res" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Res48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".res" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Resx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".resx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Resx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".resx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Resx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".resx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rll16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rll" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rll32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rll" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rll48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rll" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rtf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rtf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rtf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rtf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Rtf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".rtf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Scr16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".scr" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Scr32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".scr" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Scr48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".scr" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sdf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sdf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sdf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sdf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sdf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sdf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Settings16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".settings" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Settings32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".settings" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Settings48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".settings" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sh16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sh" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sh32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sh" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sh48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sh" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sln16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sln" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sln32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sln" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Sln48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".sln" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Txt16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".txt" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Txt32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".txt" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Txt48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".txt" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.User16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".user" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.User32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".user" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.User48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".user" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vb16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vb" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vb32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vb" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vb48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vb" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbproj16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbproj" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbproj32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbproj" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbproj48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbproj" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbs16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbs" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbs32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbs" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vbs48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vbs" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcxproj16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcxproj" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcxproj32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcxproj" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vcxproj48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vcxproj" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vsix16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vsix" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vsix32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vsix" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Vsix48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".vsix" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wav16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wav" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wav32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wav" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wav48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wav" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wma16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wma" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wma32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wma" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wma48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wma" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wmv16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wmv" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wmv32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wmv" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wmv48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wmv" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wpl16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wpl" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wpl32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wpl" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wpl48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wpl" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wsf16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wsf" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wsf32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wsf" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Wsf48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".wsf" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xaml16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xaml" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xaml32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xaml" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xaml48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xaml" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xls16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xls" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xls32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xls" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xls48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xls" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xlsx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xlsx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xlsx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xlsx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xlsx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xlsx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xltx16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xltx" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xltx32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xltx" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xltx48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xltx" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xml16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xml" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xml32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xml" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xml48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xml" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xsd16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xsd" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xsd32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xsd" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Xsd48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".xsd" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Zip16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".zip" file extension in 16x16 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Zip32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".zip" file extension in 32x32 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIconImages.Zip48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for the ".zip" file extension in 48x48 resolution, typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.FileIcons.KnownFileIcons">
+            <summary>
+            Represents a <see langword="static" /> set of <see cref="T:BytecodeApi.FileIcons.FileIcon" /> objects for all file extensions.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Accdb">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".accdb" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Asm">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".asm" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Aspx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".aspx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Avi">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".avi" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Bat">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".bat" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Bmp">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".bmp" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.C">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".c" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Cer">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".cer" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Chm">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".chm" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Com">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".com" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Config">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".config" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Contact">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".contact" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Cpp">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".cpp" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Cs">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".cs" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Csproj">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".csproj" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Css">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".css" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Csv">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".csv" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Db">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".db" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Dll">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".dll" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Doc">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".doc" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Docx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".docx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Dotx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".dotx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Dtd">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".dtd" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Exe">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".exe" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Filters">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".filters" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Gif">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".gif" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.H">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".h" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Hlp">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".hlp" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Hpp">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".hpp" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Htm">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".htm" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Html">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".html" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Inf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".inf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Ini">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".ini" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Ino">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".ino" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Iso">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".iso" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Jpeg">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".jpeg" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Jpg">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".jpg" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Js">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".js" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Json">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".json" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Lib">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".lib" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Lnk">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".lnk" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Log">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".log" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.M4a">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".m4a" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.M4v">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".m4v" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mak">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mak" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Manifest">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".manifest" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Md">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".md" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mdb">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mdb" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mid">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mid" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Midi">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".midi" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mp3">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mp3" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mp4">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mp4" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mp4v">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mp4v" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mpeg">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mpeg" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Mpg">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".mpg" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Msc">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".msc" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Msi">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".msi" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Pdb">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".pdb" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Pdf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".pdf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Pdn">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".pdn" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Php">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".php" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Phpproj">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".phpproj" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Png">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".png" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Potx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".potx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Ppt">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".ppt" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Pptx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".pptx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Rar">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".rar" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Rdp">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".rdp" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Reg">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".reg" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Res">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".res" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Resx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".resx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Rll">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".rll" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Rtf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".rtf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Scr">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".scr" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Sdf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".sdf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Settings">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".settings" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Sh">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".sh" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Sln">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".sln" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Txt">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".txt" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.User">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".user" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vb">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vb" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vbproj">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vbproj" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vbs">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vbs" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vcf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vcf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vcxproj">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vcxproj" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Vsix">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".vsix" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Wav">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".wav" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Wma">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".wma" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Wmv">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".wmv" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Wpl">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".wpl" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Wsf">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".wsf" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xaml">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xaml" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xls">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xls" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xlsx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xlsx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xltx">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xltx" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xml">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xml" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Xsd">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".xsd" file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.KnownFileIcons.Zip">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object for the ".zip" file extension.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.FileIcons.SpecialFileIconImages">
+            <summary>
+            Represents a <see langword="static" /> set of <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> objects (from <see cref="T:BytecodeApi.FileIcons.SpecialFileIcons" />) that do not represent specific file extensions. These properties are typically used in XAML bindings.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Unknown16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for an unknown file extension in 16x16 resolution.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Unknown32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for an unknown file extension in 32x32 resolution.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Unknown48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for an unknown file extension in 48x48 resolution.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Directory16">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for a directory in 16x16 resolution.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Directory32">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for a directory in 32x32 resolution.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIconImages.Directory48">
+            <summary>
+            Gets the <see cref="T:System.Windows.Media.Imaging.BitmapSource" /> for a directory in 48x48 resolution.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.FileIcons.SpecialFileIcons">
+            <summary>
+            Represents a <see langword="static" /> set of <see cref="T:BytecodeApi.FileIcons.FileIcon" /> objects that do not represent specific file extensions.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIcons.Unknown">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> for an unknown file extension.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.SpecialFileIcons.Directory">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileIcons.FileIcon" /> for a directory.
+            </summary>
+        </member>
+        <member name="T:BytecodeApi.FileIcons.FileIcon">
+            <summary>
+            Class to retrieve file icons from the resources of BytecodeApi.FileIcons.dll. The file icons are pre-defined images and limited to a fixed amount of known file extensions.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.AllIcons">
+            <summary>
+            Gets all <see cref="T:BytecodeApi.FileIcons.FileIcon" /> objects from the resources of BytecodeApi.FileIcons.dll.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Extension">
+            <summary>
+            Gets the extension, without a dot, that identifies this icon.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon">
+            <summary>
+            Gets the combined icon containing all sizes (16, 32 and 48).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon16">
+            <summary>
+            Gets the 16x16 pixel frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon32">
+            <summary>
+            Gets the 32x32 pixel frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon48">
+            <summary>
+            Gets the 48x48 pixel frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon16ImageSource">
+            <summary>
+            Gets a managed <see cref="T:System.Windows.Media.Imaging.BitmapSource" />, based on the <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon16" /> property.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon32ImageSource">
+            <summary>
+            Gets a managed <see cref="T:System.Windows.Media.Imaging.BitmapSource" />, based on the <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon32" /> property.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.FileIcon.Icon48ImageSource">
+            <summary>
+            Gets a managed <see cref="T:System.Windows.Media.Imaging.BitmapSource" />, based on the <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon48" /> property.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileIcons.FileIcon.FromExtension(System.String)">
+            <summary>
+            Gets a <see cref="T:BytecodeApi.FileIcons.FileIcon" /> from the resources of BytecodeApi.FileIcons.dll, if the specified extension is known; otherwise, returns <see langword="null" />.
+            </summary>
+            <param name="extension">A <see cref="T:System.String" /> value specifying the file extension, which is case insensitive and does not require a leading dot character.</param>
+            <returns>
+            A <see cref="T:BytecodeApi.FileIcons.FileIcon" /> object containing image objects for the specified extension, if found;
+            otherwise, returns <see langword="null" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileIcons.FileIcon.Exists(System.String)">
+            <summary>
+            Checks whether the specified extension is known and exists in the resources of BytecodeApi.FileIcons.dll.
+            </summary>
+            <param name="extension">A <see cref="T:System.String" /> value specifying the file extension, which is case insensitive and does not require a leading dot character.</param>
+            <returns>
+            A <see cref="T:System.Boolean" /> value indicating whether the specified extension is known and exists in the resources of BytecodeApi.FileIcons.dll.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileIcons.FileIcon.GetIcon(System.Int32)">
+            <summary>
+            Gets a specific frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />. The <paramref name="size" /> parameter must be 16, 32 or 48.
+            </summary>
+            <param name="size">A <see cref="T:System.Int32" /> value representing the size of the frame to retrieve. The value must be 16, 32 or 48.</param>
+            <returns>
+            The frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />, specified by <paramref name="size" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileIcons.FileIcon.GetIconImageSource(System.Int32)">
+            <summary>
+            Gets a managed <see cref="T:System.Windows.Media.Imaging.BitmapSource" />, based on the specific frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />. The <paramref name="size" /> parameter must be 16, 32 or 48.
+            </summary>
+            <param name="size">A <see cref="T:System.Int32" /> value representing the size of the frame to retrieve. The value must be 16, 32 or 48.</param>
+            <returns>
+            A managed <see cref="T:System.Windows.Media.Imaging.BitmapSource" />, based on the frame from <see cref="P:BytecodeApi.FileIcons.FileIcon.Icon" />, specified by <paramref name="size" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.FileIcons.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources._directory">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources._unknown">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.accdb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.asm">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.aspx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.avi">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.bat">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.bmp">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.c">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.cer">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.chm">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.com">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.config">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.contact">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.cpp">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.cs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.csproj">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.css">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.csv">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.db">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.dll">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.doc">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.docx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.dotx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.dtd">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.exe">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.filters">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.gif">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.h">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.hlp">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.hpp">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.htm">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.html">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.inf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.ini">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.ino">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.iso">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.jpeg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.jpg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.js">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.json">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.lib">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.lnk">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.log">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.m4a">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.m4v">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mak">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.manifest">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.md">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mdb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mid">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.midi">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mp3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mp4">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mp4v">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mpeg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.mpg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.msc">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.msi">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.pdb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.pdf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.pdn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.php">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.phpproj">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.png">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.potx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.ppt">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.pptx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.rar">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.rdp">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.reg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.res">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.resx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.rll">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.rtf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.scr">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.sdf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.settings">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.sh">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.sln">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.txt">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.user">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vbproj">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vbs">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vcf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vcxproj">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.vsix">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.wav">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.wma">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.wmv">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.wpl">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.wsf">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xaml">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xls">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xlsx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xltx">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xml">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.xsd">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileIcons.Properties.Resources.zip">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+    </members>
+</doc>

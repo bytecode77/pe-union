@@ -1,0 +1,23 @@
+﻿<local:DialogBase
+	x:Class="PEunion.BuildProgressDialog"
+	x:Name="buildProgressDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation"
+	xmlns:peu="https://schemas.bytecode77.com/2019/xaml/peunion"
+	DataContext="{Binding ViewModel, ElementName=buildProgressDialog}"
+	Title="PEunion" Width="500" SizeToContent="Height" Closing="{ui:EventBinding WindowClosingCommand}">
+	<StackPanel>
+		<StackPanel Margin="15">
+			<TextBlock Text="Compiling " Margin="0,0,0,10">
+				<Run Text="{Binding OutputFileName, Mode=OneWay}" />
+			</TextBlock>
+			<ProgressBar Style="{StaticResource UIProgressBar}" IsIndeterminate="True" />
+		</StackPanel>
+		<ItemsControl Style="{StaticResource DialogButtonRow}">
+			<Button Style="{StaticResource UIButton}" Content="Cancel" HorizontalAlignment="Right" Command="{Binding CancelCommand}" IsCancel="True" />
+		</ItemsControl>
+	</StackPanel>
+</local:DialogBase>

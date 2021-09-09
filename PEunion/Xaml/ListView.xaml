@@ -1,0 +1,94 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PEunion"
+	xmlns:api="https://schemas.bytecode77.com/2019/xaml/api"
+	xmlns:ui="https://schemas.bytecode77.com/2019/xaml/presentation">
+	<Style TargetType="{x:Type ListView}">
+		<Style.Resources>
+			<Style TargetType="{x:Type ListViewItem}">
+				<Setter Property="OverridesDefaultStyle" Value="True" />
+				<Setter Property="SnapsToDevicePixels" Value="True" />
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ListViewItem}">
+							<Border Name="Border" Padding="0,2" SnapsToDevicePixels="True" Background="#f7f9fe">
+								<VisualStateManager.VisualStateGroups>
+									<VisualStateGroup Name="SelectionStates">
+										<VisualState Name="Unselected" />
+										<VisualState Name="Selected">
+											<Storyboard>
+												<ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+													<EasingColorKeyFrame KeyTime="0" Value="#c4d5ff" />
+												</ColorAnimationUsingKeyFrames>
+											</Storyboard>
+										</VisualState>
+										<VisualState Name="SelectedUnfocused">
+											<Storyboard>
+												<ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+													<EasingColorKeyFrame KeyTime="0" Value="#e6e7ef" />
+												</ColorAnimationUsingKeyFrames>
+											</Storyboard>
+										</VisualState>
+									</VisualStateGroup>
+								</VisualStateManager.VisualStateGroups>
+								<GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextBlock.Foreground="#1e1e1e" />
+							</Border>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</Style.Resources>
+	</Style>
+	<Style TargetType="{x:Type GridViewColumnHeader}">
+		<Style.Triggers>
+			<Trigger Property="Role" Value="Normal">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+							<Grid>
+								<Border Name="Border" Padding="3,2" BorderThickness="0,0,1,1" BorderBrush="#cccedb" Background="#f6f6f6">
+									<ContentControl Name="Content" Content="{TemplateBinding Content}" TextBlock.Foreground="#1e1e1e" />
+								</Border>
+								<Thumb Name="PART_HeaderGripper" HorizontalAlignment="Right" Width="18" Margin="0,0,-9,0">
+									<Thumb.Template>
+										<ControlTemplate TargetType="{x:Type Thumb}">
+											<Border Padding="{TemplateBinding Padding}" Background="Transparent" />
+										</ControlTemplate>
+									</Thumb.Template>
+								</Thumb>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsMouseOver" Value="True">
+									<Setter TargetName="Border" Property="Background" Value="#fefefe" />
+								</Trigger>
+								<Trigger Property="IsPressed" Value="True">
+									<Setter TargetName="Content" Property="TextBlock.Foreground" Value="#212121" />
+									<Setter TargetName="Border" Property="Background" Value="#007acc" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="Role" Value="Padding">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+							<Border Name="Border" Padding="5,2" BorderThickness="0,0,1,1" BorderBrush="#cccedb" Background="#f6f6f6" />
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="Role" Value="Floating">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+							<Border Name="Border" Padding="5,2" BorderThickness="0,0,1,1" BorderBrush="#cccedb" Background="#efffffff" />
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+</ResourceDictionary>

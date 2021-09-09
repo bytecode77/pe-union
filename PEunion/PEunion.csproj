@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F38E899B-5DE3-4BB0-BB47-4B7CA70AED74}</ProjectGuid>
+    <ProjectGuid>{74D9099B-A671-4B27-BA03-333DC8D951E3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PEunion</RootNamespace>
     <AssemblyName>PEunion</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,29 +42,41 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BytecodeApi">
-      <HintPath>.\BytecodeApi.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="BytecodeApi.FileFormats, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BytecodeApi, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\BytecodeApi.FileFormats.dll</HintPath>
+      <HintPath>..\SlnBin\lib\BytecodeApi.dll</HintPath>
     </Reference>
-    <Reference Include="BytecodeApi.UI, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BytecodeApi.FileFormats, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\BytecodeApi.UI.dll</HintPath>
+      <HintPath>..\SlnBin\lib\BytecodeApi.FileFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="BytecodeApi.FileIcons, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SlnBin\lib\BytecodeApi.FileIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="BytecodeApi.UI, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SlnBin\lib\BytecodeApi.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WPF, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WPF.1.5.0.6\lib\net45\HtmlRenderer.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarkdownSharp.2.0.5\lib\net40\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -76,60 +89,193 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Resource Include="Resources\FileStub.cs" />
-    <Page Include="Controls\Common\FileBrowser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Common\TextDisplay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Tabs\TabRtlo.xaml">
+    <Page Include="Controls\TabDockingPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WindowAbout.xaml">
+    <Page Include="Controls\HelpButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WindowMain.xaml">
+    <Page Include="Controls\WindowTitleBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\DockingPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FilePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TextDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\BuildProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\AboutDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\HelpDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\TextDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\UnhandledExceptionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SelectItemDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\SaveChangesDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ErrorDetailsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\Global\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Lookups.cs" />
-    <Compile Include="Classes\Project\Project.cs" />
-    <Compile Include="Classes\Project\ProjectUrl.cs" />
-    <Compile Include="Classes\Project\ProjectMessageBox.cs" />
-    <Compile Include="Classes\Project\ProjectItem.cs" />
-    <Compile Include="Classes\Project\ProjectFile.cs" />
-    <Compile Include="Classes\Builder.cs" />
-    <Compile Include="Classes\Utility.cs" />
-    <Compile Include="Classes\ValidationError.cs" />
-    <Compile Include="Controls\Common\FileBrowser.xaml.cs">
-      <DependentUpon>FileBrowser.xaml</DependentUpon>
+    <Compile Include="Controller\Help.cs" />
+    <Compile Include="Controller\SystemParametersHelper.cs" />
+    <Compile Include="Controller\ConfigFile.cs" />
+    <Compile Include="Controller\Config.cs" />
+    <Compile Include="Controls\TabDockingPanelItem.cs" />
+    <Compile Include="Controls\TabDockingPanel.xaml.cs">
+      <DependentUpon>TabDockingPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Common\TextDisplay.xaml.cs">
+    <Compile Include="Controls\HelpButton.xaml.cs">
+      <DependentUpon>HelpButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WindowTitleBar.xaml.cs">
+      <DependentUpon>WindowTitleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DockingPanel.xaml.cs">
+      <DependentUpon>DockingPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageTemplateSelector.cs" />
+    <Compile Include="Controls\DialogBase.cs" />
+    <Compile Include="Controls\ToolBarDropDownButton.cs" />
+    <Compile Include="Controls\TreeViewEx.cs" />
+    <Compile Include="Controls\TabControlEx.cs" />
+    <Compile Include="Controls\TabTemplateSelector.cs" />
+    <Compile Include="Controls\FilePicker.xaml.cs">
+      <DependentUpon>FilePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextDisplay.xaml.cs">
       <DependentUpon>TextDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Tabs\TabRtlo.xaml.cs">
-      <DependentUpon>TabRtlo.xaml</DependentUpon>
+    <Compile Include="Converters\MessageBoxHasEventConverter.cs" />
+    <Compile Include="Converters\PathToFileIconConverter.cs" />
+    <Compile Include="Converters\StubPaddingToTextConverter.cs" />
+    <Compile Include="Controls\WindowBase.cs" />
+    <Compile Include="Markup\UiEnumExtension.cs" />
+    <Compile Include="Model\License\LicenseModel.cs" />
+    <Compile Include="Model\PageTemplate.cs" />
+    <Compile Include="Model\PageModel.cs" />
+    <Compile Include="Model\ErrorModel.cs" />
+    <Compile Include="Model\Project\Pages\ProjectDropItemModel.cs" />
+    <Compile Include="Model\Project\Pages\ItemsPage.cs" />
+    <Compile Include="Model\Project\Pages\ProjectPage.cs" />
+    <Compile Include="Model\Project\Pages\ProjectMessageBoxItemModel.cs" />
+    <Compile Include="Model\Project\Pages\ProjectInvokeItemModel.cs" />
+    <Compile Include="Model\Project\Pages\ProjectRunPEItemModel.cs" />
+    <Compile Include="Model\Project\Pages\StartupModel.cs" />
+    <Compile Include="Model\Project\ProjectItemSource.cs" />
+    <Compile Include="Model\Project\Pages\ProjectItemModel.cs" />
+    <Compile Include="Model\Project\Pages\ManifestModel.cs" />
+    <Compile Include="Model\Project\Pages\VersionInfoModel.cs" />
+    <Compile Include="Model\Project\Pages\StubModel.cs" />
+    <Compile Include="Controller\ProjectConverter.cs" />
+    <Compile Include="Model\Rtlo\RtloModel.cs" />
+    <Compile Include="ViewModels\Dialogs\BuildProgressDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\AboutDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\HelpDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\TextDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\UnhandledExceptionDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\SelectItemDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\SaveChangesDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ErrorDetailsDialogViewModel.cs" />
+    <Compile Include="Model\Project\ProjectModel.cs" />
+    <Compile Include="Model\TabModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\Windows\MainWindowViewModel.cs" />
+    <Compile Include="Views\Dialogs\BuildProgressDialog.xaml.cs">
+      <DependentUpon>BuildProgressDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Enums\ValidationErrorType.cs" />
-    <Compile Include="Enums\BuildPlatform.cs" />
-    <Compile Include="Enums\BuildManifest.cs" />
-    <Compile Include="Enums\BuildObfuscationType.cs" />
-    <Compile Include="Windows\WindowAbout.xaml.cs">
-      <DependentUpon>WindowAbout.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\AboutDialog.xaml.cs">
+      <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WindowMain.xaml.cs">
-      <DependentUpon>WindowMain.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\HelpDialog.xaml.cs">
+      <DependentUpon>HelpDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\TextDialog.xaml.cs">
+      <DependentUpon>TextDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\UnhandledExceptionDialog.xaml.cs">
+      <DependentUpon>UnhandledExceptionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SelectItemDialog.xaml.cs">
+      <DependentUpon>SelectItemDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SaveChangesDialog.xaml.cs">
+      <DependentUpon>SaveChangesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ErrorDetailsDialog.xaml.cs">
+      <DependentUpon>ErrorDetailsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Xaml\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\StatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\ToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Xaml\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -143,168 +289,174 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Theme\CloseTab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\NewProject16.png" />
+    <Resource Include="Resources\Icons\Open16.png" />
+    <Resource Include="Resources\Icons\Save16.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="PEunion.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.manifest" />
-    <Resource Include="Resources\FileShellIcon" />
-    <Resource Include="Resources\FileManifestRequireAdministrator.manifest" />
-    <Resource Include="Resources\FileManifestAsInvoker.manifest" />
-    <Resource Include="Resources\FileRegisterExtension.reg" />
+    <ProjectReference Include="..\PEunion.Compiler\PEunion.Compiler.csproj">
+      <Project>{a5525db4-91be-4f4e-a383-c7b1280f54ee}</Project>
+      <Name>PEunion.Compiler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconFiles.png" />
+    <Resource Include="Resources\Icons\Manifest16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconOutputBinary.png" />
+    <Resource Include="Resources\Icons\VersionInfo16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconBuild.png" />
+    <Resource Include="Resources\Theme\FilePickerClear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconExit.png" />
+    <Resource Include="Resources\Icons\Stub16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconCode.png" />
+    <Resource Include="Resources\Icons\NewItem16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ImageDragDrop.png" />
+    <Resource Include="Resources\Icons\Directory16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconArrowDown.png" />
+    <Resource Include="Resources\Icons\Project16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconArrowUp.png" />
+    <Resource Include="Resources\Icons\RemoveItem16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconDelete.png" />
+    <Resource Include="Resources\Icons\Drop16.png" />
+    <Resource Include="Resources\Icons\Invoke16.png" />
+    <Resource Include="Resources\Icons\MessageBox16.png" />
+    <Resource Include="Resources\Icons\RunPE16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconUacOverlay.png" />
+    <Resource Include="Resources\Icons\Empty16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconNew.png" />
+    <Resource Include="Resources\Images\SplashScreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconOpen.png" />
+    <Resource Include="Resources\Icons\Build16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconSave.png" />
+    <Resource Include="Resources\Icons\DirectoryOpen16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BytecodeApi.dll" />
+    <Resource Include="Resources\Theme\ResizeGrip.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconError.png" />
+    <Resource Include="Resources\Theme\ToolBarThumb.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconAbout.png" />
+    <Resource Include="Resources\Icons\SaveAll16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconWarning.png" />
+    <Resource Include="Resources\Icons\MoveDown16.png" />
+    <Resource Include="Resources\Icons\MoveUp16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconMissingFile.png" />
+    <Resource Include="Resources\Icons\MessageBoxPreview16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ImageAboutBanner.png" />
+    <Resource Include="Resources\Icons\FileProperties16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\FileLicense.txt" />
+    <Resource Include="Resources\Icons\OpenFileLocation16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconStartup.png" />
+    <Resource Include="Resources\Icons\UnhandledException48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconInfoIcon.png" />
+    <Resource Include="Resources\Icons\Confirmation16.png" />
+    <Resource Include="Resources\Icons\Error16.png" />
+    <Resource Include="Resources\Icons\Information16.png" />
+    <Resource Include="Resources\Icons\Warning16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ImageMissingIcon.png" />
+    <Resource Include="Resources\Images\WindowIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\FileManifestNone.res" />
+    <Resource Include="Resources\Theme\WindowClose.png" />
+    <Resource Include="Resources\Theme\WindowMaximize.png" />
+    <Resource Include="Resources\Theme\WindowMinimize.png" />
+    <Resource Include="Resources\Theme\WindowRestore.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconDirectory.png" />
+    <Resource Include="Resources\Icons\GitHub16.png" />
+    <Resource Include="Resources\Icons\Website16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconGitHub.png" />
+    <Resource Include="Resources\Images\AboutBanner.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconAddFiles.png" />
+    <Resource Include="Resources\Icons\Rtlo16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconInformation.png" />
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconOpenProjectFolder.png" />
+    <Resource Include="Resources\Icons\Help16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconClearRecents.png" />
+    <Resource Include="Resources\Icons\Help12.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\IconMessageBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconAddMessageBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ImageMessageBoxConfirmation.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ImageMessageBoxError.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ImageMessageBoxInformation.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ImageMessageBoxWarning.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconUrl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconAddUrl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconBytecode77.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="Resources\ImageSplashScreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconTabItemClose.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconPeuFile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconTabItemCloseMouseDown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconTabItemCloseMouseOver.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\IconRtlo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BytecodeApi.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BytecodeApi.UI.dll" />
-    <None Include="BytecodeApi.UI.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BytecodeApi.FileFormats.dll" />
-    <None Include="BytecodeApi.FileFormats.xml" />
+    <Resource Include="Resources\Icons\Startup16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(SolutionDir)$Build" &gt; NUL
-xcopy /Y "$(TargetPath)" "$(SolutionDir)$Build" &gt; NUL</PostBuildEvent>
+    <PostBuildEvent>mkdir "$(TargetDir)Config"
+mkdir "$(TargetDir)FASM"
+mkdir "$(TargetDir)Stub"
+mkdir "$(TargetDir)Help"
+
+xcopy /Y /E "$(SolutionDir)SlnBin\FASM" "$(TargetDir)FASM"
+xcopy /Y /E "$(SolutionDir)SlnBin\Stub" "$(TargetDir)Stub"
+xcopy /Y /E "$(SolutionDir)SlnBin\Config" "$(TargetDir)Config"
+xcopy /Y /E "$(SolutionDir)SlnBin\Help" "$(TargetDir)Help"
+xcopy /Y "$(SolutionDir)LICENSE.md" "$(TargetDir)"
+xcopy /Y "$(SolutionDir)LICENSE-3RD-PARTY.md" "$(TargetDir)"
+
+
+mkdir "$(SolutionDir)$Build"
+mkdir "$(SolutionDir)$Build\lib"
+mkdir "$(SolutionDir)$Build\Config"
+mkdir "$(SolutionDir)$Build\FASM"
+mkdir "$(SolutionDir)$Build\Stub"
+mkdir "$(SolutionDir)$Build\Help"
+
+xcopy /Y "$(TargetDir)BytecodeApi.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)BytecodeApi.FileFormats.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)BytecodeApi.FileIcons.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)BytecodeApi.UI.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)HtmlRenderer.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)HtmlRenderer.WPF.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(TargetDir)MarkdownSharp.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y /E "$(SolutionDir)SlnBin\Config" "$(SolutionDir)$Build\Config"
+xcopy /Y /E "$(SolutionDir)SlnBin\FASM" "$(SolutionDir)$Build\FASM"
+xcopy /Y /E "$(SolutionDir)SlnBin\Stub" "$(SolutionDir)$Build\Stub"
+xcopy /Y /E "$(SolutionDir)SlnBin\Help" "$(SolutionDir)$Build\Help"
+
+xcopy /Y "$(TargetPath)" "$(SolutionDir)$Build"
+xcopy /Y "$(TargetPath).config" "$(SolutionDir)$Build"
+xcopy /Y "$(SolutionDir)PEunion.Build\$(OutDir)\peubuild.exe" "$(SolutionDir)$Build"
+xcopy /Y "$(SolutionDir)PEunion.Build\$(OutDir)\peubuild.exe.config" "$(SolutionDir)$Build"
+xcopy /Y "$(SolutionDir)PEunion.Build\$(OutDir)\PEunion.Compiler.dll" "$(SolutionDir)$Build\lib"
+xcopy /Y "$(SolutionDir)LICENSE.md" "$(SolutionDir)$Build"
+xcopy /Y "$(SolutionDir)LICENSE-3RD-PARTY.md" "$(SolutionDir)$Build"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

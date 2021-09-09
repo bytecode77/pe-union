@@ -1,42 +1,55 @@
 ﻿using BytecodeApi;
+using BytecodeApi.UI;
 using System;
-using System.IO;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace PEunion
 {
 	public partial class App : Application
 	{
-		public static string Version => ApplicationBase.Version.ToString(3);
-		public static string ApplicationDirectoryPath
+		public static SingleInstance SingleInstance { get; private set; }
+
+		public App()
 		{
-			get
+			SingleInstance = new SingleInstance("PEUNION_SINGLE_INSTANCE");
+			if (SingleInstance.CheckInstanceRunning())
 			{
-				string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PEunion");
-				Directory.CreateDirectory(path);
-				return path;
+				SingleInstance.SendActivationMessage();
+				Shutdown();
+			}
+			else
+			{
+				ShutdownMode = ShutdownMode.OnMainWindowClose;
+				new SplashScreen("Resources/Images/SplashScreen.png").Show(true, true);
+			}
+
+			SystemParametersHelper.Initialize();
+		}
+		private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+		{
+			e.Handled = true;
+
+			if (CSharp.Try(() => MainWindowViewModel.Singleton.IsInitialized))
+			{
+				if (new UnhandledExceptionDialog(e.Exception, true).ShowDialog() == true)
+				{
+					Shutdown();
+				}
+			}
+			else
+			{
+				UnhandledExceptionDialog dialog = new UnhandledExceptionDialog(e.Exception, false);
+				dialog.Show();
+				dialog.Activate();
 			}
 		}
 
-		static App()
+		public static ImageSource GetIcon(string name)
 		{
-			AppDomain.CurrentDomain.AssemblyResolve += AppDomain_ResolveAssembly;
-		}
-		private void Application_Startup(object sender, StartupEventArgs e)
-		{
-			ToolTipService.InitialShowDelayProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(0));
-			ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(int.MaxValue));
-		}
-		private static Assembly AppDomain_ResolveAssembly(object sender, ResolveEventArgs e)
-		{
-			string name = new AssemblyName(e.Name).Name;
-
-			if (name == "BytecodeApi") return Assembly.Load(PEunion.Properties.Resources.BytecodeApi);
-			else if (name == "BytecodeApi.UI") return Assembly.Load(PEunion.Properties.Resources.BytecodeApiUI);
-			else if (name == "BytecodeApi.FileFormats") return Assembly.Load(PEunion.Properties.Resources.BytecodeApiFileFormats);
-			else return null;
+			return new BitmapImage(new Uri("/PEunion;component/Resources/Icons/" + name + ".png", UriKind.Relative));
 		}
 	}
 }
