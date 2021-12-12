@@ -15,24 +15,64 @@ namespace PEunion
 {
 	public sealed class ProjectModel : TabModel
 	{
+		private string _ProjectFileName;
+		private string _ProjectPath;
 		public string ProjectFileName
 		{
-			get => Get(() => ProjectFileName);
+			get => _ProjectFileName;
 			set
 			{
-				Set(() => ProjectFileName, value);
+				Set(ref _ProjectFileName, value);
 				TabTitle = ProjectFileName;
 			}
 		}
 		public string ProjectPath
 		{
-			get => Get(() => ProjectPath);
-			set => Set(() => ProjectPath, value);
+			get => _ProjectPath;
+			set => Set(ref _ProjectPath, value);
 		}
 
-		public override PageModel[] Pages => Get(() => Pages, () =>
+		private PageModel _SelectedPage;
+		private ErrorModel _Errors;
+		public override PageModel[] Pages { get; }
+		public override PageModel SelectedPage
 		{
-			PageModel[] pages = new PageModel[]
+			get => _SelectedPage;
+			set => Set(ref _SelectedPage, value);
+		}
+		public override ErrorModel Errors
+		{
+			get => _Errors;
+			set => Set(ref _Errors, value);
+		}
+		public StubModel Stub { get; private set; }
+		public StartupModel Startup { get; private set; }
+		public VersionInfoModel VersionInfo { get; private set; }
+		public ManifestModel Manifest { get; private set; }
+		public ObservableCollection<ProjectItemModel> Items { get; private set; }
+
+		public ProjectModel(string projectFileName)
+		{
+			TabIcon = App.GetIcon("Project16");
+			ProjectFileName = projectFileName;
+
+			Stub = new StubModel();
+			Stub.IsSelected = true;
+			Stub.Changed += Project_Changed;
+
+			Startup = new StartupModel();
+			Startup.Changed += Project_Changed;
+
+			VersionInfo = new VersionInfoModel();
+			VersionInfo.Changed += Project_Changed;
+
+			Manifest = new ManifestModel();
+			Manifest.Changed += Project_Changed;
+
+			Items = new ObservableCollection<ProjectItemModel>();
+			Items.CollectionChanged += Items_CollectionChanged;
+
+			Pages = new PageModel[]
 			{
 				new ProjectPage(new PageModel[]
 				{
@@ -44,54 +84,7 @@ namespace PEunion
 				new ItemsPage(Items)
 			};
 
-			Stub.IsSelected = true;
-			return pages;
-		});
-		public override PageModel SelectedPage
-		{
-			get => Get(() => SelectedPage);
-			set => Set(() => SelectedPage, value);
-		}
-		public StubModel Stub => Get(() => Stub, () =>
-		{
-			StubModel stub = new StubModel();
-			stub.Changed += Project_Changed;
-			return stub;
-		});
-		public StartupModel Startup => Get(() => Startup, () =>
-		{
-			StartupModel startup = new StartupModel();
-			startup.Changed += Project_Changed;
-			return startup;
-		});
-		public VersionInfoModel VersionInfo => Get(() => VersionInfo, () =>
-		{
-			VersionInfoModel versionInfo = new VersionInfoModel();
-			versionInfo.Changed += Project_Changed;
-			return versionInfo;
-		});
-		public ManifestModel Manifest => Get(() => Manifest, () =>
-		{
-			ManifestModel manifest = new ManifestModel();
-			manifest.Changed += Project_Changed;
-			return manifest;
-		});
-		public ObservableCollection<ProjectItemModel> Items => Get(() => Items, () =>
-		{
-			ObservableCollection<ProjectItemModel> items = new ObservableCollection<ProjectItemModel>();
-			items.CollectionChanged += Items_CollectionChanged;
-			return items;
-		});
-		public override ErrorModel Errors
-		{
-			get => Get(() => Errors, () => new ErrorModel(this));
-			set => Set(() => Errors, value);
-		}
-
-		public ProjectModel(string projectFileName)
-		{
-			TabIcon = App.GetIcon("Project16");
-			ProjectFileName = projectFileName;
+			Errors = new ErrorModel(this);
 		}
 		public static ProjectModel Create(string projectFileName)
 		{

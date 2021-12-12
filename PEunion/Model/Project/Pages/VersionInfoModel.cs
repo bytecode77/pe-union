@@ -4,50 +4,59 @@ namespace PEunion
 {
 	public sealed class VersionInfoModel : PageModel
 	{
+		private string _FileDescription;
+		private string _ProductName;
+		private int _FileVersion1;
+		private int _FileVersion2;
+		private int _FileVersion3;
+		private int _FileVersion4;
+		private string _ProductVersion;
+		private string _Copyright;
+		private string _OriginalFilename;
 		public string FileDescription
 		{
-			get => Get(() => FileDescription);
-			set => Set(() => FileDescription, value);
+			get => _FileDescription;
+			set => Set(ref _FileDescription, value);
 		}
 		public string ProductName
 		{
-			get => Get(() => ProductName);
-			set => Set(() => ProductName, value);
+			get => _ProductName;
+			set => Set(ref _ProductName, value);
 		}
 		public int FileVersion1
 		{
-			get => Get(() => FileVersion1);
-			set => Set(() => FileVersion1, MathEx.Map(value, 0, 65535));
+			get => _FileVersion1;
+			set => Set(ref _FileVersion1, MathEx.Map(value, 0, 65535));
 		}
 		public int FileVersion2
 		{
-			get => Get(() => FileVersion2);
-			set => Set(() => FileVersion2, MathEx.Map(value, 0, 65535));
+			get => _FileVersion2;
+			set => Set(ref _FileVersion2, MathEx.Map(value, 0, 65535));
 		}
 		public int FileVersion3
 		{
-			get => Get(() => FileVersion3);
-			set => Set(() => FileVersion3, MathEx.Map(value, 0, 65535));
+			get => _FileVersion3;
+			set => Set(ref _FileVersion3, MathEx.Map(value, 0, 65535));
 		}
 		public int FileVersion4
 		{
-			get => Get(() => FileVersion4);
-			set => Set(() => FileVersion4, MathEx.Map(value, 0, 65535));
+			get => _FileVersion4;
+			set => Set(ref _FileVersion4, MathEx.Map(value, 0, 65535));
 		}
 		public string ProductVersion
 		{
-			get => Get(() => ProductVersion);
-			set => Set(() => ProductVersion, value);
+			get => _ProductVersion;
+			set => Set(ref _ProductVersion, value);
 		}
 		public string Copyright
 		{
-			get => Get(() => Copyright);
-			set => Set(() => Copyright, value);
+			get => _Copyright;
+			set => Set(ref _Copyright, value);
 		}
 		public string OriginalFilename
 		{
-			get => Get(() => OriginalFilename);
-			set => Set(() => OriginalFilename, value);
+			get => _OriginalFilename;
+			set => Set(ref _OriginalFilename, value);
 		}
 
 		public VersionInfoModel() : base(PageTemplate.VersionInfo, "Version Info")

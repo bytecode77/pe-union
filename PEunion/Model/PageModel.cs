@@ -10,35 +10,41 @@ namespace PEunion
 	{
 		private static readonly string[] InheritedPropertyNames = typeof(PageModel).GetProperties().Select(property => property.Name).ToArray();
 
+		private PageTemplate _PageTemplate;
+		private string _PageTitle;
+		private bool _IsVisible = true;
+		private bool _IsSelected;
+		private bool _IsExpanded;
+		private IEnumerable<PageModel> _SubPages;
 		public PageTemplate PageTemplate
 		{
-			get => Get(() => PageTemplate);
-			set => Set(() => PageTemplate, value);
+			get => _PageTemplate;
+			set => Set(ref _PageTemplate, value);
 		}
 		public string PageTitle
 		{
-			get => Get(() => PageTitle);
-			set => Set(() => PageTitle, value);
+			get => _PageTitle;
+			set => Set(ref _PageTitle, value);
 		}
 		public bool IsVisible
 		{
-			get => Get(() => IsVisible, true);
-			set => Set(() => IsVisible, value);
+			get => _IsVisible;
+			set => Set(ref _IsVisible, value);
 		}
 		public bool IsSelected
 		{
-			get => Get(() => IsSelected);
-			set => Set(() => IsSelected, value);
+			get => _IsSelected;
+			set => Set(ref _IsSelected, value);
 		}
 		public bool IsExpanded
 		{
-			get => Get(() => IsExpanded);
-			set => Set(() => IsExpanded, value && SubPages?.Any() == true);
+			get => _IsExpanded;
+			set => Set(ref _IsExpanded, value && SubPages?.Any() == true);
 		}
 		public IEnumerable<PageModel> SubPages
 		{
-			get => Get(() => SubPages);
-			set => Set(() => SubPages, value);
+			get => _SubPages;
+			set => Set(ref _SubPages, value);
 		}
 		public event PropertyChangedEventHandler Changed;
 

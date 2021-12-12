@@ -14,26 +14,29 @@ namespace PEunion
 
 		private static readonly int DefaultWindowWidth = (int)Math.Min(SystemParameters.PrimaryScreenWidth * .75, SystemParameters.PrimaryScreenHeight);
 		private static readonly int DefaultWindowHeight = (int)(SystemParameters.PrimaryScreenHeight * .75);
+		private int _BottomPanelSelectedIndex;
+		private GridLength _Splitter1Position;
+		private GridLength _Splitter2Position;
 		public int BottomPanelSelectedIndex
 		{
-			get => Get(() => BottomPanelSelectedIndex);
-			set => Set(() => BottomPanelSelectedIndex, value);
+			get => _BottomPanelSelectedIndex;
+			set => Set(ref _BottomPanelSelectedIndex, value);
 		}
 		public GridLength Splitter1Position
 		{
-			get => Get(() => Splitter1Position, () => new GridLength(250));
+			get => _Splitter1Position;
 			set
 			{
-				Set(() => Splitter1Position, value);
+				Set(ref _Splitter1Position, value);
 				Config.ViewState.WindowSplitter1 = (int)Splitter1Position.Value;
 			}
 		}
 		public GridLength Splitter2Position
 		{
-			get => Get(() => Splitter2Position, () => new GridLength(DefaultWindowHeight / 4));
+			get => _Splitter2Position;
 			set
 			{
-				Set(() => Splitter2Position, value);
+				Set(ref _Splitter2Position, value);
 				Config.ViewState.WindowSplitter2 = (int)Splitter2Position.Value;
 			}
 		}
@@ -67,8 +70,8 @@ namespace PEunion
 			}
 
 			if (Config.ViewState.WindowMaximized) WindowState = WindowState.Maximized;
-			if (Config.ViewState.WindowSplitter1 is int splitter1) Splitter1Position = new GridLength(splitter1);
-			if (Config.ViewState.WindowSplitter2 is int splitter2) Splitter2Position = new GridLength(splitter2);
+			Splitter1Position = new GridLength(Config.ViewState.WindowSplitter1 is int splitter1 ? splitter1 : 250);
+			Splitter2Position = new GridLength(Config.ViewState.WindowSplitter2 is int splitter2 ? splitter2 : DefaultWindowHeight / 4);
 
 			Singleton = this;
 		}

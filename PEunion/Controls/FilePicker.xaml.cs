@@ -2,6 +2,7 @@
 using BytecodeApi.IO.FileSystem;
 using BytecodeApi.UI;
 using BytecodeApi.UI.Dialogs;
+using BytecodeApi.UI.Extensions;
 using PEunion.Compiler;
 using System;
 using System.IO;
@@ -18,40 +19,42 @@ namespace PEunion
 		public static readonly DependencyProperty BaseDirectoryDisplayNameProperty = DependencyPropertyEx.Register(nameof(BaseDirectoryDisplayName), new PropertyMetadata(Property_Changed));
 		public static readonly DependencyProperty ExtensionsProperty = DependencyPropertyEx.Register(nameof(Extensions));
 		public static readonly DependencyProperty ExtensionsDescriptionProperty = DependencyPropertyEx.Register(nameof(ExtensionsDescription));
+		private string _DisplayPath;
+		private ImageSource _DisplayIcon;
 		public string Path
 		{
-			get => GetValue(() => Path);
-			set => SetValue(() => Path, value);
+			get => this.GetValue<string>(PathProperty);
+			set => SetValue(PathProperty, value);
 		}
 		public string BaseDirectory
 		{
-			get => GetValue(() => BaseDirectory);
-			set => SetValue(() => BaseDirectory, value);
+			get => this.GetValue<string>(BaseDirectoryProperty);
+			set => SetValue(BaseDirectoryProperty, value);
 		}
 		public string BaseDirectoryDisplayName
 		{
-			get => GetValue(() => BaseDirectoryDisplayName);
-			set => SetValue(() => BaseDirectoryDisplayName, value);
+			get => this.GetValue<string>(BaseDirectoryDisplayNameProperty);
+			set => SetValue(BaseDirectoryDisplayNameProperty, value);
 		}
 		public string Extensions
 		{
-			get => GetValue(() => Extensions);
-			set => SetValue(() => Extensions, value);
+			get => this.GetValue<string>(ExtensionsProperty);
+			set => SetValue(ExtensionsProperty, value);
 		}
 		public string ExtensionsDescription
 		{
-			get => GetValue(() => ExtensionsDescription);
-			set => SetValue(() => ExtensionsDescription, value);
+			get => this.GetValue<string>(ExtensionsDescriptionProperty);
+			set => SetValue(ExtensionsDescriptionProperty, value);
 		}
 		public string DisplayPath
 		{
-			get => Get(() => DisplayPath);
-			private set => Set(() => DisplayPath, value);
+			get => _DisplayPath;
+			private set => Set(ref _DisplayPath, value);
 		}
 		public ImageSource DisplayIcon
 		{
-			get => Get(() => DisplayIcon);
-			private set => Set(() => DisplayIcon, value);
+			get => _DisplayIcon;
+			private set => Set(ref _DisplayIcon, value);
 		}
 
 		public FilePicker()

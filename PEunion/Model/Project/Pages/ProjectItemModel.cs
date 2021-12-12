@@ -7,35 +7,41 @@ namespace PEunion
 {
 	public abstract class ProjectItemModel : PageModel
 	{
+		private ProjectItemSource _Source = ProjectItemSource.Embedded;
+		private string _SourceId = Create.Guid(GuidFormat.Hyphens);
+		private string _SourceEmbeddedPath;
+		private bool _SourceEmbeddedCompress;
+		private bool _SourceEmbeddedEofData;
+		private string _SourceDownloadUrl;
 		public ProjectItemSource Source
 		{
-			get => Get(() => Source, ProjectItemSource.Embedded);
-			set => Set(() => Source, value);
+			get => _Source;
+			set => Set(ref _Source, value);
 		}
 		public string SourceId
 		{
-			get => Get(() => SourceId, () => Create.Guid(GuidFormat.Hyphens));
-			set => Set(() => SourceId, value);
+			get => _SourceId;
+			set => Set(ref _SourceId, value);
 		}
 		public string SourceEmbeddedPath
 		{
-			get => Get(() => SourceEmbeddedPath);
-			set => Set(() => SourceEmbeddedPath, value);
+			get => _SourceEmbeddedPath;
+			set => Set(ref _SourceEmbeddedPath, value);
 		}
 		public bool SourceEmbeddedCompress
 		{
-			get => Get(() => SourceEmbeddedCompress);
-			set => Set(() => SourceEmbeddedCompress, value);
+			get => _SourceEmbeddedCompress;
+			set => Set(ref _SourceEmbeddedCompress, value);
 		}
 		public bool SourceEmbeddedEofData
 		{
-			get => Get(() => SourceEmbeddedEofData);
-			set => Set(() => SourceEmbeddedEofData, value);
+			get => _SourceEmbeddedEofData;
+			set => Set(ref _SourceEmbeddedEofData, value);
 		}
 		public string SourceDownloadUrl
 		{
-			get => Get(() => SourceDownloadUrl);
-			set => Set(() => SourceDownloadUrl, value);
+			get => _SourceDownloadUrl;
+			set => Set(ref _SourceDownloadUrl, value);
 		}
 
 		public ProjectItemModel(PageTemplate pageTemplate, string pageTitle) : base(pageTemplate, pageTitle)

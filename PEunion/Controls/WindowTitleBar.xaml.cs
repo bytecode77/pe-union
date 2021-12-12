@@ -14,18 +14,18 @@ namespace PEunion
 		public static readonly DependencyProperty ToolBarProperty = DependencyPropertyEx.Register(nameof(ToolBar));
 		public ImageSource Icon
 		{
-			get => GetValue(() => Icon);
-			set => SetValue(() => Icon, value);
+			get => this.GetValue<ImageSource>(IconProperty);
+			set => SetValue(IconProperty, value);
 		}
 		public Menu MainMenu
 		{
-			get => GetValue(() => MainMenu);
-			set => SetValue(() => MainMenu, value);
+			get => this.GetValue<Menu>(MainMenuProperty);
+			set => SetValue(MainMenuProperty, value);
 		}
 		public ToolBarTray ToolBar
 		{
-			get => GetValue(() => ToolBar);
-			set => SetValue(() => ToolBar, value);
+			get => this.GetValue<ToolBarTray>(ToolBarProperty);
+			set => SetValue(ToolBarProperty, value);
 		}
 		public Window Owner => this.FindParent<Window>(UITreeType.Logical);
 

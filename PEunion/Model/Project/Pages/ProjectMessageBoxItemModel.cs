@@ -4,60 +4,71 @@ namespace PEunion
 {
 	public sealed class ProjectMessageBoxItemModel : ProjectItemModel
 	{
+		private string _Title;
+		private string _Text;
+		private MessageBoxIcon _Icon = MessageBoxIcon.None;
+		private MessageBoxButtons _Buttons = MessageBoxButtons.Ok;
+		private ActionEvent _OnOk = ActionEvent.None;
+		private ActionEvent _OnCancel = ActionEvent.None;
+		private ActionEvent _OnYes = ActionEvent.None;
+		private ActionEvent _OnNo = ActionEvent.None;
+		private ActionEvent _OnAbort = ActionEvent.None;
+		private ActionEvent _OnRetry = ActionEvent.None;
+		private ActionEvent _OnIgnore = ActionEvent.None;
 		public string Title
 		{
-			get => Get(() => Title);
-			set => Set(() => Title, value);
+			get => _Title;
+			set => Set(ref _Title, value);
 		}
 		public string Text
 		{
-			get => Get(() => Text);
-			set => Set(() => Text, value);
+			get => _Text;
+			set => Set(ref _Text, value);
 		}
 		public MessageBoxIcon Icon
 		{
-			get => Get(() => Icon, MessageBoxIcon.None);
-			set => Set(() => Icon, value);
+			get => _Icon;
+			set => Set(ref _Icon, value);
 		}
 		public MessageBoxButtons Buttons
 		{
-			get => Get(() => Buttons, MessageBoxButtons.Ok);
-			set => Set(() => Buttons, value);
+			get => _Buttons;
+			set => Set(ref _Buttons, value);
 		}
 		public ActionEvent OnOk
 		{
-			get => Get(() => OnOk, ActionEvent.None);
-			set => Set(() => OnOk, value);
+			get => _OnOk;
+			set => Set(ref _OnOk, value);
 		}
 		public ActionEvent OnCancel
 		{
-			get => Get(() => OnCancel, ActionEvent.None);
-			set => Set(() => OnCancel, value);
+			get => _OnCancel;
+			set => Set(ref _OnCancel, value);
 		}
 		public ActionEvent OnYes
 		{
-			get => Get(() => OnYes, ActionEvent.None);
-			set => Set(() => OnYes, value);
+			get => _OnYes;
+			set => Set(ref _OnYes, value);
 		}
 		public ActionEvent OnNo
 		{
-			get => Get(() => OnNo, ActionEvent.None);
-			set => Set(() => OnNo, value);
+			get => _OnNo;
+			set => Set(ref _OnNo, value);
 		}
 		public ActionEvent OnAbort
 		{
-			get => Get(() => OnAbort, ActionEvent.None);
-			set => Set(() => OnAbort, value);
+			get => _OnAbort;
+			set => Set(ref _OnAbort, value);
 		}
 		public ActionEvent OnRetry
 		{
-			get => Get(() => OnRetry, ActionEvent.None);
-			set => Set(() => OnRetry, value);
+			get => _OnRetry;
+			set => Set(ref _OnRetry, value);
 		}
 		public ActionEvent OnIgnore
 		{
-			get => Get(() => OnIgnore, ActionEvent.None);
-			set => Set(() => OnIgnore, value);
+			get => _OnIgnore;
+			set => Set(ref _OnIgnore, value);
 		}
 
 		public ProjectMessageBoxItemModel() : base(PageTemplate.MessageBoxItem, "MessageBox")

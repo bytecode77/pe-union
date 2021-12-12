@@ -15,57 +15,57 @@ namespace PEunion
 		private readonly Deferrer UpdateDeferrer;
 		private bool UpdateDeferrerSkipNext;
 
+		private ProjectModel _Project;
+		private ObservableCollection<Error> _Errors = new ObservableCollection<Error>();
+		private ObservableCollection<Error> _FilteredErrors = new ObservableCollection<Error>();
+		private bool _ShowSeverityError = true;
+		private bool _ShowSeverityWarning = true;
+		private bool _ShowSeverityMessage = true;
 		public ProjectModel Project
 		{
-			get => Get(() => Project);
-			set => Set(() => Project, value);
+			get => _Project;
+			set => Set(ref _Project, value);
 		}
-
 		public ObservableCollection<Error> Errors
 		{
-			get => Get(() => Errors, () =>
-			{
-				ObservableCollection<Error> errors = new ObservableCollection<Error>();
-				errors.CollectionChanged += Errors_CollectionChanged;
-				return errors;
-			});
+			get => _Errors;
 			set
 			{
 				if (Errors != null) Errors.CollectionChanged -= Errors_CollectionChanged;
-				Set(() => Errors, value);
+				Set(ref _Errors, value);
 				FilterErrors();
 				if (Errors != null) Errors.CollectionChanged += Errors_CollectionChanged;
 			}
 		}
 		public ObservableCollection<Error> FilteredErrors
 		{
-			get => Get(() => FilteredErrors, () => new ObservableCollection<Error>());
-			set => Set(() => FilteredErrors, value);
+			get => _FilteredErrors;
+			set => Set(ref _FilteredErrors, value);
 		}
 		public bool ShowSeverityError
 		{
-			get => Get(() => ShowSeverityError, true);
+			get => _ShowSeverityError;
 			set
 			{
-				Set(() => ShowSeverityError, value);
+				Set(ref _ShowSeverityError, value);
 				FilterErrors();
 			}
 		}
 		public bool ShowSeverityWarning
 		{
-			get => Get(() => ShowSeverityWarning, true);
+			get => _ShowSeverityWarning;
 			set
 			{
-				Set(() => ShowSeverityWarning, value);
+				Set(ref _ShowSeverityWarning, value);
 				FilterErrors();
 			}
 		}
 		public bool ShowSeverityMessage
 		{
-			get => Get(() => ShowSeverityMessage, true);
+			get => _ShowSeverityMessage;
 			set
 			{
-				Set(() => ShowSeverityMessage, value);
+				Set(ref _ShowSeverityMessage, value);
 				FilterErrors();
 			}
 		}
@@ -104,9 +104,9 @@ namespace PEunion
 				.OrderByDescending(error => error.Severity)
 				.ToObservableCollection();
 
-			RaisePropertyChanged(() => SeverityCountError);
-			RaisePropertyChanged(() => SeverityCountWarning);
-			RaisePropertyChanged(() => SeverityCountMessage);
+			RaisePropertyChanged(nameof(SeverityCountError));
+			RaisePropertyChanged(nameof(SeverityCountWarning));
+			RaisePropertyChanged(nameof(SeverityCountMessage));
 		}
 
 		private void UpdateDeferrer_Invoke()

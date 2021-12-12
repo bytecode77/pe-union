@@ -4,6 +4,868 @@
         <name>BytecodeApi.FileFormats</name>
     </assembly>
     <members>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector">
+            <summary>
+            Class to automatically detect the delimiter of CSV files.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.DelimitersToTest">
+            <summary>
+            A <see cref="T:System.String" />[] specifying the delimiters to test for.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MinRowsToTest">
+            <summary>
+            The minimum amount of rows that the CSV file must have in order to determine a delimiter.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MaxRowsToTest">
+            <summary>
+            The maximum amount of rows that should be tested. The CSV file can contain less rows, but no less than <see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MinRowsToTest" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.#ctor(System.String[],System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector" /> class.
+            </summary>
+            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for.</param>
+            <param name="minRowsToTest">The minimum amount of rows that the CSV file must have in order to determine a delimiter. If the file has less rows, the delimiter is considered indeterminable.</param>
+            <param name="maxRowsToTest">The maximum amount of rows that should be tested. The CSV file can contain less rows, but no less than <paramref name="minRowsToTest" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.CreateDefault">
+            <summary>
+            Creates the a default <see cref="T:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector" /> with following values:
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.DelimitersToTest" /> = ",", ";", "\t", "|"</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MinRowsToTest" /> = 2</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MaxRowsToTest" /> = 10</para>
+            </summary>
+            <returns>CsvDelimiterDetector.</returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromFile(System.String)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromFile(System.String,System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromBinary(System.Byte[])">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromBinary(System.Byte[],System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromStream(System.IO.Stream)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset to the original position before this method returns.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.FromStream(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset to the original position before this method returns.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvIterator">
+            <summary>
+            Provides support for read and write iteration over arbitrarily large CSV files.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvIterator.DelimiterDetector">
+            <summary>
+            Gets or sets the delimiter detector to be used when reading a CSV file and the delimiter parameter is <see langword="null" />.
+            <para>This property is global for the <see cref="T:BytecodeApi.FileFormats.Csv.CsvIterator" /> class.</para>
+            <para>Default values are:</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.DelimitersToTest" /> = ",", ";", "\t", "|"</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MinRowsToTest" /> = 2</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MaxRowsToTest" /> = 10</para>
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromFile(System.String)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromFile(System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromFile(System.String,System.Boolean,System.String)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromFile(System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromFile(System.String,System.Boolean,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream,System.Boolean,System.String)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and ignore it.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToFile(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToFile(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToFile(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the file.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToStream(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToStream(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToStream(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the <see cref="T:System.IO.Stream" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvIterator.ToStream(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
+            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the <see cref="T:System.IO.Stream" />.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+        </member>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvCell">
+            <summary>
+            Represents a cell in a <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> of a CSV file.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Value">
+            <summary>
+            Gets or sets the cell content of a CSV file.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Int32Value">
+            <summary>
+            Gets or sets the parsed <see cref="T:System.Int32" /> value of the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property. If conversion fails, <see langword="null" /> is returned. Assigning a value sets the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property by converting the value to a <see cref="T:System.String" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Int64Value">
+            <summary>
+            Gets or sets the parsed <see cref="T:System.Int64" /> value of the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property. If conversion fails, <see langword="null" /> is returned. Assigning a value sets the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property by converting the value to a <see cref="T:System.String" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> structure with the specified value.
+            </summary>
+            <param name="value">The <see cref="T:System.String" /> value of this cell.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> whose value was parsed from the CSV file.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> whose value was parsed from the CSV file.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+            <see langword="true" />, if the specified <see cref="T:System.Object" /> is equal to this instance;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.Equals(BytecodeApi.FileFormats.Csv.CsvCell)">
+            <summary>
+            Determines whether this instance is equal to another <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" />.
+            </summary>
+            <param name="other">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare to this instance.</param>
+            <returns>
+            <see langword="true" />, if this instance is equal to the <paramref name="other" /> parameter;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.GetHashCode">
+            <summary>
+            Returns a hash code for this <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" />.
+            </summary>
+            <returns>
+            The hash code for this <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instance.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.op_Equality(BytecodeApi.FileFormats.Csv.CsvCell,BytecodeApi.FileFormats.Csv.CsvCell)">
+            <summary>
+            Compares two <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instances for equality.
+            </summary>
+            <param name="a">The first <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
+            <param name="b">The second <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
+            <returns>
+            <see langword="true" />, if both <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> are equal;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.op_Inequality(BytecodeApi.FileFormats.Csv.CsvCell,BytecodeApi.FileFormats.Csv.CsvCell)">
+            <summary>
+            Compares two <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instances for inequality.
+            </summary>
+            <param name="a">The first <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
+            <param name="b">The second <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
+            <returns>
+            <see langword="true" />, if both <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> are not equal;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvFile">
+            <summary>
+            Represents a database read from a CSV files with lines separated by a delimiter.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.DelimiterDetector">
+            <summary>
+            Gets or sets the delimiter detector to be used when reading a CSV file and the delimiter parameter is <see langword="null" />.
+            <para>This property is global for the <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> class.</para>
+            <para>Default values are:</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.DelimitersToTest" /> = ",", ";", "\t", "|"</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MinRowsToTest" /> = 2</para>
+            <para><see cref="P:BytecodeApi.FileFormats.Csv.CsvDelimiterDetector.MaxRowsToTest" /> = 10</para>
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers">
+            <summary>
+            Gets or sets a <see cref="T:System.String" />[] that contains the headers of this CSV file or <see langword="null" />, if the hasHeaderRow parameter was set to <see langword="false" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter">
+            <summary>
+            Gets or sets the delimiter for this CSV file. The initial value is set to the specified or detected delimiter when loading the CSV file, or <see langword="null" />, if the constructor was used to create an empty <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" />. This property is used by the <see cref="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Text.Encoding,System.Boolean)" /> method.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Rows">
+            <summary>
+            Gets a collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects that represents the content of this CSV file.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.HasErrors">
+            <summary>
+            Gets a <see cref="T:System.Boolean" /> value indicating whether this CSV file contains rows that could not be parsed. This property does not change once the file is loaded.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.IsColumnCountConsistent">
+            <summary>
+            Gets a <see cref="T:System.Boolean" /> value indicating whether all rows in this CSV file have the same amount of columns, excluding the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property and error lines. If zero rows or only error rows were loaded, this property returns <see langword="true" />. This property does not change once the file is loaded.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.Boolean,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> representing the path to a CSV file.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[])">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a CSV file.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a CSV file.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.Boolean,System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a CSV file.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a CSV file.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.Boolean,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a CSV file.
+            </summary>
+            <param name="file">The <see cref="T:System.Byte" />[] that represents a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromString(System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.String" /> that represents the contents of a CSV file.
+            </summary>
+            <param name="csv">The <see cref="T:System.String" /> that represents the contents of a CSV file to read from.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromString(System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.String" /> that represents the contents of a CSV file.
+            </summary>
+            <param name="csv">The <see cref="T:System.String" /> that represents the contents of a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromString(System.String,System.Boolean,System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.String" /> that represents the contents of a CSV file.
+            </summary>
+            <param name="csv">The <see cref="T:System.String" /> that represents the contents of a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromString(System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.String" /> that represents the contents of a CSV file.
+            </summary>
+            <param name="csv">The <see cref="T:System.String" /> that represents the contents of a CSV file to read from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.Boolean,System.String)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.Boolean,System.String,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the CSV file from.</param>
+            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
+            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during CSV parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
+            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
+            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+            <returns>
+            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.CheckColumnCount(System.Int32)">
+            <summary>
+            Checks whether the column count of all rows is equal to <paramref name="columnCount" />, excluding the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property and error rows.
+            </summary>
+            <param name="columnCount">A <see cref="T:System.Int32" /> value specifying the expected column count for all rows.</param>
+            <returns>
+            <see langword="true" />, if the column count of all rows is equal to <paramref name="columnCount" />, or it no rows were imported;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.GetColumnIndex(System.String)">
+            <summary>
+            Tries to find the column index of a specified case sensitive column header name. Returns -1, if the column header was not found.
+            </summary>
+            <param name="header">A <see cref="T:System.String" /> specifying the case sensitive name of the column header to search for.</param>
+            <returns>
+            The zero-based index of the column header, or -1, if the column header was not found.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.GetColumnIndex(System.String,System.Boolean)">
+            <summary>
+            Tries to find the column index of a specified case header name. Returns -1, if the column header was not found.
+            </summary>
+            <param name="header">A <see cref="T:System.String" /> specifying the case sensitive name of the column header to search for.</param>
+            <param name="ignoreCase"><see langword="true" /> to ignore character casing during column name comparison.</param>
+            <returns>
+            The zero-based index of the column header, or -1, if the column header was not found.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String)">
+            <summary>
+            Writes the contents of this CSV to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path to a file to which this CSV file is written to.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String,System.Boolean)">
+            <summary>
+            Writes the contents of this CSV to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path to a file to which this CSV file is written to.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes the contents of this CSV to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="path">A <see cref="T:System.String" /> specifying the path to a file to which this CSV file is written to.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the file.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream)">
+            <summary>
+            Writes the contents of this CSV to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this CSV is written to.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean)">
+            <summary>
+            Writes the contents of this CSV to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this CSV is written to.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Text.Encoding)">
+            <summary>
+            Writes the contents of this CSV to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this CSV is written to.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the file.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Writes the contents of this CSV to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this CSV is written to.</param>
+            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
+            <param name="encoding">The encoding to use to write to the file.</param>
+            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
+        </member>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvRow">
+            <summary>
+            Represents a row of a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> at the specified column index.
+            </summary>
+            <param name="index">The zero-based column index.</param>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> at the specified column name, represented as an Excel column name (like A, B, ... AA, AB, ...).
+            </summary>
+            <param name="column">A <see cref="T:System.String" /> specifying the one-based column index, represented as an Excel column name (like A, B, ... AA, AB, ...).</param>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Count">
+            <summary>
+            Gets the number of cells in this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.LineNumber">
+            <summary>
+            Gets the one-based line number of this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> object, if it was loaded from an existing CSV source. Returns -1, if the row has been manually initialized.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.ErrorLine">
+            <summary>
+            If the line could not be parsed, gets the <see cref="T:System.String" /> representing the original line, otherwise returns <see langword="null" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvCell})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
+            </summary>
+            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(BytecodeApi.FileFormats.Csv.CsvCell[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
+            </summary>
+            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
+            </summary>
+            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />, represented as <see cref="T:System.String" /> objects.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
+            </summary>
+            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />, represented as <see cref="T:System.String" /> objects.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> cell collection.
+            </summary>
+            <returns>
+            An enumerator that can be used to iterate through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> cell collection.
+            </returns>
+        </member>
+        <member name="T:BytecodeApi.FileFormats.Csv.CsvRowCollection">
+            <summary>
+            Represents a collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> at the specified index.
+            </summary>
+            <param name="index">The index at which to retrieve the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.Count">
+            <summary>
+            Gets the number of rows in this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+        </member>
+        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" /> is read-only.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" /> class.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Add(BytecodeApi.FileFormats.Csv.CsvRow)">
+            <summary>
+            Adds an <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to the end of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to be added to the end of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Remove(BytecodeApi.FileFormats.Csv.CsvRow)">
+            <summary>
+            Removes the first occurrence of a specific <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to remove from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="item" /> is successfully removed;
+            otherwise, <see langword="false" />.
+            This method also returns <see langword="false" />, if <paramref name="item" /> was not found in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Clear">
+            <summary>
+            Removes all elements from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Contains(BytecodeApi.FileFormats.Csv.CsvRow)">
+            <summary>
+            Determines whether an element is in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to locate in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
+            <returns>
+            <see langword="true" />, if <paramref name="item" /> is found in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />;
+            otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </summary>
+            <returns>
+            An enumerator that can be used to iterate through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
+            </returns>
+        </member>
         <member name="T:BytecodeApi.FileFormats.PE.ImageCharacteristics">
             <summary>
             Specifies the values for the <see cref="P:BytecodeApi.FileFormats.PE.ImageCoffHeader.Characteristics" /> property of the COFF header of a PE image file.
@@ -1155,11 +2017,6 @@
             Gets the collection of section headers and data of this PE image file.
             </summary>
         </member>
-        <member name="M:BytecodeApi.FileFormats.PE.PEImage.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.PE.PEImage" /> class.
-            </summary>
-        </member>
         <member name="M:BytecodeApi.FileFormats.PE.PEImage.FromFile(System.String)">
             <summary>
             Creates a <see cref="T:BytecodeApi.FileFormats.PE.PEImage" /> from the specified file with the specified form name.
@@ -1194,772 +2051,6 @@
             </summary>
             <param name="offset">The offset within the image file at which parsing failed.</param>
             <param name="message">The message that describes the error.</param>
-        </member>
-        <member name="T:BytecodeApi.FileFormats.Csv.CsvCell">
-            <summary>
-            Represents a cell in a <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> of a flat file database.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Value">
-            <summary>
-            Gets or sets the cell content of a flat file database.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Int32Value">
-            <summary>
-            Gets or sets the parsed <see cref="T:System.Int32" /> value of the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property. If conversion fails, <see langword="null" /> is returned. Assigning a value sets the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property by converting the value to a <see cref="T:System.String" />.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvCell.Int64Value">
-            <summary>
-            Gets or sets the parsed <see cref="T:System.Int64" /> value of the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property. If conversion fails, <see langword="null" /> is returned. Assigning a value sets the <see cref="P:BytecodeApi.FileFormats.Csv.CsvCell.Value" /> property by converting the value to a <see cref="T:System.String" />.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> structure with the specified value.
-            </summary>
-            <param name="value">The <see cref="T:System.String" /> value of this cell.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.ToString">
-            <summary>
-            Returns a <see cref="T:System.String" /> whose value was parsed from the flat file database.
-            </summary>
-            <returns>
-            A <see cref="T:System.String" /> whose value was parsed from the flat file database.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.Equals(System.Object)">
-            <summary>
-            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
-            </summary>
-            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
-            <returns>
-            <see langword="true" />, if the specified <see cref="T:System.Object" /> is equal to this instance;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.Equals(BytecodeApi.FileFormats.Csv.CsvCell)">
-            <summary>
-            Determines whether this instance is equal to another <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" />.
-            </summary>
-            <param name="other">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare to this instance.</param>
-            <returns>
-            <see langword="true" />, if this instance is equal to the <paramref name="other" /> parameter;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.GetHashCode">
-            <summary>
-            Returns a hash code for this <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" />.
-            </summary>
-            <returns>
-            The hash code for this <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instance.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.op_Equality(BytecodeApi.FileFormats.Csv.CsvCell,BytecodeApi.FileFormats.Csv.CsvCell)">
-            <summary>
-            Compares two <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instances for equality.
-            </summary>
-            <param name="a">The first <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
-            <param name="b">The second <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
-            <returns>
-            <see langword="true" />, if both <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> are equal;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvCell.op_Inequality(BytecodeApi.FileFormats.Csv.CsvCell,BytecodeApi.FileFormats.Csv.CsvCell)">
-            <summary>
-            Compares two <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> instances for inequality.
-            </summary>
-            <param name="a">The first <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
-            <param name="b">The second <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> to compare.</param>
-            <returns>
-            <see langword="true" />, if both <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> are not equal;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="T:BytecodeApi.FileFormats.Csv.CsvFile">
-            <summary>
-            Represents a flat file database, typically a CSV file with lines separated by a separator.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers">
-            <summary>
-            Gets or sets a <see cref="T:System.String" />[] that contains the headers of this flat file database or <see langword="null" />, if the hasHeaderRow parameter was set to <see langword="false" />.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter">
-            <summary>
-            Gets or sets the delimiter for this <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" />. The initial value is set to the specified or detected delimiter when loading a flat file database, or <see langword="null" />, if the constructor was used to create an empty <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" />. This property is used by the <see cref="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)" /> method.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.Rows">
-            <summary>
-            Gets a collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects that represents the content of this flat file database.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.HasErrors">
-            <summary>
-            Gets a <see cref="T:System.Boolean" /> value indicating whether this <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> contains rows that could not be parsed. This property does not change once the file is loaded.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvFile.IsColumnCountConsistent">
-            <summary>
-            Gets a <see cref="T:System.Boolean" /> value indicating whether all rows in this <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> have the same amount of columns, excluding the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property and error lines. If zero rows or only error rows were loaded, this property returns <see langword="true" />. This property does not change once the file is loaded.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> class.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.String,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromFile(System.String,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified file.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.String,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromBinary(System.Byte[],System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.Byte" />[] that represents a flat file database.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.FromStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)">
-            <summary>
-            Creates a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> object from the specified <see cref="T:System.IO.Stream" />.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
-            <returns>
-            The <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> this method creates.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateFile(System.String,System.String,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateFile(System.String,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateFile(System.String,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateBinary(System.Byte[],System.String,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.Byte" />[] that represents a flat file database. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateBinary(System.Byte[],System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.Byte" />[] that represents a flat file database. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateBinary(System.Byte[],System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.Byte" />[] that represents a flat file database. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.EnumerateStream(System.IO.Stream,System.String,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)">
-            <summary>
-            Returns an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified <see cref="T:System.IO.Stream" />. This method streams the file and does not load it into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to be used during flat file parsing. If <see langword="null" /> is provided, the delimiter is automatically detected. If automatic detection fails, an exception is thrown.</param>
-            <param name="hasHeaderRow"><see langword="true" /> to treat the first row as a header row and load its contents into the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property.</param>
-            <param name="ignoreEmptyLines"><see langword="true" /> to ignore empty lines and lines where all columns are empty.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
-            <returns>
-            An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects from the specified file.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.String)">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.String,System.Text.Encoding)">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.String,System.Text.Encoding,System.Int32,System.Int32,System.String[])">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> representing the path to a flat file database, such as a CSV file.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
-            <param name="maximumRowsToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
-            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.Byte[])">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.Byte[],System.Text.Encoding)">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.Byte[],System.Text.Encoding,System.Int32,System.Int32,System.String[])">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="file">The <see cref="T:System.Byte" />[] that represents a flat file database to read from.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
-            <param name="maximumRowsToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
-            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.IO.Stream)">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.IO.Stream,System.Text.Encoding)">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.DetectDelimiter(System.IO.Stream,System.Text.Encoding,System.Int32,System.Int32,System.String[])">
-            <summary>
-            Tries to detect the delimiter of a CSV file and returns a <see cref="T:System.String" /> indicating the delimiter, or <see langword="null" />, if it could not be detected.
-            For detection, a specified number of rows is tested for various delimiters. By default, a minimum of 2 rows is required and up to 10 rows are tested. The tested delimiters are ",", ";", "\t" and "|". If all rows have the same column count and the column count is greater than 1, the tested delimiter is considered correct.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> from which to read the flat file database from. The <see cref="T:System.IO.Stream" /> is read multiple times and the position is reset before this method returns.</param>
-            <param name="encoding">The encoding to use if encoding is not determined from the file. Specify <see langword="null" /> to detect encoding automatically or provide a value to explicitly parse with a specific <see cref="T:System.Text.Encoding" />.</param>
-            <param name="minimumRowsToTest">A <see cref="T:System.Int32" /> value specifying the minimum number of rows that the CSV file must have. The default value is 2.</param>
-            <param name="maximumRowsToTest">A <see cref="T:System.Int32" /> value specifying the maximum number of rows that will be tested. If the file has less rows, the complete file is tested. The default value is 10.</param>
-            <param name="delimitersToTest">A <see cref="T:System.String" />[] specifying the delimiters to test for in the specified order. By default, ",", ";", "\t" and "|" are tested.</param>
-            <returns>
-            The detected delimiter, or <see langword="null" />, if no definite delimiter was detected.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.String,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a file. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the file and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the file.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the file.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the file.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the <see cref="T:System.IO.Stream" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.SaveRows(System.IO.Stream,System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvRow},System.String,System.Boolean,System.Text.Encoding,System.Boolean)">
-            <summary>
-            Writes an enumerable collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to a <see cref="T:System.IO.Stream" />. This method streams an <see cref="T:System.Collections.Generic.IEnumerable`1" /> into the <see cref="T:System.IO.Stream" /> and does not require to load all rows into memory and is typically used for large files that are processed in a <see langword="foreach" /> loop.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which the rows are written to.</param>
-            <param name="rows">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> with the rows to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="delimiter">A <see cref="T:System.String" /> specifying the delimiter to use to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the <see cref="T:System.IO.Stream" />.</param>
-            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.CheckColumnCount(System.Int32)">
-            <summary>
-            Checks whether the column count of all rows is equal to <paramref name="columnCount" />, excluding the <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> property and error rows.
-            </summary>
-            <param name="columnCount">A <see cref="T:System.Int32" /> value specifying the expected column count for all rows.</param>
-            <returns>
-            <see langword="true" />, if the column count of all rows is equal to <paramref name="columnCount" />, or it no rows were imported;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.GetColumnIndex(System.String)">
-            <summary>
-            Tries to find the column index of a specified case sensitive column header name. Returns -1, if the column header was not found.
-            </summary>
-            <param name="header">A <see cref="T:System.String" /> specifying the case sensitive name of the column header to search for.</param>
-            <returns>
-            The zero-based index of the column header, or -1, if the column header was not found.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.GetColumnIndex(System.String,System.Boolean)">
-            <summary>
-            Tries to find the column index of a specified case header name. Returns -1, if the column header was not found.
-            </summary>
-            <param name="header">A <see cref="T:System.String" /> specifying the case sensitive name of the column header to search for.</param>
-            <param name="ignoreCase"><see langword="true" /> to ignore character casing during column name comparison.</param>
-            <returns>
-            The zero-based index of the column header, or -1, if the column header was not found.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String)">
-            <summary>
-            Writes the contents of this flat file database to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which this flat file database is written to.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String,System.Boolean)">
-            <summary>
-            Writes the contents of this flat file database to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Writes the contents of this flat file database to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.String,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Writes the contents of this flat file database to a file. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="path">A <see cref="T:System.String" /> specifying the path of a file to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the file.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream)">
-            <summary>
-            Writes the contents of this flat file database to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this flat file database is written to.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean)">
-            <summary>
-            Writes the contents of this flat file database to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Boolean)">
-            <summary>
-            Writes the contents of this flat file database to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Boolean,System.Text.Encoding)">
-            <summary>
-            Writes the contents of this flat file database to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the file.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvFile.Save(System.IO.Stream,System.Boolean,System.Boolean,System.Text.Encoding,System.Boolean)">
-            <summary>
-            Writes the contents of this flat file database to a <see cref="T:System.IO.Stream" />. If <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Headers" /> is not <see langword="null" />, the header row is included. The <see cref="P:BytecodeApi.FileFormats.Csv.CsvFile.Delimiter" /> property specifies the delimiter to use when writing.
-            </summary>
-            <param name="stream">The <see cref="T:System.IO.Stream" /> to which this flat file database is written to.</param>
-            <param name="excludeErrorRows"><see langword="true" /> to include parsed error lines; otherwise, <see langword="false" />.</param>
-            <param name="alwaysQuote"><see langword="true" /> to wrap all cells with quotes; <see langword="false" /> to only use quotes when needed.</param>
-            <param name="encoding">The encoding to use to write to the file.</param>
-            <param name="leaveOpen">A <see cref="T:System.Boolean" /> value indicating whether to leave <paramref name="stream" /> open.</param>
-        </member>
-        <member name="T:BytecodeApi.FileFormats.Csv.CsvRow">
-            <summary>
-            Represents a row of a <see cref="T:BytecodeApi.FileFormats.Csv.CsvFile" /> flat file database.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Item(System.Int32)">
-            <summary>
-            Gets or sets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> at the specified column index.
-            </summary>
-            <param name="index">The zero-based column index.</param>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Item(System.String)">
-            <summary>
-            Gets or sets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvCell" /> at the specified column name, represented as an Excel column name (like A, B, ... AA, AB, ...).
-            </summary>
-            <param name="column">A <see cref="T:System.String" /> specifying the one-based column index, represented as an Excel column name (like A, B, ... AA, AB, ...).</param>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.Count">
-            <summary>
-            Gets the number of cells in this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.LineNumber">
-            <summary>
-            Gets the one-based line number of this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> object, if it was loaded from an existing flat file database source. Returns -1, if the row has been manually initialized.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRow.ErrorLine">
-            <summary>
-            If the line could not be parsed, gets the <see cref="T:System.String" /> representing the original line, otherwise returns <see langword="null" />.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.Collections.Generic.IEnumerable{BytecodeApi.FileFormats.Csv.CsvCell})">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
-            </summary>
-            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(BytecodeApi.FileFormats.Csv.CsvCell[])">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
-            </summary>
-            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
-            </summary>
-            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />, represented as <see cref="T:System.String" /> objects.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.#ctor(System.String[])">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> class with a collection of cells.
-            </summary>
-            <param name="cells">The collection of cells to be added to this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />, represented as <see cref="T:System.String" /> objects.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRow.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> cell collection.
-            </summary>
-            <returns>
-            An enumerator that can be used to iterate through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> cell collection.
-            </returns>
-        </member>
-        <member name="T:BytecodeApi.FileFormats.Csv.CsvRowCollection">
-            <summary>
-            Represents a collection of <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> objects.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.Item(System.Int32)">
-            <summary>
-            Gets the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> at the specified index.
-            </summary>
-            <param name="index">The index at which to retrieve the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" />.</param>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.Count">
-            <summary>
-            Gets the number of rows in this <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-        </member>
-        <member name="P:BytecodeApi.FileFormats.Csv.CsvRowCollection.IsReadOnly">
-            <summary>
-            Gets a value indicating whether the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" /> is read-only.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" /> class.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Add(BytecodeApi.FileFormats.Csv.CsvRow)">
-            <summary>
-            Adds an <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to the end of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to be added to the end of the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Remove(BytecodeApi.FileFormats.Csv.CsvRow)">
-            <summary>
-            Removes the first occurrence of a specific <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to remove from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
-            <returns>
-            <see langword="true" />, if <paramref name="item" /> is successfully removed;
-            otherwise, <see langword="false" />.
-            This method also returns <see langword="false" />, if <paramref name="item" /> was not found in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Clear">
-            <summary>
-            Removes all elements from the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.Contains(BytecodeApi.FileFormats.Csv.CsvRow)">
-            <summary>
-            Determines whether an element is in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-            <param name="item">The <see cref="T:BytecodeApi.FileFormats.Csv.CsvRow" /> to locate in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.</param>
-            <returns>
-            <see langword="true" />, if <paramref name="item" /> is found in the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />;
-            otherwise, <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:BytecodeApi.FileFormats.Csv.CsvRowCollection.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </summary>
-            <returns>
-            An enumerator that can be used to iterate through the <see cref="T:BytecodeApi.FileFormats.Csv.CsvRowCollection" />.
-            </returns>
         </member>
         <member name="T:BytecodeApi.FileFormats.Ini.IniFileFormattingOptions">
             <summary>
@@ -2501,6 +2592,13 @@
             Adds an <see cref="T:BytecodeApi.FileFormats.Ini.IniProperty" /> to the end of the <see cref="T:BytecodeApi.FileFormats.Ini.IniPropertyCollection" />.
             </summary>
             <param name="item">The <see cref="T:BytecodeApi.FileFormats.Ini.IniProperty" /> to be added to the end of the <see cref="T:BytecodeApi.FileFormats.Ini.IniPropertyCollection" />.</param>
+        </member>
+        <member name="M:BytecodeApi.FileFormats.Ini.IniPropertyCollection.Add(System.String,System.String)">
+            <summary>
+            Adds an <see cref="T:BytecodeApi.FileFormats.Ini.IniProperty" /> to the end of the <see cref="T:BytecodeApi.FileFormats.Ini.IniPropertyCollection" />.
+            </summary>
+            <param name="name">The name of the INI property.</param>
+            <param name="value">The value of the INI property.</param>
         </member>
         <member name="M:BytecodeApi.FileFormats.Ini.IniPropertyCollection.Remove(BytecodeApi.FileFormats.Ini.IniProperty)">
             <summary>

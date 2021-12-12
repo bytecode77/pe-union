@@ -4,12 +4,17 @@ namespace PEunion
 {
 	public sealed class ManifestModel : PageModel
 	{
+		private bool _UseNone = true;
+		private bool _UseTemplate;
+		private bool _UseFile;
+		private ManifestTemplate _Template = ManifestTemplate.Default;
+		private string _Path;
 		public bool UseNone
 		{
-			get => Get(() => UseNone, true);
+			get => _UseNone;
 			set
 			{
-				Set(() => UseNone, value);
+				Set(ref _UseNone, value);
 				if (UseNone)
 				{
 					UseTemplate = false;
@@ -19,10 +24,10 @@ namespace PEunion
 		}
 		public bool UseTemplate
 		{
-			get => Get(() => UseTemplate);
+			get => _UseTemplate;
 			set
 			{
-				Set(() => UseTemplate, value);
+				Set(ref _UseTemplate, value);
 				if (UseTemplate)
 				{
 					UseNone = false;
@@ -32,10 +37,10 @@ namespace PEunion
 		}
 		public bool UseFile
 		{
-			get => Get(() => UseFile);
+			get => _UseFile;
 			set
 			{
-				Set(() => UseFile, value);
+				Set(ref _UseFile, value);
 				if (UseFile)
 				{
 					UseNone = false;
@@ -45,13 +50,13 @@ namespace PEunion
 		}
 		public ManifestTemplate Template
 		{
-			get => Get(() => Template, ManifestTemplate.Default);
-			set => Set(() => Template, value);
+			get => _Template;
+			set => Set(ref _Template, value);
 		}
 		public string Path
 		{
-			get => Get(() => Path);
-			set => Set(() => Path, value);
+			get => _Path;
+			set => Set(ref _Path, value);
 		}
 
 		public ManifestModel() : base(PageTemplate.Manifest, "Manifest")

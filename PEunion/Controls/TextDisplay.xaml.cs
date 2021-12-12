@@ -1,4 +1,5 @@
 ﻿using BytecodeApi.UI;
+using BytecodeApi.UI.Extensions;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -14,28 +15,28 @@ namespace PEunion
 		public static readonly DependencyProperty CommandParameterProperty = DependencyPropertyEx.Register(nameof(CommandParameter));
 		public string Text
 		{
-			get => GetValue(() => Text);
-			set => SetValue(() => Text, value);
+			get => this.GetValue<string>(TextProperty);
+			set => SetValue(TextProperty, value);
 		}
 		public ImageSource Icon
 		{
-			get => GetValue(() => Icon);
-			set => SetValue(() => Icon, value);
+			get => this.GetValue<ImageSource>(IconProperty);
+			set => SetValue(IconProperty, value);
 		}
 		public string HelpFile
 		{
-			get => GetValue(() => HelpFile);
-			set => SetValue(() => HelpFile, value);
+			get => this.GetValue<string>(HelpFileProperty);
+			set => SetValue(HelpFileProperty, value);
 		}
 		public ICommand Command
 		{
-			get => GetValue(() => Command);
-			set => SetValue(() => Command, value);
+			get => this.GetValue<ICommand>(CommandProperty);
+			set => SetValue(CommandProperty, value);
 		}
 		public object CommandParameter
 		{
-			get => GetValue(() => CommandParameter);
-			set => SetValue(() => CommandParameter, value);
+			get => GetValue(CommandParameterProperty);
+			set => SetValue(CommandParameterProperty, value);
 		}
 
 		public TextDisplay()

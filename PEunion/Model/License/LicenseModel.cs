@@ -5,10 +5,11 @@ namespace PEunion
 {
 	public sealed class LicenseModel : TabModel
 	{
+		private string _Text;
 		public string Text
 		{
-			get => Get(() => Text);
-			set => Set(() => Text, value);
+			get => _Text;
+			set => Set(ref _Text, value);
 		}
 
 		public LicenseModel()

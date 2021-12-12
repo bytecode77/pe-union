@@ -81,28 +81,32 @@ namespace PEunion
 		public DelegateCommand<Error> ShowErrorDetailsCommand => _ShowErrorDetailsCommand ?? (_ShowErrorDetailsCommand = new DelegateCommand<Error>(ShowErrorDetailsCommand_Execute));
 		public DelegateCommand<RtloModel> RtloSaveCommand => _RtloSaveCommand ?? (_RtloSaveCommand = new DelegateCommand<RtloModel>(RtloSaveCommand_Execute, RtloSaveCommand_CanExecute));
 
+		private bool _IsInitialized;
+		private TabModel _SelectedTab;
+		private string[] _RecentProjects;
+		private string _HelpHtml;
 		public bool IsInitialized
 		{
-			get => Get(() => IsInitialized);
-			set => Set(() => IsInitialized, value);
+			get => _IsInitialized;
+			set => Set(ref _IsInitialized, value);
 		}
-		public ObservableCollection<TabModel> Tabs => Get(() => Tabs, () => new ObservableCollection<TabModel>());
+		public ObservableCollection<TabModel> Tabs { get; private set; }
 		public TabModel SelectedTab
 		{
-			get => Get(() => SelectedTab);
-			set => Set(() => SelectedTab, value);
+			get => _SelectedTab;
+			set => Set(ref _SelectedTab, value);
 		}
 		public string[] RecentProjects
 		{
-			get => Get(() => RecentProjects, () => Config.Recent.Projects ?? new string[0]);
-			set => Set(() => RecentProjects, value);
+			get => _RecentProjects;
+			set => Set(ref _RecentProjects, value);
 		}
 		public string HelpHtml
 		{
-			get => Get(() => HelpHtml);
+			get => _HelpHtml;
 			set
 			{
-				Set(() => HelpHtml, value);
+				Set(ref _HelpHtml, value);
 				View.BottomPanelSelectedIndex = 1;
 			}
 		}
@@ -110,13 +114,16 @@ namespace PEunion
 		public MainWindowViewModel(MainWindow view)
 		{
 			View = view;
-			NewProjectCommand.Execute();
-			Config.Recent.ProjectsChanged += Config_Recent_ProjectsChanged;
+			Singleton = this;
 
 			if (Help.GetHelpFile("Default", out string html, out _)) HelpHtml = html;
 			View.BottomPanelSelectedIndex = 0;
 
-			Singleton = this;
+			Tabs = new ObservableCollection<TabModel>();
+			RecentProjects = Config.Recent.Projects ?? new string[0];
+
+			NewProjectCommand.Execute();
+			Config.Recent.ProjectsChanged += Config_Recent_ProjectsChanged;
 		}
 
 		public void ParseCommandLine(string[] args)

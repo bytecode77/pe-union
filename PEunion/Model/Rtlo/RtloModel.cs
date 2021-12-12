@@ -18,12 +18,21 @@ namespace PEunion
 	{
 		private readonly string[][] ExtensionAlternatives;
 
+		private string _OriginalFilePath;
+		private ImageSource _OriginalIcon;
+		private ImageSource _DisplayIcon;
+		private string _FileName;
+		private string _Extension;
+		private string _SpoofedExtension;
+		private string[] _Extensions;
+		private bool _ChangeIcon;
+		private string _IconPath;
 		public string OriginalFilePath
 		{
-			get => Get(() => OriginalFilePath);
+			get => _OriginalFilePath;
 			set
 			{
-				Set(() => OriginalFilePath, value);
+				Set(ref _OriginalFilePath, value);
 
 				if (OriginalFilePath == null)
 				{
@@ -63,70 +72,70 @@ namespace PEunion
 					SpoofedExtension = extension;
 				}
 
-				RaisePropertyChanged(() => CanChangeIcon);
+				RaisePropertyChanged(nameof(CanChangeIcon));
 			}
 		}
 		public ImageSource OriginalIcon
 		{
-			get => Get(() => OriginalIcon);
+			get => _OriginalIcon;
 			set
 			{
-				Set(() => OriginalIcon, value);
+				Set(ref _OriginalIcon, value);
 				UpdateDisplayIcon();
 			}
 		}
 		public ImageSource DisplayIcon
 		{
-			get => Get(() => DisplayIcon);
-			set => Set(() => DisplayIcon, value);
+			get => _DisplayIcon;
+			set => Set(ref _DisplayIcon, value);
 		}
 		public string FileName
 		{
-			get => Get(() => FileName);
+			get => _FileName;
 			set
 			{
-				Set(() => FileName, value);
-				RaisePropertyChanged(() => IsValid);
+				Set(ref _FileName, value);
+				RaisePropertyChanged(nameof(IsValid));
 			}
 		}
 		public string Extension
 		{
-			get => Get(() => Extension);
+			get => _Extension;
 			set
 			{
-				Set(() => Extension, value);
-				RaisePropertyChanged(() => IsValid);
+				Set(ref _Extension, value);
+				RaisePropertyChanged(nameof(IsValid));
 			}
 		}
 		public string SpoofedExtension
 		{
-			get => Get(() => SpoofedExtension);
+			get => _SpoofedExtension;
 			set
 			{
-				Set(() => SpoofedExtension, value);
-				RaisePropertyChanged(() => IsValid);
+				Set(ref _SpoofedExtension, value);
+				RaisePropertyChanged(nameof(IsValid));
 			}
 		}
 		public string[] Extensions
 		{
-			get => Get(() => Extensions);
-			set => Set(() => Extensions, value);
+			get => _Extensions;
+			set => Set(ref _Extensions, value);
 		}
 		public bool ChangeIcon
 		{
-			get => Get(() => ChangeIcon);
+			get => _ChangeIcon;
 			set
 			{
-				Set(() => ChangeIcon, value);
+				Set(ref _ChangeIcon, value);
 				UpdateDisplayIcon();
 			}
 		}
 		public string IconPath
 		{
-			get => Get(() => IconPath);
+			get => _IconPath;
 			set
 			{
-				Set(() => IconPath, value);
+				Set(ref _IconPath, value);
 				UpdateDisplayIcon();
 			}
 		}

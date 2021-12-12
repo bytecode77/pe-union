@@ -6,30 +6,35 @@ namespace PEunion
 {
 	public sealed class ProjectDropItemModel : ProjectItemModel
 	{
+		private DropLocation _Location = DropLocation.Temp;
+		private string _FileName;
+		private bool _FileAttributeHidden;
+		private bool _FileAttributeSystem;
+		private ExecuteVerb _ExecuteVerb = ExecuteVerb.None;
 		public DropLocation Location
 		{
-			get => Get(() => Location, DropLocation.Temp);
-			set => Set(() => Location, value);
+			get => _Location;
+			set => Set(ref _Location, value);
 		}
 		public string FileName
 		{
-			get => Get(() => FileName);
-			set => Set(() => FileName, value);
+			get => _FileName;
+			set => Set(ref _FileName, value);
 		}
 		public bool FileAttributeHidden
 		{
-			get => Get(() => FileAttributeHidden);
-			set => Set(() => FileAttributeHidden, value);
+			get => _FileAttributeHidden;
+			set => Set(ref _FileAttributeHidden, value);
 		}
 		public bool FileAttributeSystem
 		{
-			get => Get(() => FileAttributeSystem);
-			set => Set(() => FileAttributeSystem, value);
+			get => _FileAttributeSystem;
+			set => Set(ref _FileAttributeSystem, value);
 		}
 		public ExecuteVerb ExecuteVerb
 		{
-			get => Get(() => ExecuteVerb, ExecuteVerb.None);
-			set => Set(() => ExecuteVerb, value);
+			get => _ExecuteVerb;
+			set => Set(ref _ExecuteVerb, value);
 		}
 
 		public ProjectDropItemModel() : base(PageTemplate.DropItem, "Drop")
