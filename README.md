@@ -89,7 +89,7 @@ However, additional evasion techniques may be implemented in future releases to 
 
 ## Downloads
 
-[![](https://bytecode77.com/public/fileicons/zip.png) PEunion 4.0.0.zip](https://bytecode77.com/downloads/PEunion%204.0.0.zip)
+[![](https://bytecode77.com/public/fileicons/zip.png) PEunion 4.0.0.zip](https://downloads.bytecode77.com/PEunion%204.0.0.zip)
 (**ZIP Password:** bytecode77)
 
 ## Project Page
