@@ -37,8 +37,7 @@ Multiple files can be compiled into the stub. A file can either be embedded with
 
 Typically, an executable is decrypted and executed in-memory by the stub. If the executable is a native PE file, `RunPE` (process hollowing) is used. For .NET executables, the .NET stub uses `Invoke`. Legitimate files with no known signatures can be written to the disk.
 
-![](https://bytecode77.com/images/pages/pe-union/drop.webp)
-![](https://bytecode77.com/images/pages/pe-union/items.webp)
+<img src="https://bytecode77.com/images/pages/pe-union/drop.webp" width="500" /> <img src="https://bytecode77.com/images/pages/pe-union/items.webp" width="500" />
 
 ## Implementation & execution flow
 
@@ -58,8 +57,7 @@ Assembly code is obfuscated by nop-like instructions intermingled with the actua
 
 The C# obfuscator replaces symbol names with barely distinguishable Unicode characters. Both string and integer literals are decrypted at runtime.
 
-![](https://bytecode77.com/images/pages/pe-union/obfuscation.webp)
-![](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.webp)
+<img src="https://bytecode77.com/images/pages/pe-union/obfuscation.webp" height="300" />&nbsp;&nbsp;&nbsp;<img src="https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.webp" height="300" />
 
 ## Right-To-Left Override Tool
 
