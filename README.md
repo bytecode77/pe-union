@@ -4,7 +4,7 @@
 
 PEunion encrypts executables, which are decrypted at runtime and executed in-memory.
 
-![](https://bytecode77.com/images/pages/pe-union/runpe.png)
+![](https://bytecode77.com/images/pages/pe-union/runpe.webp)
 
 ## Stub
 
@@ -13,7 +13,7 @@ Two stubs are available to choose from, both of which work in a similar way.
 * **Native:** Written in assembly (FASM)
 * **.NET:** Written in C#
 
-![](https://bytecode77.com/images/pages/pe-union/stub.png)
+![](https://bytecode77.com/images/pages/pe-union/stub.webp)
 
 ## Key feature overview
 
@@ -37,8 +37,8 @@ Multiple files can be compiled into the stub. A file can either be embedded with
 
 Typically, an executable is decrypted and executed in-memory by the stub. If the executable is a native PE file, `RunPE` (process hollowing) is used. For .NET executables, the .NET stub uses `Invoke`. Legitimate files with no known signatures can be written to the disk.
 
-[![](https://bytecode77.com/images/pages/pe-union/drop.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/drop.png)
-[![](https://bytecode77.com/images/pages/pe-union/items.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/items.png)
+![](https://bytecode77.com/images/pages/pe-union/drop.webp)
+![](https://bytecode77.com/images/pages/pe-union/items.webp)
 
 ## Implementation & execution flow
 
@@ -46,7 +46,7 @@ Obfuscation and evasive features are fundamental to the design of PEunion and do
 
 This graph illustrates the execution flow of the native stub decrypting and executing a PE file. The .NET stub works similarly.
 
-![](https://bytecode77.com/images/pages/pe-union/execution-flow-light.png)
+![](https://bytecode77.com/images/pages/pe-union/execution-flow-light.webp)
 
 The **fundamental concept** is that the stub **only** contains code to detect emulators and to decrypt and pass execution to the next layer. The second stage is position independent shellcode that retrieves function pointers from the PEB and handles the payload. To mitigate AV detections, only the stub requires adjustments. Stage 2 contains all the "suspicious" code that is not readable at scantime and not decrypted, if an emulator is detected.
 
@@ -58,8 +58,8 @@ Assembly code is obfuscated by nop-like instructions intermingled with the actua
 
 The C# obfuscator replaces symbol names with barely distinguishable Unicode characters. Both string and integer literals are decrypted at runtime.
 
-[![](https://bytecode77.com/images/pages/pe-union/obfuscation.png)](https://bytecode77.com/images/pages/pe-union/obfuscation.png)
-[![](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.thumb.jpg)](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.png)
+![](https://bytecode77.com/images/pages/pe-union/obfuscation.webp)
+![](https://bytecode77.com/images/pages/pe-union/obfuscation-dotnet.webp)
 
 ## Right-To-Left Override Tool
 
@@ -67,7 +67,7 @@ The Unicode character `U+202e` allows to create a filename that masquerades the 
 
 It is a simple renaming technique, where all characters followed by `U+202e` are displayed in reversed order. This way, an executable can be crafted in such a way that it looks like a JPEG file.
 
-![](https://bytecode77.com/images/pages/pe-union/rtlo.png)
+![](https://bytecode77.com/images/pages/pe-union/rtlo.webp)
 
 ## Audience
 
