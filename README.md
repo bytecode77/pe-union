@@ -37,7 +37,7 @@ Multiple files can be compiled into the stub. A file can either be embedded with
 
 Typically, an executable is decrypted and executed in-memory by the stub. If the executable is a native PE file, `RunPE` (process hollowing) is used. For .NET executables, the .NET stub uses `Invoke`. Legitimate files with no known signatures can be written to the disk.
 
-<img src="https://bytecode77.com/images/pages/pe-union/drop.webp" width="500" /> <img src="https://bytecode77.com/images/pages/pe-union/items.webp" width="500" />
+<img src="https://bytecode77.com/images/pages/pe-union/drop.webp" width="400" /> <img src="https://bytecode77.com/images/pages/pe-union/items.webp" width="400" />
 
 ## Implementation & execution flow
 
